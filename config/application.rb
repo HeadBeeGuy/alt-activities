@@ -21,6 +21,8 @@ module Workspace
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # This was on by default, but commenting out now since it appears to cause issues in Rails 5
+    # This application began life as a Rails 4 installation in Cloud9, so I think this is left over from that
+    # config.active_record.raise_in_transactional_callbacks = true
   end
 end

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= yield(:title)
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, shrink-to-fit=no"}
+  %body
+    -# Haven't made the header yet! Soon, though!
+    -#= render 'layouts/header' 
+    - flash.each do |message_type, message|
+      = content_tag :div, message, class: "alert alert-#{message_type}"
+    .container
+      = yield
