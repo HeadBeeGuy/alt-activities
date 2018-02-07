@@ -1,0 +1,9 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  = link_to "ALT Activities", root_path, class: "navbar-brand"
+  %button.navbar-toggler{"type" => "button", "data-toggle" => "collapse", "data-target" => "#navbarSupportedContent",
+                          "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle Navigation" }
+    %span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarSupportedContent
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        = link_to "About", about_path, class: "nav-link"

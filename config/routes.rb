@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   
   root 'site_pages#home'
-  
-  get 'site_pages/home'
 
-  get 'site_pages/about'
+  get '/about', to: 'site_pages#about'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
