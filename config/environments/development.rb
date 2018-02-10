@@ -38,4 +38,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # mailer - Devise bid me to add this
+  # it wants a port but the Rails tutorial just wants a protocol
+  # obviously if you're running this on your own system, you'll need to change it!
+  #config.action_mailer.default_url_options = { host: 'alt-activities-headbeeguy.c9users.io', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'alt-activities-headbeeguy.c9users.io', protocol: 'https' }
 end

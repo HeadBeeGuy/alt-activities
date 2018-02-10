@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0'
+gem 'devise' # not quite confident in my ability implement sign-up/authentication securely on my own
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

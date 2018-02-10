@@ -10,5 +10,8 @@
     = render 'layouts/header' 
     - flash.each do |message_type, message|
       = content_tag :div, message, class: "alert alert-#{message_type}"
+    -# render Devise error messages
+    %p.notice= notice
+    %p.alert= alert
     .container
       = yield

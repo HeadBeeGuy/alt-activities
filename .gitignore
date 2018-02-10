@@ -18,3 +18,11 @@
 
 # Ignore the secrets, obviously - I sure hope this is sufficient!
 /config/secrets.yml
+
+# The Devise config has a generated key that would probably be wise to leave out of git
+# I hope this won't cause issues with anyone else trying to run it - maybe it can be moved
+# to secrets.yml?
+# nevermind, it was commented out by default!
+
+#/config/initializers/devise.rb
+
