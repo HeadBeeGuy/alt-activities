@@ -7,7 +7,6 @@ gem 'railties' # is this strictly necessary? get lots of complaints if I don't h
 gem 'puma'
 # Use sqlite3 as the database for Active Record
 # my experience was that in Cloud9, this needs to be the default db or else it causes problems
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,6 +44,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  
+  # In earlier projects Cloud9 got fussy when sqlite wasn't the default database, but Heroku won't let me push it up there
+  gem 'sqlite3'
 end
 
 group :development do
