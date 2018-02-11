@@ -21,7 +21,7 @@ gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0'
 gem 'devise' # not quite confident in my ability implement sign-up/authentication securely on my own
-gem 'pg' # necessary for Heroku deployment, and it seems to be a lovely SQL database
+gem 'pg', '~> 0.20' # necessary for Heroku deployment. there's now a 1.0.0 gem but Heroku doesn't like it, apparently
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
