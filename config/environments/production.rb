@@ -76,4 +76,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # adding as per https://stackoverflow.com/a/26541742
+  # I've added secrets.yml to .gitignore, but that means Heroku doesn't know where to look for
+  # the secret key base. This means Heroku doesn't know which ENV variable to load for the secret
+  # key, and won't run. Hence:
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 end
