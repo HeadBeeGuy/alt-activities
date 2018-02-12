@@ -1,0 +1,14 @@
+
+basic_activity:
+  name: Test Activity
+  short_description: This is a short description
+  long_description: This is a much longer description
+  time_estimate: 5 minutes
+  user_id: 1
+  
+second_basic_activity:
+  name: Second Test Activity
+  short_description: This is a short description
+  long_description: This is a much longer description
+  time_estimate: 7 minutes
+  user_id: 1

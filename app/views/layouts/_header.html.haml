@@ -13,3 +13,9 @@
       - else
         %li.nav-item.active
           = link_to  "Log in", new_user_session_path, class: "nav-link"
+      %li.nav-item.dropdown.active
+        %a.nav-link.dropdown-toggle{"href"=>"#", "id"=>"navbarDropdown", "role"=>"button", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"}
+          Activities
+        .dropdown-menu
+          = link_to "Create new", new_activity_path, class: "dropdown-item"
+          = link_to "View all", activities_path, class: "dropdown-item"

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   
   validates :email, uniqueness: true
   
+  has_many :activities
+  
   # making a "login" virtual attribute, as per Devise wiki: 
   # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
   attr_accessor :login
