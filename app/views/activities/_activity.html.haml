@@ -1,7 +1,12 @@
 
-%p= link_to "Activity number: #{activity.id}", activity
+%p
+  = link_to "Activity number: #{activity.id}", activity
+  = link_to "(Edit)", edit_activity_path(activity)
+  = link_to "(Delete)", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }
 %p Activity name: #{activity.name}
 %p Short description: #{activity.short_description}
 %p Long description: #{activity.long_description}
 %p Estimated time: #{activity.time_estimate}
-%p Submitted by: #{activity.user.username}
+%p
+  Submitted by:
+  =link_to activity.user.username, activity.user

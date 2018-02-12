@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
   
+  # Devise should handle new user creation
+  
+  def show
+    @user = User.find(params[:id])
+  end
+  
+  def index
+    @users = User.all
+  end
+  
    private
   
-    # is this necessary given what Devise is doing?
     def user_params
-      params.require(:username).permit(:username, :email) #might need password stuff?
+      params.require(:username).permit(:username, :email)
     end
 end

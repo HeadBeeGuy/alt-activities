@@ -1,0 +1,9 @@
+- provide(:title, "User info")
+
+%p Username: #{@user.username}
+
+%p This user's activities:
+
+%ul
+  - @user.activities.each do |activity|
+    %li= link_to activity.name, activity
