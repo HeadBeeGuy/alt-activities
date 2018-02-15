@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   get '/about', to: 'site_pages#about'
   
-  resources :activities, :users
+  # look into resources, only:
+  resources :activities, :users, :tags
   
 
   # The priority is based upon order of creation: first created -> highest priority.

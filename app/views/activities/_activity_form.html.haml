@@ -6,4 +6,11 @@
         = f.text_area :short_description, placeholder: "Short Description", class: 'form-control'
         = f.text_area :long_description, placeholder: "Long Description", class: 'form-control'
         = f.text_field :time_estimate, placeholder: "Estimated time", class: 'form-control'
+        .tag-chooser
+          %p Tags:
+          -# I think there's some issues with this loading tags correctly, work on it later!
+          = f.collection_check_boxes :tag_ids, @tags, :id, :short_name do |tag_item|
+            .form-check.form-check-inline
+              = tag_item.check_box class: "form-check-input" 
+              = tag_item.label class: "form-check-label"
         = f.submit "Submit", class:"btn btn-primary"

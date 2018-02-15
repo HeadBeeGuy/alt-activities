@@ -19,5 +19,10 @@
         .dropdown-menu
           = link_to "Create new", new_activity_path, class: "dropdown-item"
           = link_to "View all", activities_path, class: "dropdown-item"
+      %li.nav-item.dropdown.active
+        %a.nav-link.dropdown-toggle{"href"=>"#", "id"=>"navbarDropdown", "role"=>"button", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"}
+          Tags
+        .dropdown-menu
+          = link_to "View all", tags_path, class: "dropdown-item"
       %li.nav-item.active
         = link_to "About", about_path, class: "nav-link"

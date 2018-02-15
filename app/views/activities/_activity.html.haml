@@ -8,5 +8,9 @@
 %p Long description: #{activity.long_description}
 %p Estimated time: #{activity.time_estimate}
 %p
+  Tags:
+  - activity.tags.each do |tag|
+    %span= link_to tag.short_name, tag
+%p
   Submitted by:
   =link_to activity.user.username, activity.user

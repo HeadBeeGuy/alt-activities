@@ -1,0 +1,11 @@
+- provide(:title, "Show Tag")
+
+%h4 Tag: #{@tag.short_name} (#{@tag.long_name})
+
+%p Description: #{@tag.description}
+
+%p Activities that use this tag:
+
+%ul
+  - @tag.activities.each do |activity|
+    %li= link_to activity.name, activity
