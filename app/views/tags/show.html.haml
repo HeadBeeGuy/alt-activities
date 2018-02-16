@@ -4,8 +4,8 @@
 
 %p Description: #{@tag.description}
 
-%p Activities that use this tag:
-
-%ul
-  - @tag.activities.each do |activity|
-    %li= link_to activity.name, activity
+- @tag.activities.each do |activity|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to activity.name, activity
+      %span.font-weight-normal= activity.short_description

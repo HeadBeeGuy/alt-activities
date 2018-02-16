@@ -1,4 +1,14 @@
 - provide(:title, "All Activities")
 
-- @activities.each do |activity|
-  = render activity
+.row
+  - @activities.each do |activity|
+    .col-sm-4.mt-4
+      .card
+        %h5.card-header= activity.name
+        .card-body
+          %p.card-text= activity.short_description
+          = link_to "View", activity, class: "btn btn-primary"
+        .card-footer
+          - activity.tags.each do |tag|
+            %span= link_to tag.short_name, tag
+            

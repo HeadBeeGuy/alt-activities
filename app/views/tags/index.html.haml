@@ -1,5 +1,5 @@
 - provide(:title, "All tags")
 
-%ul
+.list-group
   - @tags.each do |tag|
-    %li= link_to tag.short_name, tag
+    = link_to "#{tag.short_name} - #{tag.description}", tag, class: "list-group-item list-group-action-item"

@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
       @activity = Activity.new
       @tags = Tag.all
     else
-      flash[:error] = "You must log in to create an activity."
+      flash[:warning] = "You must log in to create an activity."
       redirect_to new_user_session_path
     end
   end
@@ -88,7 +88,7 @@ class ActivitiesController < ApplicationController
     # right now this is not doing its job correctly - users can edit each other's activities!
     def correct_user
       if !user_signed_in?
-        flash[:error] = "Please sign in."
+        flash[:warning] = "Please sign in."
         redirect_to activities_url
       else
         @activity = current_user.activities.find_by(id: params[:id])

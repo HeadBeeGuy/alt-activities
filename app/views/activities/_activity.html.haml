@@ -1,16 +1,18 @@
 
-%p
-  = link_to "Activity number: #{activity.id}", activity
-  = link_to "(Edit)", edit_activity_path(activity)
-  = link_to "(Delete)", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }
-%p Activity name: #{activity.name}
-%p Short description: #{activity.short_description}
-%p Long description: #{activity.long_description}
-%p Estimated time: #{activity.time_estimate}
-%p
-  Tags:
-  - activity.tags.each do |tag|
-    %span= link_to tag.short_name, tag
-%p
-  Submitted by:
-  =link_to activity.user.username, activity.user
+
+.card
+  %h3.card-header= activity.name
+  .card-body
+    %h5.card-title= activity.short_description
+    %p.card-text= activity.long_description
+    %p Estimated time: #{activity.time_estimate}
+    .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+      = link_to "Edit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
+      = link_to "Delete", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }, class: "btn btn-outline-secondary btn-sm"
+    
+  .card-footer
+    %p
+      Submitted by:
+      =link_to activity.user.username, activity.user
+    - activity.tags.each do |tag|
+      %span= link_to tag.long_name, tag

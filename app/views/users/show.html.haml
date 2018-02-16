@@ -1,9 +1,13 @@
 - provide(:title, "User info")
 
-%p Username: #{@user.username}
+%h4= @user.username
 
 %p This user's activities:
 
-%ul
-  - @user.activities.each do |activity|
-    %li= link_to activity.name, activity
+-# I am Repeating Myself here - this should be a partial, but I'm a bit confused as to how to pass "activity"
+-# since it complained at me before
+- @user.activities.each do |activity|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to activity.name, activity
+      %span.font-weight-normal= activity.short_description
