@@ -1,0 +1,7 @@
+tagging_one:
+  activity: basic_activity_one
+  tag: basic_tag_one
+  
+tagging_two:
+  activity_id: basic_activity_two
+  tag_id: basic_tag_two
