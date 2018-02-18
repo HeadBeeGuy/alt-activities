@@ -6,7 +6,7 @@
     %h5.card-title= activity.short_description
     %p.card-text= activity.long_description
     %p Estimated time: #{activity.time_estimate}
-    - if policy(activity).update?
+    - if user_signed_in? && policy(activity).update?
       .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
         = link_to "Edit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
         = link_to "Delete", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }, class: "btn btn-outline-secondary btn-sm"
