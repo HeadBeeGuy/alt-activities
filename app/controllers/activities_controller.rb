@@ -1,12 +1,12 @@
 class ActivitiesController < ApplicationController
   #this is Devise's authentication, but do I need it here?
   before_action :authenticate_user!, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def new
     #should this be handled with a before_action filter instead?
     if user_signed_in?
       @activity = Activity.new
+      authorize @activity
       @tags = Tag.all
     else
       flash[:warning] = "You must log in to create an activity."
@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
     # should I do another logged in check here?
     @activity = Activity.create(activity_params)
     @activity.user_id = current_user.id
-    if @activity.save
+    if authorize @activity && @activity.save
       new_taggings = params[:activity][:tag_ids]
       new_taggings.each do |tagging|
         if tagging.present? # the first item in the array is always blank
@@ -34,11 +34,15 @@ class ActivitiesController < ApplicationController
   
   def edit
     @activity = Activity.find(params[:id])
+    authorize @activity
     @tags = Tag.all
+    
   end
   
   def update
     @activity = Activity.find(params[:id])
+    
+    authorize @activity
     # one wrinkle is that taggings could theoretically be removed as well as created
     updated_taggings = params[:activity][:tag_ids]
     delete_these = taggings_to_be_deleted(@activity.tags.ids, updated_taggings)
@@ -62,7 +66,9 @@ class ActivitiesController < ApplicationController
   end
   
   def destroy
-    Activity.find(params[:id]).destroy
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    @activity.destroy
     flash[:success] = "Activity deleted! It's not coming back!"
     redirect_to activities_url
   end
@@ -81,21 +87,7 @@ class ActivitiesController < ApplicationController
       params.require(:activity).permit(:name, :short_description, :long_description, :time_estimate,
                                         :user_id, :tag_ids)
     end
-    
-    # only allow either the submitter or an admin to edit or delete things
-    # this will eventually change, as it will be submitted to the moderator queue for verification instead
-    # pinched from Hartl's Rails Tutorial
-    # right now this is not doing its job correctly - users can edit each other's activities!
-    def correct_user
-      if !user_signed_in?
-        flash[:warning] = "Please sign in."
-        redirect_to activities_url
-      else
-        @activity = current_user.activities.find_by(id: params[:id])
-        redirect_to activities_url if @activity = nil? # or current_user is not an admin
-      end
-    end
-    
+
     # handles cases when the activity is being edited and tags are being removed
     # returns an array of tag ids that will need to be deleted
     def taggings_to_be_deleted(old_tag_array, new_tag_array)

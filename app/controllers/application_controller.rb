@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -10,4 +11,14 @@ class ApplicationController < ActionController::Base
     # apparently "permit" makes this work with Rails 5
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
   end
+  
+  #code from Pundit documentation - very useful!
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+    def user_not_authorized
+      flash[:warning] = "You are not authorized to perform this action."
+      redirect_to(request.referrer || root_url)
+    end
 end

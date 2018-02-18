@@ -12,3 +12,17 @@ basic_activity_two:
   long_description: This is a much longer description
   time_estimate: 7 minutes
   user: regular_user_one
+
+roger_activity:
+  name: Regular Roger's activity
+  short_description: This is a short description
+  long_description: I only exist to ensure that nobody unauthorized can edit this activity
+  time_estimate: 7 minutes
+  user: regular_user_one
+  
+rebecca_activity:
+  name: Regular Rebecca's activity
+  short_description: This is a short description
+  long_description: I only exist to ensure that nobody unauthorized can edit this activity
+  time_estimate: 7 minutes
+  user: regular_user_two

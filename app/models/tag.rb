@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :activities, through: :taggings
   
   validates :short_name, presence: true, length: { maximum: 20 }
