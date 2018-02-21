@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
       @tags = Tag.all
     else
       flash[:warning] = "You must log in to create an activity."
-      redirect_to new_user_session_path
+      redirect_to new_user_session_url
     end
   end
   
@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
           Tagging.create!(activity_id: @activity.id, tag_id: tagging)
         end
       end
-      flash[:success] = "Activity created! Behold!"
+      flash[:success] = "Activity submitted! Once it's approved, it will show up on the site."
       redirect_to @activity
     else
       render 'edit'
@@ -36,7 +36,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize @activity
     @tags = Tag.all
-    
   end
   
   def update
@@ -58,8 +57,9 @@ class ActivitiesController < ApplicationController
       end
     end
     if @activity.update_attributes(activity_params)
-      flash[:success] = "Activity updated!"
-      redirect_to @activity
+      flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
+      @activity.edited!
+      redirect_to activities_url
     else
       render 'edit'
     end
@@ -69,16 +69,47 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize @activity
     @activity.destroy
-    flash[:success] = "Activity deleted! It's not coming back!"
+    flash[:success] = "Activity deleted!"
     redirect_to activities_url
   end
   
   def show
     @activity = Activity.find(params[:id])
+    authorize @activity
+  end
+  
+  def approve
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    if @activity.unapproved? || @activity.edited?
+      @activity.approved!
+      flash[:success] = "Activity approved!"
+      redirect_to modqueue_url
+    elsif @activity.approved?
+      flash[:warning] = "Activity already approved!"
+      redirect_to modqueue_url
+    end
+  end
+  
+  def unapprove
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    if @activity.approved?
+      @activity.unapproved!
+      flash[:success] = "Activity moved back to mod queue."
+      redirect_to @activity
+    elsif
+      flash[:warning] = "How did you get here? The activity wasn't approved yet."
+      redirect_to activities_url
+    end
   end
   
   def index
-    @activities = Activity.all
+    @activities = Activity.approved
+  end
+  
+  def modqueue
+    @activities = Activity.where(status: [:unapproved, :edited])
   end
   
   private

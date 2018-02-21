@@ -4,9 +4,7 @@
 
 %p This user's activities:
 
--# I am Repeating Myself here - this should be a partial, but I'm a bit confused as to how to pass "activity"
--# since it complained at me before
-- @user.activities.each do |activity|
+- @user.activities.approved.each do |activity|
   .card
     .card-body
       %span.font-weight-bold= link_to activity.name, activity

@@ -6,11 +6,19 @@
     %h5.card-title= activity.short_description
     %p.card-text= activity.long_description
     %p Estimated time: #{activity.time_estimate}
+    -# there's probably a better way to elegantly construct these ifs to show variable controls depending on the activity and user status
+    -# user is an admin - gets full controls
     - if user_signed_in? && policy(activity).update?
       .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+        - if activity.unapproved? || activity.edited?
+          = link_to "Approve", approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
+        - elsif activity.approved? && ( current_user.admin? || current_user.moderator? )
+          = link_to "Return to mod queue", unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
         = link_to "Edit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
         = link_to "Delete", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }, class: "btn btn-outline-secondary btn-sm"
-    
+    - elsif user_signed_in? && activity.user == current_user
+      .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+        = link_to "Edit and Re-submit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
   .card-footer
     %p
       Submitted by:

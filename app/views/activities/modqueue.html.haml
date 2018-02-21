@@ -1,0 +1,17 @@
+- provide(:title, "Moderator queue")
+
+%h4 Unapproved activities
+
+%table.table.table-striped.table-sm
+  %thead
+    %tr
+      %th{"scope" => "col"} Name
+      %th{"scope" => "col"} Submitter
+      %th{"scope" => "col"} Short description
+  %tbody
+    - @activities.each do |activity|
+      %tr
+        %th{"scope" => "row"}= link_to activity.name, activity
+        %td= link_to "#{activity.user.username} (#{activity.user.activities.approved.count})", activity.user
+        %td= activity.short_description
+

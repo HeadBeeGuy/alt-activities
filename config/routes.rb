@@ -4,9 +4,17 @@ Rails.application.routes.draw do
   root 'site_pages#home'
 
   get '/about', to: 'site_pages#about'
+  get '/modqueue', to: 'activities#modqueue'
   
   # look into resources, only:
-  resources :activities, :users, :tags
+  resources :users, :tags
+  
+  resources :activities do
+    member do
+      put :approve
+      put :unapprove
+    end
+  end
   
 
   # The priority is based upon order of creation: first created -> highest priority.
