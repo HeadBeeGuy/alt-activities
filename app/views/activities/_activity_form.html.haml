@@ -4,7 +4,7 @@
       .form-group
         = f.text_field :name, placeholder: "Activity name", class: 'form-control'
         = f.text_area :short_description, placeholder: "Short Description", class: 'form-control'
-        = f.text_area :long_description, placeholder: "Long Description", class: 'form-control'
+        = f.text_area :long_description, placeholder: "Long Description", class: 'form-control', rows: 8
         = f.text_field :time_estimate, placeholder: "Estimated time", class: 'form-control'
         .tag-chooser
           %p Tags:

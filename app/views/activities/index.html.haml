@@ -4,11 +4,11 @@
   - @activities.each do |activity|
     .col-sm-4.mt-4
       .card
-        %h5.card-header= activity.name
+        %h5.card-header= link_to activity.name, activity
         .card-body
           %p.card-text= activity.short_description
-          = link_to "View", activity, class: "btn btn-primary"
+          = link_to "View", activity, class: "btn btn-outline-primary float-right"
         .card-footer
           - activity.tags.each do |tag|
-            %span= link_to tag.short_name, tag
+            %span= link_to tag.short_name, tag, class: "badge badge-success"
             

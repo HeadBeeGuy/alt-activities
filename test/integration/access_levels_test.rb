@@ -12,27 +12,39 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     @silenced = users(:silenced_user_one)
   end
   
-=begin
-  # I've been really slacking on tests! this one isn't making it through Pundit for some reason
-  # In my limited time to work on this, I'd like to spend it adding more functionality
-  # At some point a Great Test Reckoning must occur, when I have more time to figure out why the tests aren't working
+
   test "regular users can successfully submit an activity" do
     sign_in(@regular_user_one)
     get new_activity_path
-    
-    post activities_path, params: { activity: { name: "a",
-          short_description: "short", long_description: "long", time_estimate: "2 min" }}
+    activity_name = "My test activity"
+    # Passing tag_ids with direct values in an Array seems like a bad idea, but I haven't figured out
+    # how to add them in as references to the tag fixtures yet
+    post activities_path, params: { activity: { name: activity_name,
+          short_description: "short", long_description: "long", time_estimate: "2 min", 
+          tag_ids: [1, 2] }}
     follow_redirect!
+    assert_not flash.empty?
     
-    #verify that the submission worked, but the user can't see the activity
-    #log out
-    #log a mod in
-    #verify that the moderator sees the activity in the mod queue
-    #approve it
+    #the easiest way to check if the activity isn't there would be to look for it in activities_path
+    #but as the site grows, it would be unfeasible to have all activities on one page
+    #the tag fixture may not correspond to what I passed in when I created the activity
+    get tag_path(tags(:basic_tag_one))
+    assert_no_match activity_name, response.body
+    delete destroy_user_session_path
+    
+    sign_in(@moderator)
+    get modqueue_path
+    
+    assert_match activity_name, response.body
+    
+    #approve it - how do I tell it to go to that particular activity?
+    
+    # at this point I really need to finish the test, but I need to deploy to fix a bug I introduced
+    
     #verify that the moderator can see the activity on the site
     #log the moderator out
     #log the regular user back in, verify that they see the activity on the site
           
   end
-=end
+
 end

@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   #this is Devise's authentication, but do I need it here?
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
   
   def new
     #should this be handled with a before_action filter instead?
@@ -18,7 +18,8 @@ class ActivitiesController < ApplicationController
     # should I do another logged in check here?
     @activity = Activity.create(activity_params)
     @activity.user_id = current_user.id
-    if authorize @activity && @activity.save
+    authorize @activity
+    if @activity.save
       new_taggings = params[:activity][:tag_ids]
       new_taggings.each do |tagging|
         if tagging.present? # the first item in the array is always blank

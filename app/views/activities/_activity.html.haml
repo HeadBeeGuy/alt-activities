@@ -21,7 +21,9 @@
         = link_to "Edit and Re-submit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
   .card-footer
     %p
-      Submitted by:
-      =link_to activity.user.username, activity.user
+      %span
+        Submitted by:
+        =link_to activity.user.username, activity.user
+      %span.small on #{activity.created_at.strftime("%B %d, %Y")}.
     - activity.tags.each do |tag|
-      %span= link_to tag.long_name, tag
+      %span= link_to tag.long_name, tag, class: "badge badge-pill badge-success"
