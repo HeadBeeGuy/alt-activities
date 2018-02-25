@@ -14,14 +14,18 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   
 
   test "regular users can successfully submit an activity" do
+    @tag = tags(:basic_tag_one)
     sign_in(@regular_user_one)
+    
     get new_activity_path
     activity_name = "My test activity"
-    # Passing tag_ids with direct values in an Array seems like a bad idea, but I haven't figured out
-    # how to add them in as references to the tag fixtures yet
-    post activities_path, params: { activity: { name: activity_name,
-          short_description: "short", long_description: "long", time_estimate: "2 min", 
-          tag_ids: [1, 2] }}
+    assert_difference('Activity.unapproved.count', 1) do
+      # is there a way I can pass the tag ids by their fixture names? haven't been able to figure that out yet
+      post activities_path, params: { activity: { name: activity_name,
+            short_description: "short", long_description: "long", time_estimate: "2 min", 
+            tag_ids: [@tag.id] }}
+    end
+    
     follow_redirect!
     assert_not flash.empty?
     
@@ -32,6 +36,7 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     assert_no_match activity_name, response.body
     delete destroy_user_session_path
     
+    
     sign_in(@moderator)
     get modqueue_path
     
@@ -39,12 +44,38 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     
     #approve it - how do I tell it to go to that particular activity?
     
-    # at this point I really need to finish the test, but I need to deploy to fix a bug I introduced
-    
-    #verify that the moderator can see the activity on the site
+    #verify that the moderator can see the activity on the live site
     #log the moderator out
     #log the regular user back in, verify that they see the activity on the site
           
+  end
+  
+  test "creating new activities should redirect when not logged in" do
+    get new_activity_path
+    assert_redirected_to new_user_session_path
+  end
+  
+  test "normal users and users not logged in cannot access the mod queue" do
+    get modqueue_path
+    assert_redirected_to new_user_session_path
+    assert_not flash.empty?
+    sign_in(@regular_user_one)
+    get modqueue_path
+    assert_redirected_to root_url
+    assert_not flash.empty?
+  end
+  
+  test "silenced users cannot create an activity" do
+    sign_in(@silenced)
+    get new_activity_path
+    assert_redirected_to root_url
+    assert_not flash.empty?
+  end
+  
+  test "moderators can see the mod queue" do
+    sign_in(@moderator)
+    get modqueue_path
+    assert_response :success
   end
 
 end

@@ -1,21 +1,13 @@
 class ActivitiesController < ApplicationController
-  #this is Devise's authentication, but do I need it here?
   before_action :authenticate_user!, except: [:index, :show]
   
   def new
-    #should this be handled with a before_action filter instead?
-    if user_signed_in?
-      @activity = Activity.new
-      authorize @activity
-      @tags = Tag.all
-    else
-      flash[:warning] = "You must log in to create an activity."
-      redirect_to new_user_session_url
-    end
+    @activity = Activity.new
+    authorize @activity
+    @tags = Tag.all
   end
   
   def create
-    # should I do another logged in check here?
     @activity = Activity.create(activity_params)
     @activity.user_id = current_user.id
     authorize @activity
@@ -27,7 +19,7 @@ class ActivitiesController < ApplicationController
         end
       end
       flash[:success] = "Activity submitted! Once it's approved, it will show up on the site."
-      redirect_to @activity
+      redirect_to activities_url
     else
       render 'edit'
     end
@@ -111,6 +103,7 @@ class ActivitiesController < ApplicationController
   
   def modqueue
     @activities = Activity.where(status: [:unapproved, :edited])
+    authorize @activities
   end
   
   private

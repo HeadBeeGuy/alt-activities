@@ -9,6 +9,10 @@ class ActivityPolicy < ApplicationPolicy
   # this is getting a bit complex - maybe scopes would express these concepts better?
   
   # if you're silenced, you shouldn't be able to trouble us with activities!
+  def new?
+    not user.silenced?
+  end
+  
   def create?
     not user.silenced?
   end
@@ -35,5 +39,9 @@ class ActivityPolicy < ApplicationPolicy
   
   def show?
     activity.approved? or (user and (user.admin? or user.moderator?))
+  end
+  
+  def modqueue?
+    user.admin? or user.moderator?
   end
 end

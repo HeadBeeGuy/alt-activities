@@ -4,7 +4,7 @@
 
 %p Description: #{@tag.description}
 
-- @tag.activities.each do |activity|
+- @tag.activities.approved.each do |activity|
   .card
     .card-body
       %span.font-weight-bold= link_to activity.name, activity
