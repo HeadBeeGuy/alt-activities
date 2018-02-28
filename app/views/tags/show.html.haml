@@ -1,8 +1,17 @@
 - provide(:title, "Show Tag")
 
-%h4 Tag: #{@tag.short_name} (#{@tag.long_name})
+%h4 Tag: #{@tag.long_name}
+%p
+  %span Category: 
+  %span= link_to @tag.tag_category.name, @tag.tag_category
 
 %p Description: #{@tag.description}
+
+- if policy(@tag).edit?
+  .btn-group{"role" => "group", "aria-label" => "Tag controls"}
+    = link_to "Edit", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
+    - if policy(@tag).delete?
+      = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
 
 - @tag.activities.approved.each do |activity|
   .card

@@ -7,6 +7,10 @@ class TagPolicy < ApplicationPolicy
   end
   
   # In general, tags should be created sparingly and not by normal users
+  def new?
+    user.admin?
+  end
+  
   def create?
     user.admin?
   end
@@ -16,6 +20,10 @@ class TagPolicy < ApplicationPolicy
   end
   
   def update?
+    user.admin?
+  end
+  
+  def delete?
     user.admin?
   end
   

@@ -1,0 +1,8 @@
+- provide(:title, "Show Tag Category")
+
+%h4 Category: #{@tag_category.name}
+
+%p Tags in this category:
+%ul
+- @tag_category.tags.each do |tag|
+  %li= link_to tag.long_name, tag

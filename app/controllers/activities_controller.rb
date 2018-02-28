@@ -91,9 +91,6 @@ class ActivitiesController < ApplicationController
       @activity.unapproved!
       flash[:success] = "Activity moved back to mod queue."
       redirect_to @activity
-    elsif
-      flash[:warning] = "How did you get here? The activity wasn't approved yet."
-      redirect_to activities_url
     end
   end
   

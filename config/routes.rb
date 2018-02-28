@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   get '/about', to: 'site_pages#about'
   get '/modqueue', to: 'activities#modqueue'
+  get '/all_tags', to: 'tag_categories#index'
   
   # look into resources, only:
-  resources :users, :tags
+  resources :users, :tags, :tag_categories
   
   resources :activities do
     member do

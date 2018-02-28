@@ -37,6 +37,7 @@ Current list of things to implement:
 - OAuth integration
 - Thumbs-up system - Logged-in users can give a thumbs up to an activity, and activities are listed based on whichver has the most thumbs up in a given search
 - Comment system (comments will also go through mod queue)
+- Activity search system (will require some ActiveRecord/SQL wizardry to allow searches for required/optional tags)
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
 

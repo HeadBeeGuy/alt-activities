@@ -1,0 +1,9 @@
+.form_group
+  = form_for(@tag) do |f|
+    .field
+      .form-group
+        = f.text_field :short_name, placeholder: "Short name", class: 'form-control'
+        = f.text_field :long_name, placeholder: "Long name", class: 'form-control'
+        = f.text_area :description, placeholder: "Description", class: 'form-control', rows: 2
+        = f.collection_select :tag_category_id, TagCategory.all, :id, :name, {}, class: 'form-control'
+        = f.submit "Submit", class:"btn btn-primary"

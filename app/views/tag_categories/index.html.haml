@@ -1,0 +1,16 @@
+- provide(:title, "All Tags")
+
+.accordion
+  - @tag_categories.each do |category|
+    .card
+      .card-header{"id" => "heading-#{category.name}"}
+        %h5.mb-0
+          %button.btn.btn-link{"data-toggle" => "collapse", "data-target" => "#collapse#{category.name}",
+                              "aria-expanded" => "true", "aria-controls" => "collapse#{category.name}" }
+            %h5= category.name
+      %div.collapse.show{ "id" => "collapse#{category.name}", "aria-labelledby" => "heading#{category.name}", "data-parent" => "#accordion" }
+        .card-body
+          - category.tags.each do |tag|
+            %p
+              %span= link_to tag.long_name, tag
+              %span - #{tag.description}

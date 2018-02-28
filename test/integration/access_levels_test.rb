@@ -39,14 +39,25 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     
     sign_in(@moderator)
     get modqueue_path
-    
     assert_match activity_name, response.body
     
-    #approve it - how do I tell it to go to that particular activity?
+    # this seems like this isn't a great way to do this, but without Capybara I don't think I can tell minitest to click on links 
+    get activity_path(Activity.find_by_name(activity_name))
+    assert_match activity_name, response.body
     
-    #verify that the moderator can see the activity on the live site
-    #log the moderator out
-    #log the regular user back in, verify that they see the activity on the site
+    put approve_activity_path(Activity.find_by_name(activity_name))
+    follow_redirect!
+    # since the admin is redirected back to the modqueue, the activity shouldn't be there anymore
+    assert_no_match activity_name, response.body
+    
+    get tag_path(tags(:basic_tag_one))
+    assert_match activity_name, response.body
+    delete destroy_user_session_path
+    
+    
+    sign_in(@regular_user_one)
+    get tag_path(tags(:basic_tag_one))
+    assert_match activity_name, response.body
           
   end
   

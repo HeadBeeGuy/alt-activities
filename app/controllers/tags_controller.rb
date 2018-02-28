@@ -1,9 +1,34 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   
   def new
+    @tag = Tag.new
+    authorize @tag
+  end
+  
+  def create
+    @tag = Tag.create(tag_params)
+    authorize @tag
+    if @tag.save
+      flash[:success] = "Tag created!"
+      redirect_to all_tags_url
+    else
+      render 'edit'
+    end
   end
   
   def edit
+    @tag = Tag.find(params[:id])
+  end
+  
+  def update
+    @tag = Tag.find(params[:id])
+    if @tag.update_attributes(tag_params)
+      flash[:success] = "Tag updated!"
+      redirect_to @tag
+    else
+      render 'edit'
+    end
   end
   
   def show
@@ -14,10 +39,18 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
   
+  def destroy
+    @tag = Tag.find(params[:id])
+    authorize @tag
+    @tag.destroy
+    flash[:success] = "Tag destroyed!"
+    redirect_to all_tags_url
+  end
+  
   private
   
     def tag_params
-      params.require(:activity).permit(:short_name, :long_name, :description)
+      params.require(:tag).permit(:short_name, :long_name, :description, :tag_category_id)
     end
   
 end
