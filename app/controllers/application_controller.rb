@@ -7,9 +7,21 @@ class ApplicationController < ActionController::Base
   #added as per https://stackoverflow.com/questions/20126106/devise-error-email-cant-be-blank
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  
   def configure_permitted_parameters
     # apparently "permit" makes this work with Rails 5
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
+  end
+  
+  #added as per Rails i18n guide
+  before_action :set_locale
+  
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+  
+  def default_url_options
+    { locale: I18n.locale }
   end
   
   #code from Pundit documentation - very useful!

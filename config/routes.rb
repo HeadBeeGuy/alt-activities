@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
   
-  devise_for :users
-  root 'site_pages#home'
-
-  get '/about', to: 'site_pages#about'
-  get '/modqueue', to: 'activities#modqueue'
-  get '/all_tags', to: 'tag_categories#index'
+  # locales specified after the domain: example.com/en
+  # this might change for final release if we can control the subdomain
+  scope "(:locale)", locale: /en|ja/ do
+    devise_for :users
+    root 'site_pages#home'
   
-  # look into resources, only:
-  resources :users, :tags, :tag_categories
-  
-  resources :activities do
-    member do
-      put :approve
-      put :unapprove
+    get '/about', to: 'site_pages#about'
+    get '/modqueue', to: 'activities#modqueue'
+    get '/all_tags', to: 'tag_categories#index'
+    
+    resources :users, :tags, :tag_categories
+    
+    resources :activities do
+      member do
+        put :approve
+        put :unapprove
+      end
     end
   end
+  
+  get '/:locale', to: 'site_pages#home'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

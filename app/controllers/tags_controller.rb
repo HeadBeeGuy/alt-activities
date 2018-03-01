@@ -19,10 +19,12 @@ class TagsController < ApplicationController
   
   def edit
     @tag = Tag.find(params[:id])
+    authorize @tag
   end
   
   def update
     @tag = Tag.find(params[:id])
+    authorize @tag
     if @tag.update_attributes(tag_params)
       flash[:success] = "Tag updated!"
       redirect_to @tag

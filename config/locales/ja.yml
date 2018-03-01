@@ -1,0 +1,12 @@
+
+ja:
+  hello: "こんちゃっす！"
+  layouts:
+    site_title: "ALT アクティビティー"
+    log_in: "ログイン"
+    log_out: "ログアウト"
+    activity_category: "アクティビティー"
+    new_activity: "新しい"
+    view_all_activities: "全て"
+    tag_list: "タッグ"
+    about: "このサイトについて"
