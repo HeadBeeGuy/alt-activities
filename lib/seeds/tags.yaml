@@ -1,0 +1,222 @@
+---
+tag_category_1:
+  name: Parts of Learning
+  tags:
+    tag_1:
+      short_name: Speaking
+      long_name: Speaking
+      description: Students speak in the activity.
+    tag_2:
+      short_name: Listening
+      long_name: Listening
+      description: Students listen in the activity.
+    tag_3:
+      short_name: Reading
+      long_name: Reading
+      description: Students read in the activity.
+    tag_4:
+      short_name: Writing
+      long_name: Writing
+      description: Students write in the activity.
+tag_category_2:
+  name: School Level
+  tags:
+    tag_1:
+      short_name: Pre-K
+      long_name: Pre-kindergarten or Kindergarten
+      description: Aimed at students who have not started Elementary School yet.
+    tag_2:
+      short_name: ES
+      long_name: Elementary School
+      description: Aimed at elementary school students.
+    tag_3:
+      short_name: JHS
+      long_name: Junior High School
+      description: Aimed at junior high school students.
+    tag_4:
+      short_name: HS
+      long_name: High School
+      description: Aimed at high school students.
+    tag_5:
+      short_name: University
+      long_name: University
+      description: Aimed at university students.
+    tag_6:
+      short_name: Conversation
+      long_name: Conversation
+      description: Aimed at students with a wide variety of ages and class settings,
+        including adult students.
+tag_category_3:
+  name: Grammar points
+  tags:
+    tag_1:
+      short_name: Comparative
+      long_name: Comparative
+      description: He is taller than my brother.
+    tag_2:
+      short_name: Superlative
+      long_name: Superlative
+      description: The blue whale is the biggest animal in the world.
+    tag_3:
+      short_name: Conditional
+      long_name: Conditional
+      description: If you want to play basketball, please join our team.
+    tag_4:
+      short_name: Present Progressive/Present Continuous
+      long_name: Present Progressive/Present Continuous
+      description: She is playing volleyball.
+    tag_5:
+      short_name: Present Perfect
+      long_name: Present Perfect
+      description: Tom has eaten two hot dogs.
+    tag_6:
+      short_name: Future (will)
+      long_name: Future (will)
+      description: I will go to the grocery store tonight.
+    tag_7:
+      short_name: Future (going to)
+      long_name: Future (going to)
+      description: They are going to play rugby on Sunday.
+    tag_8:
+      short_name: Pronouns
+      long_name: Pronouns
+      description: Her name is Judy.
+    tag_9:
+      short_name: Passive voice
+      long_name: Passive voice
+      description: Many languages are spoken in Indonesia.
+    tag_10:
+      short_name: Relative Pronoun
+      long_name: Relative Pronoun
+      description: He is a boy who writes novels.
+    tag_11:
+      short_name: Past Perfect Continuous
+      long_name: Past Perfect Continuous
+      description: James had been doing homework for two hours before Brendan visited.
+    tag_12:
+      short_name: Simple Present
+      long_name: Simple Present
+      description: I study English.
+    tag_13:
+      short_name: Copula Verb
+      long_name: Copula Verb
+      description: That looks delicious.
+    tag_14:
+      short_name: Past Continuous
+      long_name: Past Continuous
+      description: My cat was sleeping last night.
+    tag_15:
+      short_name: Past Simple
+      long_name: Past Simple
+      description: He visited Kyoto last month.
+    tag_16:
+      short_name: Quantifiers
+      long_name: Quantifiers
+      description: Does this store have any towels?
+    tag_17:
+      short_name: Request
+      long_name: Request
+      description: Will you give me a napkin?
+tag_category_4:
+  name: General Activity Descriptors
+  tags:
+    tag_1:
+      short_name: Warm-up
+      long_name: Warm-up
+      description: The teacher can use this activity to start a class.
+    tag_2:
+      short_name: Flexible
+      long_name: Can be applied to many grammar points
+      description: The activity can be adapted to a wide variety of grammar points.
+tag_category_5:
+  name: Sentence Type
+  tags:
+    tag_1:
+      short_name: Affirmative
+      long_name: Affirmative sentence
+      description: You are hungry.
+    tag_2:
+      short_name: Negative
+      long_name: Negative sentence
+      description: You aren't hungry.
+    tag_3:
+      short_name: Question
+      long_name: Question sentence
+      description: Are you hungry?
+tag_category_6:
+  name: Requirements
+  tags:
+    tag_1:
+      short_name: Pencil
+      long_name: Pencil
+      description: Requires students to have a pencil or a similar writing instrument.
+    tag_2:
+      short_name: Prints
+      long_name: Prints
+      description: Requires the teacher to print out the activity on paper.
+    tag_3:
+      short_name: TV
+      long_name: TV
+      description: Requires the teacher to display materials on a TV.
+    tag_4:
+      short_name: PC
+      long_name: PC
+      description: Requires the teacher to display or use materials on a computer
+        during class.
+    tag_5:
+      short_name: Dice
+      long_name: Dice
+      description: Requires the teacher to use dice.
+tag_category_7:
+  name: Textbook-specific
+  tags:
+    tag_1:
+      short_name: New Crown 1
+      long_name: New Crown
+      description: Specific to the New Crown textbook.
+    tag_2:
+      short_name: New Horizon
+      long_name: New Horizon
+      description: Specific to the New Horizon textbook.
+tag_category_8:
+  name: Holiday
+  tags:
+    tag_1:
+      short_name: New Years
+      long_name: New Years
+      description: Activity applies to New Years.
+    tag_2:
+      short_name: Valentine
+      long_name: Valentine's Day
+      description: Activity applies to Valentine's Day.
+    tag_3:
+      short_name: St Patrick
+      long_name: Saint Patrick's Day
+      description: Activity applies to Saint Patrick's Day.
+    tag_4:
+      short_name: Halloween
+      long_name: Halloween
+      description: Activity applies to Halloween. Boo!
+    tag_5:
+      short_name: Thanksgiving
+      long_name: Thanksgiving
+      description: Activity applies to Thanksgiving (American or Canadian).
+    tag_6:
+      short_name: Christmas
+      long_name: Christmas
+      description: Activity applies to Christmas.
+tag_category_9:
+  name: Cultural Background
+  tags:
+    tag_1:
+      short_name: Japanese
+      long_name: Japanese background
+      description: Activity assumes students are of a Japanese cultural background.
+    tag_2:
+      short_name: Chinese
+      long_name: Chinese background
+      description: Activity assumes students are of a Chinese cultural background.
+    tag_3:
+      short_name: Korean
+      long_name: Korean background
+      description: Activity assumes students are of a Korean cultural background.

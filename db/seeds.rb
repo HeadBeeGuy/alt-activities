@@ -1,22 +1,17 @@
 
 
-# going to seed Tags in directly - presently not planning to let them be created by users
-# When the site's nearing release, I wonder if I could seed them in from a yaml file
+require 'yaml'
 
-Tag.create!(short_name: "ES", long_name: "Elementary School",
-            description: "Activity appropriate for Elementary School")
-            
-Tag.create!(short_name: "JHS", long_name: "Junior High School",
-            description: "Activity appropriate for Junior High School")
-            
-Tag.create!(short_name: "Listening", long_name: "Listening",
-            description: "Students must listen during the activity")
-            
-Tag.create!(short_name: "Speaking", long_name: "Speaking",
-            description: "Students must speak during the activity")
-            
-Tag.create!(short_name: "Writing", long_name: "Writing",
-            description: "Students must write during the activity")
-            
-Tag.create!(short_name: "Past", long_name: "Past tense",
-            description: "Uses the past tense")
+# seed in tags and tag categories from this yaml file
+tag_file = YAML.load_file('lib/seeds/tags.yaml')
+
+for current_category in 1..tag_file.length
+  TagCategory.create!(name: tag_file["tag_category_#{current_category}"]["name"])
+  for current_tag in 1..tag_file["tag_category_#{current_category}"]["tags"].length
+    Tag.create!(short_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["short_name"],
+                long_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["long_name"],
+                description: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["description"],
+                tag_category_id: current_category)
+  end
+
+end

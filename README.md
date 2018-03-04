@@ -30,8 +30,6 @@ When a user submits an activity, it goes into a moderator queue and must be appr
 
 Current list of things to implement:
 
-- Tag categories
-- Internationalization (English and Japanese initially)
 - Uploading and attaching files, along with anti-virus scanning
 - A **Textbook** model - Refers to specific textbooks and gives a page number with corresponding grammar point
 - OAuth integration

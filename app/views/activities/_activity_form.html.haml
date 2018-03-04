@@ -8,8 +8,12 @@
         = f.text_field :time_estimate, placeholder: "Estimated time", class: 'form-control'
         .tag-chooser
           %p Tags:
-          = f.collection_check_boxes :tag_ids, @tags, :id, :short_name do |tag_item|
-            .form-check.form-check-inline
-              = tag_item.check_box class: "form-check-input" 
-              = tag_item.label class: "form-check-label"
+          - @tag_categories.each do |category|
+            .tag-block.col-md-4
+            %h5= category.name
+            %ul
+              = f.collection_check_boxes :tag_ids, category.tags, :id, :short_name do |tag_item|
+                %li
+                  = tag_item.check_box class: "form-check-input"
+                  = tag_item.label class: "form-check-label"
         = f.submit "Submit", class:"btn btn-primary"

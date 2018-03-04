@@ -7,7 +7,7 @@
 
 %p Description: #{@tag.description}
 
-- if policy(@tag).edit?
+- if user_signed_in? && policy(@tag).edit?
   .btn-group{"role" => "group", "aria-label" => "Tag controls"}
     = link_to "Edit", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
     - if policy(@tag).delete?

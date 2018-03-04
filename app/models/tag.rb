@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
   has_many :activities, through: :taggings
   belongs_to :tag_category
   
-  validates :short_name, presence: true, length: { maximum: 20 }
-  validates :long_name, presence: true, length: { maximum: 30 }
+  validates :short_name, presence: true, length: { maximum: 40 }, uniqueness: true
+  validates :long_name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :description, presence: true, length: { maximum: 100 }
 end

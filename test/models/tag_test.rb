@@ -24,13 +24,13 @@ class TagTest < ActiveSupport::TestCase
     assert_not @tag.valid?
   end
   
-  test "a tag's short name cannot be over 20 characters" do
-    @tag.short_name = "a" * 21
+  test "a tag's short name cannot be over 40 characters" do
+    @tag.short_name = "a" * 41
     assert_not @tag.valid?
   end
   
-  test "a tag's long name cannot be over 30 characters" do
-    @tag.long_name = "a" * 31
+  test "a tag's long name cannot be over 50 characters" do
+    @tag.long_name = "a" * 51
     assert_not @tag.valid?
   end
   
