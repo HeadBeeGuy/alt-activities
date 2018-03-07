@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
+  include Devise::Test::IntegrationHelpers
+  
   def setup
     @tag = tags(:basic_tag_one)
+    @regular_user_one = users(:regular_user_one)
+    @admin = users(:admin_user_one)
   end
   
   test "a tag with valid parameters is valid" do

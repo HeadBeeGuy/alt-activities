@@ -12,55 +12,6 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     @silenced = users(:silenced_user_one)
   end
   
-
-  test "regular users can successfully submit an activity" do
-    @tag = tags(:basic_tag_one)
-    sign_in(@regular_user_one)
-    
-    get new_activity_path
-    activity_name = "My test activity"
-    assert_difference('Activity.unapproved.count', 1) do
-      # is there a way I can pass the tag ids by their fixture names? haven't been able to figure that out yet
-      post activities_path, params: { activity: { name: activity_name,
-            short_description: "short", long_description: "long", time_estimate: "2 min", 
-            tag_ids: [@tag.id] }}
-    end
-    
-    follow_redirect!
-    assert_not flash.empty?
-    
-    #the easiest way to check if the activity isn't there would be to look for it in activities_path
-    #but as the site grows, it would be unfeasible to have all activities on one page
-    #the tag fixture may not correspond to what I passed in when I created the activity
-    get tag_path(tags(:basic_tag_one))
-    assert_no_match activity_name, response.body
-    delete destroy_user_session_path
-    
-    
-    sign_in(@moderator)
-    get modqueue_path
-    assert_match activity_name, response.body
-    
-    # this seems like this isn't a great way to do this, but without Capybara I don't think I can tell minitest to click on links 
-    get activity_path(Activity.find_by_name(activity_name))
-    assert_match activity_name, response.body
-    
-    put approve_activity_path(Activity.find_by_name(activity_name))
-    follow_redirect!
-    # since the admin is redirected back to the modqueue, the activity shouldn't be there anymore
-    assert_no_match activity_name, response.body
-    
-    get tag_path(tags(:basic_tag_one))
-    assert_match activity_name, response.body
-    delete destroy_user_session_path
-    
-    
-    sign_in(@regular_user_one)
-    get tag_path(tags(:basic_tag_one))
-    assert_match activity_name, response.body
-          
-  end
-  
   test "creating new activities should redirect when not logged in" do
     get new_activity_path
     assert_redirected_to new_user_session_path
@@ -77,10 +28,20 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   end
   
   test "silenced users cannot create an activity" do
+    @tag = tags(:basic_tag_one)
+    activity_name = "My salacious activity"
     sign_in(@silenced)
     get new_activity_path
     assert_redirected_to root_url
     assert_not flash.empty?
+    #gonna be real stubborn and post an activity directly!
+    assert_no_difference 'Activity.count' do
+      post activities_path, params: { activity: { name: activity_name,
+            short_description: "short", long_description: "long", time_estimate: "5 min", 
+            tag_ids: [@tag.id] }}
+    end
+    get tag_path(tags(:basic_tag_one))
+    assert_no_match activity_name, response.body
   end
   
   test "moderators can see the mod queue" do
@@ -89,4 +50,56 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # this won't work in tag_test.rb! Do I have to do this in integration tests?
+  test 'tags can be deleted by admins' do
+    @tag = tags(:basic_tag_one)
+    sign_in(@admin)
+    get all_tags_path # for some reason I have to access another page before I do the next get request
+    get tag_path(@tag)
+    assert_match @tag.long_name, response.body
+    assert_difference('Tag.count', -1) do
+      delete tag_path(@tag)
+    end
+    get all_tags_path
+    assert_no_match @tag.long_name, response.body
+  end
+  
+  test 'non-admins cannot delete tags' do
+    @tag = tags(:basic_tag_one)
+    sign_in(@moderator)
+    get all_tags_path
+    get tag_path(@tag)
+    assert_match @tag.long_name, response.body
+    assert_no_difference 'Tag.count' do
+      delete tag_path(@tag)
+    end
+    get all_tags_path
+    assert_match @tag.long_name, response.body
+    delete destroy_user_session_path
+    
+    sign_in(@regular_user_one)
+    get all_tags_path
+    get tag_path(@tag)
+    assert_match @tag.long_name, response.body
+    assert_no_difference 'Tag.count' do
+      delete tag_path(@tag)
+    end
+    get all_tags_path
+    assert_match @tag.long_name, response.body
+    delete destroy_user_session_path
+    
+    sign_in(@silenced)
+    get all_tags_path
+    get tag_path(@tag)
+    assert_match @tag.long_name, response.body
+    assert_no_difference 'Tag.count' do
+      delete tag_path(@tag)
+    end
+    get all_tags_path
+    assert_match @tag.long_name, response.body
+    delete destroy_user_session_path
+  end
+  
+  # future tests:
+  # a normal user cannot edit another user's activity
 end

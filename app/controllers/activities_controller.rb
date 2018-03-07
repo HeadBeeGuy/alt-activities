@@ -9,8 +9,7 @@ class ActivitiesController < ApplicationController
   end
   
   def create
-    @activity = Activity.create(activity_params)
-    @activity.user_id = current_user.id
+    @activity = current_user.activities.build(activity_params)
     authorize @activity
     if @activity.save
       new_taggings = params[:activity][:tag_ids]
