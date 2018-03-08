@@ -5,6 +5,7 @@ basic_activity_one:
   long_description: This is a much longer description
   time_estimate: 5 minutes
   user: regular_user_one
+  status: :approved
   
 basic_activity_two:
   name: Second Test Activity
@@ -12,6 +13,7 @@ basic_activity_two:
   long_description: This is a much longer description
   time_estimate: 7 minutes
   user: regular_user_one
+  status: :approved
 
 roger_activity:
   name: Regular Roger's activity
@@ -19,6 +21,7 @@ roger_activity:
   long_description: I only exist to ensure that nobody unauthorized can edit this activity
   time_estimate: 7 minutes
   user: regular_user_one
+  status: :approved
   
 rebecca_activity:
   name: Regular Rebecca's activity
@@ -26,3 +29,4 @@ rebecca_activity:
   long_description: I only exist to ensure that nobody unauthorized can edit this activity
   time_estimate: 7 minutes
   user: regular_user_two
+  status: :approved

@@ -61,18 +61,48 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   end
   
   test "regular users can edit an activity" do
-    #log in a regular user
-    #go to an existing activity
+		@existing_activity = activities(:basic_activity_one)
+		@tag = tags(:basic_tag_one)
+		sign_in(@regular_user_one)
+		get root_path
+		get activity_path(@existing_activity)
+		assert_match @existing_activity.name, response.body
     #submit an edit
-    #verify that the activity is no longer visible
-    #log out
-    #log in moderator
-    #go to modqueue
-    #verify that the edited activity is there
-    #approve it
-    #verify that it's now on the live site
-    #log out
-    #log in regular user again
-    #verify that the activity is on the site, in its edited form
+		edited_short = "My new short description"
+		edited_long = "My new long description"
+		get edit_activity_path(@existing_activity)
+    assert_difference('Activity.approved.count', -1) do
+			patch activity_path, params: { activity: { name: @existing_activity.name,
+            short_description: edited_short, long_description: edited_long, time_estimate: "2 min", 
+            tag_ids: [@tag.id] }}
+    end 
+		#verify that the activity is no longer visible
+		get tag_path(@tag)
+		assert_no_match @existing_activity.name, response.body
+    delete destroy_user_session_path
+
+		sign_in(@moderator)
+    get modqueue_path
+    assert_match @existing_activity.name, response.body
+    
+		get activity_path(Activity.find_by_name(@existing_activity.name))
+    assert_match @existing_activity.name, response.body
+    
+    put approve_activity_path(Activity.find_by_name(@existing_activity.name))
+    follow_redirect!
+    # since the admin is redirected back to the modqueue, the activity shouldn't be there anymore
+    assert_no_match @existing_activity.name, response.body
+    
+    get tag_path(@tag)
+    assert_match @existing_activity.name, response.body
+    delete destroy_user_session_path
+
+		sign_in(@regular_user_one)
+		get root_path
+		get tag_path(@tag)
+		assert_match @existing_activity.name, response.body
+		get activity_path(@existing_activity)
+		assert_match edited_short, response.body
+		assert_match edited_long, response.body
   end
 end

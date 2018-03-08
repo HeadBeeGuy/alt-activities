@@ -10,11 +10,13 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     @admin = users(:admin_user_one)
     @moderator = users(:moderator_user_one)
     @silenced = users(:silenced_user_one)
+    #@tag = tags(:basic_tag_one) # I had this in several tests, then tried to put it up here, but it broke tests! wha??
   end
   
   test "creating new activities should redirect when not logged in" do
     get new_activity_path
     assert_redirected_to new_user_session_path
+		assert_not flash.empty?
   end
   
   test "normal users and users not logged in cannot access the mod queue" do
@@ -44,8 +46,12 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     assert_no_match activity_name, response.body
   end
   
-  test "moderators can see the mod queue" do
+  test "moderators and admins can see the mod queue" do
     sign_in(@moderator)
+    get modqueue_path
+    assert_response :success
+    delete destroy_user_session_path
+		sign_in(@admin)
     get modqueue_path
     assert_response :success
   end
@@ -100,6 +106,66 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     delete destroy_user_session_path
   end
   
-  # future tests:
-  # a normal user cannot edit another user's activity
+  test "a normal user cannot edit another user's activity" do
+    @tag = tags(:basic_tag_one)
+		@not_my_activity = activities(:rebecca_activity)
+		sign_in(@regular_user_one)
+		get root_path
+		get activity_path(@not_my_activity)
+		get edit_activity_path(@not_my_activity)
+		assert_not flash.empty?
+		assert_redirected_to root_url 
+
+		#stubbornly attempt to patch an activity directly
+		hacked_description = "U got hacked!!!"
+		assert_no_difference('Activity.edited.count', -1) do
+			patch activity_path, params: { activity: { name: "I hacked this activity!",
+            short_description: hacked_description, long_description: "long", time_estimate: "2 min", 
+            tag_ids: [@tag.id] }}
+    end 
+		follow_redirect!
+		get activity_path(@not_my_activity)
+		assert_no_match hacked_description, response.body # I would check for the title, but the apostrophe throws it off
+	end
+
+	test "admins can edit tags" do
+    @tag = tags(:basic_tag_one)
+		sign_in(@admin)
+		get root_path
+		get tag_path(@tag.id)
+		new_short_name = "The Edited Tag"
+		new_long_name = "Edited tag"
+		get edit_tag_path(@tag)
+		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
+																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		get tag_path(@tag)
+		assert_match new_long_name, response.body
+	end
+
+	test "moderators and normal users can't edit tags" do
+    @tag = tags(:basic_tag_one)
+		new_short_name = "The Edited Tag"
+		new_long_name = "Edited tag"
+		sign_in(@moderator)
+		get root_path
+		get tag_path(@tag.id)
+		get edit_tag_path(@tag)
+		assert_redirected_to root_url
+		assert_not flash.empty?
+		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
+																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		get tag_path(@tag)
+		assert_no_match new_long_name, response.body
+    delete destroy_user_session_path
+		sign_in(@regular_user_one)
+		get root_path
+		get tag_path(@tag.id)
+		get edit_tag_path(@tag)
+		assert_redirected_to root_url
+		assert_not flash.empty?
+		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
+																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		get tag_path(@tag)
+		assert_no_match new_long_name, response.body
+	end
 end

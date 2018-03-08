@@ -28,6 +28,7 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find(params[:id])
     authorize @activity
+    @tag_categories = TagCategory.all
     @tags = Tag.all
   end
   
