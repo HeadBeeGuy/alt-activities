@@ -21,7 +21,6 @@ gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0'
 gem 'devise' # not quite confident in my ability implement sign-up/authentication securely on my own
-gem 'pg', '~> 0.20' # necessary for Heroku deployment. there's now a 1.0.0 gem but Heroku doesn't like it, apparently
 gem 'pundit'
 
 # Use jquery as the JavaScript library
@@ -56,5 +55,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :production do
+  gem 'pg', '~> 0.20' # Heroku is particular about which version of the pg gem to use
 end
 

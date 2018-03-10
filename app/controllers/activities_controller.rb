@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
   
   def create
     @activity = current_user.activities.build(activity_params)
+    @tag_categories = TagCategory.all
     authorize @activity
     if @activity.save
       new_taggings = params[:activity][:tag_ids]
@@ -21,7 +22,7 @@ class ActivitiesController < ApplicationController
       flash[:success] = "Activity submitted! Once it's approved, it will show up on the site."
       redirect_to activities_url
     else
-      render 'edit'
+      render 'new'
     end
   end
   
