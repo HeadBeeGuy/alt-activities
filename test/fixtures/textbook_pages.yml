@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+textbook_page_one:
+  page: 1
+  description: The first page of the textbook. Let's get crackin'!
+  textbook: textbook_page_one
+  tag: basic_tag_one
+

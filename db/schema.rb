@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226123946) do
+ActiveRecord::Schema.define(version: 20180312032211) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,24 @@ ActiveRecord::Schema.define(version: 20180226123946) do
     t.datetime "updated_at", null: false
     t.integer "tag_category_id"
     t.index ["short_name"], name: "index_tags_on_short_name"
+  end
+
+  create_table "textbook_pages", force: :cascade do |t|
+    t.integer "textbook_id"
+    t.integer "page"
+    t.text "description"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_textbook_pages_on_tag_id"
+    t.index ["textbook_id"], name: "index_textbook_pages_on_textbook_id"
+  end
+
+  create_table "textbooks", force: :cascade do |t|
+    t.string "name"
+    t.text "additional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

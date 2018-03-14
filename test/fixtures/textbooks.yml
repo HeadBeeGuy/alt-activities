@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+textbook_one:
+  name: Test Textbook One
+  additional_info: I am a test textbook. I doubt I'll sell very well with this name.
+
+
+textbook_two:
+  name: Text Textbook Two
+  additional_info: I'm the second in the Test Textbook series. You probably bought me because a teacher made you buy it!

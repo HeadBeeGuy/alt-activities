@@ -1,0 +1,9 @@
+.form-group
+  = form_for(@textbook) do |f|
+    = render 'shared/error_messages', object: f.object
+    .field
+      .form-group
+        = f.text_field :name, placeholder: "Textbook name", class: 'form-control'
+        = f.text_area :additional_info, placeholder: "Textbook information", class: 'form-control'
+        = f.submit "Submit", class: "btn btn-primary"
+

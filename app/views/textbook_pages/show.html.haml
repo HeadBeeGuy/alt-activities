@@ -1,0 +1,13 @@
+-provide(:title, "Textbook page")
+-# This page probably shouldn't be visited very often, but including it since it's a REST resource
+-# For any conceivable use, users should see pages as part of a larger Textbook listing
+
+%h5 Textbook page:
+
+%p= link_to "Textbook: #{@textbook_page.textbook.name}", @textbook_page.textbook
+%p Page #  #{@textbook_page.page} - #{@textbook_page.description}
+%p= link_to "Grammar point: #{@textbook_page.tag.long_name}", @textbook_page.tag
+
+-if policy(@textbook_page).edit?
+  %p= link_to "Edit", edit_textbook_page_path(@textbook_page)
+  %p= link_to "Delete", @textbook_page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }

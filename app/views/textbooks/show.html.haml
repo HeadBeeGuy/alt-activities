@@ -1,0 +1,30 @@
+-provide(:title, "Show Textbook")
+
+%h3 Textbook: #{@textbook.name}
+
+%p Description: #{@textbook.additional_info}
+
+- if user_signed_in? && policy(@textbook).update?
+  .btn-group.float-left{"role" => "group", "aria-label" => "Textbook controls"}
+    = link_to "Edit Textbook", edit_textbook_path(@textbook), class: "btn btn-outline-secondary btn-sm"
+    = link_to "Delete", @textbook, method: :delete, data: { confirm: "Are you sure you wanna delete this textbook and all of its pages?" }, class: "btn btn-outline-secondary btn-sm"
+
+%table.table.table-striped.table-sm
+  %thead
+    %tr
+      %th{"scope" => "col"} Page Number
+      %th{"scope" => "col"} Description
+      %th{"scope" => "col"} Grammar point
+  %tbody
+    - @pages.each do |page|
+      %tr
+        %td= page.page
+        %td= page.description
+        %td= link_to page.tag.long_name, page.tag
+        - if policy(page).update?
+          %td
+            %span= link_to "(Edit)", edit_textbook_page_path(page)
+            %span= link_to "(Delete)", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }
+
+- if policy(@textbook).update?
+  %p= link_to "Add new Textbook pages", new_textbook_page_path

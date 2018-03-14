@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   end
   
   def create
-    @tag = Tag.create(tag_params)
+    @tag = Tag.new(tag_params)
     authorize @tag
     if @tag.save
       flash[:success] = "Tag created!"

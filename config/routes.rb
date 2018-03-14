@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get '/modqueue', to: 'activities#modqueue'
     get '/all_tags', to: 'tag_categories#index'
     
-    resources :users, :tags, :tag_categories
+    resources :users, :tags, :tag_categories, :textbooks, :textbook_pages
     
     resources :activities do
       member do

@@ -1,0 +1,12 @@
+-provide(:title, "All Textbooks")
+
+%h3 Textbooks:
+
+- @textbooks.each do |textbook|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to textbook.name, textbook
+      %span.font-weight-normal= textbook.additional_info
+
+- if policy(@textbooks).new?
+  %p= link_to "Create a new textbook", new_textbook_path

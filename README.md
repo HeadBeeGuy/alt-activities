@@ -25,7 +25,6 @@ When a user submits an activity, it goes into a moderator queue and must be appr
 Larger implementation tasks:
 
 - Uploading and attaching files, along with anti-virus scanning
-- A **Textbook** model - Refers to specific textbooks and gives a page number with corresponding grammar point
 - OAuth integration
 - Thumbs-up system - Logged-in users can give a thumbs up to an activity, and activities are listed based on whichver has the most thumbs up in a given search
 - Comment system (comments will also go through mod queue)
@@ -33,14 +32,18 @@ Larger implementation tasks:
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
 - Customize the Bootstrap layout so it doesn't look so generic
+- Look into localizing model data as well (primarily tag names)
 
 ---
 
 Smaller tasks:
 
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
-- Textbook page generator (possibly with AJAX)
+- Make the textbook page generator more compact and suitable for multiple inclusion into a page so the pages can be generated in bulk using Ajax
 - Clean up CRUD actions and add tests for Tag Categories
+- Add ES and JHS landing pages with appropriate content for each
+- Pull more of the site text into en.yml so it can be localized
+- Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)
 
 ---
 
