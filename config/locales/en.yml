@@ -1,6 +1,9 @@
 
 en:
   hello: "Hello world!"
+  time:
+    formats:
+      quite_short: "(%B %d, %Y)"
   layouts:
     site_title: "ALT Activities"
     log_in: "Log in"
@@ -9,4 +12,33 @@ en:
     new_activity: "New Activity"
     view_all_activities: "View all"
     tag_list: "Tags"
+    textbook_listing: "Textbooks"
     about: "About"
+  activities:
+    page_titles:
+      new_activity: "New Activity"
+      all_activities: "All Activities"
+    form:
+      activity_title: "Title of this activity"
+      short_description: "Short description"
+      long_description: "Detailed description and directions"
+      time_estimate: "Estimated time"
+      tag_heading: "Tags"
+      tag_directions_1: "Choose the tags that apply to your activity. You don't have to choose tags for every category."
+      tag_directions_2: "The more accurate your tags are, the easier people will be able to find your activity!"
+      submit: "Submit"
+    new_activity_header: "Make a new activity"
+    edit:
+      edit_heading: "Edit this activity"
+      edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
+      edit_directions_2: "But don't worry! once it's approved again, it will go right back!"
+    show:
+      time_estimate: "Estimated time: %{time_estimate}"
+      submitted_by: "Submitted by: "
+      approve: "Approve"
+      approve_confirmation: "Approve this activity?"
+      deapprove: "Return to mod queue"
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirmation: "Are you sure you wanna delete this one?"
+      resubmit: "Edit and Re-submit"

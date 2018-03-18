@@ -41,6 +41,7 @@ Smaller tasks:
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Make the textbook page generator more compact and suitable for multiple inclusion into a page so the pages can be generated in bulk using Ajax
 - Clean up CRUD actions and add tests for Tag Categories
+- Add Markdown or some other kind of formatting to allow italicized and bold text, as well as force line breaks to be displayed.
 - Add ES and JHS landing pages with appropriate content for each
 - Pull more of the site text into en.yml so it can be localized
 - Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)

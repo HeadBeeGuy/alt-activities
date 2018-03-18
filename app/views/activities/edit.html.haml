@@ -1,9 +1,9 @@
 - provide(:title, "Edit Activity")
 
-%h2 Edit this activity
+%h2= t('.edit_heading')
 
-%p When you submit your edits, the activity will be taken off the live site and placed back into the mod queue.
+%p= t('.edit_directions_1')
 
-%p But don't worry! once it's approved again, it will go right back!
+%p= t('.edit_directions_2')
 
 = render "activity_form"

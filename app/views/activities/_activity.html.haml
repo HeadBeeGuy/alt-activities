@@ -1,29 +1,28 @@
-
-
 .card
   %h3.card-header= activity.name
   .card-body
     %h5.card-title= activity.short_description
-    %p.card-text= activity.long_description
-    %p Estimated time: #{activity.time_estimate}
-    -# there's probably a better way to elegantly construct these ifs to show variable controls depending on the activity and user status
-    -# user is an admin - gets full controls
-    - if user_signed_in? && policy(activity).update?
-      .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
-        - if activity.unapproved? || activity.edited?
-          = link_to "Approve", approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
-        - elsif activity.approved? && ( policy(activity).unapprove? )
-          = link_to "Return to mod queue", unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
-        = link_to "Edit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
-        = link_to "Delete", activity, method: :delete, data: { confirm: "Are you sure you wanna delete this one?" }, class: "btn btn-outline-secondary btn-sm"
-    - elsif user_signed_in? && activity.user == current_user
-      .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
-        = link_to "Edit and Re-submit", edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
+    .row
+      .col-md-9
+        %p= activity.long_description
+      .col-md-3
+        %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
+        %p
+          =t('activities.show.submitted_by')
+          =link_to activity.user.username, activity.user
+        %p= l(activity.created_at, format: :quite_short)
+        - if user_signed_in? && policy(activity).update?
+          .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+            - if activity.unapproved? || activity.edited?
+              = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
+            - elsif activity.approved? && ( policy(activity).unapprove? )
+              = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
+            = link_to t('activities.show.edit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
+            = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "btn btn-outline-secondary btn-sm"
+        - elsif user_signed_in? && activity.user == current_user
+          .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+            = link_to t('activities.show.resubmit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
   .card-footer
-    %p
-      %span
-        Submitted by:
-        =link_to activity.user.username, activity.user
-      %span.small on #{activity.created_at.strftime("%B %d, %Y")}.
     - activity.tags.each do |tag|
       %span= link_to tag.long_name, tag, class: "badge badge-pill badge-success"
+    

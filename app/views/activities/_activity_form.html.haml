@@ -3,14 +3,14 @@
     = render 'shared/error_messages', object: f.object
     .field
       .form-group
-        = f.text_field :name, placeholder: "Activity name", class: 'form-control'
-        = f.text_area :short_description, placeholder: "Short Description", class: 'form-control'
-        = f.text_area :long_description, placeholder: "Long Description", class: 'form-control', rows: 8
-        = f.text_field :time_estimate, placeholder: "Estimated time", class: 'form-control'
+        = f.text_field :name, placeholder: t('activities.form.activity_title'), class: 'form-control'
+        = f.text_area :short_description, placeholder: t('activities.form.short_description'), class: 'form-control'
+        = f.text_area :long_description, placeholder: t('activities.form.long_description'), class: 'form-control', rows: 8
+        = f.text_field :time_estimate, placeholder: t('activities.form.time_estimate'), class: 'form-control'
         .tag-chooser
-          %h4 Tags
-          %p Choose the tags that apply to your activity. You don't have to choose tags for every category.
-          %p The more accurate your tags are, the easier people will be able to find your activity!
+          %h4= t('activities.form.tag_heading')
+          %p= t('activities.form.tag_directions_1')
+          %p= t('activities.form.tag_directions_2')
           %p 
           - @tag_categories.each do |category|
             .tag-block.col-md-4
@@ -20,4 +20,4 @@
                 %li
                   = tag_item.check_box class: "form-check-input"
                   = tag_item.label class: "form-check-label"
-        = f.submit "Submit", class:"btn btn-primary"
+        = f.submit t('activities.form.submit'), class:"btn btn-primary"

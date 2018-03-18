@@ -1,9 +1,14 @@
 - provide(:title, "ALT Activities - Home")
 
-%h1 ALT Activities!
+%h1 ALT Activities
 
-%p This is the first extremely basic home page!
+%p This site is for finding and sharing activities and games to use in English classes. It's designed for the needs of ALTs in Japan, but we hope you'll find something useful no matter what your situation!
 
-%p= link_to "New user? Sign up here! (although the mailer doesn't work yet)", new_user_registration_path
+%p= link_to "New user? Sign up here!", new_user_registration_path
 
-%p Current build: Tags are now placed into categories. Site can now be viewed in Japanese, but most of the text isn't translated yet.
+%p= link_to "View all activities", activities_path
+
+%p Recent updates:
+%ul
+  %li Textbooks are now built into the site. Moderators and admins can create textbooks and then add pages, which refer to a particular grammar point.
+  %li You can switch between Japanese and English on the navbar. Much of the site is still missing translations, and somebody will eventually need to correct Jake's childish translations.
