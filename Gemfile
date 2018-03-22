@@ -23,6 +23,9 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'devise' # not quite confident in my ability implement sign-up/authentication securely on my own
 gem 'pundit'
 
+# not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
+gem 'loofah', '~> 2.2.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
