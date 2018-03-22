@@ -5,12 +5,14 @@
     .card
       .card-header{"id" => "heading-#{category.name}"}
         %h5.mb-0
-          %button.btn.btn-link{"data-toggle" => "collapse", "data-target" => "#collapse#{category.name}",
-                              "aria-expanded" => "true", "aria-controls" => "collapse#{category.name}" }
+          %button.btn.btn-link{"data-toggle" => "collapse", "data-target" => "#collapse-category-#{category.id}",
+                              "aria-expanded" => "true", "aria-controls" => "collapse-category-#{category.id}" }
             %h5= category.name
-      %div.collapse.show{ "id" => "collapse#{category.name}", "aria-labelledby" => "heading#{category.name}", "data-parent" => "#accordion" }
+      %div.collapse.show{ "id" => "collapse-category-#{category.id}", "aria-labelledby" => "heading-category-#{category.id}", "data-parent" => "#accordion" }
         .card-body
           - category.tags.each do |tag|
-            %p
-              %span= link_to tag.long_name, tag
-              %span - #{tag.description}
+            = link_to markdown("#{tag.name_for_lists}"), tag
+            -# Making the entire line of text a link doesn't seem ideal, but Redcarpet surrounds its output in <p> tags by default
+            -# This ends up forcing the name and description on two separate lines
+            -# There may be a way to address that, but that will have to wait for another day
+            -# perhaps consider https://github.com/vmg/redcarpet/issues/92#issuecomment-35462000

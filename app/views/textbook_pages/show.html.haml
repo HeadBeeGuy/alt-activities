@@ -5,7 +5,7 @@
 %h5 Textbook page:
 
 %p= link_to "Textbook: #{@textbook_page.textbook.name}", @textbook_page.textbook
-%p Page #  #{@textbook_page.page} - #{@textbook_page.description}
+%p Page #  #{@textbook_page.page} - #{markdown(@textbook_page.description)}
 %p= link_to "Grammar point: #{@textbook_page.tag.long_name}", @textbook_page.tag
 
 -if policy(@textbook_page).edit?

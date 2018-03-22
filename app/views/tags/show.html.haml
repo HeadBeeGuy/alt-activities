@@ -1,11 +1,9 @@
 - provide(:title, "Show Tag")
 
 %h4 Tag: #{@tag.long_name}
-%p
-  %span Category: 
-  %span= link_to @tag.tag_category.name, @tag.tag_category
+%p Category: #{link_to @tag.tag_category.name, @tag.tag_category}
 
-%p Description: #{@tag.description}
+= markdown("Description: #{@tag.description}")
 
 - if user_signed_in? && policy(@tag).edit?
   .btn-group{"role" => "group", "aria-label" => "Tag controls"}

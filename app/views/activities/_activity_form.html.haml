@@ -17,8 +17,6 @@
             .tag-block.col-md-4
             %h5= category.name
             %ul
-              = f.collection_check_boxes :tag_ids, category.tags, :id, :short_name do |tag_item|
-                %li
-                  = tag_item.check_box class: "form-check-input"
-                  = tag_item.label class: "form-check-label"
+              = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
+                %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
         = f.submit t('activities.form.submit'), class:"btn btn-primary"
