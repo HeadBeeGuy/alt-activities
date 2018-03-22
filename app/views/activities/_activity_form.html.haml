@@ -5,6 +5,7 @@
       .form-group
         = f.text_field :name, placeholder: t('activities.form.activity_title'), class: 'form-control'
         = f.text_area :short_description, placeholder: t('activities.form.short_description'), class: 'form-control'
+        %p You can use #{link_to "Markdown formatting", "http://commonmark.org/help/"} in the directions:
         = f.text_area :long_description, placeholder: t('activities.form.long_description'), class: 'form-control', rows: 8
         = f.text_field :time_estimate, placeholder: t('activities.form.time_estimate'), class: 'form-control'
         .tag-chooser
