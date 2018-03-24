@@ -5,6 +5,10 @@
     .row
       .col-md-9
         %p= markdown(activity.long_description)
+        - if activity.documents.attached?
+          %h6 Files:
+          - activity.documents.each do |document|
+            %p= link_to document.blob.filename, url_for(document)
       .col-md-3
         %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
         %p

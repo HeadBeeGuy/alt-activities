@@ -109,7 +109,7 @@ class ActivitiesController < ApplicationController
   
     def activity_params
       params.require(:activity).permit(:name, :short_description, :long_description, :time_estimate,
-                                        :user_id, :tag_ids)
+                                        :user_id, :tag_ids, documents: [])
     end
 
     # handles cases when the activity is being edited and tags are being removed

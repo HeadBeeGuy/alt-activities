@@ -19,4 +19,8 @@
             %ul
               = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
                 %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
+        %h3 Files:
+        %p If your activity has any files, please attach them below:
+        = f.file_field :documents, multiple: true, direct_upload: true
+        %br
         = f.submit t('activities.form.submit'), class:"btn btn-primary"

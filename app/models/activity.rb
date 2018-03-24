@@ -3,6 +3,8 @@ class Activity < ApplicationRecord
   has_many :tags, through: :taggings
   belongs_to :user
   
+  has_many_attached :documents
+  
   validates :name, presence: true, length: { maximum: 50 }
   validates :short_description, presence: true, length: { maximum: 200 }
   validates :long_description, presence: true, length: { maximum: 2000 } # need to see how feasible this is in practice!

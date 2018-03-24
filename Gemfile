@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.4'
-gem 'railties' # is this strictly necessary? get lots of complaints if I don't have it
+gem 'rails', '5.2.0.rc2' # DHH said RC2 was fine enough, so here goes nothin'!
+gem 'railties'
 gem 'puma'
-# Use sqlite3 as the database for Active Record
-# my experience was that in Cloud9, this needs to be the default db or else it causes problems
+gem 'bootsnap'
+gem 'listen'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,9 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0'
-gem 'devise' # not quite confident in my ability implement sign-up/authentication securely on my own
+gem 'devise'
 gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
+gem "aws-sdk-s3", require: false
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.1'
