@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     devise_for :users
     root 'site_pages#home'
   
+    get '/es', to: 'site_pages#es'
+    get '/jhs', to: 'site_pages#jhs'
+    get '/grammar', to: 'site_pages#grammar'
     get '/about', to: 'site_pages#about'
     get '/modqueue', to: 'activities#modqueue'
     get '/all_tags', to: 'tag_categories#index'

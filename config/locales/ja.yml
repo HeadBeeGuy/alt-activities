@@ -11,6 +11,9 @@ ja:
     tag_list: "タッグ"
     textbook_listing: "教科書"
     about: "このサイトについて"
+    es: "小学校"
+    jhs: "中学校"
+    grammar: "文法"
   activities:
     page_titles:
       new_activity: "新しいアクティビティー"

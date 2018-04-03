@@ -24,7 +24,7 @@ When a user submits an activity, it goes into a moderator queue and must be appr
 
 Larger implementation tasks:
 
-- Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the paramater as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
+- Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration
 - Thumbs-up system - Logged-in users can give a thumbs up to an activity, and activities are listed based on whichver has the most thumbs up in a given search
@@ -35,6 +35,7 @@ Larger implementation tasks:
 - Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
 - Allow users to give more information about themselves (location, what level of school they teach)
+- Add in :ominauthable, :confirmable, and more with Devise
 
 ---
 
@@ -43,10 +44,10 @@ Smaller tasks:
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Make the textbook page generator more compact and suitable for multiple inclusion into a page so the pages can be generated in bulk using Ajax
 - Clean up CRUD actions and add tests for Tag Categories
-- Add ES and JHS landing pages with appropriate content for each
 - Pull more of the site text into en.yml so it can be localized
 - Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)
 - Add something that lets users manage and delete attached files when editing activities
+- Tie textbooks into a particular school level for display on school level landing pages
 
 ---
 
