@@ -1,0 +1,9 @@
+-# attempting to make a footer, but I'm bumping up against my very basic CSS knowledge
+-# I'll try and come back to this later
+%nav.navbar.sticky-footer.navbar-expand-sm.navbar-dark.bg-dark
+  %ul.navbar-nav.mr-auto
+    %li.nav-item.active
+      = link_to t('layouts.about'), about_path, class: "nav-link"
+%footer.bg-dark.text-white.mt-4
+  .container-fluid.py-3
+    %p I am just a little text.

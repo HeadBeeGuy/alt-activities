@@ -1,0 +1,9 @@
+%h5 Top activities:
+
+- @activites.each do |activity|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to activity.name, activity
+      %span.font-weight-normal= activity.short_description
+      - activity.tags.each do |tag|
+        = link_to tag.short_name, tag, class: "badge badge-success"

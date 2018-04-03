@@ -1,0 +1,10 @@
+- provide(:title, "Grammar points")
+
+%h3 Grammar points
+
+%p= link_to "View all tags", all_tags_path
+
+- @tags.each do |tag|
+  .card
+    .card-body
+      %p= link_to markdown("#{tag.name_for_lists}"), tag
