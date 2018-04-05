@@ -4,6 +4,8 @@
 
 %p Description: #{@textbook.additional_info}
 
+%p Level: #{@textbook.level}
+
 - if user_signed_in? && policy(@textbook).update?
   .btn-group.float-left{"role" => "group", "aria-label" => "Textbook controls"}
     = link_to "Edit Textbook", edit_textbook_path(@textbook), class: "btn btn-outline-secondary btn-sm"

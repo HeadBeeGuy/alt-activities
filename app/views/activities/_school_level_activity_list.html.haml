@@ -7,3 +7,10 @@
       %span.font-weight-normal= activity.short_description
       - activity.tags.each do |tag|
         = link_to tag.short_name, tag, class: "badge badge-success"
+%br
+%br
+%h5 Textbooks:
+- textbook_level.each do |textbook|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to textbook.name, textbook

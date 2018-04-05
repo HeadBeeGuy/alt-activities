@@ -54,7 +54,7 @@ class TextbooksController < ApplicationController
 	private
 
 		def textbook_params
-			params.require(:textbook).permit(:name, :additional_info)
+			params.require(:textbook).permit(:name, :additional_info, :level)
 		end
 
 end
