@@ -1,6 +1,24 @@
 - provide(:title, "User info")
 
-%h4= @user.username
+%h3= @user.username
+
+%p User status: #{@user.role}
+
+- if user_signed_in?
+  .btn-group{"role" => "group", "aria-label" => "User controls"}
+    - if policy(@user).update?
+      =link_to "Edit info", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
+    - if policy(@user).promote?
+      =link_to "Promote to moderator", promote_user_path(@user), method: :put, data: { confirm: "Promote this user to moderator?" }, class: "btn btn-outline-secondary btn-sm"
+    - if policy(@user).demote?
+      =link_to "Demote", demote_user_path(@user), method: :put, data: { confirm: "Demote this user?" }, class: "btn btn-outline-secondary btn-sm"
+    - if policy(@user).silence?
+      =link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?" }, class: "btn btn-outline-secondary btn-sm"
+    - if policy(@user).unsilence?
+      =link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Remove this user's silenced status?" }, class: "btn btn-outline-secondary btn-sm"
+    - if policy(@user).delete?
+      =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
+
 
 %p This user's activities:
 

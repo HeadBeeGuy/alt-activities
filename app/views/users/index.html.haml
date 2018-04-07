@@ -1,5 +1,22 @@
-- provide(:title, "All users")
+- provide(:title, "Contributors")
 
-%ul
-  - @users.each do |user|
-    %li= link_to "#{user.username} (#{user.role})", user
+
+%h3 Administrators
+- @admins.each do |user|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to "#{user.username}", user
+
+%h3 Moderators
+- @moderators.each do |user|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to "#{user.username}", user
+
+%h3 Users
+- @normal_users.each do |user|
+  .card
+    .card-body
+      %span.font-weight-bold= link_to "#{user.username}", user
+
+

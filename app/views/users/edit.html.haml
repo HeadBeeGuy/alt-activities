@@ -1,0 +1,20 @@
+-provide(:title, "Edit user")
+
+-# Not splitting this out into a partial yet - User creation and user editing will need to look different
+
+%h3 Edit your profile
+.input-group.mb-3
+  =form_for(@user) do |f|
+    .input-group-prepend
+      %span.input-group-text#username-input 
+        Username
+      = f.text_field :username, class: 'form-control', "aria-described-by" => "username-input", "aria-label" => "Username", disabled: !current_user.admin?
+    .input-group-prepend
+      %span.input-group-text#email-input 
+        E-mail address
+      = f.text_field :email, class: 'form-control', "aria-describedby" => "email-input", "aria-label" => "E-mail", disabled: !current_user.admin?
+
+    = f.submit "Submit", class: "btn btn-primary"
+
+
+%p Soon, we'll give users the ability to specify their place of origin, current location, and a short bio.

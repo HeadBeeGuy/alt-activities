@@ -26,4 +26,10 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+	# I confess I'm not sure if it's better to do this in the controller or the model
+	def set_role(role)
+		self.role = role
+		self.save
+	end
 end
