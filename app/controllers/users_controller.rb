@@ -6,6 +6,26 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def update
+		@user = User.find(params[:id])
+		#may need to create another whitelist filter for non-admins
+		authorize @user
+		if @user.update_attributes(user_params)
+			flash[:success] = "Updated user information!"
+			redirect_to @user
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@user = User.find(params[:id])
+		authorize @user
+		@user.destroy
+		flash[:success] = "User deleted!"
+		redirect_to users_url
+	end
+
   def show
     @user = User.find(params[:id])
   end
@@ -51,6 +71,6 @@ class UsersController < ApplicationController
    private
   
     def user_params
-      params.require(:username).permit(:username, :email)
+      params.require(:user).permit(:username, :email, :home_country, :location, :bio)
     end
 end

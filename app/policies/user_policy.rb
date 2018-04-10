@@ -17,7 +17,7 @@ class UserPolicy < ApplicationPolicy
   end
   
   def delete?
-    user.admin?
+    user.admin? and user != target_user
   end
   
   def destroy?

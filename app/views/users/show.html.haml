@@ -3,6 +3,9 @@
 %h3= @user.username
 
 %p User status: #{@user.role}
+%p Home country: #{@user.home_country}
+%p Location: #{@user.location}
+%p User bio: #{@user.bio}
 
 - if user_signed_in?
   .btn-group{"role" => "group", "aria-label" => "User controls"}

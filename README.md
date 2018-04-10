@@ -47,7 +47,6 @@ Smaller tasks:
 - Pull more of the site text into en.yml so it can be localized
 - Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)
 - Add something that lets users manage and delete attached files when editing activities
-- Tie textbooks into a particular school level for display on school level landing pages
 
 ---
 

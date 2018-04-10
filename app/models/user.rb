@@ -8,7 +8,10 @@ class User < ApplicationRecord
   # Only allow letter, number, underscore and punctuation.
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
+  validates :home_country, length: { maximum: 30 }
+	validates :location, length: { maximum: 30 }
+	validates :bio, length: { maximum: 200 }
   
   has_many :activities
   
