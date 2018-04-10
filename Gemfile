@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.0.rc2' # DHH said RC2 was fine enough, so here goes nothin'!
+gem 'rails', '5.2.0'
 gem 'railties'
 gem 'puma'
 gem 'bootsnap'
