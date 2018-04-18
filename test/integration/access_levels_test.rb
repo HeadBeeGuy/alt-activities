@@ -256,55 +256,80 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		# assert_match new_email, response.body
 	end
 
-	# These tests don't work! I'm havin' a devil of a time figuring out why
-	# The functionality works in production!
-	# The roles are properly set at the model level, but changes don't persist once they go back into the test
+	test "an admin can promote a normal user" do
+		#this definition seems redundant, but if I don't include it, the variable won't initalize
+		@regular_user_one = users(:regular_user_one)
+		sign_in(@admin)
+		get root_path
+		get user_path(@regular_user_one)
+		assert @regular_user_one.normal?
+		assert_match @regular_user_one.username, response.body
+		put promote_user_path(@regular_user_one)
+		assert_redirected_to user_path(@regular_user_one)
+		assert_not flash.empty?
+		follow_redirect!
+		@regular_user_one.reload
+		assert @regular_user_one.moderator?
+	end
 	
-	#test "an admin can promote a normal user" do
-	#	#this definition seems redundant, but if I don't include it, the variable won't initalize
-	#	@regular_user_one = users(:regular_user_one)
-	#	sign_in(@admin)
-	#	get root_path
-	#	get user_path(@regular_user_one)
-	#	assert @regular_user_one.normal?
-	#	assert_match @regular_user_one.username, response.body
-	#	put promote_user_path(@regular_user_one)
-	#	assert_redirected_to user_path(@regular_user_one)
-	#	assert_not flash.empty?
-	#	follow_redirect!
-	#	get root_path
-	#	puts "I'm back in the integration test! What's my status? #{@regular_user_one.role}"
-	#	assert @regular_user_one.moderator?
-	#end
+	test "a moderator can unsilence a user" do
+		sign_in(@moderator)
+		get root_path
+		get user_path(@silenced)
+		assert @silenced.silenced?
+		assert_match @silenced.username, response.body
+		put unsilence_user_path(@silenced)
+		assert_redirected_to user_path(@silenced)
+		assert_not flash.empty?
+		follow_redirect!
+		@silenced.reload
+		assert @silenced.normal?
+	end
 	
-	# test "a moderator can unsilence a user" do
-	# 	sign_in(@moderator)
-	# 	get root_path
-	# 	get user_path(@silenced)
-	# 	assert @silenced.silenced?
-	# 	assert_match @silenced.username, response.body
-	# 	put unsilence_user_path(@silenced)
-	# 	assert_redirected_to user_path(@silenced)
-	# 	assert_not flash.empty?
-	# 	follow_redirect!
-	# 	get root_path
-	# 	puts "I'm back in the integration test! What's my status? #{@silenced.role}"
-	# 	assert @silenced.normal?
-	# end
-	
-	#test "a moderator can silence a user" do
-	#	sign_in(@moderator)
-	#	get root_path
-	#	get user_path(@regular_user_one)
-	#	assert @regular_user_one.normal?
-	#	assert_match @regular_user_one.username, response.body
-	#	put silence_user_path(@regular_user_one)
-	#	assert_redirected_to user_path(@regular_user_one)
-	#	assert_not flash.empty?
-	#	follow_redirect!
-	#	@regular_user_one.save
-	#	puts "I'm back in the integration test! What's my status? #{@regular_user_one.role}"
-	#	assert @regular_user_one.silenced?
-	#	assert_not @regular_user_one.normal?
-	#end
+	test "a moderator can silence a user" do
+		sign_in(@moderator)
+		get root_path
+		get user_path(@regular_user_one)
+		assert @regular_user_one.normal?
+		assert_match @regular_user_one.username, response.body
+		put silence_user_path(@regular_user_one)
+		assert_redirected_to user_path(@regular_user_one)
+		assert_not flash.empty?
+		follow_redirect!
+		@regular_user_one.reload
+		assert @regular_user_one.silenced?
+	end
+
+	test "regular users can't promote a user to moderator" do
+		sign_in(@regular_user_one)
+		get root_path
+		get user_path(@regular_user_two)
+		assert @regular_user_two.normal?
+		put promote_user_path(@regular_user_two)
+		@regular_user_two.reload
+		assert_not @regular_user_two.moderator?
+		assert @regular_user_two.normal?
+	end
+
+	test "regular users can't unsilence silenced users" do
+		sign_in(@regular_user_one)
+		get root_path
+		get user_path(@silenced)
+		assert @silenced.silenced?
+		put unsilence_user_path(@silenced)
+		@silenced.reload
+		assert_not @silenced.normal?
+		assert @silenced.silenced?
+	end
+
+	test "a silenced user can't unsilence themselves" do
+		sign_in(@silenced)
+		get root_path
+		get user_path(@silenced)
+		assert @silenced.silenced?
+		put unsilence_user_path(@silenced)
+		@silenced.reload
+		assert_not @silenced.normal?
+		assert @silenced.silenced?
+	end
 end
