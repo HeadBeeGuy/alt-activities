@@ -1,0 +1,12 @@
+%p 
+  Thumbs up: 
+  %span.badge.badge-info.badge-pill#thumbs-up-count= @activity.upvote_count
+#thumbs-up-voter
+  - if user_signed_in?
+    - unless Upvote.find_by(activity_id: @activity.id, user_id: current_user.id)
+      = render "create_thumbs_up"
+    - else
+      = render "delete_thumbs_up"
+  - else
+    %p= link_to "Sign in or register to give a thumbs up!", new_user_session_path 
+

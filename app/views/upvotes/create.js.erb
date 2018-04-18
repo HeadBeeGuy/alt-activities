@@ -1,0 +1,3 @@
+var newTotal = parseInt($('#thumbs-up-count').html());
+$('#thumbs-up-count').html(newTotal + 1);
+$('#thumbs-up-voter').html("<%= escape_javascript(render('/activities/delete_thumbs_up')) %>");

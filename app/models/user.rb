@@ -14,6 +14,8 @@ class User < ApplicationRecord
 	validates :bio, length: { maximum: 200 }
   
   has_many :activities
+
+	has_many :upvotes, dependent: :destroy
   
   enum role: [:silenced, :normal, :moderator, :admin]
   

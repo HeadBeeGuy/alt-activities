@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         put :unapprove
       end
     end
+
+		resources :upvotes, only: [ :create, :destroy ]
   end
   
   get '/:locale', to: 'site_pages#home'

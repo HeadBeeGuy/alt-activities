@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+upvote_one:
+  user: regular_user_two
+  activity: basic_activity_two
+

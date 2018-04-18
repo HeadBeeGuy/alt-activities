@@ -10,6 +10,7 @@
           - activity.documents.each do |document|
             %p= link_to document.blob.filename, url_for(document)
       .col-md-3
+        = render "thumbs_up"
         %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
         %p
           =t('activities.show.submitted_by')

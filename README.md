@@ -27,14 +27,12 @@ Larger implementation tasks:
 - Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration
-- Thumbs-up system - Logged-in users can give a thumbs up to an activity, and activities are listed based on whichver has the most thumbs up in a given search
 - Comment system (comments will also go through mod queue)
 - Activity search system (will require some ActiveRecord/SQL wizardry to allow searches for required/optional tags)
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
 - Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
-- Allow users to give more information about themselves (location, what level of school they teach)
 - Add in :ominauthable, :confirmable, and more with Devise
 
 ---

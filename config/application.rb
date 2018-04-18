@@ -18,5 +18,8 @@ module Workspace
     
     # the rails test suite bid me to add this line after upgrading to 5.2.0.rc2
     Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+
+		# apparently this is necessary if browsers don't support/run JavaScript for Ajax
+		config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

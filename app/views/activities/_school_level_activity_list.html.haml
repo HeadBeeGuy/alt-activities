@@ -7,6 +7,7 @@
       %span.font-weight-normal= activity.short_description
       - activity.tags.each do |tag|
         = link_to tag.short_name, tag, class: "badge badge-success"
+      %span.badge.badge-info.float-right= activity.upvote_count
 %br
 %br
 %h5 Textbooks:

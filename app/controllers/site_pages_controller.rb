@@ -7,11 +7,13 @@ class SitePagesController < ApplicationController
     # I hope this query isn't too brittle
     # Would I be an ogre if I accessed by id? this will probably be a frequently viewed page
     # but if the id ever changed, this page would break!
-    @activites = Tag.find_by_short_name("ES").activities
+		@activites = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
+									.select(:id, :name, :short_description, :upvote_count)
   end
   
   def jhs
-    @activites = Tag.find_by_short_name("JHS").activities
+    @activites = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
+									.select(:id, :name, :short_description, :upvote_count)
   end
   
   def grammar

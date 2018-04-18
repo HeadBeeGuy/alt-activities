@@ -41,8 +41,8 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
   
-  test "an activity must have some kind of tags" do
-    # was previously testing to remove tags from an existing activity, but I think I should
-    # try making a new activity without any tags
+  test "an activity can't have a negative upvote count" do
+		@activity.upvote_count = -1
+		assert_not @activity.valid?
   end
 end
