@@ -1,6 +1,6 @@
--provide(:title, "All Textbooks")
+-provide(:title, t('.title'))
 
-%h3 Textbooks:
+%h3= t('.textbooks-heading')
 
 - @textbooks.each do |textbook|
   .card

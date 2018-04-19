@@ -1,6 +1,7 @@
 
 ja:
   hello: "こんちゃっす！"
+  submit: "Submit"
   layouts:
     site_title: "ALT アクティビティー"
     log_in: "ログイン"
@@ -14,6 +15,38 @@ ja:
     es: "小学校"
     jhs: "中学校"
     grammar: "文法"
+  users:
+    show:
+      title: "ユーザー情報"
+      user-status: "ユーザー級： %{status}"
+      home-country: "母国： %{country}"
+      location: "現在な場所： %{location}"
+      bio: "ユーザー情報： %{bio}"
+      edit: "編集"
+      activity-list: "このユーザーのアクティビティー："
+    edit:
+      title: "ユーザー編集"
+      heading: "ユーザープロフィール編集"
+      username: "ユーザー名"
+      email: "メール"
+      home-country: "母国"
+      location: "現在な場所"
+      bio: "ユーザー情報"
+  textbooks:
+    index:
+      title: "教科書"
+      textbooks-heading: "全ての教科書"
+  site_pages:
+    es:
+      title: 小学校
+      es-heading: 小学校
+    jhs:
+      title: 中学校
+      jhs-heading: 中学校
+    grammar:
+      title: 文法
+      grammar-heading: 文法
+      all-tags: 全てのタッグ
   activities:
     page_titles:
       new_activity: "新しいアクティビティー"
@@ -28,13 +61,15 @@ ja:
       tag_directions_2: "タッグが合えば合うほど、見つかりやすくなります。"
       submit: "Submit"
     new_activity_header: "新しいアクティビティーを作る"
+    index:
+      view: "見る"
     edit:
       edit_heading: "アクティビティー編集"
       edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
       edit_directions_2: "But don't worry! once it's approved again, it will go right back!"
     show:
       time_estimate: "予想時間：%{time_estimate}"
-      submitted_by: "作ったやつ： "
+      submitted_by: "作った人： "
       approve: "Approve"
       approve_confirmation: "Approve this activity?"
       deapprove: "Return to mod queue"
@@ -42,6 +77,16 @@ ja:
       delete: "削除"
       delete_confirmation: "マジで削除するの？？"
       resubmit: "Edit and Re-submit"
+    thumbs-up:
+      thumbs-up-label: いいね数
+      thumbs-up-logged-out: Sign in or register to give a thumbs up!
+      submit-thumbs-up: いいね！
+      delete-thumbs-up: やっぱいいや…
+    school-level-listing:
+      top-activities: 最大なアクティビティー
+      textbooks: 教科書
+
+
   activerecord:
     errors:
       messages:

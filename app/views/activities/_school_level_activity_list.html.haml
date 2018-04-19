@@ -1,4 +1,4 @@
-%h5 Top activities:
+%h5= t('activities.school-level-listing.top-activities')
 
 - @activites.each do |activity|
   .card
@@ -10,7 +10,7 @@
       %span.badge.badge-info.float-right= activity.upvote_count
 %br
 %br
-%h5 Textbooks:
+%h5= t('activities.school-level-listing.textbooks')
 - textbook_level.each do |textbook|
   .card
     .card-body

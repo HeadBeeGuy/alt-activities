@@ -1,6 +1,6 @@
-- provide(:title, "Elementary School Activities")
+- provide(:title, t('.title'))
 
-%h2 Elementary School
+%h2= t('.es-heading')
 
 =render "activities/school_level_activity_list", textbook_level: Textbook.ES
 

@@ -1,16 +1,16 @@
-- provide(:title, "User info")
+- provide(:title, t('.title'))
 
 %h3= @user.username
 
-%p User status: #{@user.role}
-%p Home country: #{@user.home_country}
-%p Location: #{@user.location}
-%p User bio: #{@user.bio}
+%p= t('.user-status', status: @user.role)
+%p= t('.home-country', country: @user.home_country)
+%p= t('.location', location: @user.location)
+%p= t('.bio', bio: @user.bio)
 
 - if user_signed_in?
   .btn-group{"role" => "group", "aria-label" => "User controls"}
     - if policy(@user).update?
-      =link_to "Edit info", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
+      =link_to t('.edit'), edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
     - if policy(@user).promote?
       =link_to "Promote to moderator", promote_user_path(@user), method: :put, data: { confirm: "Promote this user to moderator?" }, class: "btn btn-outline-secondary btn-sm"
     - if policy(@user).demote?
@@ -23,7 +23,7 @@
       =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
 
 
-%p This user's activities:
+%p= t('.activity-list')
 
 - @user.activities.approved.each do |activity|
   .card

@@ -1,8 +1,8 @@
-- provide(:title, "Grammar points")
+- provide(:title, t('.title'))
 
-%h3 Grammar points
+%h3= t('.grammar-heading')
 
-%p= link_to "View all tags", all_tags_path
+%p= link_to t('.all-tags'), all_tags_path
 
 - @tags.each do |tag|
   .card

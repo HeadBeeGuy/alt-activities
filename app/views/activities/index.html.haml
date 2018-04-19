@@ -9,7 +9,7 @@
           %span.badge.badge-info.float-right= activity.upvote_count
         .card-body
           %p.card-text= activity.short_description
-          = link_to "View", activity, class: "btn btn-outline-primary float-right"
+          = link_to t('.view'), activity, class: "btn btn-outline-primary float-right"
         .card-footer
           - activity.tags.each do |tag|
             %span= link_to tag.short_name, tag, class: "badge badge-success"
