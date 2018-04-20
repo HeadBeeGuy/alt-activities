@@ -41,15 +41,15 @@ en:
       textbooks-heading: "Textbooks"
   site_pages:
     es:
-      title: Elementary School Activities
-      es-heading: Elementary School
+      title: "Elementary School Activities"
+      es-heading: "Elementary School"
     jhs:
-      title: Junior High School Activities
-      jhs-heading: Junior High School
+      title: "Junior High School Activities"
+      jhs-heading: "Junior High School"
     grammar:
-      title: Grammar points
-      grammar-heading: All grammar points
-      all-tags: View all tags
+      title: "Grammar points"
+      grammar-heading: "All grammar points"
+      all-tags: "View all tags"
   activities:
     page_titles:
       new_activity: "New Activity"
@@ -65,7 +65,7 @@ en:
       submit: "Submit"
     new_activity_header: "Make a new activity"
     index:
-      view: "Viewers"
+      view: "View"
     edit:
       edit_heading: "Edit this activity"
       edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
@@ -81,10 +81,10 @@ en:
       delete_confirmation: "Are you sure you wanna delete this one?"
       resubmit: "Edit and Re-submit"
     thumbs-up:
-      thumbs-up-label: Thumbs up count
-      thumbs-up-logged-out: Sign in or register to give a thumbs up!
-      submit-thumbs-up: Thumbs up!
-      delete-thumbs-up: Un-thumbs up
+      thumbs-up-label: "Thumbs up count"
+      thumbs-up-logged-out: "Sign in or register to give a thumbs up!"
+      submit-thumbs-up: "Thumbs up!"
+      delete-thumbs-up: "Un-thumbs up"
     school-level-listing:
-      top-activities: Top activities
-      textbooks: Textbooks
+      top-activities: "Top activities"
+      textbooks: "Textbooks"

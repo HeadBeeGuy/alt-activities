@@ -38,15 +38,15 @@ ja:
       textbooks-heading: "全ての教科書"
   site_pages:
     es:
-      title: 小学校
-      es-heading: 小学校
+      title: "小学校"
+      es-heading: "小学校"
     jhs:
-      title: 中学校
-      jhs-heading: 中学校
+      title: "中学校"
+      jhs-heading: "中学校"
     grammar:
-      title: 文法
-      grammar-heading: 文法
-      all-tags: 全てのタッグ
+      title: "文法"
+      grammar-heading: "文法"
+      all-tags: "全てのタッグ"
   activities:
     page_titles:
       new_activity: "新しいアクティビティー"
@@ -78,14 +78,13 @@ ja:
       delete_confirmation: "マジで削除するの？？"
       resubmit: "Edit and Re-submit"
     thumbs-up:
-      thumbs-up-label: いいね数
-      thumbs-up-logged-out: Sign in or register to give a thumbs up!
-      submit-thumbs-up: いいね！
-      delete-thumbs-up: やっぱいいや…
+      thumbs-up-label: "いいね数"
+      thumbs-up-logged-out: "Sign in or register to give a thumbs up!"
+      submit-thumbs-up: "いいね！"
+      delete-thumbs-up: "やっぱいいや…"
     school-level-listing:
-      top-activities: 最大なアクティビティー
-      textbooks: 教科書
-
+      top-activities: "最大なアクティビティー"
+      textbooks: "教科書"
 
   activerecord:
     errors:
