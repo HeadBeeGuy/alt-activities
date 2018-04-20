@@ -18,7 +18,7 @@
       %th{"scope" => "col"} Description
       %th{"scope" => "col"} Grammar point
   %tbody
-    - @pages.each do |page|
+    - @textbook.textbook_pages.order(page: :asc).each do |page|
       %tr
         %td= page.page
         %td= markdown(page.description)
@@ -29,4 +29,6 @@
             %span= link_to "(Delete)", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }
 
 - if policy(@textbook).update?
-  %p= link_to "Add new Textbook pages", new_textbook_page_path
+  %p Add a new page quickly:
+  = render 'textbook_pages/compact_form'
+  %p= link_to "Add pages manually (a little more robust)", new_textbook_page_path

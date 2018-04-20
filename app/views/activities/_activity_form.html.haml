@@ -1,26 +1,31 @@
-.form_group
-  = form_for(@activity) do |f|
-    = render 'shared/error_messages', object: f.object
-    .field
-      .form-group
-        = f.text_field :name, placeholder: t('activities.form.activity_title'), class: 'form-control'
-        = f.text_area :short_description, placeholder: t('activities.form.short_description'), class: 'form-control'
-        %p You can use #{link_to "Markdown formatting", "http://commonmark.org/help/"} in the directions:
-        = f.text_area :long_description, placeholder: t('activities.form.long_description'), class: 'form-control', rows: 8
-        = f.text_field :time_estimate, placeholder: t('activities.form.time_estimate'), class: 'form-control'
-        .tag-chooser
-          %h4= t('activities.form.tag_heading')
-          %p= t('activities.form.tag_directions_1')
-          %p= t('activities.form.tag_directions_2')
-          %p 
-          - @tag_categories.each do |category|
-            .tag-block.col-md-4
-            %h5= category.name
-            %ul
-              = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
-                %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
-        %h3 Files:
-        %p If your activity has any files, please attach them below:
-        = f.file_field :documents, multiple: true, direct_upload: true, class: "form-control-file"
-        %br
-        = f.submit t('activities.form.submit'), class:"btn btn-primary"
+= form_for(@activity) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    %label{"for" => "activity_name"}= t('activities.form.activity_title')
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    %label{"for" => "activity_short_description"}= t('activities.form.short_description')
+    = f.text_area :short_description, class: 'form-control'
+  .form-group
+    %label{"for" => "activity_long_description"}= t('activities.form.long_description')
+    %p You can use #{link_to "Markdown formatting", "http://commonmark.org/help/"} in the directions.
+    = f.text_area :long_description, class: 'form-control', rows: 8
+  .form-group
+    %label{"for" => "activity_time_estimate"}= t('activities.form.time_estimate')
+    = f.text_field :time_estimate, class: 'form-control'
+  .tag-chooser
+    %h4= t('activities.form.tag_heading')
+    %p= t('activities.form.tag_directions_1')
+    %p= t('activities.form.tag_directions_2')
+    %p 
+    - @tag_categories.each do |category|
+      .tag-block.col-md-4
+      %h5= category.name
+      %ul
+        = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
+          %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
+    %h3= t('activities.form.file-heading')
+    %p= (t'activities.form.file-attach-text')
+    = f.file_field :documents, multiple: true, direct_upload: true, class: "form-control-file"
+    %br
+    = f.submit t('submit'), class:"btn btn-primary"

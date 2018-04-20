@@ -59,6 +59,8 @@ ja:
       tag_heading: "タッグ"
       tag_directions_1: "アクティビティーに適するタッグを選んでください。当てはまるものだけ選択してください。"
       tag_directions_2: "タッグが合えば合うほど、見つかりやすくなります。"
+      file-heading: "ファイル"
+      file-attach-text: "ファイルを追加したければ、添付してください。"
       submit: "Submit"
     new_activity_header: "新しいアクティビティーを作る"
     index:

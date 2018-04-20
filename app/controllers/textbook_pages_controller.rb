@@ -46,9 +46,10 @@ class TextbookPagesController < ApplicationController
 	def destroy
 		@textbook_page = TextbookPage.find(params[:id])
 		authorize @textbook_page
+		@textbook = @textbook_page.textbook
 		@textbook_page.destroy
 		flash[:success] = "Page deleted!"
-		redirect_to textbooks_url
+		redirect_to @textbook
 	end
 
 	private

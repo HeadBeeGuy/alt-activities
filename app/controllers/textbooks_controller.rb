@@ -44,7 +44,9 @@ class TextbooksController < ApplicationController
 
 	def show
 		@textbook = Textbook.find(params[:id])
-		@pages = Textbook.find(params[:id]).textbook_pages.order(page: :asc)
+		if policy(@textbook).update?
+			@tags = TagCategory.find_by_name("Grammar points").tags
+		end
 	end
 
 	def index

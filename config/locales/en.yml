@@ -55,15 +55,17 @@ en:
       new_activity: "New Activity"
       all_activities: "All Activities"
     form:
-      activity_title: "Title of this activity"
-      short_description: "Short description"
-      long_description: "Detailed description and directions"
-      time_estimate: "Estimated time"
+      activity_title: "Title of this activity:"
+      short_description: "Short description (This is what will get shown in activity listings):"
+      long_description: "Detailed description and directions:"
+      time_estimate: "Estimated time:"
       tag_heading: "Tags"
       tag_directions_1: "Choose the tags that apply to your activity. You don't have to choose tags for every category."
       tag_directions_2: "The more accurate your tags are, the easier people will be able to find your activity!"
+      file-heading: "Files"
+      file-attach-text: "If your activity has any files, please attach them:"
       submit: "Submit"
-    new_activity_header: "Make a new activity"
+    new_activity_header: "Create a new activity"
     index:
       view: "View"
     edit:
