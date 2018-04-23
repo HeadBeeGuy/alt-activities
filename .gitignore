@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# vim makes these files
+*.swp
+
 # Ignore bundler config.
 /.bundle
 
@@ -16,9 +19,16 @@
 !/log/.keep
 /tmp
 
+# Less important in Rails 5.2, but no reason to expose it now
 /config/secrets.yml
 
 
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Elastic Beanstalk Files
+.ebignore
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
