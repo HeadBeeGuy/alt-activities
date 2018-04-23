@@ -54,8 +54,9 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  # -- adding username as well, since usernames that only differ with case sound like a pain in the neck
-  config.case_insensitive_keys = [:username, :email]
+  # -- :username used to be in here, but it meant that usernames were forced to lowercase
+  # -- I'll have to keep an eye on any scenarios with wacky username collisions when they only differ by case
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or

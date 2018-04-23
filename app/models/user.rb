@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   # Only allow letter, number, underscore and punctuation.
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :username, with: /^[^\s][a-zA-Z0-9_\s]*$/, :multiline => true
   
   validates :email, uniqueness: true, presence: true
   validates :home_country, length: { maximum: 30 }
