@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  validates :username, presence: :true, uniqueness: { case_sensitive: false }
-  # Only allow letter, number, underscore and punctuation.
-  validates_format_of :username, with: /^[^\s][a-zA-Z0-9_\s]*$/, :multiline => true
+  validates :username, presence: :true, uniqueness: { case_sensitive: false }, 
+									length: { maximum: 28, minimum: 4 }
+  # Only allow A through z and spaces in usernames
+	validates_format_of :username, with: /\A^[^\s][a-zA-Z0-9_\ ]{4,28}\z/, :multiline => true
   
   validates :email, uniqueness: true, presence: true
   validates :home_country, length: { maximum: 30 }

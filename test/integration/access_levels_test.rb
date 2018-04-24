@@ -226,16 +226,14 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		follow_redirect!
 		get user_path(@regular_user_one)
 
-		# I have to downcase the username here, since editing usernames forces that
-		# This is unintended and I need to fix it!
-		assert_match @regular_user_one.username.downcase, response.body
+		assert_match @regular_user_one.username, response.body
 		assert_match new_home_country, response.body
 		assert_match new_location, response.body
 		assert_match new_bio, response.body
 	end
 
 	test "an admin can edit a user's username and e-mail" do
-		new_username = "editededdy"
+		new_username = "Edited Eddy"
 		new_email = "edders@example.com"
 		sign_in(@admin)
 		get root_path
@@ -249,8 +247,6 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		follow_redirect!
 		get user_path(@regular_user_one)
 
-		# I have to downcase the username here, since editing usernames forces that
-		# This is unintended and I need to fix it!
 		assert_match new_username, response.body
 		# I need to look into something that would escape the HTML since it messes up the matching
 		# assert_match new_email, response.body

@@ -1,6 +1,6 @@
 
 regular_user_one:
-  username: RegularRoger
+  username: Regular Roger
   email: roger@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   home_country: Rogerstan
@@ -9,24 +9,24 @@ regular_user_one:
   role: :normal
 
 regular_user_two:
-  username: RegularRebecca
+  username: Regular Rebecca
   email: rebecca@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   
 moderator_user_one:
-  username: ModeratorMark
+  username: Moderator Mark
   email: mark@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :moderator
   
 admin_user_one:
-  username: AdminAlex
+  username: Admin Alex
   email: alex@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :admin
   
 silenced_user_one:
-  username: SilencedSylvester
+  username: Silenced Sylvester
   email: call_me_sly@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :silenced
