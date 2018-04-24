@@ -22,27 +22,27 @@ tag_category_2:
   name: School Level
   tags:
     tag_1:
-      short_name: Pre-K
+      short_name: pre-k
       long_name: Pre-kindergarten or Kindergarten
       description: Aimed at students who have not started Elementary School yet.
     tag_2:
-      short_name: ES
+      short_name: es
       long_name: Elementary School
       description: Aimed at elementary school students.
     tag_3:
-      short_name: JHS
+      short_name: jhs
       long_name: Junior High School
       description: Aimed at junior high school students.
     tag_4:
-      short_name: HS
+      short_name: hs
       long_name: High School
       description: Aimed at high school students.
     tag_5:
-      short_name: University
+      short_name: university
       long_name: University
       description: Aimed at university students.
     tag_6:
-      short_name: Conversation
+      short_name: converation
       long_name: Conversation
       description: Aimed at students with a wide variety of ages and class settings,
         including adult students.
@@ -50,159 +50,198 @@ tag_category_3:
   name: Grammar points
   tags:
     tag_1:
-      short_name: Comparative
+      short_name: comparative
       long_name: Comparative
-      description: He is taller than my brother.
+      description: He is **taller than** my brother.
     tag_2:
-      short_name: Superlative
+      short_name: superlative
       long_name: Superlative
-      description: The blue whale is the biggest animal in the world.
+      description: The blue whale is **the biggest** animal in the world.
     tag_3:
-      short_name: Conditional
+      short_name: conditional
       long_name: Conditional
-      description: If you want to play basketball, please join our team.
+      description: "**If** you want to play basketball, please join our team."
     tag_4:
-      short_name: Present Progressive/Present Continuous
+      short_name: present-progressive
       long_name: Present Progressive/Present Continuous
-      description: She is playing volleyball.
+      description: She **is playing** volleyball.
     tag_5:
-      short_name: Present Perfect
+      short_name: present-perfect
       long_name: Present Perfect
-      description: Tom has eaten two hot dogs.
+      description: Tom **has eaten** two hot dogs.
     tag_6:
-      short_name: Future (will)
+      short_name: future-will
       long_name: Future (will)
-      description: I will go to the grocery store tonight.
+      description: I **will go to** the grocery store tonight.
     tag_7:
-      short_name: Future (going to)
+      short_name: future-going-to
       long_name: Future (going to)
-      description: They are going to play rugby on Sunday.
+      description: They **are going to** play rugby on Sunday.
     tag_8:
-      short_name: Pronouns
+      short_name: pronouns
       long_name: Pronouns
-      description: Her name is Judy.
+      description: "**Her** name is Judy."
     tag_9:
-      short_name: Passive voice
+      short_name: passive-voice
       long_name: Passive voice
-      description: Many languages are spoken in Indonesia.
+      description: Many languages **are spoken** in Indonesia.
     tag_10:
-      short_name: Relative Pronoun
+      short_name: relative-pronoun
       long_name: Relative Pronoun
-      description: He is a boy who writes novels.
+      description: He is **a boy who** writes novels.
     tag_11:
-      short_name: Past Perfect Continuous
+      short_name: past-perfect-continuous
       long_name: Past Perfect Continuous
-      description: James had been doing homework for two hours before Brendan visited.
+      description: James **had been doing homework** for two hours before Brendan
+        visited.
     tag_12:
-      short_name: Simple Present
+      short_name: simple-present
       long_name: Simple Present
-      description: I study English.
+      description: I **study** English.
     tag_13:
-      short_name: Copula Verb
+      short_name: copula-verb
       long_name: Copula Verb
-      description: That looks delicious.
+      description: That **looks** delicious.
     tag_14:
-      short_name: Past Continuous
+      short_name: past-continuous
       long_name: Past Continuous
-      description: My cat was sleeping last night.
+      description: My cat **was sleeping** last night.
     tag_15:
-      short_name: Past Simple
+      short_name: past-simple
       long_name: Past Simple
-      description: He visited Kyoto last month.
+      description: He **visited** Kyoto last month.
     tag_16:
-      short_name: Quantifiers
+      short_name: quantifiers
       long_name: Quantifiers
-      description: Does this store have any towels?
+      description: Does this store have **any** towels?
     tag_17:
-      short_name: Request
+      short_name: request
       long_name: Request
-      description: Will you give me a napkin?
+      description: "**Will you** give me a napkin?"
+    tag_18:
+      short_name: false-subjects
+      long_name: False Subjects
+      description: "**It's** sunny today."
+    tag_19:
+      short_name: imperative
+      long_name: Imperative
+      description: "**Let's** play baseball. **Don't** use my bat."
+    tag_20:
+      short_name: it-for-to
+      long_name: It… for… to…
+      description: "**It** is important **for** us **to** exercise."
+    tag_21:
+      short_name: plural-nouns
+      long_name: Plural Nouns
+      description: She has **three notebooks.**
+    tag_22:
+      short_name: catch-all
+      long_name: Catch-all Grammar
+      description: This is a tag for grammar points that haven't been created yet.
+        Use it when you can't find an appropriate tag.
 tag_category_4:
   name: General Activity Descriptors
   tags:
     tag_1:
-      short_name: Warm-up
+      short_name: warm-up
       long_name: Warm-up
       description: The teacher can use this activity to start a class.
     tag_2:
-      short_name: Flexible
+      short_name: flexible
       long_name: Can be applied to many grammar points
       description: The activity can be adapted to a wide variety of grammar points.
+    tag_3:
+      short_name: vocab-review
+      long_name: Vocabulary Review
+      description: The activity is primarily used to review vocabulary that students
+        have already learned.
+    tag_4:
+      short_name: small-class
+      long_name: Small class size
+      description: This activity works best in small classes (under 10 students).
 tag_category_5:
   name: Sentence Type
   tags:
     tag_1:
-      short_name: Affirmative
+      short_name: affirmative
       long_name: Affirmative sentence
       description: You are hungry.
     tag_2:
-      short_name: Negative
+      short_name: negative
       long_name: Negative sentence
       description: You aren't hungry.
     tag_3:
-      short_name: Question
+      short_name: question
       long_name: Question sentence
       description: Are you hungry?
 tag_category_6:
   name: Requirements
   tags:
     tag_1:
-      short_name: Pencil
+      short_name: pencil
       long_name: Pencil
       description: Requires students to have a pencil or a similar writing instrument.
     tag_2:
-      short_name: Prints
+      short_name: prints
       long_name: Prints
       description: Requires the teacher to print out the activity on paper.
     tag_3:
-      short_name: TV
+      short_name: tv
       long_name: TV
       description: Requires the teacher to display materials on a TV.
     tag_4:
-      short_name: PC
+      short_name: pc
       long_name: PC
       description: Requires the teacher to display or use materials on a computer
         during class.
     tag_5:
-      short_name: Dice
+      short_name: dice
       long_name: Dice
       description: Requires the teacher to use dice.
 tag_category_7:
   name: Textbook-specific
   tags:
     tag_1:
-      short_name: New Crown 1
+      short_name: new-crown
       long_name: New Crown
       description: Specific to the New Crown textbook.
     tag_2:
-      short_name: New Horizon
+      short_name: new-horizon
       long_name: New Horizon
       description: Specific to the New Horizon textbook.
+    tag_3:
+      short_name: one-world
+      long_name: One World
+      description: Specific to the One World textbook.
+    tag_4:
+      short_name: total-english
+      long_name: Total English
+      description: Specific to the Total English textbook.
 tag_category_8:
   name: Holiday
   tags:
     tag_1:
-      short_name: New Years
+      short_name: new-years
       long_name: New Years
       description: Activity applies to New Years.
     tag_2:
-      short_name: Valentine
+      short_name: valentines-day
       long_name: Valentine's Day
       description: Activity applies to Valentine's Day.
     tag_3:
-      short_name: St Patrick
+      short_name: st-patricks-day
       long_name: Saint Patrick's Day
       description: Activity applies to Saint Patrick's Day.
     tag_4:
-      short_name: Halloween
+      short_name: halloween
       long_name: Halloween
       description: Activity applies to Halloween. Boo!
     tag_5:
-      short_name: Thanksgiving
+      short_name: thanksgiving
       long_name: Thanksgiving
       description: Activity applies to Thanksgiving (American or Canadian).
     tag_6:
-      short_name: Christmas
+      short_name: christmas
       long_name: Christmas
       description: Activity applies to Christmas.
 tag_category_9:
@@ -220,3 +259,34 @@ tag_category_9:
       short_name: Korean
       long_name: Korean background
       description: Activity assumes students are of a Korean cultural background.
+tag_category_10:
+  name: Skills Development
+  tags:
+    tag_1:
+      short_name: Presentation
+      long_name: Presentation
+      description: Develops students' presentation skills.
+    tag_2:
+      short_name: Discussion
+      long_name: Discussion
+      description: Develops students' discussion skills.
+    tag_3:
+      short_name: Debating
+      long_name: Debating
+      description: Develops students' debate skills.
+    tag_4:
+      short_name: Teamwork
+      long_name: Teamwork
+      description: Develops students' teamwork skills.
+    tag_5:
+      short_name: Critical Thinking
+      long_name: Critical Thinking
+      description: Develops students' critical thinking skills.
+    tag_6:
+      short_name: Problem Solving
+      long_name: Problem Solving
+      description: Develops students' problem-solving skills.
+    tag_7:
+      short_name: Creativity
+      long_name: Creativity
+      description: Develops students creative skills.
