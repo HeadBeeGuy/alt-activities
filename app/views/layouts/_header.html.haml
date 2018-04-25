@@ -1,5 +1,6 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  = link_to t('layouts.site_title'), root_path, class: "navbar-brand"
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  %a.navbar-brand{"href" => root_path}
+    = image_tag "logo.png", size: "30x30", alt: t('layouts.site_title'), class: "d-inline-block align-top"
   %button.navbar-toggler{"type" => "button", "data-toggle" => "collapse", "data-target" => "#navbarSupportedContent",
                           "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle Navigation" }
     %span.navbar-toggler-icon

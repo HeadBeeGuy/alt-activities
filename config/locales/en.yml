@@ -6,7 +6,7 @@ en:
     formats:
       quite_short: "(%B %d, %Y)"
   layouts:
-    site_title: "ALT Activities"
+    site_title: "ALTopedia"
     log_in: "Log in"
     log_out: "Log out"
     activity_category: "Activities"

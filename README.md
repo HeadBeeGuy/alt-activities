@@ -1,24 +1,15 @@
-# ALT Activities
+# ALTopedia
 
 
 This web app is built to allow English teachers to share activities with each other.
 
 It's more specifically designed around the needs of ALTs, (public school English teachers in Japan) who are creating activities to target a certain English grammar point for a class of elementary, junior high, or high school students.
 
-The core of the site is the **Activity** model. Activities have:
+The site is primarily built around the **Activity** model, which contains directions and information for any activity that a teacher could use in an English class. Activities are submitted by users through a standard web form, but they have to be reviewed by a moderator before they're posted on the live site.
 
-- A *User*, the original submitter
-- A short description for display on an index page
-- A longer description to describe how to perform the activity
-- An estimate of how long it will take
-- One or more *Tags*, which allow the site's users to search activities by attributes like which grammar point the activity targets, what size of class it's appropriate for, and lots of other information
-- One or more files attached to it. This will necessitate an upgrade to Rails 5.2 to use ActiveStorage.
+Activities can be assigned a variety of tags to help categorize them. By searching based on tags, users can find relevant activities for their particular needs (like school level, targetted grammar pattern, relevant materials).
 
-Users will be able to find an activity that suits their needs by browsing based on tags.
-
-Users will have to register to submit an activity, but browsing the site and downloading activities will be available for users who don't have accounts.
-
-When a user submits an activity, it goes into a moderator queue and must be approved before it's displayed on the site. Editing an activity will put it back in the queue.
+Storage and hosting are being built for AWS, but can be adapted to other platforms as necessary.
 
 ---
 
@@ -34,22 +25,29 @@ Larger implementation tasks:
 - Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
 - Add in :ominauthable, :confirmable, and more with Devise
+- Integrate a job system (Sidekiq or something similar) to spread server load around on tasks that don't require rendering pages
+- Pawn upvote counting off on a side job so it doesn't tie up the server once there are a ton of upvotes to count
+- Add in a footer that sticks to the bottom of the page correctly.
+- Parse user-submitted text more thoroughly for HTML or other hinky stuff
 
 ---
 
 Smaller tasks:
 
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
-- Make the textbook page generator more compact and suitable for multiple inclusion into a page so the pages can be generated in bulk using Ajax
 - Clean up CRUD actions and add tests for Tag Categories
 - Pull more of the site text into en.yml so it can be localized
 - Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)
 - Add something that lets users manage and delete attached files when editing activities
+- Customize login and signup forms
+- Draft up activity submission guidelines and site rules
+- Add partials to display top 5 rated/newest activities in given categories in a compact format
+- Change the mod queue to a general admin/moderator control center with links to tag creation and so on
+- Restrict the file types and file size of uploaded files.
 
 ---
 
 Current bugs:
 
-- Usernames get saved as lowercase and don't allow spaces - Might have to do with the aftermarket Devise "login" code that lets you log in with username or e-mail
  
 
