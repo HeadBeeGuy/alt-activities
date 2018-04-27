@@ -13,7 +13,7 @@ amazon:
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: ap-northeast-1 # Tokyo, since the site is aimed primarily at English teachers in Japan
-  bucket: alt-activities-test # this will change to a different bucket as the site nears public release
+  bucket: altopedia-activities 
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
