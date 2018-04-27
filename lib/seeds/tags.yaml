@@ -138,7 +138,6 @@ tag_category_3:
       short_name: catch-all
       long_name: Catch-all Grammar
       description: This is a tag for grammar points that haven't been created yet.
-        Use it when you can't find an appropriate tag.
 tag_category_4:
   name: General Activity Descriptors
   tags:
