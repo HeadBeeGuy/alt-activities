@@ -36,8 +36,8 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
   
-  test "an activity's long description can't be over 2000 characters" do
-    @activity.long_description = "a" * 2001
+  test "an activity's long description can't be over 3000 characters" do
+    @activity.long_description = "a" * 3001
     assert_not @activity.valid?
   end
   
