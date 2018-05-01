@@ -1,5 +1,6 @@
 - provide(:title, t('activities.page_titles.all_activities'))
 
+
 .row
   - @activities.each do |activity|
     .col-sm-6.col-md-4.col-lg-4.mt-4
@@ -13,4 +14,8 @@
         .card-footer
           - activity.tags.each do |tag|
             %span= link_to tag.short_name, tag, class: "badge badge-success"
-            
+
+%br
+
+= paginate @activities
+

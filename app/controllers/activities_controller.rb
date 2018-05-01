@@ -99,6 +99,7 @@ class ActivitiesController < ApplicationController
   def index
 		@activities = Activity.where(status: :approved).order(upvote_count: :desc)
 			.select(:name, :short_description, :upvote_count, :id)
+			.page(params[:page])
   end
   
   def modqueue

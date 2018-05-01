@@ -23,7 +23,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
+gem 'kaminari' # for pagination
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.1'
