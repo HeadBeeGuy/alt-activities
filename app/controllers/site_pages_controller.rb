@@ -9,11 +9,13 @@ class SitePagesController < ApplicationController
     # but if the id ever changed, this page would break!
 		@activites = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
 									.select(:id, :name, :short_description, :upvote_count)
+									.includes(:tags)
   end
   
   def jhs
     @activites = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
 									.select(:id, :name, :short_description, :upvote_count)
+									.includes(:tags)
   end
   
   def grammar

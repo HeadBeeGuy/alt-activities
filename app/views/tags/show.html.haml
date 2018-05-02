@@ -1,6 +1,6 @@
-- provide(:title, "Show Tag")
+- provide(:title, "Tag: #{@tag.long_name}")
 
-%h4 Tag: #{@tag.long_name}
+%h3= @tag.long_name
 %p Category: #{link_to @tag.tag_category.name, @tag.tag_category}
 
 = markdown("Description: #{@tag.description}")
@@ -11,7 +11,7 @@
     - if policy(@tag).delete?
       = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
 
-- @tag.activities.approved.each do |activity|
+- @activities.each do |activity|
   .card
     .card-body
       %span.font-weight-bold= link_to activity.name, activity
