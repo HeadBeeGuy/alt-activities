@@ -37,7 +37,6 @@ Smaller tasks:
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Clean up CRUD actions and add tests for Tag Categories
 - Pull more of the site text into en.yml so it can be localized
-- Add pagination so activity lists don't become unreadably large as the site grows (maybe with the Kaminari gem?)
 - Add something that lets users manage and delete attached files when editing activities
 - Customize login and signup forms
 - Draft up activity submission guidelines and site rules
@@ -48,6 +47,5 @@ Smaller tasks:
 ---
 
 Current bugs:
-
  
 

@@ -103,8 +103,9 @@ class ActivitiesController < ApplicationController
   end
   
   def modqueue
-    @activities = Activity.where(status: [:unapproved, :edited])
-    authorize @activities
+    @unapproved = Activity.where(status: [:unapproved])
+    authorize @unapproved
+    @edited = Activity.where(status: [:edited])
   end
   
   private

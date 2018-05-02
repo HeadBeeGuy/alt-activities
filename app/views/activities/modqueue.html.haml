@@ -9,9 +9,32 @@
       %th{"scope" => "col"} Submitter
       %th{"scope" => "col"} Short description
   %tbody
-    - @activities.each do |activity|
+    - @unapproved.each do |activity|
       %tr
         %th{"scope" => "row"}= link_to activity.name, activity
         %td= link_to "#{activity.user.username} (#{activity.user.activities.approved.count})", activity.user
         %td= activity.short_description
 
+%h4 Edited activities
+
+%table.table.table-striped.table-sm
+  %thead
+    %tr
+      %th{"scope" => "col"} Name
+      %th{"scope" => "col"} Submitter
+      %th{"scope" => "col"} Short description
+  %tbody
+    - @edited.each do |activity|
+      %tr
+        %th{"scope" => "row"}= link_to activity.name, activity
+        %td= link_to "#{activity.user.username} (#{activity.user.activities.approved.count})", activity.user
+        %td= activity.short_description
+
+
+%h4 Other useful administration links:
+%ul
+  %li= link_to "View all users", users_path
+  -if current_user.admin?
+    %li= link_to "Make a new tag", new_tag_path
+    %li= link_to "Make a new tag category", new_tag_category_path
+  %li= link_to "Make a new textbook", new_textbook_path
