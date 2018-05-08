@@ -22,7 +22,8 @@
 # Less important in Rails 5.2, but no reason to expose it now
 /config/secrets.yml
 
-
+# contains the production redis server address, which probably is a good idea to keep mum
+/config/redis.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -30,5 +31,6 @@
 # Elastic Beanstalk Files
 .ebignore
 .elasticbeanstalk/*
+.ebextensions/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml

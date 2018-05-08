@@ -21,5 +21,8 @@ module Workspace
 
 		# apparently this is necessary if browsers don't support/run JavaScript for Ajax
 		config.action_view.embed_authenticity_token_in_remote_forms = true
+
+		# make Sidekiq the queueing backend
+		config.active_job.queue_adapter = :sidekiq
   end
 end

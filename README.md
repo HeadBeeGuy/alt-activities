@@ -25,10 +25,10 @@ Larger implementation tasks:
 - Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
 - Add in :ominauthable, :confirmable, and more with Devise
-- Integrate a job system (Sidekiq or something similar) to spread server load around on tasks that don't require rendering pages
-- Pawn upvote counting off on a side job so it doesn't tie up the server once there are a ton of upvotes to count
 - Add in a footer that sticks to the bottom of the page correctly.
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
+- Evaluate if the subdomain can be used as the language-switching mechanism
+- Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 
 ---
 
@@ -48,4 +48,5 @@ Smaller tasks:
 
 Current bugs:
  
+- Users can likely alter their username and e-mail through directly submitting a POST request, even though only admins should be allowed to do this. Might need to build another whitelist parameter set for editing?
 
