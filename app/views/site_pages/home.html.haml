@@ -13,3 +13,8 @@
   %li The moderator queue separates new and edited activities, and has a few useful links.
   %li The site is running the production version of the database! Upload your activities for general consumption!
   %li You can give a thumbs up to activities you like. Activities are displayed based on how many people like them.
+
+.row
+  = render partial: 'activities/compact_activity_list', locals: { label: "Newest activities", activity_list: @newest5 }
+  = render partial: 'activities/compact_activity_list', locals: { label: "Top 5 Site-wide", activity_list: @top5 }
+

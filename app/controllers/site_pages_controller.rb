@@ -1,5 +1,12 @@
 class SitePagesController < ApplicationController
 
+	def home
+		@top5 = Activity.limit(5).select(:id, :name, :upvote_count).order(upvote_count: :desc)
+							.where(status: :approved)
+		@newest5 = Activity.limit(5).select(:id, :name, :upvote_count).order(created_at: :desc)
+							.where(status: :approved)
+	end
+
   def about
   end
   
