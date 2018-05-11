@@ -15,6 +15,13 @@ ja:
     es: "小学校"
     jhs: "中学校"
     grammar: "文法"
+  login:
+    log_in: "ログイン"
+    remember_me: "Remember me"
+    email_username_prompt: "メール、またはユーザー名"
+    password_prompt: "パスワード"
+    make_new_account: "新しいアカウントを登録する"
+    forgot_password: "パスワード忘れた！"
   users:
     show:
       title: "ユーザー情報"

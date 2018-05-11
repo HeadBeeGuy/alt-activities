@@ -29,6 +29,7 @@ Larger implementation tasks:
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
 - Evaluate if the subdomain can be used as the language-switching mechanism
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
+- Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 
 ---
 
@@ -40,8 +41,6 @@ Smaller tasks:
 - Add something that lets users manage and delete attached files when editing activities
 - Customize login and signup forms
 - Draft up activity submission guidelines and site rules
-- Add partials to display top 5 rated/newest activities in given categories in a compact format
-- Change the mod queue to a general admin/moderator control center with links to tag creation and so on
 - Restrict the file types and file size of uploaded files.
 
 ---

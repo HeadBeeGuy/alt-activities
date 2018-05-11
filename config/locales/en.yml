@@ -18,6 +18,13 @@ en:
     es: "ES"
     jhs: "JHS"
     grammar: "Grammar"
+  login:
+    log_in: "Sign in"
+    remember_me: "Remember me"
+    email_username_prompt: "E-mail address or username"
+    password_prompt: "Password"
+    make_new_account: "Create a new account"
+    forgot_password: "Forgot your password?"
   users:
     show:
       title: "User info"
