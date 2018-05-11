@@ -1,5 +1,20 @@
 = form_for(@activity) do |f|
   = render 'shared/error_messages', object: f.object
+  .accordion.mb-2#activity-guidelines
+    .card
+      .card-header#guidelines-heading
+        %button.btn.btn-link{"data-toggle" => "collapse", "data-target" => "#guidelines-text", "type" => "button",
+                             "aria-expanded" => "true", "aria-controls" => "guidelines-text"}
+          %h5.mb-0 Activity guidelines
+      #guidelines-text.collapse.show{"aria-labelledby" => "#guidelines-heading", "data-parent" => "#activity-guidelines"}
+        .card-body
+          %p Please describe your activity clearly so other people can perform it!
+          %p Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption.
+          %p Make sure that your submission is appropriate for a general audience and children in particular.
+          %p 
+            You can use Markdown formatting in your directions, but you can't include links or images. This is to help cut down on spam and other shenanigans.
+            %span= link_to "(Markdown guide)", "http://commonmark.org/help/"
+          %p Advertising or soliciting isn't allowed.
   .form-group
     %label{"for" => "activity_name"}= t('activities.form.activity_title')
     = f.text_field :name, class: 'form-control'
