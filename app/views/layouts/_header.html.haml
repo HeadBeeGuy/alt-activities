@@ -1,25 +1,12 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
   %a.navbar-brand{"href" => root_path}
     = image_tag "logo.png", size: "30x30", alt: t('layouts.site_title'), class: "d-inline-block align-top"
+    ALTopedia
   %button.navbar-toggler{"type" => "button", "data-toggle" => "collapse", "data-target" => "#navbarSupportedContent",
                           "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle Navigation" }
     %span.navbar-toggler-icon
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        = link_to t('layouts.es'), es_path, class: "nav-link"
-      %li.nav-item.active
-        = link_to t('layouts.jhs'), jhs_path, class: "nav-link"
-      %li.nav-item.active
-        = link_to t('layouts.grammar'), grammar_path, class: "nav-link"
-      %li.nav-item.active
-        = link_to t('layouts.textbook_listing'), textbooks_path, class: "nav-link"
-      %li.nav-item.dropdown.active
-        %a.nav-link.dropdown-toggle{"href"=>"#", "id"=>"navbarDropdown", "role"=>"button", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"}
-          = t('layouts.activity_category')
-        .dropdown-menu
-          = link_to t('layouts.new_activity'), new_activity_path, class: "dropdown-item"
-          = link_to t('layouts.view_all_activities'), activities_path, class: "dropdown-item"
       - if user_signed_in?
         %li.nav-item.active
           = link_to  current_user.username, current_user, class: "nav-link"
@@ -30,7 +17,22 @@
       - else
         %li.nav-item.active
           = link_to t('layouts.log_in'), new_user_session_path, class: "nav-link"
+      %li.nav-item.active
+        = link_to t('layouts.new_activity'), new_activity_path, class: "nav-link"
+      %li.nav-item.active
+        = link_to t('layouts.contributors'), users_path, class: "nav-link"
+      %li.nav-item.active
+        = link_to t('layouts.about'), about_path, class: "nav-link"
       - if I18n.locale == :ja
         %li.nav-item= link_to "English", {locale: "en"}, class: "nav-link"
       - elsif I18n.locale == :en
         %li.nav-item= link_to "日本語", {locale: "ja"}, class: "nav-link"
+.nav-scroller.bg-white.box-shadow
+  %nav.nav.nav-underline
+    = link_to t('layouts.es'), es_path, class: "nav-link active"
+    = link_to t('layouts.jhs'), jhs_path, class: "nav-link active"
+    = link_to t('layouts.hs'), hs_path, class: "nav-link active"
+    = link_to "Warm-ups", warmups_path, class: "nav-link active"
+    = link_to t('layouts.grammar'), grammar_path, class: "nav-link active"
+    = link_to t('layouts.textbook_listing'), textbooks_path, class: "nav-link active"
+    

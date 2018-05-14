@@ -25,6 +25,18 @@ class SitePagesController < ApplicationController
 									.includes(:tags)
   end
   
+	def hs
+    @activites = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
+									.select(:id, :name, :short_description, :upvote_count)
+									.includes(:tags)
+  end
+
+	def warmups
+    @activites = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
+									.select(:id, :name, :short_description, :upvote_count)
+									.includes(:tags)
+  end
+
   def grammar
     @tags = TagCategory.find_by_name("Grammar points").tags
   end

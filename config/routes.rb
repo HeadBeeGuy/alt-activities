@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   
     get '/es', to: 'site_pages#es'
     get '/jhs', to: 'site_pages#jhs'
+		get '/hs', to: 'site_pages#hs'
     get '/grammar', to: 'site_pages#grammar'
+		get '/warmups', to: 'site_pages#warmups'
     get '/about', to: 'site_pages#about'
     get '/modqueue', to: 'activities#modqueue'
     get '/all_tags', to: 'tag_categories#index'

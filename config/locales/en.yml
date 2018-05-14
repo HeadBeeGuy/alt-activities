@@ -17,7 +17,9 @@ en:
     about: "About"
     es: "ES"
     jhs: "JHS"
+    hs: "HS"
     grammar: "Grammar"
+    contributors: "Contributors"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
@@ -53,10 +55,16 @@ en:
     jhs:
       title: "Junior High School Activities"
       jhs-heading: "Junior High School"
+    hs:
+      title: "High School Activities"
+      hs-heading: "High School"
     grammar:
       title: "Grammar points"
       grammar-heading: "All grammar points"
       all-tags: "View all tags"
+    warmups:
+      title: "Warm-up Activities"
+      warmups-heading: "Warm-ups"
   activities:
     page_titles:
       new_activity: "New Activity"

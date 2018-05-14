@@ -14,7 +14,9 @@ ja:
     about: "このサイトについて"
     es: "小学校"
     jhs: "中学校"
+    hs: "高校"
     grammar: "文法"
+    contributors: "Contributors"
   login:
     log_in: "ログイン"
     remember_me: "Remember me"
@@ -50,10 +52,16 @@ ja:
     jhs:
       title: "中学校"
       jhs-heading: "中学校"
+    hs:
+      title: "高校"
+      hs-heading: "高校"
     grammar:
       title: "文法"
       grammar-heading: "文法"
       all-tags: "全てのタッグ"
+    warmups:
+      title: "Warm-up Activities"
+      warmups-heading: "Warm-ups"
   activities:
     page_titles:
       new_activity: "新しいアクティビティー"

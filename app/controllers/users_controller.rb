@@ -32,9 +32,9 @@ class UsersController < ApplicationController
   end
   
   def index
-		@admins = User.admin
-		@moderators = User.moderator
-		@normal_users = User.normal
+		@admins = User.admin.select(:id, :username)
+		@moderators = User.moderator.select(:id, :username)
+		@normal_users = User.normal.select(:id, :username)
   end
 
 	def silence
