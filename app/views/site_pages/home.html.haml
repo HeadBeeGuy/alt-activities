@@ -1,18 +1,13 @@
 - provide(:title, "ALTopedia - Home")
 
-%h1 Welcome to ALTopedia!
+.row
+  .col-sm-12.col-md-8
+    %h1 Welcome to ALTopedia!
 
-%p This site is for finding and sharing activities and games to use in English classes. It's designed for the needs of ALTs in Japan, but we hope you'll find something useful no matter what your situation!
+    %p Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!
+  .nagajob.col-sm-12.col-md-4
+    = link_to image_tag("nagajob.jpg", class: "mw-100"), "http://www.nagajob.co.jp"
 
-%p= link_to "New user? Sign up here!", new_user_registration_path
-
-%p= link_to "View all activities", activities_path
-
-%p Recent updates:
-%ul
-  %li The moderator queue separates new and edited activities, and has a few useful links.
-  %li The site is running the production version of the database! Upload your activities for general consumption!
-  %li You can give a thumbs up to activities you like. Activities are displayed based on how many people like them.
 
 .row
   = render partial: 'activities/compact_activity_list', locals: { label: "Newest activities", activity_list: @newest5 }
