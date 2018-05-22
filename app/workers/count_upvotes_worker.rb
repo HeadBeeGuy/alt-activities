@@ -5,6 +5,8 @@
 class CountUpvotesWorker
   include Sidekiq::Worker
 
+	sidekiq_options retry: 0
+
 	# per the Sidekiq documentation, we only want to pass very simple parameters in
 	# not the class object - just the id, so we can find it in here!
   def perform(activity_id)
