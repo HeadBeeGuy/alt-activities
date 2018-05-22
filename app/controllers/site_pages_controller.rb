@@ -2,9 +2,9 @@ class SitePagesController < ApplicationController
 
 	def home
 		@top5 = Activity.limit(5).select(:id, :name, :upvote_count).order(upvote_count: :desc)
-							.where(status: :approved)
+			.where(status: :approved)
 		@newest5 = Activity.limit(5).select(:id, :name, :upvote_count).order(created_at: :desc)
-							.where(status: :approved)
+			.where(status: :approved)
 	end
 
   def about
@@ -14,27 +14,27 @@ class SitePagesController < ApplicationController
     # I hope this query isn't too brittle
     # Would I be an ogre if I accessed by id? this will probably be a frequently viewed page
     # but if the id ever changed, this page would break!
-		@activites = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
-									.select(:id, :name, :short_description, :upvote_count)
-									.includes(:tags)
+		@activities = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
+			.select(:id, :name, :short_description, :upvote_count)
+			.includes(:tags).page(params[:page])
   end
   
   def jhs
-    @activites = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
-									.select(:id, :name, :short_description, :upvote_count)
-									.includes(:tags)
+    @activities = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
+			.select(:id, :name, :short_description, :upvote_count)
+			.includes(:tags).page(params[:page])
   end
   
 	def hs
-    @activites = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
-									.select(:id, :name, :short_description, :upvote_count)
-									.includes(:tags)
+    @activities = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
+			.select(:id, :name, :short_description, :upvote_count)
+			.includes(:tags).page(params[:page])
   end
 
 	def warmups
-    @activites = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
-									.select(:id, :name, :short_description, :upvote_count)
-									.includes(:tags)
+    @activities = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
+			.select(:id, :name, :short_description, :upvote_count)
+			.includes(:tags).page(params[:page])
   end
 
   def grammar

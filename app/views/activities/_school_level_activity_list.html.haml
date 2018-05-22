@@ -1,13 +1,15 @@
 %h5= t('activities.school-level-listing.top-activities')
 
-- @activites.each do |activity|
+- @activities.each do |activity|
   .card
     .card-body
       %span.font-weight-bold= link_to activity.name, activity
       %span.font-weight-normal= activity.short_description
       - activity.tags.each do |tag|
-        = link_to tag.short_name, tag, class: "badge badge-success"
+        = link_to tag.long_name, tag, class: "badge badge-success"
       %span.badge.badge-info.float-right= activity.upvote_count
+%br
+= paginate @activities
 %br
 %br
 %h5= t('activities.school-level-listing.textbooks')
