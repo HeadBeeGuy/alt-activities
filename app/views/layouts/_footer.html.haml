@@ -1,9 +1,10 @@
--# attempting to make a footer, but I'm bumping up against my very basic CSS knowledge
--# I'll try and come back to this later
-%nav.navbar.sticky-footer.navbar-expand-sm.navbar-dark.bg-dark
-  %ul.navbar-nav.mr-auto
-    %li.nav-item.active
-      = link_to t('layouts.about'), about_path, class: "nav-link"
-%footer.bg-dark.text-white.mt-4
-  .container-fluid.py-3
-    %p I am just a little text.
+-# Still not ready for public display!
+%footer.container-fluid.py-5.mt-4.bg-secondary
+  .row
+    .col-md.text-light
+      %p All content on this site is subject to whichever license we end up going with.
+      %ul.list-unstyled.text-small
+        %li= link_to "Contact", "#", class: "disabled text-light"
+        %li= link_to "Terms of Service", "#", class: "disabled text-light"
+        %li= link_to "Site map", "#", class: "disabled text-light"
+        %li= link_to "ALT Training Online", "http://www.alttrainingonline.com", class: "disabled text-light"
