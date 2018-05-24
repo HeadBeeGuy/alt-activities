@@ -30,6 +30,7 @@ Larger implementation tasks:
 - Evaluate if the subdomain can be used as the language-switching mechanism
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
+- Restrict the file types and file size of uploaded files.
 
 ---
 
@@ -41,7 +42,6 @@ Smaller tasks:
 - Add something that lets users manage and delete attached files when editing activities
 - Customize login and signup forms
 - Draft up activity submission guidelines and site rules
-- Restrict the file types and file size of uploaded files.
 
 ---
 

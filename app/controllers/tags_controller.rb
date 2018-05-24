@@ -35,8 +35,10 @@ class TagsController < ApplicationController
   
   def show
     @tag = Tag.find(params[:id])
-		@activities = @tag.activities.approved.order(upvote_count: :desc)
+		@activities = @tag.activities.approved.order(created_at: :desc)
 			.select(:name, :short_description, :upvote_count, :id).page(params[:page])
+		@top5 = @tag.activities.approved.limit(5).select(:id, :name, :upvote_count)
+			.order(upvote_count: :desc)
   end
   
   def index

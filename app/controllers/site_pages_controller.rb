@@ -16,13 +16,13 @@ class SitePagesController < ApplicationController
     # but if the id ever changed, this page would break!
 		@activities = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
 			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page])
+			.includes(:tags).page(params[:page]).where(status: :approved)
   end
   
   def jhs
     @activities = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
 			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page])
+			.includes(:tags).page(params[:page]).where(status: :approved)
   end
   
 	def hs
@@ -38,6 +38,7 @@ class SitePagesController < ApplicationController
   end
 
   def grammar
-    @tags = TagCategory.find_by_name("Grammar points").tags
+		@tags = TagCategory.find_by_name("Grammar points").tags.select(:id, :name, :long_name, :description)
+		  .order(long_name: :asc)
   end
 end

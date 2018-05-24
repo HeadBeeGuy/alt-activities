@@ -1,21 +1,26 @@
 - provide(:title, "Tag: #{@tag.long_name}")
 
-%h3= @tag.long_name
-%p Category: #{link_to @tag.tag_category.name, @tag.tag_category}
+.row
+  .col-sm-10.col-md-8.col-lg-8
+    %h3= @tag.long_name
+    %p Category: #{link_to @tag.tag_category.name, @tag.tag_category}
 
-= markdown("Description: #{@tag.description}")
+    = markdown("Description: #{@tag.description}")
 
-- if user_signed_in? && policy(@tag).edit?
-  .btn-group{"role" => "group", "aria-label" => "Tag controls"}
-    = link_to "Edit", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
-    - if policy(@tag).delete?
-      = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
+    - if user_signed_in? && policy(@tag).edit?
+      .btn-group.float-right{"role" => "group", "aria-label" => "Tag controls"}
+        = link_to "Edit Tag", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
+        - if policy(@tag).delete?
+          = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
+  = render partial: 'activities/compact_activity_list', locals: { label: "Top 5 activities", activity_list: @top5 }
 
-- @activities.each do |activity|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to activity.name, activity
-      %span.font-weight-normal= activity.short_description
-      %span.badge.badge-info.float-right= activity.upvote_count
+%h5.pt-2 Recent activities:
+.card-columns.pt-2
+  - @activities.each do |activity|
+    .card
+      .card-body
+        %span.badge.badge-info.float-right= activity.upvote_count
+        %h5.card-title= link_to activity.name, activity
+        %p.card-text= activity.short_description
 %br
 = paginate @activities
