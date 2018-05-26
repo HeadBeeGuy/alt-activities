@@ -38,7 +38,7 @@ class SitePagesController < ApplicationController
   end
 
   def grammar
-		@tags = TagCategory.find_by_name("Grammar points").tags.select(:id, :name, :long_name, :description)
+		@tags = TagCategory.find_by_name("Grammar points").tags.select(:id, :long_name, :description)
 		  .order(long_name: :asc)
   end
 end
