@@ -328,4 +328,31 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		assert_not @silenced.normal?
 		assert @silenced.silenced?
 	end
+
+	test "a regular user can't edit their e-mail address or username" do
+		new_email = "my_new_email@example.com"
+		new_username = "Edited Edward"
+		original_email = @regular_user_one.email
+		original_username = @regular_user_one.username
+		sign_in(@regular_user_one)
+		get root_path
+		get user_path(@regular_user_one)
+		assert_match @regular_user_one.username, response.body
+		get edit_user_path(@regular_user_one)
+		patch user_path, params: { user: { username: new_username,
+															email: new_email } }
+		assert_redirected_to user_path(@regular_user_one)
+		assert_not flash.empty?
+		follow_redirect!
+		get user_path(@regular_user_one)
+
+		refute_match new_username, response.body
+		refute_match new_email, response.body
+
+		assert_match original_username, response.body
+		assert_match original_username, response.body
+
+		assert_equal @regular_user_one.email, original_email
+		assert_equal @regular_user_one.username, original_username
+	end
 end
