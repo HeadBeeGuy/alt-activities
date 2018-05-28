@@ -24,9 +24,9 @@
       %li.nav-item.active
         = link_to t('layouts.about'), about_path, class: "nav-link"
       - if I18n.locale == :ja
-        %li.nav-item= link_to "English", {locale: "en"}, class: "nav-link"
+        %li.nav-item= link_to "English", "https://en.altopedia.org", class: "nav-link"
       - elsif I18n.locale == :en
-        %li.nav-item= link_to "日本語", {locale: "ja"}, class: "nav-link"
+        %li.nav-item= link_to "日本語", "https://ja.altopedia.org", class: "nav-link"
 .nav-scroller.bg-white.box-shadow
   %nav.nav.nav-underline
     = link_to t('layouts.es'), es_path, class: "nav-link active"

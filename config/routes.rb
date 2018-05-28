@@ -1,43 +1,36 @@
 Rails.application.routes.draw do
   
-  # locales specified after the domain: example.com/en
-  # this might change for final release if we can control the subdomain
-  scope "(:locale)", locale: /en|ja/ do
-    devise_for :users
-    root 'site_pages#home'
-  
-    get '/es', to: 'site_pages#es'
-    get '/jhs', to: 'site_pages#jhs'
-		get '/hs', to: 'site_pages#hs'
-    get '/grammar', to: 'site_pages#grammar'
-		get '/warmups', to: 'site_pages#warmups'
-    get '/about', to: 'site_pages#about'
-    get '/modqueue', to: 'activities#modqueue'
-    get '/all_tags', to: 'tag_categories#index'
-    
-    resources :tags, :tag_categories, :textbooks, :textbook_pages
+	devise_for :users
+	root 'site_pages#home'
 
-		resources :users do
-			member do
-				put :silence
-				put :unsilence
-				put :promote
-				put :demote
-			end
+	get '/es', to: 'site_pages#es'
+	get '/jhs', to: 'site_pages#jhs'
+	get '/hs', to: 'site_pages#hs'
+	get '/grammar', to: 'site_pages#grammar'
+	get '/warmups', to: 'site_pages#warmups'
+	get '/about', to: 'site_pages#about'
+	get '/modqueue', to: 'activities#modqueue'
+	get '/all_tags', to: 'tag_categories#index'
+	
+	resources :tags, :tag_categories, :textbooks, :textbook_pages
+
+	resources :users do
+		member do
+			put :silence
+			put :unsilence
+			put :promote
+			put :demote
 		end
-    
-    resources :activities do
-      member do
-        put :approve
-        put :unapprove
-      end
-    end
+	end
+	
+	resources :activities do
+		member do
+			put :approve
+			put :unapprove
+		end
+	end
 
-		resources :upvotes, only: [ :create, :destroy ]
-  end
-  
-  get '/:locale', to: 'site_pages#home'
-  
+	resources :upvotes, only: [ :create, :destroy ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

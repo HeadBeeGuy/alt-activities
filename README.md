@@ -27,7 +27,6 @@ Larger implementation tasks:
 - Add in :ominauthable, :confirmable, and more with Devise
 - Add in a footer that sticks to the bottom of the page correctly.
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
-- Evaluate if the subdomain can be used as the language-switching mechanism
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
