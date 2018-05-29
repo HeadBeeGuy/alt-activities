@@ -27,8 +27,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Using AWS S3 in development as well
-  config.active_storage.service = :amazon
+  # Going for local storage since I often develop the site offline
+  config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
