@@ -1,22 +1,19 @@
 - provide(:title, "Contributors")
 
+%h4 Top contributors
+.row
+  - @contributors.each do |contributor|
+    .card.col-sm-8.col-md-6.col-lg-3
+      .card-body
+        %span.font-weight-bold= link_to "#{contributor.username} (#{contributor.activity_count})", contributor
+= paginate @contributors
 
-%h3 Administrators
-- @admins.each do |user|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to "#{user.username}", user
+%br
 
-%h3 Moderators
-- @moderators.each do |user|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to "#{user.username}", user
-
-%h3 Users
-- @normal_users.each do |user|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to "#{user.username}", user
-
+%h4 Moderators
+.row
+  - @moderators.each do |user|
+    .card.col-sm-8.col-md-6.col-lg-3
+      .card-body
+        %span.font-weight-bold= link_to "#{user.username}", user
 

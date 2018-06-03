@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   end
   
   def index
-		@admins = User.admin.select(:id, :username)
 		@moderators = User.moderator.select(:id, :username)
-		@normal_users = User.normal.select(:id, :username)
+		@contributors = User.select(:id, :username, :activity_count).order(activity_count: :desc)
+			.page(params[:page])
   end
 
 	def silence

@@ -22,7 +22,7 @@
     - if policy(@user).delete?
       =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
 
-
+%p Total activities: #{@user.activity_count}
 %p= t('.activity-list')
 
 - @user.activities.approved.each do |activity|

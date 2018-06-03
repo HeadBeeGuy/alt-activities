@@ -54,6 +54,7 @@ class ActivitiesController < ApplicationController
     if @activity.update_attributes(activity_params)
       flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
       @activity.edited!
+			UpdateActivityCountWorker.perform_async(@activity.user.id)
       redirect_to activities_url
     else
       render 'edit'
@@ -63,8 +64,10 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity = Activity.find(params[:id])
     authorize @activity
+		activity_user_id = @activity.user.id # can't access the user id after it's destroyed
     @activity.destroy
     flash[:success] = "Activity deleted!"
+		UpdateActivityCountWorker.perform_async(activity_user_id)
     redirect_to activities_url
   end
   
@@ -79,6 +82,7 @@ class ActivitiesController < ApplicationController
     if @activity.unapproved? || @activity.edited?
       @activity.approved!
       flash[:success] = "Activity approved!"
+			UpdateActivityCountWorker.perform_async(@activity.user.id)
       redirect_to modqueue_url
     elsif @activity.approved?
       flash[:warning] = "Activity already approved!"
@@ -94,6 +98,7 @@ class ActivitiesController < ApplicationController
       flash[:success] = "Activity moved back to mod queue."
       redirect_to @activity
     end
+		UpdateActivityCountWorker.perform_async(@activity.user.id)
   end
   
   def index

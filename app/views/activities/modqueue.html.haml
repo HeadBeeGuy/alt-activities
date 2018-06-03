@@ -12,7 +12,7 @@
     - @unapproved.each do |activity|
       %tr
         %th{"scope" => "row"}= link_to activity.name, activity
-        %td= link_to "#{activity.user.username} (#{activity.user.activities.approved.count})", activity.user
+        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
         %td= activity.short_description
 
 %h4 Edited activities
@@ -27,7 +27,7 @@
     - @edited.each do |activity|
       %tr
         %th{"scope" => "row"}= link_to activity.name, activity
-        %td= link_to "#{activity.user.username} (#{activity.user.activities.approved.count})", activity.user
+        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
         %td= activity.short_description
 
 
