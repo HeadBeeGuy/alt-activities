@@ -65,19 +65,19 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # pinched from listing 11.41 in the Rails Tutorial
-  # will likely need to change once the site is deployed somewhere other than Heroku
+  # Use AWS SES to deliver mail
+  # some of these settings may be superfluous
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'alt-activities-80131.herokuapp.com'
+  host = 'www.altopedia.org'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'email-smtp.us-west-2.amazonaws.com',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => ENV['SES_SMTP_USERNAME'],
+    :password       => ENV['SES_SMTP_PASSWORD'],
+    :domain         => 'altopedia.org',
     :enable_starttls_auto => true
   }
 

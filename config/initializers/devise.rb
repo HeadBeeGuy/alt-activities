@@ -18,7 +18,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'jake.alt.dev@gmail.com'
+  config.mailer_sender = 'noreply@altopedia.org'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -125,7 +125,7 @@ Devise.setup do |config|
 
   # Send a notification email when the user's password is changed.
   # -- this seems like a reasonable idea
-  config.send_password_change_notification = false
+  config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

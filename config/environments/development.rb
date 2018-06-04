@@ -59,10 +59,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  # mailer - Devise bid me to add this
-  # it wants a port but the Rails tutorial just wants a protocol
-  # obviously if you're running this on your own system, you'll need to change it!
-  #config.action_mailer.default_url_options = { host: 'alt-activities-headbeeguy.c9users.io', port: 3000 }
-  config.action_mailer.default_url_options = { host: 'alt-activities-headbeeguy.c9users.io', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'www.altopedia.localhost', protocol: 'http', port: 3000 }
   
 end
