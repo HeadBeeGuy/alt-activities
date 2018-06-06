@@ -6,6 +6,11 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     get activities_path
     assert_response :success
   end
+
+  test "should get activity path for a specific activity" do
+    get activities_path(:basic_activity_one)
+    assert_response :success
+  end
   
   test "should redirect activity creation url if not logged in" do
     get new_activity_path

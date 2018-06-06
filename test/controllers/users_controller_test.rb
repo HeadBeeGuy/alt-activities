@@ -11,4 +11,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     assert_response :success
   end
+
+  test "should get user index page" do
+    get users_path
+    assert_response :success
+  end
+
+  test "should get user page for a specific user" do
+    get users_path(:regular_user_one)
+    assert_response :success
+  end
 end

@@ -17,3 +17,21 @@ basic_tag_three:
   long_name: This is another test tag
   description: I shouldn't need a lot of these for tests
   tag_category: tag_category_one
+
+es_tag:
+  short_name: ES
+  long_name: Elementary School
+  description: I need to be here so es_path works in test.
+  tag_category: grammar_category
+
+jhs_tag:
+  short_name: JHS
+  long_name: Junior High School
+  description: I also need to be here for jhs_path in test
+  tag_category: grammar_category
+
+warmups_tag:
+  short_name: warm-up
+  long_name: Warm-ups
+  description: I, like my brothers, am here to help with tests
+  tag_category: grammar_category

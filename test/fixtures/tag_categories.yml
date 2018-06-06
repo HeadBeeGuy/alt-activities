@@ -3,3 +3,5 @@
 tag_category_one:
   name: Test Tag Category 1
 
+grammar_category:
+  name: Grammar points
