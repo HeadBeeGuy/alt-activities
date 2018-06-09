@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+front_page_post_one:
+  title: First Front Page Post
+  excerpt: You'll never guess what's waiting below the fold!
+  content: Actually, it was a lot less interesting than you were hoping for.
+  user: admin_user_one
+
