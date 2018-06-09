@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	get '/grammar', to: 'site_pages#grammar'
 	get '/warmups', to: 'site_pages#warmups'
 	get '/about', to: 'site_pages#about'
+	get '/altto', to: 'site_pages#altto'
 	get '/modqueue', to: 'activities#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
 	

@@ -22,6 +22,8 @@
       %li.nav-item.active
         = link_to t('layouts.contributors'), users_path, class: "nav-link"
       %li.nav-item.active
+        = link_to "ALTTO", altto_path, class: "nav-link"
+      %li.nav-item.active
         = link_to t('layouts.about'), about_path, class: "nav-link"
       - if I18n.locale == :ja
         %li.nav-item= link_to "English", "https://en.altopedia.org", class: "nav-link"
