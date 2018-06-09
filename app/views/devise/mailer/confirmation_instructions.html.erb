@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome to ALTopedia, <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>To complete your registration, please click the link below to confirm your e-mail address.</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
