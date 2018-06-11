@@ -10,7 +10,7 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     activity_category: "Activities"
-    new_activity: "New Activity"
+    new_activity: "Submit a new activity"
     view_all_activities: "View all"
     tag_list: "Tags"
     textbook_listing: "Textbooks"
@@ -80,7 +80,7 @@ en:
       file-heading: "Files"
       file-attach-text: "If your activity has any files, please attach them:"
       submit: "Submit"
-    new_activity_header: "Create a new activity"
+    new_activity_header: "Submit a new activity"
     index:
       view: "View"
     edit:

@@ -1,20 +1,16 @@
 = form_for(@activity) do |f|
   = render 'shared/error_messages', object: f.object
-  .accordion.mb-2#activity-guidelines
-    .card
-      .card-header#guidelines-heading
-        %button.btn.btn-link{"data-toggle" => "collapse", "data-target" => "#guidelines-text", "type" => "button",
-                             "aria-expanded" => "true", "aria-controls" => "guidelines-text"}
-          %h5.mb-0 Activity guidelines
-      #guidelines-text.collapse.show{"aria-labelledby" => "#guidelines-heading", "data-parent" => "#activity-guidelines"}
-        .card-body
-          %p Please describe your activity clearly so other people can perform it!
-          %p Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption.
-          %p Make sure that your submission is appropriate for a general audience and children in particular.
-          %p 
-            You can use Markdown formatting in your directions, but you can't include links or images. This is to help cut down on spam and other shenanigans.
-            %span= link_to "(Markdown guide)", "http://commonmark.org/help/"
-          %p Advertising or soliciting isn't allowed.
+  .guidelines-text
+    %p Thank you for contributing your own activity! Here are some guidelines to keep in mind as you're writing:
+    %ul
+      %li Please describe your activity clearly. The better your description, the more people will be able to understand and use it.
+      %li Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption.
+      %li Make sure that your submission is appropriate for a general audience and children in particular.
+      %li You can use Markdown formatting in your directions, but we've turned off hyperlinks and images. This is to help cut down on spam.
+      %span= link_to "(Markdown guide)", "http://commonmark.org/help/"
+      %li Please don't advertise any services or companies.
+      %li By posting your activity on the site, you will make it available under the terms of the #{link_to "Creative Commons BY-NC-SA 4.0 license", "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.  This means that the activity will be posted for free on the site, and while others can use it for non-commercial purposes, they have to give you credit.
+      %li If you decide you want to take your activity down, you can do so at any time. You can also edit it in the future if you want to change anything.
   .form-group
     %label{"for" => "activity_name"}= t('activities.form.activity_title')
     = f.text_field :name, class: 'form-control'
@@ -23,7 +19,6 @@
     = f.text_area :short_description, class: 'form-control'
   .form-group
     %label{"for" => "activity_long_description"}= t('activities.form.long_description')
-    %p You can use #{link_to "Markdown formatting", "http://commonmark.org/help/"} in the directions.
     = f.text_area :long_description, class: 'form-control', rows: 8
   .form-group
     %label{"for" => "activity_time_estimate"}= t('activities.form.time_estimate')
@@ -44,3 +39,4 @@
     = f.file_field :documents, multiple: true, direct_upload: true, class: "form-control-file"
     %br
     = f.submit t('submit'), class:"btn btn-primary"
+
