@@ -1,0 +1,12 @@
+= form_for(@front_page_post) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form_group
+    %p Title of the post
+    = f.text_field :title, class: 'form-control'
+  .form_group
+    %p Excerpt
+    = f.text_area :excerpt, class: 'form-control', rows: 3
+  .form_group
+    %p Content
+    = f.text_area :content, class: 'form-control', rows: 8
+  = f.submit "Submit", class: "btn btn-primary"

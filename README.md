@@ -24,7 +24,6 @@ Larger implementation tasks:
 - Report system for rule-breaking comments or activities
 - Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
-- Add in :ominauthable, :confirmable, and more with Devise
 - Add in a footer that sticks to the bottom of the page correctly.
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
@@ -40,7 +39,6 @@ Smaller tasks:
 - Pull more of the site text into en.yml so it can be localized
 - Add something that lets users manage and delete attached files when editing activities
 - Customize login and signup forms
-- Draft up activity submission guidelines and site rules
 
 ---
 

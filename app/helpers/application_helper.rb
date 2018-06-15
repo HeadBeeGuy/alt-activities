@@ -35,7 +35,31 @@ module ApplicationHelper
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
     
-    #markdown = Redcarpet::Markdown.new(RenderWithoutWrap, extensions)
+    markdown.render(text).html_safe
+  end
+
+  # creating a separate Markdown function that allows links and images
+  # currently only planning to use this for front page posts and job postings
+  # so it will only be used for content that's more vetted than general user content
+  def markdown_for_posts(text)
+    options = {
+      filter_html: true,
+      hard_wrap: true,
+      fenced_code_blocks: true,
+      no_links: false,
+      no_images: false,
+      no_styles: true
+    }
+    
+    extensions = {
+      no_intra_emphasis: true,
+      tables: true,
+      strikethrough: true,
+      highlight: true
+    }
+    
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
     
     markdown.render(text).html_safe
   end

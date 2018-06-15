@@ -1,0 +1,5 @@
+- provide(:title, "ALTopedia - All posts")
+
+- @front_page_posts.each do |post|
+  .card
+    %h5.card-header= link_to post.title, post

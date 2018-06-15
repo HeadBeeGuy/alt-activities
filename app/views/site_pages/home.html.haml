@@ -2,14 +2,21 @@
 
 .row
   .col-sm-12.col-md-8
-    %h1 Welcome to ALTopedia!
+    %h1 ALTopedia
 
     %p Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!
-  .nagajob.col-sm-12.col-md-4
+
+    .card
+      %h5.card-header= @top_post.title
+      .card-body
+        %p= markdown_for_posts(@top_post.excerpt)
+        %span.float-right= link_to "Read more", posts_path(@top_post)
+
+  .nagajob.col-sm-12.col-md-4.pt-2
     = link_to image_tag("nagajob.jpg", class: "mw-100 rounded"), "http://www.nagajob.co.jp"
 
 
 .row
-  = render partial: 'activities/compact_activity_list', locals: { label: "Newest activities", activity_list: @newest5 }
+  = render partial: 'activities/compact_activity_list', locals: { label: "Newest activities", activity_list: @newest }
   = render partial: 'activities/compact_activity_list', locals: { label: "Top 5 Site-wide", activity_list: @top5 }
 
