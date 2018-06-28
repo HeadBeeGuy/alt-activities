@@ -28,6 +28,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore local ActiveStorage directory (I think that's what this is)
+/storage/*
+
 # Elastic Beanstalk Files
 .ebignore
 .elasticbeanstalk/*

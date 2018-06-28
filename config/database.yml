@@ -9,9 +9,15 @@ default: &default
   pool: 5
   timeout: 5000
 
+# yes, I'm giving out credentials to the development db without encrypting them!
+# but frankly, if you have access to my laptop, I'm in hot water already
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: utf-8
+  username: jake
+  password:
+  host: localhost
+  database: altopedia-development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

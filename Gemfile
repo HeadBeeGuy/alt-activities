@@ -26,9 +26,13 @@ gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
 gem 'sidekiq'
+gem 'pg' # previously ran sqlite3 in development, but I need UUIDs now and Postgres does 'em
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.1'
+
+# 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
+gem 'nokogiri', '1.8.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -59,12 +63,13 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+	gem 'faker'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
 group :production do
-  gem 'pg', '~> 0.20' # Heroku is particular about which version of the pg gem to use
+  # gem 'pg', '~> 0.20' # Heroku is particular about which version of the pg gem to use
 end
 

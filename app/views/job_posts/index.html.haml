@@ -1,0 +1,18 @@
+- provide(:title, "Job listings")
+
+-# = render @job_posts
+
+- @job_posts.each do |job_post|
+  .job-listing.box-shadow.p-4.my-3.rounded
+    - if job_post.company_logo.attached?
+      = image_tag job_post.company_logo, class: "float-right col-3 img-fluid img-thumbnail ml-2 mb-2"
+    %h2.border-bottom.border-gray.pb-2= job_post.title
+
+    %p= markdown_for_posts(job_post.content)
+
+    %p= link_to "Apply for this job", job_post.external_url
+
+    - if user_signed_in? && policy(job_post).edit?
+      .btn-group{"role" => "group"}
+        = link_to "Edit", edit_job_post_path(job_post), class: "btn btn-outline-secondary btn-sm"
+        = link_to "Delete", job_post, method: :delete, data: { confirm: "Delete this job listing?" }, class: "btn btn-outline-secondary btn-sm"

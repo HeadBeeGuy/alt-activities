@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 	get '/altto', to: 'site_pages#altto'
 	get '/modqueue', to: 'activities#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
-	get '/posts/:id', to: 'front_page_posts#show', as: :posts
+  get '/posts/:id', to: 'front_page_posts#show', as: :posts
+  get '/jobs', to: 'job_posts#index'
 	
-	resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts
+	resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
 
 	resources :users do
 		member do

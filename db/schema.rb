@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_011628) do
+ActiveRecord::Schema.define(version: 2018_06_18_031703) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +58,19 @@ ActiveRecord::Schema.define(version: 2018_06_09_011628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_front_page_posts_on_user_id"
+  end
+
+  create_table "job_posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "title"
+    t.string "external_url"
+    t.text "content"
+    t.integer "priority", default: 0
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_job_posts_on_created_at"
+    t.index ["priority"], name: "index_job_posts_on_priority"
+    t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
   create_table "tag_categories", force: :cascade do |t|
@@ -143,4 +160,5 @@ ActiveRecord::Schema.define(version: 2018_06_09_011628) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "job_posts", "users"
 end

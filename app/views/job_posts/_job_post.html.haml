@@ -1,0 +1,8 @@
+.job-listing.box-shadow.p-3.my-3.rounded
+  - if @job_post.company_logo.attached?
+    = image_tag @job_post.company_logo, class: "float-right col-3 img-fluid img-thumbnail"
+  %h2= @job_post.title
+
+  %p= markdown(@job_post.content)
+
+  %p Want to know more? #{link_to "Click here!", @job_post.external_url}
