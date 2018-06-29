@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 		member do
 			put :approve
 			put :unapprove
+			delete :delete_attached_document
 		end
 	end
 

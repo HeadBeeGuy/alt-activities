@@ -44,4 +44,8 @@ class ActivityPolicy < ApplicationPolicy
   def modqueue?
     user.admin? or user.moderator?
   end
+
+  def delete_attached_document?
+    user.admin? or (user.activities.include?(activity))
+  end
 end

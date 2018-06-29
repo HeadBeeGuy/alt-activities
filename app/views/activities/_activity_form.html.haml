@@ -35,6 +35,16 @@
         = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
           %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
     %h3= t('activities.form.file-heading')
+    - if @activity.documents.attached?
+      .edit-attached-files-list.mb-2
+        %h5 This activity contains these files:
+        %p Click on the X to delete them. You don't need to re-submit the activity if you're just deleting files.
+        %ul
+        - @activity.documents.each do |file|
+          %li
+            %span= link_to file.blob.filename, url_for(file)
+            %span= link_to image_tag("x-circle.svg", alt: "(Delete)", title: "Delete this file"), 
+              delete_attached_document_activity_url(file, activity_id_for_deletion: @activity.id), method: :delete, data: { confirm: "Delete this file?" }
     %p= (t'activities.form.file-attach-text')
     = f.file_field :documents, multiple: true, direct_upload: true, class: "form-control-file"
     %br

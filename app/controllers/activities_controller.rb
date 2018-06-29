@@ -112,6 +112,21 @@ class ActivitiesController < ApplicationController
     authorize @unapproved
     @edited = Activity.where(status: [:edited])
   end
+
+	# swiping from https://stackoverflow.com/a/49517939
+	# and https://stackoverflow.com/a/49635423
+  def delete_attached_document
+    # We have to stop people from deleting files on activities they shouldn't be able to.
+    # So this parameter is somewhat clumsily passed in, because this is already kind of
+    # a weird place to have this function. Perhaps there's a more elegant way!
+    @activity = Activity.find(params[:activity_id_for_deletion])
+    authorize @activity
+    # It should be noted that :id is the ActiveStorage id for the file in question,
+    # not the activity
+		@document = ActiveStorage::Attachment.find(params[:id]) # not ::Blob!
+		@document.purge_later
+		redirect_back(fallback_location: root_url)
+	end
   
   private
   
