@@ -98,10 +98,10 @@ en:
       delete_confirmation: "Are you sure you wanna delete this one?"
       resubmit: "Edit and Re-submit"
     thumbs-up:
-      thumbs-up-label: "Thumbs up count"
+      thumbs-up-label: "Total"
       thumbs-up-logged-out: "Sign in or register to give a thumbs up!"
       submit-thumbs-up: "Thumbs up!"
-      delete-thumbs-up: "Un-thumbs up"
+      delete-thumbs-up: "Thumbs up"
     school-level-listing:
       top-activities: "Top activities"
       textbooks: "Textbooks"

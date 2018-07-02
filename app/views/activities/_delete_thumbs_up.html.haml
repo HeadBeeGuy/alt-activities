@@ -1,4 +1,6 @@
-= form_for(current_user.upvotes.find_by(activity_id: @activity.id),
-            html: { method: :delete }, remote: true) do |f|
-  = hidden_field_tag :activity_id, @activity.id
-  = f.submit t('activities.thumbs-up.delete-thumbs-up'), class: "btn btn-secondary btn-sm"
+.delete-thumbs-up
+  = form_for(current_user.upvotes.find_by(activity_id: @activity.id),
+              html: { method: :delete }, remote: true) do |f|
+    = hidden_field_tag :activity_id, @activity.id
+    = image_tag "thumbs-up.svg"
+    = f.submit t('activities.thumbs-up.delete-thumbs-up'), class: "btn btn-outline-secondary btn-sm"

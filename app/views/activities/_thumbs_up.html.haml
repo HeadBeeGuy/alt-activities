@@ -1,7 +1,7 @@
 %p 
   = t('activities.thumbs-up.thumbs-up-label')
   %span.badge.badge-info.badge-pill#thumbs-up-count= @activity.upvote_count
-#thumbs-up-voter
+#thumbs-up-voter.mb-2
   - if user_signed_in?
     - unless Upvote.find_by(activity_id: @activity.id, user_id: current_user.id)
       = render "create_thumbs_up"
