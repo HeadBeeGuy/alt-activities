@@ -5,7 +5,7 @@ class SitePagesController < ApplicationController
 			.where(status: :approved)
 		@newest = Activity.limit(10).select(:id, :name, :upvote_count).order(created_at: :desc)
 			.where(status: :approved)
-		@top_post = FrontPagePost.order(created_at: :desc).limit(1).select(:id, :title, :excerpt).first
+		@top_posts = FrontPagePost.order(created_at: :desc).limit(3).select(:id, :title, :excerpt)
 	end
 
   def about
