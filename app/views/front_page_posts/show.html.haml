@@ -1,6 +1,6 @@
 - provide(:title, "ALTopedia - #{@front_page_post.title}")
 
-.card
+.card.mb-4
   .card-header
     %h2= @front_page_post.title
   .card-body
@@ -12,3 +12,6 @@
   .card-footer.text-right
     %p by #{@front_page_post.user.username}
     %p= l(@front_page_post.created_at, format: :quite_short)
+
+= render partial: 'comments/comment_list', locals: { comments: @comments }
+= render partial: 'comments/form', locals: { commentable_type: "FrontPagePost", commentable_id: @front_page_post.id }

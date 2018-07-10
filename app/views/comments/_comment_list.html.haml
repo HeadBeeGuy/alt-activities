@@ -1,0 +1,20 @@
+.comment-list.mb-4
+  %h5 Comments
+  - comments.each do |comment|
+    .card.mb-2
+      .card-body.p-2.box-shadow
+        %small= link_to comment.user.username, comment.user, class: "border-bottom"
+        %small.float-right= l(comment.created_at, format: :quite_short)
+        - unless comment.solved?
+          %p= comment.content
+        - else
+          %p.text-muted.small (solved) #{comment.content}
+        - if user_signed_in?
+          .btn-group{"role" => "group", "aria-label" => "Comment controls"}
+            - if policy(comment).solve?
+              = link_to "Fixed it!", solve_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
+            - if policy(comment).unapprove?
+              = link_to "Hide", unapprove_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
+            - if policy(comment).delete?
+              = link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, class: "btn btn-outline-secondary btn-sm"
+= paginate comments

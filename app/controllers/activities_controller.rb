@@ -74,6 +74,9 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     authorize @activity
+    @comments = @activity.comments.order(created_at: :desc).normal.or(@activity.comments
+      .order(created_at: :desc).solved).includes(:user).page(params[:page])
+    @comment = Comment.new
   end
   
   def approve
@@ -108,9 +111,10 @@ class ActivitiesController < ApplicationController
   end
   
   def modqueue
-    @unapproved = Activity.where(status: [:unapproved])
+    @unapproved = Activity.unapproved.select(:id, :name, :user_id, :short_description)
     authorize @unapproved
-    @edited = Activity.where(status: [:edited])
+    @edited = Activity.edited.select(:id, :name, :user_id, :short_description)
+    @comments = Comment.unapproved
   end
 
 	# swiping from https://stackoverflow.com/a/49517939

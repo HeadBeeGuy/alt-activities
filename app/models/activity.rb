@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
   has_many :tags, through: :taggings
 
 	has_many :upvotes, dependent: :destroy
+  has_many :comments, as: :commentable
   belongs_to :user
   
   has_many_attached :documents

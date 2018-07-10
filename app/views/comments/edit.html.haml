@@ -1,0 +1,8 @@
+.form_group
+  = form_for(@comment) do |f|
+    = render 'shared/error_messages', object: f.object
+      .field
+        .form-group
+          = f.text_field :content, placeholder: "Write yer comment here", class: 'form-control'
+          = f.submit "Submit", class:"btn btn-primary"
+

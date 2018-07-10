@@ -18,7 +18,6 @@ Larger implementation tasks:
 - Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration
-- Comment system (comments will also go through mod queue)
 - Activity search system (will require some ActiveRecord/SQL wizardry to allow searches for required/optional tags)
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
@@ -29,6 +28,7 @@ Larger implementation tasks:
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
+- Add Ajax to comment submission, deletion, and approval
 
 ---
 
@@ -37,7 +37,6 @@ Smaller tasks:
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Clean up CRUD actions and add tests for Tag Categories
 - Pull more of the site text into en.yml so it can be localized
-- Add something that lets users manage and delete attached files when editing activities
 - Customize login and signup forms
 
 ---

@@ -1,0 +1,14 @@
+- if user_signed_in?
+  .comment-form
+    %h5 Write a comment
+    %small Please make sure your comment contains positive or constructive feedback.
+    = form_for(@comment) do |f|
+      .input-group
+        = f.text_field :content, placeholder: "Comment", class: 'form-control'
+        = f.hidden_field :commentable_type, value: commentable_type
+        = f.hidden_field :commentable_id, value: commentable_id
+        .input-group-append
+          = f.submit "Submit", class: "btn btn-outline-primary"
+- else
+  %p= link_to "Sign in or make an account to leave a comment.", new_user_session_path 
+

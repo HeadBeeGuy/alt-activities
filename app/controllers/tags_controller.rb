@@ -39,6 +39,9 @@ class TagsController < ApplicationController
 			.select(:name, :short_description, :upvote_count, :id).page(params[:page])
 		@top5 = @tag.activities.approved.limit(5).select(:id, :name, :upvote_count)
 			.order(upvote_count: :desc)
+    @comment = Comment.new
+    @comments = @tag.comments.normal.or(@tag.comments.solved).
+      page(params[:page]).includes(:user)
   end
   
   def index

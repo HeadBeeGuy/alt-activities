@@ -24,3 +24,7 @@
         %p.card-text= activity.short_description
 %br
 = paginate @activities
+
+= render partial: 'comments/comment_list', locals: { comments: @comments }
+
+= render partial: 'comments/form', locals: { commentable_type: "Tag", commentable_id: @tag.id }

@@ -1,0 +1,10 @@
+- provide(:title, "All comments")
+- @comments.each do |comment|
+  .card.mb-2
+    .card-body.p-2.box-shadow
+      %small= link_to comment.user.username, comment.user, class: "border-bottom"
+      %small= link_to "(Source)", comment.commentable
+      %small= comment.status
+      %small.float-right= l(comment.created_at, format: :quite_short)
+      %p= comment.content
+= paginate @comments

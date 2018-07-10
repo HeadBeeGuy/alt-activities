@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_031703) do
+ActiveRecord::Schema.define(version: 2018_07_03_050834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2018_06_18_031703) do
     t.integer "status", default: 0
     t.integer "upvote_count", default: 0
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "content"
+    t.integer "status", default: 0
+    t.bigint "user_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["created_at"], name: "index_comments_on_created_at"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "front_page_posts", force: :cascade do |t|
@@ -160,5 +173,6 @@ ActiveRecord::Schema.define(version: 2018_06_18_031703) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "job_posts", "users"
 end

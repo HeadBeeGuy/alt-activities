@@ -4,7 +4,7 @@ en:
   submit: "Submit"
   time:
     formats:
-      quite_short: "(%B %d, %Y)"
+      quite_short: "%B %d, %Y"
   layouts:
     site_title: "ALTopedia"
     log_in: "Log in"

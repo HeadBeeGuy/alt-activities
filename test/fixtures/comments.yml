@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+comment_one:
+  content: I totally got first comment!
+  user: regular_user_one
+  commentable: basic_activity_one (Activity)
+  status: :normal
+
+comment_two:
+  content: Rats! Too late!
+  user: regular_user_two
+  commentable: basic_activity_one (Activity)
+  status: :normal

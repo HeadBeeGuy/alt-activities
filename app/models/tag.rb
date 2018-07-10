@@ -1,6 +1,7 @@
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :activities, through: :taggings
+  has_many :comments, as: :commentable
   belongs_to :tag_category
   
   validates :short_name, presence: true, length: { maximum: 40 }, uniqueness: true

@@ -1,4 +1,4 @@
-.card
+.card.mb-4
   %h3.card-header= activity.name
   .card-body
     %h5.card-title= activity.short_description
@@ -33,4 +33,7 @@
   .card-footer.p-1
     %p.card-text.text-center
       %small.text-muted All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.
-    
+
+= render partial: 'comments/comment_list', locals: { comments: @comments }
+
+= render partial: 'comments/form', locals: { commentable_type: "Activity", commentable_id: @activity.id }

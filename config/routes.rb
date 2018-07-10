@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  get 'comments/new'
+  get 'comments/create'
+  get 'comments/edit'
+  get 'comments/update'
+  get 'comments/destroy'
 	devise_for :users
 	root 'site_pages#home'
 
@@ -15,7 +20,7 @@ Rails.application.routes.draw do
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
   get '/jobs', to: 'job_posts#index'
 	
-	resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
+  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
 
 	resources :users do
 		member do
@@ -34,7 +39,15 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :upvotes, only: [ :create, :destroy ]
+  resources :upvotes, only: [ :create, :destroy ]
+  
+  resources :comments do
+    member do
+      put :approve
+      put :unapprove
+      put :solve
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
