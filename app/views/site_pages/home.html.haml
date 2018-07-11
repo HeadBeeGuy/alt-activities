@@ -4,13 +4,13 @@
   .col-sm-12.col-md-8
     %h1.display-4.text-center ALTopedia
 
-    %p Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!
+    %p= t('.site-tagline')
 
     .card.main-post
       %h5.card-header= @top_posts.first.title
       .card-body
         %p= markdown_for_posts(@top_posts.first.excerpt)
-        %span.float-right= link_to "Read more", posts_path(@top_posts.first)
+        %span.float-right= link_to t('.read-more'), posts_path(@top_posts.first)
     - if @top_posts.second
       .card.secondary-post
         %h5.card-header= link_to @top_posts.second.title, posts_path(@top_posts.second)
@@ -24,6 +24,6 @@
 
 
 .row
-  = render partial: 'activities/compact_activity_list', locals: { label: "Newest activities", activity_list: @newest }
-  = render partial: 'activities/compact_activity_list', locals: { label: "Top 5 Site-wide", activity_list: @top5 }
+  = render partial: 'activities/compact_activity_list', locals: { label: t('.newest-activities'), activity_list: @newest }
+  = render partial: 'activities/compact_activity_list', locals: { label: t('.top-5-activities'), activity_list: @top5 }
 

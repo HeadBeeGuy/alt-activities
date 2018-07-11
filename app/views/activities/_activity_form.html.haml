@@ -1,32 +1,33 @@
 = form_for(@activity) do |f|
   = render 'shared/error_messages', object: f.object
   .guidelines-text
-    %p Thank you for contributing your own activity! Here are some guidelines to keep in mind as you're writing:
+    %p= t('.guidelines.guideline-heading')
     %ul
-      %li Please describe your activity clearly. The better your description, the more people will be able to understand and use it.
-      %li Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption.
-      %li Make sure that your submission is appropriate for a general audience and children in particular.
-      %li You can use Markdown formatting in your directions, but we've turned off hyperlinks and images. This is to help cut down on spam.
+      %li= t('.guidelines.rule-1')
+      %li= t('.guidelines.rule-2')
+      %li= t('.guidelines.rule-3')
+      %li= t('.guidelines.rule-4')
       %span= link_to "(Markdown guide)", "http://commonmark.org/help/"
-      %li Please don't advertise any services or companies.
-      %li By posting your activity on the site, you will make it available under the terms of the #{link_to "Creative Commons BY-NC-SA 4.0 license", "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.  This means that the activity will be posted for free on the site, and while others can use it for non-commercial purposes, they have to give you credit.
-      %li If you decide you want to take your activity down, you can do so at any time. You can also edit it in the future if you want to change anything.
+      %li= t('.guidelines.rule-5')
+      %li= t('.guidelines.rule-6')
+      %span= link_to "Creative Commons BY-NC-SA 4.0 license", "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      %li= t('.guidelines.rule-7')
   .form-group
-    %label{"for" => "activity_name"}= t('activities.form.activity_title')
+    %label{"for" => "activity_name"}= t('.activity_title')
     = f.text_field :name, class: 'form-control'
   .form-group
-    %label{"for" => "activity_short_description"}= t('activities.form.short_description')
+    %label{"for" => "activity_short_description"}= t('.short_description')
     = f.text_area :short_description, class: 'form-control'
   .form-group
-    %label{"for" => "activity_long_description"}= t('activities.form.long_description')
+    %label{"for" => "activity_long_description"}= t('.long_description')
     = f.text_area :long_description, class: 'form-control', rows: 8
   .form-group
-    %label{"for" => "activity_time_estimate"}= t('activities.form.time_estimate')
+    %label{"for" => "activity_time_estimate"}= t('.time_estimate')
     = f.text_field :time_estimate, class: 'form-control'
   .tag-chooser
-    %h4= t('activities.form.tag_heading')
-    %p= t('activities.form.tag_directions_1')
-    %p= t('activities.form.tag_directions_2')
+    %h4= t('.tag_heading')
+    %p= t('.tag_directions_1')
+    %p= t('.tag_directions_2')
     %p 
     - @tag_categories.each do |category|
       .tag-block.col-md-4
@@ -34,18 +35,18 @@
       %ul
         = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
           %li #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
-    %h3= t('activities.form.file-heading')
+    %h3= t('.file-heading')
     - if @activity.documents.attached?
       .edit-attached-files-list.mb-2
-        %h5 This activity contains these files:
-        %p Click on the X to delete them. You don't need to re-submit the activity if you're just deleting files.
+        %h5= t('.attached-files-header')
+        %p= t('.delete-attached-files')
         %ul
         - @activity.documents.each do |file|
           %li
             %span= link_to file.blob.filename, url_for(file)
             %span= link_to image_tag("x-circle.svg", alt: "(Delete)", title: "Delete this file"), 
               delete_attached_document_activity_url(file, activity_id_for_deletion: @activity.id), method: :delete, data: { confirm: "Delete this file?" }
-    %p= (t'activities.form.file-attach-text')
+    %p= (t'.file-attach-text')
     = f.file_field :documents, multiple: true, direct_upload: true, class: "form-control-file"
     %br
     = f.submit t('submit'), class:"btn btn-primary"

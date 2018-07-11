@@ -15,6 +15,7 @@ ja:
     es: "小学校"
     jhs: "中学校"
     hs: "高校"
+    warm-ups: "Warm-ups"
     grammar: "文法"
     contributors: "Contributors"
   login:
@@ -46,6 +47,11 @@ ja:
       title: "教科書"
       textbooks-heading: "全ての教科書"
   site_pages:
+    home:
+      site-tagline: "Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
+      read-more: "もっと読む"
+      newest-activities: "Newest activities"
+      top-5-activities: "Top 5 Site-wide"
     es:
       title: "小学校"
       es-heading: "小学校"
@@ -66,7 +72,16 @@ ja:
     page_titles:
       new_activity: "新しいアクティビティー"
       all_activities: "全てのアクティビティー"
-    form:
+    activity_form:
+      guidelines:
+        guideline-heading: "Thank you for sharing your activity! Here are some guidelines to keep in mind:"
+        rule-1: "Please describe your activity clearly. The better your description, the more people will be able to understand and use it."
+        rule-2: "Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption."
+        rule-3: "Make sure that your submission is appropriate for a general audience and children in particular."
+        rule-4: "You can use Markdown formatting in your directions, but we've turned off hyperlinks and images. This is to help cut down on spam."
+        rule-5: "Please don't advertise any services or companies."
+        rule-6: "By posting your activity on the site, you will make it available under the terms of the Creative Commons BY-NC-SA 4.0 license. This means that the activity will be posted for free on the site, and while others can use it for non-commercial purposes, they have to give you credit."
+        rule-7: "If you decide you want to take your activity down, you can do so at any time. You can also edit it in the future if you want to change anything."
       activity_title: "このアクティビティーの名前"
       short_description: "短い説明"
       long_description: "詳しい説明"
@@ -76,6 +91,8 @@ ja:
       tag_directions_2: "タッグが合えば合うほど、見つかりやすくなります。"
       file-heading: "ファイル"
       file-attach-text: "ファイルを追加したければ、添付してください。"
+      attached-files-header: "This activity contains these files:"
+      delete-attached-files: "Click on the X to delete them. You don't need to re-submit the activity if you're just deleting files."
       submit: "Submit"
     new_activity_header: "新しいアクティビティーを作る"
     index:
@@ -85,6 +102,7 @@ ja:
       edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
       edit_directions_2: "But don't worry! once it's approved again, it will go right back!"
     show:
+      file-list: "ファイル"
       time_estimate: "予想時間：%{time_estimate}"
       submitted_by: "作った人： "
       approve: "Approve"
@@ -102,6 +120,18 @@ ja:
     school-level-listing:
       top-activities: "最大なアクティビティー"
       textbooks: "教科書"
+  comments:
+    comment_list:
+      comment_heading: "コメント"
+      solve-link: "直した！"
+      hide-link: "隠す"
+      delete-link: "削除"
+      delete-confirmation: "このコメントを削除しますか？"
+    form:
+      form-header: "コメントを書く"
+      comment-guidelines: "Please make sure your comment contains positive or constructive feedback."
+      comment-placeholder: "コメント"
+      please-log-in: "Sign in or register an account to leave a comment."
 
   activerecord:
     errors:

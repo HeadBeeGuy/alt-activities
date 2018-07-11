@@ -6,7 +6,7 @@
       .col-md-9
         %p= markdown(activity.long_description)
         - if activity.documents.attached?
-          %h6 Files:
+          %h6= t('activities.show.file-list')
           - activity.documents.each do |document|
             %p= link_to document.blob.filename, url_for(document)
       .col-md-3

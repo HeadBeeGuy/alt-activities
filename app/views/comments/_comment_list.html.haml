@@ -1,5 +1,5 @@
 .comment-list.mb-4
-  %h5 Comments
+  %h5= t('.comment_heading')
   - comments.each do |comment|
     .card.mb-2
       .card-body.p-2.box-shadow
@@ -12,9 +12,9 @@
         - if user_signed_in?
           .btn-group{"role" => "group", "aria-label" => "Comment controls"}
             - if policy(comment).solve?
-              = link_to "Fixed it!", solve_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
+              = link_to t('.solve-link'), solve_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
             - if policy(comment).unapprove?
-              = link_to "Hide", unapprove_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
+              = link_to t('.hide-link'), unapprove_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm"
             - if policy(comment).delete?
-              = link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, class: "btn btn-outline-secondary btn-sm"
+              = link_to t('.delete-link'), comment, method: :delete, data: { confirm: t('.delete-confirmation') }, class: "btn btn-outline-secondary btn-sm"
 = paginate comments

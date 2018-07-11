@@ -18,6 +18,7 @@ en:
     es: "ES"
     jhs: "JHS"
     hs: "HS"
+    warm-ups: "Warm-ups"
     grammar: "Grammar"
     contributors: "Contributors"
   login:
@@ -49,6 +50,11 @@ en:
       title: "All Textbooks"
       textbooks-heading: "Textbooks"
   site_pages:
+    home:
+      site-tagline: "Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
+      read-more: "Read more"
+      newest-activities: "Newest activities"
+      top-5-activities: "Top 5 Site-wide"
     es:
       title: "Elementary School Activities"
       es-heading: "Elementary School"
@@ -69,7 +75,16 @@ en:
     page_titles:
       new_activity: "New Activity"
       all_activities: "All Activities"
-    form:
+    activity_form:
+      guidelines:
+        guideline-heading: "Thank you for sharing your activity! Here are some guidelines to keep in mind:"
+        rule-1: "Please describe your activity clearly. The better your description, the more people will be able to understand and use it."
+        rule-2: "Please don't submit an activity that's copyrighted or contains materials that you can't post for public consumption."
+        rule-3: "Make sure that your submission is appropriate for a general audience and children in particular."
+        rule-4: "You can use Markdown formatting in your directions, but we've turned off hyperlinks and images. This is to help cut down on spam."
+        rule-5: "Please don't advertise any services or companies."
+        rule-6: "By posting your activity on the site, you will make it available under the terms of the Creative Commons BY-NC-SA 4.0 license. This means that the activity will be posted for free on the site, and while others can use it for non-commercial purposes, they have to give you credit."
+        rule-7: "If you decide you want to take your activity down, you can do so at any time. You can also edit it in the future if you want to change anything."
       activity_title: "Title of this activity:"
       short_description: "Short description (This is what will get shown in activity listings):"
       long_description: "Detailed description and directions:"
@@ -79,6 +94,8 @@ en:
       tag_directions_2: "The more accurate your tags are, the easier people will be able to find your activity!"
       file-heading: "Files"
       file-attach-text: "If your activity has any files, please attach them:"
+      attached-files-header: "This activity contains these files:"
+      delete-attached-files: "Click on the X to delete them. You don't need to re-submit the activity if you're just deleting files."
       submit: "Submit"
     new_activity_header: "Submit a new activity"
     index:
@@ -88,6 +105,7 @@ en:
       edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
       edit_directions_2: "But don't worry! once it's approved again, it will go right back!"
     show:
+      file-list: "Files:"
       time_estimate: "Estimated time: %{time_estimate}"
       submitted_by: "Submitted by: "
       approve: "Approve"
@@ -105,3 +123,15 @@ en:
     school-level-listing:
       top-activities: "Top activities"
       textbooks: "Textbooks"
+  comments:
+    comment_list:
+      comment_heading: "Comments"
+      solve-link: "Fixed it!"
+      hide-link: "Hide"
+      delete-link: "Delete"
+      delete-confirmation: "Delete this comment?"
+    form:
+      form-header: "Write a comment"
+      comment-guidelines: "Please make sure your comment contains positive or constructive feedback."
+      comment-placeholder: "Comment"
+      please-log-in: "Sign in or register an account to leave a comment."
