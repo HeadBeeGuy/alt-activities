@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 	get '/warmups', to: 'site_pages#warmups'
 	get '/about', to: 'site_pages#about'
 	get '/altto', to: 'site_pages#altto'
+  get '/contact', to: 'site_pages#contact'
+  get '/resources', to: 'site_pages#resources'
 	get '/modqueue', to: 'activities#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
   get '/posts/:id', to: 'front_page_posts#show', as: :posts

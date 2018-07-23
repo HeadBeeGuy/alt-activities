@@ -7,9 +7,12 @@
     = csrf_meta_tags
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, shrink-to-fit=no"}
   %body.bg-light
-    = render 'layouts/header' 
-    - flash.each do |message_type, message|
-      = content_tag :div, message, class: "alert alert-#{message_type}"
-    .container
-      = yield
-    -# = render 'layouts/footer'
+    .site-header
+      = render 'layouts/header' 
+      - flash.each do |message_type, message|
+        = content_tag :div, message, class: "alert alert-#{message_type}"
+    .site-body.mb-4
+      .container
+        = yield
+    .site-footer
+      = render 'layouts/footer'

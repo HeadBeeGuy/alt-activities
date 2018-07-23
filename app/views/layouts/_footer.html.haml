@@ -1,10 +1,12 @@
--# Still not ready for public display!
-%footer.container-fluid.py-5.mt-4.bg-secondary
+%footer.container-fluid.p-4.mt-4.bg-secondary
   .row
-    .col-md.text-light
-      %p All content on this site is subject to whichever license we end up going with.
+    .col-md-4
+      %h5.text-light ALTopedia
       %ul.list-unstyled.text-small
-        %li= link_to "Contact", "#", class: "disabled text-light"
-        %li= link_to "Terms of Service", "#", class: "disabled text-light"
-        %li= link_to "Site map", "#", class: "disabled text-light"
-        %li= link_to "ALT Training Online", "http://www.alttrainingonline.com", class: "disabled text-light"
+        %li= link_to t('layouts.about'), about_path, class: "text-light"
+        %li= link_to "Contact", contact_path, class: "disabled text-light"
+    .col-md-4
+      %h5.text-light Elsewhere
+      %ul.list-unstyled.text-small
+        %li= link_to "ALT Training Online", altto_path, class: "text-light"
+        %li= link_to "Resources", resources_path, class: "text-light"

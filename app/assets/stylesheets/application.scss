@@ -86,7 +86,9 @@
   color: #343a40;
 }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow { 
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
 
 .delete-thumbs-up {
   opacity: 0.2;
@@ -94,4 +96,8 @@
 
 .secondary-post {
   margin-top: -2px;
+}
+
+.site-body {
+	min-height: 80vh;
 }
