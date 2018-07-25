@@ -39,8 +39,9 @@ class UsersController < ApplicationController
   
   def index
 		@moderators = User.moderator.select(:id, :username)
-		@contributors = User.select(:id, :username, :activity_count).order(activity_count: :desc)
-			.page(params[:page])
+    @top_contributors = User.select(:id, :username, :activity_count).where("activity_count > 0")
+      .order(activity_count: :desc).limit(8).page(params[:page])
+    @all_users = User.select(:id, :username, :activity_count).order(created_at: :desc).page(params[:page])
   end
 
 	def silence
