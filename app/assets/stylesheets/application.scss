@@ -101,3 +101,40 @@
 .site-body {
 	min-height: 80vh;
 }
+
+// custom palette based on #05a2c7 as the primary color
+$altopedia_primary: #05a2c7;
+$altopedia_bright: #4fbad3;
+$altopedia_dark: #025f74;
+.bg-primary { 
+  background: linear-gradient(to right, $altopedia_primary, $altopedia_bright)
+}
+
+.site-footer {
+  background-color: $altopedia_dark;
+}
+
+a {
+  color: $altopedia_primary;
+}
+a:hover {
+  color: $altopedia_dark;
+}
+
+.badge-success {
+  background-color: #00b530;
+}
+
+.btn-primary {
+  background-color: $altopedia_primary;
+}
+
+.btn-outline-primary {
+  color: $altopedia_primary;
+  border-color: $altopedia_primary;
+}
+
+.btn-outline-primary:hover {
+  background-color: $altopedia_primary;
+  border-color: $altopedia_primary;
+}
