@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.0'
+gem 'rails', '5.2.1'
 gem 'railties'
 gem 'puma'
 gem 'bootsnap'
@@ -25,14 +25,17 @@ gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
-gem 'sidekiq'
-gem 'pg' # previously ran sqlite3 in development, but I need UUIDs now and Postgres does 'em
+gem 'sidekiq' # the Rails background job solution of choice, it would appear!
+gem 'pg', '1.0.0' # all PostGres all the time!
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.1'
 
 # 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
 gem 'nokogiri', '1.8.2'
+# someone on StackOverflow said this helped their deployment issue with autoprefixer
+# https://stackoverflow.com/a/51991302
+gem 'mini_racer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -56,7 +59,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   
-  # In earlier projects Cloud9 got fussy when sqlite wasn't the default database, but Heroku won't let me push it up there
+  # vestigial now, but I'm a bit afraid that removing it will break something
   gem 'sqlite3'
 end
 
@@ -70,6 +73,6 @@ group :development do
 end
 
 group :production do
-  # gem 'pg', '~> 0.20' # Heroku is particular about which version of the pg gem to use
+  # gem 'pg', '~> 0.20' # now vestigial
 end
 
