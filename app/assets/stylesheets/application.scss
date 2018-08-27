@@ -127,6 +127,7 @@ a:hover {
 
 .btn-primary {
   background-color: $altopedia_primary;
+  border-color: $altopedia_primary;
 }
 
 .btn-outline-primary {
@@ -136,5 +137,10 @@ a:hover {
 
 .btn-outline-primary:hover {
   background-color: $altopedia_primary;
+  border-color: $altopedia_primary;
+}
+
+.page-item.active .page-link {
+  background-color: $altopedia_primary;  
   border-color: $altopedia_primary;
 }
