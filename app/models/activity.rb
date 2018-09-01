@@ -10,7 +10,7 @@ class Activity < ApplicationRecord
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :short_description, presence: true, length: { maximum: 200 }
-  validates :long_description, presence: true, length: { maximum: 3000 } # need to see how feasible this is in practice!
+  validates :long_description, presence: true, length: { maximum: 6000 } # up from 3000 - as always, subject to change
   #validates :tags, presence: true # I want to validate them, but it makes application submission break
 	validates :upvote_count, numericality: { greater_than_or_equal_to: 0 }
   
