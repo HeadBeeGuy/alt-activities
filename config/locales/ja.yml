@@ -132,6 +132,13 @@ ja:
       comment-guidelines: "Please make sure your comment contains positive or constructive feedback."
       comment-placeholder: "コメント"
       please-log-in: "Sign in or register an account to leave a comment."
+  registration:
+    sign-up-heading: 新しいアカウントを登録する
+    sign-up-info-1: Make an account at ALTopedia to post activities, leave comments, and vote on them!
+    sign-up-info-2: Registration is completely free! You can choose to delete your account later if you want.
+    sign-up-info-3: The site uses e-mail for account verification and password resets, so you'll need to provide a valid e-mail address.
+    sign-up-info-4: Choose whatever you like for your username, but please make sure it's appropriate for the site.
+    sign-up-button: Sign up
 
   activerecord:
     errors:
