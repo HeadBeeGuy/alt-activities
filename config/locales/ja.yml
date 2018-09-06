@@ -18,6 +18,12 @@ ja:
     warm-ups: "Warm-ups"
     grammar: "文法"
     contributors: "Contributors"
+    contact: "Contact"
+    acknowledgements: "Acknowledgements"
+    external-links: "Elsewhere"
+    altto: "ALT Training Online"
+    resources: "Resources"
+    job-listings: "Jobs"
   login:
     log_in: "ログイン"
     remember_me: "Remember me"
@@ -25,6 +31,7 @@ ja:
     password_prompt: "パスワード"
     make_new_account: "新しいアカウントを登録する"
     forgot_password: "パスワード忘れた！"
+    no-confirmation-instructions: "Didn't receive confirmation instructions?"
   users:
     show:
       title: "ユーザー情報"
@@ -42,10 +49,22 @@ ja:
       home-country: "母国"
       location: "現在な場所"
       bio: "ユーザー情報"
+    index:
+      title: "ALTopedia - Contributors"
+      top-contributors: "Top contributors"
+      newest-users: "Newest users"
+      moderators: "Moderators"
   textbooks:
     index:
       title: "教科書"
       textbooks-heading: "全ての教科書"
+    show:
+      textbook-page-title: "ALTopedia - Textbook: %{textbook_title}"
+      textbook-heading: "Textbook: %{textbook_title}"
+      textbook-description: "Description: %{description}"
+      textbook-level: "Level: %{level}"
+      page-number: "Page Number"
+      page-description: "Description"
   site_pages:
     home:
       site-tagline: "Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
@@ -120,6 +139,12 @@ ja:
     school-level-listing:
       top-activities: "最大なアクティビティー"
       textbooks: "教科書"
+  tags:
+    show:
+      show-tag-title: "ALTopedia - Tag: %{tag_name}"
+      top-5-label: "Top 5 activities"
+      description: "Description: %{tag_description}"
+      recent-activities-heading: "Recent activities"
   comments:
     comment_list:
       comment_heading: "コメント"

@@ -1,20 +1,20 @@
-- provide(:title, "Tag: #{@tag.long_name}")
+- provide(:title, t('.show-tag-title', tag_name: @tag.long_name) )
 
 .row
   .col-sm-10.col-md-8.col-lg-8
     %h3= @tag.long_name
-    %p Category: #{link_to @tag.tag_category.name, @tag.tag_category}
+    %p= link_to "#{@tag.tag_category.name}", @tag.tag_category
 
-    = markdown("Description: #{@tag.description}")
+    %p= markdown( t('.description', tag_description: @tag.description) )
 
     - if user_signed_in? && policy(@tag).edit?
       .btn-group.float-right{"role" => "group", "aria-label" => "Tag controls"}
         = link_to "Edit Tag", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
         - if policy(@tag).delete?
           = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
-  = render partial: 'activities/compact_activity_list', locals: { label: "Top 5 activities", activity_list: @top5 }
+  = render partial: 'activities/compact_activity_list', locals: { label: t('.top-5-label'), activity_list: @top5 }
 
-%h5.pt-2 Recent activities:
+%h5.pt-2= t('.recent-activities-heading')
 .card-columns.pt-2
   - @activities.each do |activity|
     .card

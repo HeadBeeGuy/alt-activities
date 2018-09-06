@@ -1,10 +1,10 @@
--provide(:title, "Show Textbook")
+-provide(:title, t('.textbook-page-title', textbook_title: @textbook.name) )
 
-%h3 Textbook: #{@textbook.name}
+%h3= t('.textbook-heading', textbook_title: @textbook.name)
 
-%p Description: #{@textbook.additional_info}
+%p= t('.textbook-description', description: @textbook.additional_info)
 
-%p Level: #{@textbook.level}
+%p= t('.textbook-level', level: @textbook.level)
 
 - if user_signed_in? && policy(@textbook).update?
   .btn-group.float-left{"role" => "group", "aria-label" => "Textbook controls"}
@@ -14,9 +14,9 @@
 %table.table.table-striped.table-sm
   %thead
     %tr
-      %th{"scope" => "col"} Page Number
-      %th{"scope" => "col"} Description
-      %th{"scope" => "col"} Grammar point
+      %th{"scope" => "col"}= t('.page-number')
+      %th{"scope" => "col"}= t('.page-description')
+      %th{"scope" => "col"}= t('.grammar-point')
   %tbody
     - @textbook.textbook_pages.order(page: :asc).each do |page|
       %tr

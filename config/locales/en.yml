@@ -21,6 +21,12 @@ en:
     warm-ups: "Warm-ups"
     grammar: "Grammar"
     contributors: "Contributors"
+    contact: "Contact"
+    acknowledgements: "Acknowledgements"
+    external-links: "Elsewhere"
+    altto: "ALT Training Online"
+    resources: "Resources"
+    job-listings: "Jobs"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
@@ -28,6 +34,8 @@ en:
     password_prompt: "Password"
     make_new_account: "Create a new account"
     forgot_password: "Forgot your password?"
+    no-confirmation-instructions: "Didn't receive confirmation instructions?"
+    no-unlock-instructions: "Didn't receive unlock instructions?"
   users:
     show:
       title: "User info"
@@ -45,10 +53,23 @@ en:
       home-country: "Home country"
       location: "Location"
       bio: "User bio"
+    index:
+      title: "ALTopedia - Contributors"
+      top-contributors: "Top contributors"
+      newest-users: "Newest users"
+      moderators: "Moderators"
   textbooks:
     index:
-      title: "All Textbooks"
+      title: "ALTopedia - Textbooks"
       textbooks-heading: "Textbooks"
+    show:
+      textbook-page-title: "ALTopedia - Textbook: %{textbook_title}"
+      textbook-heading: "Textbook: %{textbook_title}"
+      textbook-description: "Description: %{description}"
+      textbook-level: "Level: %{level}"
+      page-number: "Page Number"
+      page-description: "Description"
+      grammar-point: "Grammar point"
   site_pages:
     home:
       site-tagline: "Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
@@ -123,6 +144,12 @@ en:
     school-level-listing:
       top-activities: "Top activities"
       textbooks: "Textbooks"
+  tags:
+    show:
+      show-tag-title: "ALTopedia - Tag: %{tag_name}"
+      top-5-label: "Top 5 activities"
+      description: "Description: %{tag_description}"
+      recent-activities-heading: "Recent activities"
   comments:
     comment_list:
       comment_heading: "Comments"
