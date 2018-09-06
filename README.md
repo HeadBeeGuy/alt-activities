@@ -21,14 +21,14 @@ Larger implementation tasks:
 - Activity search system (will require some ActiveRecord/SQL wizardry to allow searches for required/optional tags)
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
-- Customize the Bootstrap layout so it doesn't look so generic
 - Look into localizing model data as well (primarily tag information)
-- Add in a footer that sticks to the bottom of the page correctly.
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
 - Add Ajax to comment submission, deletion, and approval
+- Figure out how to search for activities based on them having multiple tags. Can do a lot if I figure out how to build this query!
+- Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
 
 ---
 
@@ -37,10 +37,13 @@ Smaller tasks:
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Clean up CRUD actions and add tests for Tag Categories
 - Pull more of the site text into en.yml so it can be localized
-- Customize login and signup forms
+- Spruce up user profile page (make information display more interesting, improve display of user activities)
+- Improve school level pages - show things like warm-ups for each level.
+- Make the grammar page look less ugly
+- Add an accessible index page for front page posts
 
 ---
 
 Current bugs:
  
-
+- If a user submits an activity that fails validation (like a text field being too long) and they attached files, it generates a server error instead of returning them to the form with an error message display.
