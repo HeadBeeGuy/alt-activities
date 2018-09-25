@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 job_post_one:
-  title: Job One
-  external_url: http://www.example.com
+  title: The first job post
+  external_url: http://job_one.example.com
   content: All other jobs pale in comparison to Job One!
   user: admin_user_one
 
 job_post_two:
-  title: Job Two
-  external_url: http://www.example.com
+  title: The second job post
+  external_url: http://job_two.example.com
   content: Not quite as prestigious as Job One, but less pressure.
   user: admin_user_one
