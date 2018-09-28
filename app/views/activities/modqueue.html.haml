@@ -47,13 +47,23 @@
         %td= link_to "Approve", approve_comment_path(comment), method: :put
         %td= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }
 
+.row
+  .col-sm-10.col-lg-6
+    %h4 Other useful administration links:
+    %ul
+      %li= link_to "View all users", users_path
+      -if current_user.admin?
+        %li= link_to "Write a new front page post", new_front_page_post_path
+        %li= link_to "Make a new tag", new_tag_path
+        %li= link_to "Make a new tag category", new_tag_category_path
+        %li= link_to "Make a new job post", new_job_post_path
+      %li= link_to "Make a new textbook", new_textbook_path
 
-%h4 Other useful administration links:
-%ul
-  %li= link_to "View all users", users_path
-  -if current_user.admin?
-    %li= link_to "Write a new front page post", new_front_page_post_path
-    %li= link_to "Make a new tag", new_tag_path
-    %li= link_to "Make a new tag category", new_tag_category_path
-    %li= link_to "Make a new job post", new_job_post_path
-  %li= link_to "Make a new textbook", new_textbook_path
+  .col-sm-10.col-lg-5
+    %h4 The latest 5 users
+    %ul
+      - @newest_users.each do |user|
+        %li 
+          %span= link_to user.username, user
+          %small (#{user.created_at.strftime("%B %d")})
+

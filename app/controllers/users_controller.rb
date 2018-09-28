@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 		@moderators = User.moderator.select(:id, :username)
     @top_contributors = User.select(:id, :username, :activity_count).where("activity_count > 0")
       .order(activity_count: :desc).limit(8).page(params[:page])
-    @all_users = User.select(:id, :username, :activity_count).order(created_at: :desc).page(params[:page])
+    @all_users = User.normal.select(:id, :username, :activity_count).order(created_at: :desc).page(params[:page])
   end
 
 	def silence

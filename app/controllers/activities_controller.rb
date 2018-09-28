@@ -115,6 +115,8 @@ class ActivitiesController < ApplicationController
     authorize @unapproved
     @edited = Activity.edited.select(:id, :name, :user_id, :short_description)
     @comments = Comment.unapproved
+    @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
+      .limit(5)
   end
 
 	# swiping from https://stackoverflow.com/a/49517939
