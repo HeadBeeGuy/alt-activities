@@ -17,8 +17,9 @@ class User < ApplicationRecord
   has_many :activities
 	has_many :upvotes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :job_posts, dependent: :destroy
   
-  enum role: [:silenced, :normal, :moderator, :admin]
+  enum role: [:silenced, :normal, :moderator, :admin, :job_poster]
   
   # making a "login" virtual attribute, as per Devise wiki: 
   # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address

@@ -11,7 +11,9 @@
         %li.nav-item.active
           = link_to  current_user.username, current_user, class: "nav-link"
         - if current_user.admin? || current_user.moderator?
-          %li.nav-item.active= link_to "Mod queue" , modqueue_path, class: "nav-link"
+          %li.nav-item.active= link_to "Mod queue", modqueue_path, class: "nav-link"
+        - elsif current_user.job_poster?
+          %li.nav-item.active= link_to "Post new job listing", new_job_post_path, class: "nav-link"
         %li.nav-item.active
           = link_to t('layouts.log_out'), destroy_user_session_path, method: :delete, class: "nav-link"
       - else

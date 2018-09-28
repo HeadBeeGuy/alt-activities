@@ -35,4 +35,11 @@ silenced_user_one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :silenced
   confirmed_at: <%= DateTime.now %>
+
+job_promoter:
+  username: Jimmy JobPoster
+  email: i_got_da_jobz@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
+  role: :job_poster
+  confirmed_at: <%= DateTime.now %>
   

@@ -5,9 +5,18 @@ job_post_one:
   external_url: http://job_one.example.com
   content: All other jobs pale in comparison to Job One!
   user: admin_user_one
+  priority: :normal
 
 job_post_two:
   title: The second job post
   external_url: http://job_two.example.com
   content: Not quite as prestigious as Job One, but less pressure.
   user: admin_user_one
+  priority: :normal
+
+jimmy_job:
+  title: A job from Jimmy, Job Poster extraordinaire!
+  external_url: http://jimmy-job-jamboree.example.com
+  content: Jimmy has jobs for you! Apply away!
+  user: job_promoter
+  priority: :primary_sponsor
