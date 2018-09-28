@@ -2,26 +2,27 @@
 
 -# Not splitting this out into a partial yet - User creation and user editing will need to look different
 
-%h3= t('.heading')
-.input-group.mb-3
-  =form_for(@user) do |f|
-    .input-group-prepend
-      %span.input-group-text#username-input= t('.username')
-      = f.text_field :username, class: 'form-control', "aria-described-by" => "username-input", "aria-label" => "Username", disabled: !current_user.admin?
-    .input-group-prepend
-      %span.input-group-text#email-input= t('.email')
-      = f.text_field :email, class: 'form-control', "aria-describedby" => "email-input", "aria-label" => "E-mail", disabled: !current_user.admin?
-    .input-group-prepend
-      %span.input-group-text#home-country-input= t('.home-country')
-      = f.text_field :home_country, class: 'form-control', "aria-describedby" => "home-country-input", "aria-label" => "Home country"
-    .input-group-prepend
-      %span.input-group-text#location-input= t('.location')
-      = f.text_field :location, class: 'form-control', "aria-describedby" => "location-input", "aria-label" => "Current location:"
-    .input-group-prepend
-      %span.input-group-text#bio-input= t('.bio')
-      = f.text_area :bio, class: 'form-control', "aria-describedby" => "bio-input", "aria-label" => "User bio", rows: 4
+.col-sm-12.col-md-8
+  %h3= t('.heading')
 
+  %p= t('.profile-instructions')
+
+  = form_for(@user) do |f|
+    = render 'shared/error_messages', object: f.object
+    .form-group
+      %label{"for" => "username"}= t('.username')
+      = f.text_field :username, class: 'form-control', disabled: !current_user.admin?
+    .form-group
+      %label{"for" => "email"}= t('.email')
+      = f.text_field :email, class: 'form-control', disabled: !current_user.admin?
+    .form-group
+      %label{"for" => "home_country"}= t('.home-country')
+      = f.text_field :home_country, class: 'form-control'
+    .form-group
+      %label{"for" => "location"}= t('.location')
+      = f.text_field :location, class: 'form-control'
+    .form-group
+      %label{"for" => "bio"}= t('.bio')
+      = f.text_area :bio, class: 'form-control', rows: 4
 
     = f.submit t('submit'), class: "btn btn-primary"
-
-

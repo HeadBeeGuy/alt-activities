@@ -35,6 +35,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities.approved.select(:id, :name, :upvote_count, :short_description)
+      .page(params[:page]).order(created_at: :desc)
+    @upvotes = Upvote.where(user: @user).includes(:activity)
   end
   
   def index

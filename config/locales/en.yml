@@ -38,16 +38,18 @@ en:
     no-unlock-instructions: "Didn't receive unlock instructions?"
   users:
     show:
-      title: "User info"
-      user-status: "User status: %{status}"
-      home-country: "Home country: %{country}"
-      location: "Location: %{location}"
-      bio: "User bio: %{bio}"
+      title: "ALTopedia user - %{username}"
+      user-status: "User status:"
+      home-country: "Home country:"
+      location: "Location:"
+      bio: "User bio:"
+      upvotes: "Your thumbs up:"
       edit: "Edit info"
       activity-list: "This user's activities:"
     edit:
       title: "Edit user"
       heading: "Edit your profile"
+      profile-instructions: "Feel free to add information to your profile! All fields are optional."
       username: "Username"
       email: "E-mail address"
       home-country: "Home country"

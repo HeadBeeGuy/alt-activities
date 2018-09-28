@@ -1,33 +1,46 @@
-- provide(:title, t('.title'))
+- provide(:title, t('.title', username: @user.username))
 
-%h3= @user.username
-
-%p= t('.user-status', status: @user.role)
-%p= t('.home-country', country: @user.home_country)
-%p= t('.location', location: @user.location)
-%p= t('.bio', bio: @user.bio)
-
-- if user_signed_in?
-  .btn-group{"role" => "group", "aria-label" => "User controls"}
-    - if policy(@user).update?
-      =link_to t('.edit'), edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
-    - if policy(@user).promote?
-      =link_to "Promote to moderator", promote_user_path(@user), method: :put, data: { confirm: "Promote this user to moderator?" }, class: "btn btn-outline-secondary btn-sm"
-    - if policy(@user).demote?
-      =link_to "Demote", demote_user_path(@user), method: :put, data: { confirm: "Demote this user?" }, class: "btn btn-outline-secondary btn-sm"
-    - if policy(@user).silence?
-      =link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?" }, class: "btn btn-outline-secondary btn-sm"
-    - if policy(@user).unsilence?
-      =link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Remove this user's silenced status?" }, class: "btn btn-outline-secondary btn-sm"
-    - if policy(@user).delete?
-      =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
-
-%p Total activities: #{@user.activity_count}
-%p= t('.activity-list')
-
-- @user.activities.approved.each do |activity|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to activity.name, activity
-      %span.font-weight-normal= activity.short_description
-      %span.badge.badge-info.float-right= activity.upvote_count
+.box-shadow.p-4.my-3.rounded.bg-white
+  %h1.text-center.border-bottom.border-gray.mb-3.p-2= @user.username
+  .row
+    .col-sm-10.col-lg-6
+      %p
+        %span= t('.home-country')
+        %span= @user.home_country
+    .col-sm-10.col-lg-6
+      %p
+        %span= t('.location')
+        %span= @user.location
+    .col-12
+      %p
+        %span= t('.bio')
+        %span= @user.bio
+    - if user_signed_in? && ( current_user == @user || current_user.admin? )
+      .col-12
+        %p= t('.upvotes')
+        %ul
+          - @upvotes.each do |upvote|
+            %li= link_to upvote.activity.name, upvote.activity
+    - if user_signed_in?
+      .btn-group.m-2{"role" => "group", "aria-label" => "User controls"}
+        - if policy(@user).update?
+          =link_to t('.edit'), edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).promote?
+          =link_to "Promote to moderator", promote_user_path(@user), method: :put, data: { confirm: "Promote this user to moderator?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).demote?
+          =link_to "Demote", demote_user_path(@user), method: :put, data: { confirm: "Demote this user?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).silence?
+          =link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).unsilence?
+          =link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Remove this user's silenced status?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).delete?
+          =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
+    .col-12
+      %h6= t('.activity-list')
+      - @activities.each do |activity|
+        .card
+          .card-body
+            %span.font-weight-bold= link_to activity.name, activity
+            %span.font-weight-normal= activity.short_description
+            %span.badge.badge-info.float-right= activity.upvote_count
+      = paginate @activities

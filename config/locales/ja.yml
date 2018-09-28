@@ -35,10 +35,11 @@ ja:
   users:
     show:
       title: "ユーザー情報"
-      user-status: "ユーザー級： %{status}"
-      home-country: "母国： %{country}"
-      location: "現在な場所： %{location}"
-      bio: "ユーザー情報： %{bio}"
+      user-status: "ユーザー級："
+      home-country: "母国："
+      location: "現在な場所："
+      bio: "ユーザー情報："
+      upvotes: "Your thumbs up:"
       edit: "編集"
       activity-list: "このユーザーのアクティビティー："
     edit:
