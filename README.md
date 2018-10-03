@@ -18,7 +18,7 @@ Larger implementation tasks:
 - Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration
-- Activity search system (will require some ActiveRecord/SQL wizardry to allow searches for required/optional tags)
+- Activity search system (likely an AND search on activities with certain tags. Maybe just use Google or another search provider for text searches?)
 - System for users to submit ideas for new tags or textbooks
 - Report system for rule-breaking comments or activities
 - Look into localizing model data as well (primarily tag information)
@@ -27,7 +27,6 @@ Larger implementation tasks:
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
 - Add Ajax to comment submission, deletion, and approval
-- Figure out how to search for activities based on them having multiple tags. Can do a lot if I figure out how to build this query!
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
 
 ---
@@ -36,11 +35,10 @@ Smaller tasks:
 
 - A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Clean up CRUD actions and add tests for Tag Categories
-- Pull more of the site text into en.yml so it can be localized
-- Spruce up user profile page (make information display more interesting, improve display of user activities)
 - Improve school level pages - show things like warm-ups for each level.
 - Make the grammar page look less ugly
 - Add an accessible index page for front page posts
+- Improve the textbook index page - sort by level and make them look a lot less ugly
 
 ---
 
