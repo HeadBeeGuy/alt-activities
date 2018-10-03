@@ -1,5 +1,12 @@
-- provide(:title, "ALTopedia - All posts")
+- provide(:title, t('.title'))
 
 - @front_page_posts.each do |post|
-  .card
-    %h5.card-header= link_to post.title, post
+  .card.mb-2
+    .card-header
+      %h5= link_to post.title, post
+    .card-body.p-2.pl-4
+      %p= markdown_for_posts(post.excerpt)
+      .span.text-right= l(post.created_at, format: :quite_short)
+
+=paginate @front_page_posts
+

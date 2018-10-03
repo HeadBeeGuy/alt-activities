@@ -7,16 +7,18 @@
     %p= t('.site-tagline')
 
     .card.main-post
-      %h5.card-header= @top_posts.first.title
-      .card-body
-        %p= markdown_for_posts(@top_posts.first.excerpt)
-        %span.float-right= link_to t('.read-more'), posts_path(@top_posts.first)
+      - if @top_posts.first
+        %h5.card-header= @top_posts.first.title
+        .card-body
+          %p= markdown_for_posts(@top_posts.first.excerpt)
+          %span.float-right= link_to t('.read-more'), posts_path(@top_posts.first)
     - if @top_posts.second
       .card.secondary-post
         %h5.card-header= link_to @top_posts.second.title, posts_path(@top_posts.second)
     - if @top_posts.third
       .card.secondary-post
         %h5.card-header= link_to @top_posts.third.title, posts_path(@top_posts.third)
+    %p.mt-2.text-right= link_to t('.front-page-posts-index'), front_page_posts_path
 
   .nagajob.col-sm-12.col-md-4.pt-2
     = link_to image_tag("nagajob.jpg", class: "mw-100 rounded"), "http://www.nagajob.co.jp"

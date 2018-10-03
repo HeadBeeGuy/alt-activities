@@ -106,10 +106,8 @@ class FrontPagePostsTest < ActionDispatch::IntegrationTest
       delete front_page_post_path(@normal_post)
     end
 
-    # this is broken - the front page assumes there's at least one post
-    # is it worth trying to fix it?
-    # get root_path
-    # assert_no_match former_title, response.body
+    get root_path
+    assert_no_match former_title, response.body
   end
 
   test "a non-admin can't edit or delete front page posts" do

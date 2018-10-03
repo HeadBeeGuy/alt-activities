@@ -42,7 +42,8 @@ class FrontPagePostsController < ApplicationController
 	end
 
 	def index
-		@front_page_posts = FrontPagePost.all.select(:id, :title)
+		@front_page_posts = FrontPagePost.all.select(:id, :title, :created_at, :excerpt)
+      .page(params[:page])
 	end
 
 	def destroy
