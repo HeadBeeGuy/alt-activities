@@ -32,10 +32,10 @@ gem 'pg', '1.0.0' # all PostGres all the time!
 gem 'loofah', '~> 2.2.1'
 
 # 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
-gem 'nokogiri', '1.8.4'
+gem 'nokogiri', '1.8.2'
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
-# gem 'mini_racer'
+gem 'mini_racer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
