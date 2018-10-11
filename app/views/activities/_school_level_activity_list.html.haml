@@ -1,19 +1,19 @@
-%h5= t('activities.school-level-listing.top-activities')
+.row.mb-4
+  = render partial: 'activities/compact_activity_list', locals: { label: t('activities.school-level-listing.top-10-activities'), activity_list: @top10 }
+  = render partial: 'activities/compact_activity_list', locals: { label: t('activities.school-level-listing.warm-ups'), activity_list: @warmups }
+  .col-sm-10.col-md-4.pt-2
+    %h4 Textbooks
+    %ul
+      - @textbooks.each do |textbook|
+        %li= link_to textbook.name, textbook
 
-- @activities.each do |activity|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to activity.name, activity
-      %span.font-weight-normal= activity.short_description
-      - activity.tags.each do |tag|
-        = link_to tag.long_name, tag, class: "badge badge-success"
-      %span.badge.badge-info.float-right= activity.upvote_count
-%br
-= paginate @activities
-%br
-%br
-%h5= t('activities.school-level-listing.textbooks')
-- textbook_level.each do |textbook|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to textbook.name, textbook
+%h5 All activities
+
+.card-columns
+  - @all_activities.each do |activity|
+    .card
+      .card-body
+        %h5.card-title= link_to activity.name, activity
+        %p= activity.short_description
+
+= paginate @all_activities

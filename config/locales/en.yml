@@ -80,20 +80,20 @@ en:
       top-5-activities: "Top 5 Site-wide"
       front-page-posts-index: "View all news posts"
     es:
-      title: "Elementary School Activities"
+      title: "ALTopedia - Elementary School Activities"
       es-heading: "Elementary School"
     jhs:
-      title: "Junior High School Activities"
+      title: "ALTopedia - Junior High School Activities"
       jhs-heading: "Junior High School"
     hs:
-      title: "High School Activities"
+      title: "ALTopedia - High School Activities"
       hs-heading: "High School"
     grammar:
-      title: "Grammar points"
+      title: "ALTopedia - Grammar points"
       grammar-heading: "Grammar points"
       all-tags: "View all tags"
     warmups:
-      title: "Warm-up Activities"
+      title: "ALTopedia - Warm-up Activities"
       warmups-heading: "Warm-ups"
   activities:
     page_titles:
@@ -145,7 +145,8 @@ en:
       submit-thumbs-up: "Thumbs up!"
       delete-thumbs-up: "Thumbs up"
     school-level-listing:
-      top-activities: "Top activities"
+      top-activities: "Top 10 activities"
+      warm-ups: "Top warm-ups"
       textbooks: "Textbooks"
   tags:
     show:

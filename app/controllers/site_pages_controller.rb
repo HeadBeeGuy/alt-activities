@@ -12,24 +12,36 @@ class SitePagesController < ApplicationController
   end
   
   def es
-    # I hope this query isn't too brittle
-    # Would I be an ogre if I accessed by id? this will probably be a frequently viewed page
-    # but if the id ever changed, this page would break!
-		@activities = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
-			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page]).where(status: :approved)
+    @all_activities = Tag.find_by_short_name("ES").activities.order(created_at: :desc)
+			.select(:id, :name, :short_description, :upvote_count).page(params[:page])
+      .where(status: :approved)
+    @warmups = Activity.find_with_all_tags([
+      Tag.find_by_short_name("ES").id, Tag.find_by_short_name("warm-up").id], 10)
+    @top10 = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
+      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+    @textbooks = Textbook.ES.select(:id, :name)
   end
   
   def jhs
-    @activities = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
-			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page]).where(status: :approved)
+    @all_activities = Tag.find_by_short_name("JHS").activities.order(created_at: :desc)
+			.select(:id, :name, :short_description, :upvote_count).page(params[:page])
+      .where(status: :approved)
+    @warmups = Activity.find_with_all_tags([
+      Tag.find_by_short_name("JHS").id, Tag.find_by_short_name("warm-up").id], 10)
+    @top10 = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
+      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+    @textbooks = Textbook.JHS.select(:id, :name)
   end
   
 	def hs
-    @activities = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
-			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page])
+    @all_activities = Tag.find_by_short_name("HS").activities.order(created_at: :desc)
+			.select(:id, :name, :short_description, :upvote_count).page(params[:page])
+      .where(status: :approved)
+    @warmups = Activity.find_with_all_tags([
+      Tag.find_by_short_name("HS").id, Tag.find_by_short_name("warm-up").id], 10)
+    @top10 = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
+      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+    @textbooks = Textbook.HS.select(:id, :name)
   end
 
 	def warmups

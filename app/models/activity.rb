@@ -22,7 +22,7 @@ class Activity < ApplicationRecord
   # this is likely an inept way to do this, but upon much searching, it appears that
   # SQL intersects aren't part of ActiveRecord. How I wish they was!
   # this works in Postgres, but who knows if it will work with other DBs
-  def self.find_with_all_tags(search_tags)
+  def self.find_with_all_tags(search_tags, limit)
     intersect_query = ""
     search_tags.each_with_index do |tag_id, i|
       return nil unless tag_id.is_a? Integer # will this actually thwart any sort of injection attack?
@@ -38,7 +38,9 @@ class Activity < ApplicationRecord
       activity_array << tagging.activity
     end
 
-    activity_array
+    activity_array.sort_by { |activity| activity.upvote_count }.reverse!
+    # take! doesn't appear to exist. Will there be two copies of this array in memory?
+    activity_array.take(limit)
   end
 
 end
