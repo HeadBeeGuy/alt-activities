@@ -43,4 +43,3 @@ Smaller tasks:
 Current bugs:
  
 - If a user submits an activity that fails validation (like a text field being too long) and they attached files, it generates a server error instead of returning them to the form with an error message display.
-- The top warm-up display in the school-level landing pages doesn't actually sort the activities like it should
