@@ -19,7 +19,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_short_name("ES").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
-    @textbooks = Textbook.ES.select(:id, :name)
+    @textbooks = Textbook.ES.select(:id, :name).order(name: :asc)
   end
   
   def jhs
@@ -30,7 +30,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_short_name("JHS").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
-    @textbooks = Textbook.JHS.select(:id, :name)
+    @textbooks = Textbook.JHS.select(:id, :name).order(name: :asc)
   end
   
 	def hs
@@ -41,7 +41,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_short_name("HS").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
-    @textbooks = Textbook.HS.select(:id, :name)
+    @textbooks = Textbook.HS.select(:id, :name).order(name: :asc)
   end
 
 	def warmups
