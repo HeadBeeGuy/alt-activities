@@ -166,6 +166,8 @@ en:
       comment-guidelines: "Please make sure your comment contains positive or constructive feedback."
       comment-placeholder: "Comment"
       please-log-in: "Sign in or register an account to leave a comment."
+    submission:
+      submitted-comment: "Thank you! Your comment will show up once it's approved."
   registration:
     sign-up-heading: Make a new account
     sign-up-info-1: Make an account at ALTopedia to post activities, vote on them, and leave comments!

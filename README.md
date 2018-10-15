@@ -9,8 +9,6 @@ The site is primarily built around the **Activity** model, which contains direct
 
 Activities can be assigned a variety of tags to help categorize them. By searching based on tags, users can find relevant activities for their particular needs (like school level, targetted grammar pattern, relevant materials).
 
-Storage and hosting are being built for AWS, but can be adapted to other platforms as necessary.
-
 ---
 
 Larger implementation tasks:
@@ -26,7 +24,6 @@ Larger implementation tasks:
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
-- Add Ajax to comment submission, deletion, and approval
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
 
 ---
@@ -37,6 +34,7 @@ Smaller tasks:
 - Clean up CRUD actions and add tests for Tag Categories
 - Make the grammar page look less ugly
 - Improve the textbook index page - sort by level and make them look a lot less ugly
+- Change the rendering of Comments (and maybe Activities and Tags) to render by-item so it's easier to use handy Rails shortcuts like "render @comments"
 
 ---
 

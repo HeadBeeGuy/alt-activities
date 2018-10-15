@@ -38,14 +38,16 @@
       %th{"scope" => "col"} User
       %th{"scope" => "col"} Source
       %th{"scope" => "col"} Comment
+      %th
+      %th
   %tbody
     - @comments.each do |comment|
-      %tr
+      %tr{"id" => comment.id}
         %td= link_to comment.user.username, comment.user
         %td= link_to "Source", comment.commentable
         %td= comment.content
-        %td= link_to "Approve", approve_comment_path(comment), method: :put
-        %td= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }
+        %td= link_to "Approve", approve_comment_path(comment), method: :put, remote: true
+        %td= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, remote: true
 
 .row
   .col-sm-10.col-lg-6

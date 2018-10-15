@@ -13,10 +13,15 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize @comment
     if @comment.save
-      flash[:success] = "Comment submitted! It will show up once it's approved!"
-      redirect_to @comment.commentable
+      respond_to do |format|
+        format.js
+        format.html { # is there a better way to format this in Ruby?
+          flash[:success] = "Comment submitted! It will show up once it's approved!"
+          redirect_to @comment.commentable }
+      end
     else
-      render 'edit'
+      flash[:warning] = "Your comment is blank or too long. Can you try revising it?"
+      redirect_to @comment.commentable
     end
   end
 
@@ -25,18 +30,26 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.unapproved?
       @comment.normal!
-      flash[:success] = "Comment approved!"
-      redirect_to modqueue_url
+      respond_to do |format|
+        format.js
+        format.html {
+          flash[:success] = "Comment approved!"
+          redirect_to modqueue_url }
+      end
     end
   end
 
   def unapprove
     @comment = Comment.find(params[:id])
     authorize @comment
-    if @comment.normal? || comment.solved?
+    if @comment.normal? || @comment.solved?
       @comment.unapproved!
-      flash[:success] = "Comment returned to the mod queue!"
-      redirect_back(fallback_location: root_url)
+      respond_to do |format|
+        format.js
+        format.html {
+          flash[:success] = "Comment returned to the mod queue!"
+          redirect_back(fallback_location: root_url) }
+      end
     end
   end
 
@@ -45,8 +58,12 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.normal?
       @comment.solved!
-      flash[:success] = "Marked this issue as solved!"
-      redirect_to @comment.commentable
+      respond_to do |format|
+        format.js
+        format.html {
+          flash[:success] = "Marked this issue as solved."
+          redirect_back(fallback_location: root_url) }
+      end
     end
   end
 
@@ -58,8 +75,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 		authorize @comment
 		@comment.destroy
-		flash[:success] = "Comment deleted!"
-		redirect_back(fallback_location: root_url)
+    respond_to do |format|
+      format.js
+      format.html {
+        flash[:success] = "Deleted comment."
+        redirect_back(fallback_location: root_url) }
+    end
   end
 
     private

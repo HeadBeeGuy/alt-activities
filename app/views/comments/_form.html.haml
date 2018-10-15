@@ -1,8 +1,8 @@
 - if user_signed_in?
-  .comment-form
+  #comment-form
     %h5= t('.form-header')
     %small= t('.comment-guidelines')
-    = form_for(@comment) do |f|
+    = form_for(@comment, remote: true) do |f|
       .input-group
         = f.text_field :content, placeholder: t('.comment-placeholder'), class: 'form-control'
         = f.hidden_field :commentable_type, value: commentable_type
