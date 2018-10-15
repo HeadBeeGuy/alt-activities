@@ -45,6 +45,36 @@ class CommentFlowTest < ActionDispatch::IntegrationTest
     assert_match comment_text, response.body
   end
 
+  test "comment functions work with ajax" do
+    comment_text = "Reloading is for the birds! What is this, 2003?"
+    sign_in @regular_user_two
+    get activity_path(@activity)
+    assert_match @activity.name, response.body
+    assert_difference('Comment.unapproved.count', 1) do
+      post comments_path, params: { comment: { content: comment_text,
+        commentable_type: @activity.class, commentable_id: @activity.id }}, xhr: true
+    end
+    get activity_path(@activity)
+    assert_no_match comment_text, response.body
+    delete destroy_user_session_path
+
+    sign_in @moderator
+    get modqueue_path
+    assert_match comment_text, response.body
+    assert_difference('Comment.normal.count', 1) do
+      @new_comment = Comment.find_by_content(comment_text)
+      put approve_comment_path(@new_comment), xhr: true
+    end
+    get modqueue_path
+    assert_no_match comment_text, response.body
+    delete destroy_user_session_path
+    
+    sign_in @regular_user_two
+    get activity_path(@activity)
+    assert_match @activity.name, response.body
+    assert_match comment_text, response.body
+  end
+
   test "a silenced user cannot post comments" do
     comment_text = "Phooey and boo, says I!"
 
