@@ -45,9 +45,12 @@ class SitePagesController < ApplicationController
   end
 
 	def warmups
-    @activities = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
-			.select(:id, :name, :short_description, :upvote_count)
-			.includes(:tags).page(params[:page])
+    @top10_es = Activity.find_with_all_tags([
+      Tag.find_by_short_name("ES").id, Tag.find_by_short_name("warm-up").id], 10)
+    @top10_jhs = Activity.find_with_all_tags([
+      Tag.find_by_short_name("JHS").id, Tag.find_by_short_name("warm-up").id], 10)
+    @all_warmups = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
+      .select(:id, :name, :short_description).page(params[:page])
   end
 
   def grammar
