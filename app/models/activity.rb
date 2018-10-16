@@ -40,6 +40,9 @@ class Activity < ApplicationRecord
 
     # this is probably not good Ruby, but reverse! wasn't actually saving the sorted array
     activity_array = activity_array.sort_by { |activity| activity.upvote_count }.reverse
+      .select { |activity| activity.approved? }
+
+    # activity_array = activity_array.select { |activity| activity.approved? }
     # take! doesn't appear to exist. Will there be two copies of this array in memory?
     activity_array.take(limit)
   end
