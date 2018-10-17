@@ -50,7 +50,7 @@ class SitePagesController < ApplicationController
     @top10_jhs = Activity.find_with_all_tags([
       Tag.find_by_short_name("JHS").id, Tag.find_by_short_name("warm-up").id], 10)
     @all_warmups = Tag.find_by_short_name("warm-up").activities.order(upvote_count: :desc)
-      .select(:id, :name, :short_description).page(params[:page])
+      .select(:id, :name, :short_description).where(status: :approved).page(params[:page])
   end
 
   def grammar
