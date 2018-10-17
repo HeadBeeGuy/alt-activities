@@ -11,30 +11,45 @@ Activities can be assigned a variety of tags to help categorize them. By searchi
 
 ---
 
-Larger implementation tasks:
+Higher priority tasks:
 
+- Allow taggings to be created and deleted from activities without going through the activity edit process
+- Activity search system using AND search system with tags
+- Redirect users to their profiles upon account activation and possibly login
+- Add "Sign up/Register" to the top navbar when viewing the page when logged out - currently it's a little hard to find
+
+---
+
+Longer-term tasks:
+
+- Dockerize the application since I need to learn how Docker works and it may make it easier to bundle things like anti-virus scanning
 - Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration - or maybe not, if the big OAuth providers keep behaving badly!
-- Activity search system (likely an AND search on activities with certain tags. Maybe just use Google or another search provider for text searches?)
 - System for users to submit ideas for new tags or textbooks
-- Report system for rule-breaking comments or activities
 - Look into localizing model data as well (tag data and activity text)
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
 - Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
-- Restrict the file types and file size of uploaded files. ActiveStorage does not appear to have this built into it, so this could be challenging!
+- Restrict the file types and file size of uploaded files. Maybe Rails 6.0 will build in some kind of validations?
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
+- Allow users to publicly display activities that they've upvoted. Maybe this will be opt-in since I can see some users may not want all and sundry to see what they liked.
 
 ---
 
-Smaller tasks:
+Lower-priority and smaller tasks:
 
-- A function to generate yaml files for localization. It needs to take the en.yml file and automatically insert any missing strings into localized yml files.
 - Clean up CRUD actions and add tests for Tag Categories
-- Make the grammar page look less ugly
-- Improve the textbook index page - sort by level and make them look a lot less ugly
 - Change the rendering of Comments (and maybe Activities and Tags) to render by-item so it's easier to use handy Rails shortcuts like "render @comments"
+- Construct a more robust database seed for the development environment
+
+---
+
+Pages to add or revise:
+
+- Improve display of grammar page
+- See if a general "Contribute" section leads to more people submitting activities or offering to help with localization
+- Improve display of textbook page
 
 ---
 
