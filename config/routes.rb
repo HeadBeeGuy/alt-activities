@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	end
 
   resources :upvotes, only: [ :create, :destroy ]
+  resources :taggings, only: [ :create, :destroy ]
   
   resources :comments do
     member do

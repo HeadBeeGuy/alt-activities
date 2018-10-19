@@ -141,6 +141,7 @@ en:
       delete: "Delete"
       delete_confirmation: "Are you sure you wanna delete this one?"
       resubmit: "Edit and Re-submit"
+      edit-tags: "Edit tags"
     thumbs-up:
       thumbs-up-label: "Total"
       thumbs-up-logged-out: "Sign in or register to give a thumbs up!"
@@ -180,4 +181,10 @@ en:
   front_page_posts:
     index:
       title: "ALTopedia - News posts"
+  taggings:
+    activity_tagging_list:
+      remove-tagging: "Remove any unneccessary tags by clicking on these:"
+    form:
+      add-tagging: "Add another tag"
+      add-tag-button: "Add this tag"
 

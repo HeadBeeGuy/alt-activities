@@ -17,17 +17,21 @@
           =link_to activity.user.username, activity.user
         %p= l(activity.created_at, format: :quite_short)
         - if user_signed_in? && policy(activity).update?
-          .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
+          .btn-group{"role" => "group", "aria-label" => "Activity controls"}
             - if activity.unapproved? || activity.edited?
               = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
             - elsif activity.approved? && ( policy(activity).unapprove? )
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
             = link_to t('activities.show.edit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
             = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "btn btn-outline-secondary btn-sm"
+          %button.btn.btn-secondary.mt-2{"data-toggle"=>"collapse", "data-target"=>"#tag-editor-#{activity.id}", "aria-expanded"=>"false", "aria-controls"=>"tag-editor-#{activity.id}"}= t('activities.show.edit-tags')
+          .dynamic-tag-editor.collapse{"id"=>"tag-editor-#{activity.id}"}
+            = render "taggings/activity_tagging_list"
+            = render "taggings/form"
         - elsif user_signed_in? && activity.user == current_user
           .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
             = link_to t('activities.show.resubmit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
-  .card-footer
+  .card-footer{"id" => "activity-#{activity.id}-tags"}
     - activity.tags.each do |tag|
       %span= link_to tag.long_name, tag, class: "badge badge-pill badge-success"
   .card-footer.p-1

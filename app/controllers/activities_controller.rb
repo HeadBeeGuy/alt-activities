@@ -77,6 +77,8 @@ class ActivitiesController < ApplicationController
     @comments = @activity.comments.order(created_at: :desc).normal.or(@activity.comments
       .order(created_at: :desc).solved).includes(:user).page(params[:page])
     @comment = Comment.new
+    @tagging = Tagging.new
+    @activity_taggings = Tagging.where(activity: @activity).includes(:tag)
   end
   
   def approve

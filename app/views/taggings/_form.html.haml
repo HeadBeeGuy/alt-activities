@@ -1,0 +1,7 @@
+- if user_signed_in? && policy(@activity).edit?
+  .add-tagging.mt-2{"id" => "add-tagging-activity-#{@activity.id}"}
+    = form_for(@tagging, remote: true) do |f|
+      %small= t('.add-tagging')
+      = f.collection_select :tag_id, Tag.all, :id, :long_name, {}, class: 'form-control'
+      = hidden_field_tag :activity_id, @activity.id
+      = f.submit t('.add-tag-button'), class: "btn btn-primary"
