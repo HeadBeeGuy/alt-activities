@@ -8,8 +8,8 @@ class TaggingsController < ApplicationController
 
   def create
     @tagging = Tagging.new(tagging_params)
-    @tagging.activity_id = params[:activity_id].to_i
     authorize @tagging
+    
     if @tagging.save
       respond_to do |format|
         format.js
