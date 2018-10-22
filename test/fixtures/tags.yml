@@ -8,14 +8,14 @@ basic_tag_one:
 
 basic_tag_two:
   short_name: Test tag two
-  long_name: This is another test tag
-  description: I shouldn't need a lot of these for tests
+  long_name: Test tag number 2
+  description: These fixtures are really fussy
   tag_category: tag_category_one
 
 basic_tag_three:
   short_name: Test tag three
   long_name: This is another test tag
-  description: I shouldn't need a lot of these for tests
+  description: Do apostrophes break these fixtures?
   tag_category: tag_category_one
 
 es_tag:
