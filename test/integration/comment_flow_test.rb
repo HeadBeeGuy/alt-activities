@@ -216,4 +216,62 @@ class CommentFlowTest < ActionDispatch::IntegrationTest
     @comment.reload
     assert @comment.normal?
   end
+
+  test "a comment can be successfully submitted to a front page post on the site" do
+    comment_text = "Thanks for the update! I read every word!"
+    @post = front_page_posts(:front_page_post_one)
+    sign_in @regular_user_two
+    get front_page_post_path(@post)
+    assert_match @post.content, response.body
+    assert_difference('Comment.unapproved.count', 1) do
+      post comments_path, params: { comment: { content: comment_text,
+        commentable_type: @post.class, commentable_id: @post.id }}
+    end
+    get front_page_post_path(@post)
+    assert_no_match comment_text, response.body
+    delete destroy_user_session_path
+
+    sign_in @moderator
+    get modqueue_path
+    assert_match comment_text, response.body
+    assert_difference('Comment.normal.count', 1) do
+      @new_comment = Comment.find_by_content(comment_text)
+      put approve_comment_path(@new_comment)
+    end
+    get modqueue_path
+    assert_no_match comment_text, response.body
+    get front_page_post_path(@post)
+    assert_match @post.content, response.body
+    assert_match comment_text, response.body
+  end
+
+  test "a comment can be successfully submitted to a tag on the site" do
+    comment_text = "Call me what you will, but this tag just does it for me."
+    @tag = tags(:basic_tag_one)
+    sign_in @regular_user_two
+    get tag_path(@tag)
+    assert_match @tag.description, response.body
+    assert_difference('Comment.unapproved.count', 1) do
+      post comments_path, params: { comment: { content: comment_text,
+        commentable_type: @tag.class, commentable_id: @tag.id }}
+    end
+    get tag_path(@tag)
+    assert_no_match comment_text, response.body
+    delete destroy_user_session_path
+
+    sign_in @moderator
+    get modqueue_path
+    assert_match comment_text, response.body
+    assert_difference('Comment.normal.count', 1) do
+      @new_comment = Comment.find_by_content(comment_text)
+      put approve_comment_path(@new_comment)
+    end
+    get modqueue_path
+    assert_no_match comment_text, response.body
+    get tag_path(@tag)
+    assert_match @tag.description, response.body
+    assert_match comment_text, response.body
+  end
+
+
 end

@@ -1,3 +1,12 @@
+# this is pinched from http://gavinmiller.io/2016/the-safesty-way-to-constantize/
+# previously I was using constantize, but apparently that's a security risk
+# if I add any more Commentables, I'll have to add them in here as well
+COMMENTABLES = {
+  'Activity' => Activity,
+  'FrontPagePost' => FrontPagePost,
+  'Tag' => Tag
+}
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
@@ -7,8 +16,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # awkward! there's probably a better way to find the commentable item
-    @commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+    # see comment at top of file
+    @commentable = COMMENTABLES.fetch(params[:comment][:commentable_type]).find(params[:comment][:commentable_id])
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     authorize @comment
