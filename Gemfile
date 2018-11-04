@@ -29,7 +29,7 @@ gem 'sidekiq' # the Rails background job solution of choice, it would appear!
 gem 'pg', '1.0.0' # all PostGres all the time!
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
-gem 'loofah', '~> 2.2.1'
+gem 'loofah', '~> 2.2.3'
 
 # 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
 gem 'nokogiri', '1.8.2'
