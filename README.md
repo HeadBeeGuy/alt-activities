@@ -13,7 +13,6 @@ Activities can be assigned a variety of tags to help categorize them. By searchi
 
 Higher priority tasks:
 
-- Allow taggings to be created and deleted from activities without going through the activity edit process
 - Activity search system using AND search system with tags
 - Redirect users to their profiles upon account activation and possibly login
 - Add "Sign up/Register" to the top navbar when viewing the page when logged out - currently it's a little hard to find
@@ -29,7 +28,6 @@ Longer-term tasks:
 - System for users to submit ideas for new tags or textbooks
 - Look into localizing model data as well (tag data and activity text)
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
-- Add in functionality to generate activity URLs based on their name (something like /activities/greatest-bingo-game-ever) and make that the default URL for any given activity
 - Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. Maybe Rails 6.0 will build in some kind of validations?
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.

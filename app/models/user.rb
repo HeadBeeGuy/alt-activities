@@ -39,4 +39,9 @@ class User < ApplicationRecord
 		self.role = role
 		self.save
 	end
+
+  # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
+  def to_param
+    "#{id}-#{self.username.parameterize.truncate(80, '')}"
+  end
 end

@@ -16,6 +16,11 @@ class Activity < ApplicationRecord
   
   enum status: [:unapproved, :approved, :edited]
 
+  # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
+  def to_param
+    "#{id}-#{self.name.parameterize.truncate(80, '')}"
+  end
+
   # adapted from https://stackoverflow.com/a/33558154
   # and https://stackoverflow.com/a/11299725
   # search_tags must be an array of integers, specifically the IDs of the tags

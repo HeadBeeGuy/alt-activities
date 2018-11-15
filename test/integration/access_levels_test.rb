@@ -242,6 +242,7 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		get edit_user_path(@regular_user_one)
 		patch user_path, params: { user: { username: new_username,
 															email: new_email } }
+    @regular_user_one.reload
 		assert_redirected_to user_path(@regular_user_one)
 		assert_not flash.empty?
 		follow_redirect!
