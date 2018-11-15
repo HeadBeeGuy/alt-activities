@@ -43,7 +43,7 @@ class FrontPagePostsController < ApplicationController
 
 	def index
 		@front_page_posts = FrontPagePost.all.select(:id, :title, :created_at, :excerpt)
-      .page(params[:page])
+      .page(params[:page]).order(created_at: :desc)
 	end
 
 	def destroy
