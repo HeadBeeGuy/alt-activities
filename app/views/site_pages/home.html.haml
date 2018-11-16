@@ -23,6 +23,12 @@
   .nagajob.col-sm-12.col-md-4.pt-2
     = link_to image_tag("nagajob.jpg", class: "mw-100 rounded"), "http://www.nagajob.co.jp"
     %small= link_to "Follow on Facebook to keep an eye on job openings!", "https://www.facebook.com/Nagajobrecruit/"
+    = render "tag_of_the_moment"
+    .card.mt-2
+      .card-body
+        %h5 Help your fellow teachers!
+        %p Do you have a good game or activity? Want to give some advice or kudos to an activity? Join up and help out!
+        %p= link_to "Sign up today!", new_user_registration_path
 
 
 .row

@@ -97,6 +97,8 @@ en:
       warmups-heading: "Warm-ups"
       top10-es: "Top 10 Elementary Warm-ups"
       top10-jhs: "Top 10 Junior High Warm-ups"
+    tag_of_the_moment:
+      called-out-tag: "Tag of the moment"
   activities:
     page_titles:
       new_activity: "New Activity"
