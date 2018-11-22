@@ -10,7 +10,7 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     activity_category: "Activities"
-    new_activity: "Submit a new activity"
+    new-activity: "Contribute"
     view_all_activities: "View all"
     tag_list: "Tags"
     textbook_listing: "Textbooks"

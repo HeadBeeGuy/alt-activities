@@ -7,7 +7,7 @@ ja:
     log_in: "ログイン"
     log_out: "ログアウト"
     activity_category: "アクティビティー"
-    new_activity: "新しい"
+    new-activity: "新しい"
     view_all_activities: "全て"
     tag_list: "タッグ"
     textbook_listing: "教科書"
