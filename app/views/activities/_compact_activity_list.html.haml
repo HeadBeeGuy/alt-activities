@@ -2,8 +2,9 @@
   .card
     .card-header.text-center= label
     %ul.list-group.list-group-flush
-      - activity_list.each do |activity|
-        %li.list-group-item
-          %span
-            =link_to activity.name, activity, class: "card-link"
-            %span.badge.badge-info.float-right= activity.upvote_count 
+      -if activity_list
+        - activity_list.each do |activity|
+          %li.list-group-item
+            %span
+              =link_to activity.name, activity, class: "card-link"
+              %span.badge.badge-info.float-right= activity.upvote_count 
