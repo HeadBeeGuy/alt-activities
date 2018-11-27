@@ -17,6 +17,8 @@
       - else
         %li.nav-item.active
           = link_to t('layouts.log_in'), new_user_session_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to t('layouts.register-new-account'), new_user_registration_path, class: "nav-link"
       %li.nav-item.active
         = link_to t('layouts.new-activity'), new_activity_path, class: "nav-link"
       %li.nav-item.active
@@ -26,16 +28,19 @@
       - if user_signed_in?
         %li.nav-item.active
           = link_to t('layouts.log_out'), destroy_user_session_path, method: :delete, class: "nav-link"
+    %ul.navbar-nav.ml-auto
       - if I18n.locale == :ja
         %li.nav-item= link_to "English", "https://en.altopedia.org", class: "nav-link"
       - elsif I18n.locale == :en
         %li.nav-item= link_to "日本語", "https://ja.altopedia.org", class: "nav-link"
 .nav-scroller.bg-white.box-shadow
   %nav.nav.nav-underline
-    = link_to t('layouts.es'), es_path, class: "nav-link active"
-    = link_to t('layouts.jhs'), jhs_path, class: "nav-link active"
-    = link_to t('layouts.hs'), hs_path, class: "nav-link active"
     = link_to t('layouts.warm-ups'), warmups_path, class: "nav-link active"
     = link_to t('layouts.grammar'), grammar_path, class: "nav-link active"
     = link_to t('layouts.textbook_listing'), textbooks_path, class: "nav-link active"
+    %p.nav-link.disabled= t('layouts.school-levels')
+    = link_to t('layouts.es'), es_path, class: "nav-link active"
+    = link_to t('layouts.jhs'), jhs_path, class: "nav-link active"
+    = link_to t('layouts.hs'), hs_path, class: "nav-link active"
+    = link_to t('layouts.conversation'), conversation_path, class: "nav-link active"
     

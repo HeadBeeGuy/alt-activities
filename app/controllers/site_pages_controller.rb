@@ -44,6 +44,17 @@ class SitePagesController < ApplicationController
     @textbooks = Textbook.HS.select(:id, :name).order(name: :asc)
   end
 
+	def conversation
+    @all_activities = Tag.find_by_long_name("Conversation").activities.order(created_at: :desc)
+			.select(:id, :name, :short_description, :upvote_count).page(params[:page])
+      .where(status: :approved)
+    @warmups = Activity.find_with_all_tags([
+      Tag.find_by_long_name("Conversation").id, Tag.find_by_short_name("warm-up").id], 10)
+    @top10 = Tag.find_by_long_name("Conversation").activities.order(upvote_count: :desc)
+      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+    @textbooks = Textbook.Conversation.select(:id, :name).order(name: :asc)
+  end
+
 	def warmups
     @top10_es = Activity.find_with_all_tags([
       Tag.find_by_short_name("ES").id, Tag.find_by_short_name("warm-up").id], 10)
