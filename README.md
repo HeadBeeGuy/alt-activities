@@ -15,7 +15,6 @@ Higher priority tasks:
 
 - Activity search system using AND search system with tags
 - Redirect users to their profiles upon account activation and possibly login
-- Add "Sign up/Register" to the top navbar when viewing the page when logged out - currently it's a little hard to find
 
 ---
 
@@ -39,7 +38,6 @@ Lower-priority and smaller tasks:
 
 - Clean up CRUD actions and add tests for Tag Categories
 - Change the rendering of Comments (and maybe Activities and Tags) to render by-item so it's easier to use handy Rails shortcuts like "render @comments"
-- Construct a more robust database seed for the development environment
 
 ---
 

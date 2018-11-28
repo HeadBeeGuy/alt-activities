@@ -26,15 +26,15 @@ tag_category_2:
       long_name: Pre-kindergarten or Kindergarten
       description: Aimed at students who have not started Elementary School yet.
     tag_2:
-      short_name: es
+      short_name: ES
       long_name: Elementary School
       description: Aimed at elementary school students.
     tag_3:
-      short_name: jhs
+      short_name: JHS
       long_name: Junior High School
       description: Aimed at junior high school students.
     tag_4:
-      short_name: hs
+      short_name: HS
       long_name: High School
       description: Aimed at high school students.
     tag_5:
