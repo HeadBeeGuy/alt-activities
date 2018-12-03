@@ -5,6 +5,4 @@ class Tagging < ApplicationRecord
   belongs_to :activity
   belongs_to :tag
   
-  validates :activity_id, presence: true
-  validates :tag_id, presence: true
 end

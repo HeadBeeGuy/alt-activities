@@ -21,7 +21,6 @@ Higher priority tasks:
 Longer-term tasks:
 
 - Dockerize the application since I need to learn how Docker works and it may make it easier to bundle things like anti-virus scanning
-- Take a deeper look at how taggings are generated during activity creation. I didn't whitelist the parameter as an array correctly, but when I do that, activity creation breaks. This also causes problems when the server is processing file uploads for ActiveStorage and locks the database.
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration - or maybe not, if the big OAuth providers keep behaving badly!
 - System for users to submit ideas for new tags or textbooks
@@ -31,6 +30,7 @@ Longer-term tasks:
 - Restrict the file types and file size of uploaded files. Maybe Rails 6.0 will build in some kind of validations?
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
 - Allow users to publicly display activities that they've upvoted. Maybe this will be opt-in since I can see some users may not want all and sundry to see what they liked.
+- Let users link different activities together, so they can say that their activity was inspired by another, for example
 
 ---
 
