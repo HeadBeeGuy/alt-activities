@@ -4,8 +4,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     authorize @activity
-    @tags = Tag.all
-    @tag_categories = TagCategory.all
+    @tag_categories = TagCategory.all.includes(:tags)
   end
   
   def create
