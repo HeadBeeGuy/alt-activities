@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
   #code from Pundit documentation - very useful!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  # redirect user to profile upon sign-in - this code works but I'm not sure if
+  # it's a good idea or not
+  # def after_sign_in_path_for(resource_or_scope)
+  #   current_user
+  # end
+
   private
 
     def user_not_authorized
