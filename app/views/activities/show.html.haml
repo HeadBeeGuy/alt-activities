@@ -1,3 +1,10 @@
 - provide(:title, "ALTopedia - #{@activity.name}")
+- content_for :head do
+  <meta property="og:title" content="#{@activity.name}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="#{request.original_url}" />
+  <meta property="og:image" content="https://www.altopedia.org#{asset_path "Altopedia Xmas.png"}" />
+  <meta property="og:description" content="#{@activity.short_description}" />
+  <meta property="og:site_name" content="ALTopedia" />
 
 = render @activity
