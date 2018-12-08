@@ -111,6 +111,8 @@ en:
       top10-jhs: "Top 10 Junior High Warm-ups"
     tag_of_the_moment:
       called-out-tag: "Tag of the moment"
+    shoutbox:
+      rule1: "We hope that your comments will be constructive and positive!"
   activities:
     page_titles:
       new_activity: "New Activity"
