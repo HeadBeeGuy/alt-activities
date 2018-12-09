@@ -32,6 +32,7 @@ en:
     altto: "ALT Training Online"
     resources: "Resources"
     job-listings: "Jobs"
+    shoutbox: "Shoutbox"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
