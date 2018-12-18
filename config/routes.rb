@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
   get '/jobs', to: 'job_posts#index'
   get '/shoutbox', to: 'site_pages#shoutbox'
+  get '/contribute', to: 'site_pages#contribute'
 	
   resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
 

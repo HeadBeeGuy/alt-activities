@@ -1,0 +1,19 @@
+- provide(:title, t('.title'))
+
+%h2= t('.page-header')
+
+%p= t('.contribution-explanation')
+
+%h4= link_to t('.submit-activity-link-heading'), new_activity_path
+%p= t('.submit-activity-explanation')
+
+%h5= link_to t('.translation-heading'), "https://www.localedata.com"
+%p= t('.translation-explanation')
+
+%h5= t('.textbook-info-heading')
+%p= t('.textbook-info-explanation')
+
+%h5= link_to t('.coding-heading'), "https://www.github.com/headbeeguy/alt-activities"
+%p= t('.coding-explanation')
+
+%p= t('.contact-text')

@@ -11,7 +11,7 @@ en:
     log_out: "Log out"
     register-new-account: "Sign up"
     activity_category: "Activities"
-    new-activity: "Contribute"
+    contribute: "Contribute"
     view_all_activities: "View all"
     tag_list: "Tags"
     textbook_listing: "Textbooks"
@@ -114,6 +114,19 @@ en:
       called-out-tag: "Tag of the moment"
     shoutbox:
       rule1: "We hope that your comments will be constructive and positive!"
+    contribute:
+      title: "ALTopedia - How to contribute"
+      page-header: "Contribute to ALTopedia"
+      contribution-explanation: "Do you want to help the site? There are several ways you can contribute and make it a more valuable resource:"
+      submit-activity-link-heading: "Post a new activity"
+      submit-activity-explanation: "The best way you can help is to add your own activity! Your ideas will benefit other teachers. You'll need to sign up for the site, but registration is free and easy. You can revise or remove your activity later if you want."
+      translation-heading: "Help translate the site"
+      translation-explanation: "Do you speak any other languages and feel confident translating into them? The site's interface text can be translated into different languages. This is done through an external site called LocaleData. You'll have to register an account over there and then e-mail Jake so he can add you to the translation project. For the time being, this is just for the site's interface - things like tags and activities will require more technical work, but keep on eye on this in the future!"
+      textbook-info-heading: "Contribute textbook information"
+      textbook-info-explanation: "One function of the site is to show listings for different textbooks and show the grammar points associated with them. Right now we only have access to the New Crown textbooks. If your schools are using something different, we could update its listings if you can send us a screenshot of any sort of index page or grammar listing."
+      coding-heading: "Help code the site"
+      coding-explanation: "Do you have any experience with web development? How about Ruby on Rails? The site is open-source, so if you've worked with Rails before, you can help us add new features!"
+      contact-text: "If you have any questions, please get in contact with Jake at jake.alt.dev (at) gmail.com"
   activities:
     page_titles:
       new_activity: "New Activity"
