@@ -53,8 +53,8 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     authorize @activity
-    @comments = @activity.comments.order(created_at: :desc).normal.or(@activity.comments
-      .order(created_at: :desc).solved).includes(:user).page(params[:page])
+    @comments = @activity.comments.visible.order(created_at: :desc)
+      .includes(:user).page(params[:page])
     @comment = Comment.new
     @tagging = Tagging.new
     @activity_taggings = Tagging.where(activity: @activity).includes(:tag)
@@ -86,9 +86,9 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-		@activities = Activity.where(status: :approved).order(upvote_count: :desc)
+		@activities = Activity.approved.order(upvote_count: :desc)
 			.select(:name, :short_description, :upvote_count, :id)
-			.page(params[:page])
+      .includes(:tags).page(params[:page])
   end
   
   def modqueue

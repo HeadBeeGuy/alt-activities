@@ -37,8 +37,8 @@ class FrontPagePostsController < ApplicationController
 	def show
 		@front_page_post = FrontPagePost.find(params[:id])
     @comment = Comment.new
-    @comments = @front_page_post.comments.normal.or(@front_page_post.comments.solved).
-      page(params[:page]).includes(:user)
+    @comments = @front_page_post.comments.visible.page(params[:page])
+      .includes(:user)
 	end
 
 	def index
