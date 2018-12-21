@@ -8,7 +8,18 @@ class SitePagesController < ApplicationController
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3).select(:id, :title, :excerpt)
 	end
 
-  def about
+  def modqueue
+    # I'd prefer to do this with Pundit, but I'm not sure how to do it
+    # when there isn't an associated model in this controller
+    unless user_signed_in? && ( current_user.admin? || current_user.moderator? )
+      flash[:warning] = "Sorry, but you can't access this page."
+      redirect_to root_url
+    end
+    @unapproved = Activity.unapproved.select(:id, :name, :user_id, :short_description)
+    @edited = Activity.edited.select(:id, :name, :user_id, :short_description)
+    @comments = Comment.unapproved
+    @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
+      .limit(5)
   end
   
   def es

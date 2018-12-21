@@ -40,10 +40,6 @@ class ActivityPolicy < ApplicationPolicy
   def show?
     activity.approved? or (user and (user.admin? or user.moderator?))
   end
-  
-  def modqueue?
-    user.admin? or user.moderator?
-  end
 
   def delete_attached_document?
     user.admin? or (user.activities.include?(activity))

@@ -21,7 +21,7 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   
   test "normal users and users not logged in cannot access the mod queue" do
     get modqueue_path
-    assert_redirected_to new_user_session_path
+    assert_redirected_to root_url
     assert_not flash.empty?
     sign_in(@regular_user_one)
     get modqueue_path

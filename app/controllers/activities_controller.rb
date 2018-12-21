@@ -91,15 +91,6 @@ class ActivitiesController < ApplicationController
       .includes(:tags).page(params[:page])
   end
   
-  def modqueue
-    @unapproved = Activity.unapproved.select(:id, :name, :user_id, :short_description)
-    authorize @unapproved
-    @edited = Activity.edited.select(:id, :name, :user_id, :short_description)
-    @comments = Comment.unapproved
-    @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
-      .limit(5)
-  end
-
 	# swiping from https://stackoverflow.com/a/49517939
 	# and https://stackoverflow.com/a/49635423
   def delete_attached_document
