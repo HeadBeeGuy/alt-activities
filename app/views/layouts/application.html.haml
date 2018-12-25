@@ -9,6 +9,7 @@
     = csrf_meta_tags
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, shrink-to-fit=no"}
     = content_for?(:head) ? yield(:head) : ''
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   %body.bg-light
     .site-header
       = render 'layouts/header' 

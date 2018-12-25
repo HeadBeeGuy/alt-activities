@@ -28,6 +28,7 @@ gem 'kaminari' # for pagination
 gem 'sidekiq' # the Rails background job solution of choice, it would appear!
 gem 'pg', '1.0.0' # all PostGres all the time!
 gem 'rack', '~> 2.0.6' # GitHub security advisory
+gem 'recaptcha'
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.3'
