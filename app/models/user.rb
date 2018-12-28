@@ -14,8 +14,8 @@ class User < ApplicationRecord
 	validates :location, length: { maximum: 30 }
 	validates :bio, length: { maximum: 200 }
   
-  has_many :activities
-	has_many :upvotes, dependent: :destroy
+  has_many :activities, dependent: :destroy
+	has_many :upvotes
   has_many :comments, dependent: :destroy
   has_many :job_posts, dependent: :destroy
   

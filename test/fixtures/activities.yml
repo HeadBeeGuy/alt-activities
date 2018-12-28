@@ -1,6 +1,6 @@
 
 basic_activity_one:
-  name: Test Activity
+  name: I am the first test activity
   short_description: This is a short description
   long_description: This is a much longer description
   time_estimate: 5 minutes

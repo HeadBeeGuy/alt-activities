@@ -4,3 +4,7 @@ upvote_one:
   user: regular_user_two
   activity: basic_activity_two
 
+upvote_two:
+  user: regular_user_one
+  activity: rebecca_activity
+

@@ -11,3 +11,9 @@ comment_two:
   user: regular_user_two
   commentable: basic_activity_one (Activity)
   status: :normal
+
+comment_three:
+  content: I only exist to be verified that I can be deleted.
+  user: regular_user_one
+  commentable: rebecca_activity (Activity)
+  status: :normal
