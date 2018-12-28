@@ -1,9 +1,4 @@
-<% if Rails.env.production? %>
-  <%= recaptcha_tags %>
-<% else %>
-  <p>The Captcha should be here, but since we're not in production, it isn't loaded.
-  I really should put it in, but the fake keys didn't work when I tried them!</p>
-<% end %>
+<%# = recaptcha_tags %>
 <h2><%= t('registration.sign-up-heading') %></h2>
 
 <p><%= t('registration.sign-up-info-1') %></p>

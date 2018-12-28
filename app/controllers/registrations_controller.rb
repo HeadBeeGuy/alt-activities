@@ -1,9 +1,11 @@
 # added this in order to get ReCaptcha working
 # code comes from https://github.com/plataformatec/devise/wiki/How-To:-Use-Recaptcha-with-Devise
 
+# later disabled it since users weren't able to sign up in production
+# I'll have to keep tinkering with this!
+
 class RegistrationsController < Devise::RegistrationsController
-  # this only fires on production - I develop mainly offline
-  prepend_before_action :check_captcha, only: [:create] if Rails.env.production?
+  # prepend_before_action :check_captcha, only: [:create] if Rails.env.production?
 
   private
     def check_captcha
