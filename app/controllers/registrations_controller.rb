@@ -5,7 +5,7 @@
 # I'll have to keep tinkering with this!
 
 class RegistrationsController < Devise::RegistrationsController
-  # prepend_before_action :check_captcha, only: [:create] if Rails.env.production?
+  prepend_before_action :check_captcha, only: [:create]
 
   private
     def check_captcha

@@ -1,10 +1,13 @@
-<%# = recaptcha_tags %>
+<%= recaptcha_tags %>
 <h2><%= t('registration.sign-up-heading') %></h2>
 
 <p><%= t('registration.sign-up-info-1') %></p>
 <p><%= t('registration.sign-up-info-2') %></p>
 <p><%= t('registration.sign-up-info-3') %></p>
 <p><%= t('registration.sign-up-info-4') %></p>
+<p>Please make sure you complete every Captcha on the page.
+Get in touch with us through the Contact page if registration doesn't work.
+We've had a lot of spam accounts signing up for the site, and they're pretty persistent!</p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -37,6 +40,7 @@
       <%= f.submit t('registration.sign-up-button'), class: "btn btn-primary mt-2 mb-2" %>
     </div>
   </div>
+  <div class="g-recaptcha" data-sitekey="6Lci9oMUAAAAACJEoSVu_sqgDxQA57AVGNPVqk0m"></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
