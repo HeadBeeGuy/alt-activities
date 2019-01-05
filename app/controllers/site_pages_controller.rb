@@ -79,4 +79,13 @@ class SitePagesController < ApplicationController
 		@tags = TagCategory.find_by_name("Grammar points").tags.select(:id, :long_name, :description)
 		  .order(long_name: :asc)
   end
+
+  def render_compact_shoutbox
+    # JavaScript only at the moment. Maybe at some point I could render the
+    # front page again, although unless JavaScript is enabled, I don't know how
+    # the user will be able to use iShoutbox
+    respond_to do |format|
+      format.js
+    end
+  end
 end

@@ -44,5 +44,11 @@
           %h5 Help your fellow teachers!
           %p Do you have a good game or activity? Want to give some advice or kudos to an activity? Join up and help out!
           %p= link_to "Contribute to ALTopedia!", contribute_path
+    #front-page-shoutbox.mt-2
+      .card
+        .card-body
+          %p Questions? Need some ideas? Talk to other teachers!
+          .text-center= link_to "Load Shoutbox", fp_shoutbox_path, class: "btn btn-primary", remote: true
+          %small (requires JavaScript)
     
 
