@@ -20,9 +20,9 @@ end
 if Rails.env.development?
 
   # Seed a few users with specific roles
-  admin_user = User.create!(username: "Jake the Local Admin",
+  admin_user = User.create!(username: "Local Admin",
                             email: "jake@example.com",
-                            home_country: Faker::Address.country,
+                            home_country: Faker::Witcher.location,
                             location: Faker::Address.city,
                             bio: "I'm the admin user.",
                             password: "badpassword",
@@ -49,6 +49,16 @@ if Rails.env.development?
                             password_confirmation: "badpassword",
                             role: :silenced,
                             confirmed_at: Time.now)
+
+  # Randomly create job posts
+  10.times do
+    new_job = JobPost.create!(title: Faker::Coffee.blend_name,
+                              external_url: "https://www.altopedia.org",
+                              content: Faker::Lorem.paragraph(20),
+                              priority: Random.rand(0..2),
+                              user: job_posting_user)
+    new_job.company_logo.attach(io: File.open('app/assets/images/logo.png'), filename: 'logo.png')
+  end
 
   # Randomly create regular users
   regular_users = []
@@ -77,8 +87,6 @@ if Rails.env.development?
   school_level_tags = [es_tag, jhs_tag, hs_tag, conversation_tag]
 
   # Randomly create activities
-  # ideally, I should be able to pass in tag_ids as an array, but that's an
-  # issue that's still baffling me
   60.times do
     activity = Activity.create!(name: Faker::Lovecraft.sentence(3, 1),
                                 short_description: Faker::Company.bs,
@@ -124,11 +132,18 @@ if Rails.env.development?
 
   # create Front Page Posts
   5.times do
-    FrontPagePost.create!(title: Faker::Lorem.sentence(3),
-                          excerpt: Faker::Simpsons.quote,
-                          content: Faker::Hipster.paragraph_by_chars,
-                          user: admin_user,
-                          created_at: Time.now - Random.rand(0..100).days)
+    fpp = FrontPagePost.create!(title: Faker::Lorem.sentence(3),
+                                excerpt: Faker::Simpsons.quote,
+                                content: Faker::Hipster.paragraph_by_chars,
+                                user: admin_user,
+                                created_at: Time.now - Random.rand(0..100).days)
+
+    Comment.create!(commentable_type: "FrontPagePost",
+                    commentable_id: fpp.id,
+                    user: regular_users.sample,
+                    status: :normal,
+                    content: Faker::Shakespeare.romeo_and_juliet_quote,
+                    created_at: Time.now - Random.rand(0..200).days)
   end
 
   # create Textbooks and populate them with pages
@@ -143,6 +158,26 @@ if Rails.env.development?
                            description: Faker::Lorem.sentence(3, true, 7),
                            tag: grammar_tags.sample)
     end
+  end
+
+  # Randomly create some more tags - Since more are being in created in
+  # production, the number in development is lower
+  tag_category_ids = TagCategory.pluck(:id)
+  30.times do
+    Tag.create!(short_name: Faker::Science.unique.element_symbol,
+                long_name: Faker::Science.unique.element,
+                description: Faker::Company.catch_phrase,
+                tag_category_id: tag_category_ids.sample)
+  end
+
+  tag_ids = Tag.pluck(:id)
+  40.times do
+    Comment.create!(commentable_type: "Tag",
+                    commentable_id: tag_ids.sample,
+                    user: regular_users.sample,
+                    status: :normal,
+                    content: Faker::DumbAndDumber.quote,
+                    created_at: Time.now - Random.rand(0..200).days)
   end
 
 end
