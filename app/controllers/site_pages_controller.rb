@@ -1,11 +1,12 @@
 class SitePagesController < ApplicationController
 
 	def home
-		@top5 = Activity.limit(5).select(:id, :name, :upvote_count).order(upvote_count: :desc)
-			.where(status: :approved)
-		@newest = Activity.limit(10).select(:id, :name, :upvote_count).order(created_at: :desc)
-			.where(status: :approved)
-		@top_posts = FrontPagePost.order(created_at: :desc).limit(3).select(:id, :title, :excerpt)
+    @top10 = Activity.approved.limit(10).select(:id, :name, :upvote_count)
+      .order(upvote_count: :desc)
+    @newest = Activity.approved.limit(10).select(:id, :name, :upvote_count)
+      .order(created_at: :desc)
+		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
+      .select(:id, :title, :excerpt)
 	end
 
   def modqueue
