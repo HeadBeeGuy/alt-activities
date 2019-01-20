@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
   get '/jobs', to: 'job_posts#index'
   get '/shoutbox', to: 'site_pages#shoutbox'
+  get '/discord', to: 'site_pages#render_discord'
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
   get '/contribute', to: 'site_pages#contribute'
 	
