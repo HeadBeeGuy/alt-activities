@@ -7,7 +7,7 @@ class TextbookPagesController < ApplicationController
 		authorize @textbook_page
 		@textbooks = Textbook.all
 		# We don't need to see all tags - just those that apply to grammar points
-		@tags = TagCategory.find_by_name("Grammar points").tags
+		@tags = Tag.all
 	end
 
 	def create
@@ -29,7 +29,7 @@ class TextbookPagesController < ApplicationController
 		@textbook_page = TextbookPage.find(params[:id])
 		authorize @textbook_page
 		@textbooks = Textbook.all
-		@tags = TagCategory.find_by_name("Grammar points").tags
+		@tags = Tag.all
 	end
 
 	def update

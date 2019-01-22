@@ -45,7 +45,7 @@ class TextbooksController < ApplicationController
 	def show
 		@textbook = Textbook.find(params[:id])
 		if policy(@textbook).update?
-			@tags = TagCategory.find_by_name("Grammar points").tags
+			@tags = Tag.all
 		end
 	end
 
