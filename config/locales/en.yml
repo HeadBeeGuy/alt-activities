@@ -33,6 +33,7 @@ en:
     resources: "Resources"
     job-listings: "Jobs"
     shoutbox: "Shoutbox"
+    themes: "Themes"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
@@ -127,6 +128,9 @@ en:
       coding-heading: "Help code the site"
       coding-explanation: "Do you have any experience with web development? How about Ruby on Rails? The site is open-source, so if you've worked with Rails before, you can help us add new features!"
       contact-text: "If you have any questions, please get in contact with Jake at jake.alt.dev (at) gmail.com"
+    themes:
+      title: "ALTopedia - Activity themes"
+      header: "Activity themes"
   activities:
     page_titles:
       new_activity: "New Activity"

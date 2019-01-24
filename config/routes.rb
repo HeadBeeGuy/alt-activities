@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'site_pages#contact'
   get '/resources', to: 'site_pages#resources'
   get '/thanks', to: 'site_pages#thanks'
+  get '/themes', to: 'site_pages#themes'
 	get '/modqueue', to: 'site_pages#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
