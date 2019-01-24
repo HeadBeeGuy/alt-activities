@@ -50,7 +50,7 @@ class TextbooksController < ApplicationController
 	end
 
 	def index
-		@textbooks = Textbook.all
+    @textbooks = Textbook.all.order(name: :asc)
 	end
 
 	private
