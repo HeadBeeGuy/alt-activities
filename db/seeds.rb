@@ -79,6 +79,18 @@ if Rails.env.development?
     regular_users.sample.moderator!
   end
 
+  # Randomly create some more tags - Since more are being in created in
+  # production, the number in development is lower
+  tag_category_ids = TagCategory.pluck(:id)
+  30.times do
+    Tag.create!(short_name: Faker::Science.unique.element_symbol,
+                long_name: Faker::Science.unique.element,
+                description: Faker::Company.catch_phrase,
+                tag_category_id: tag_category_ids.sample)
+  end
+
+  tag_ids = Tag.pluck(:id)
+
   es_tag = Tag.find_by_short_name("ES")
   jhs_tag = Tag.find_by_short_name("JHS")
   hs_tag = Tag.find_by_short_name("HS")
@@ -88,18 +100,17 @@ if Rails.env.development?
 
   # Randomly create activities
   60.times do
+    activity_tags = tag_ids.sample( Random.rand(5..15) )
     activity = Activity.create!(name: Faker::Lovecraft.sentence(3, 1),
                                 short_description: Faker::Company.bs,
                                 long_description: Faker::Hipster.paragraph_by_chars,
                                 user: regular_users.sample,
                                 status: :approved,
+                                tag_ids: activity_tags,
                                 created_at: Time.now - Random.rand(0..365).days)
 
-    # Fill out each activity with tags, comments, and upvotes
+    # Fill out each activity with comments and upvotes
     # at some point later I should add in attachments
-    Random.rand(5..15).times do
-      Tagging.find_or_create_by(activity: activity, tag: Tag.all.sample)
-    end
 
     # toss a school level on it because it's pretty important
     Tagging.find_or_create_by(activity: activity, tag: school_level_tags.sample)
@@ -160,17 +171,6 @@ if Rails.env.development?
     end
   end
 
-  # Randomly create some more tags - Since more are being in created in
-  # production, the number in development is lower
-  tag_category_ids = TagCategory.pluck(:id)
-  30.times do
-    Tag.create!(short_name: Faker::Science.unique.element_symbol,
-                long_name: Faker::Science.unique.element,
-                description: Faker::Company.catch_phrase,
-                tag_category_id: tag_category_ids.sample)
-  end
-
-  tag_ids = Tag.pluck(:id)
   40.times do
     Comment.create!(commentable_type: "Tag",
                     commentable_id: tag_ids.sample,

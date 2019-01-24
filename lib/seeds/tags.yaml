@@ -289,3 +289,22 @@ tag_category_10:
       short_name: Creativity
       long_name: Creativity
       description: Develops students creative skills.
+tag_category_11:
+  name: Themes
+  tags:
+    tag_1:
+      short_name: theme-1
+      long_name: Theme 1
+      description: A theme tag.
+    tag_2:
+      short_name: theme-2
+      long_name: Theme 2
+      description: A second theme tag.
+    tag_3:
+      short_name: theme-3
+      long_name: Theme 3
+      description: A third theme tag.
+    tag_4:
+      short_name: theme-4
+      long_name: Theme 4
+      description: A fourth theme tag.
