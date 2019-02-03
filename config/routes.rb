@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/discord', to: 'site_pages#render_discord'
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
   get '/contribute', to: 'site_pages#contribute'
+
+  get '/search', to: 'tag_searches#new'
+  get '/tag_search', to: 'tag_searches#show'
 	
   resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
 
