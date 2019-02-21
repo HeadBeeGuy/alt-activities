@@ -1,0 +1,16 @@
+-provide(:title, "Englipedia Activity - #{@activity.title}")
+
+%h4 Englipedia Activity - #{@activity.title}
+%h6 by #{@activity.author}
+
+%p Originally submitted #{@activity.submission_date}
+%p Estimated time: #{@activity.estimated_time}
+%ul
+  %li Speaking: #{@activity.speaking}
+  %li Reading: #{@activity.reading}
+  %li Listening: #{@activity.listening}
+  %li Writing: #{@activity.writing}
+%p Included files: #{@activity.attached_files}
+
+%p Description:
+%p= markdown(@activity.description)

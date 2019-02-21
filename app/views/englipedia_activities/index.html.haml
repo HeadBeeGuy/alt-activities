@@ -1,0 +1,20 @@
+-provide(:title, "Englipedia Activities")
+
+%h3 Englipedia Activities
+
+%p These activities were imported from Englipedia.
+
+%table.table.table-striped.table-sm
+  %thead.thead-light
+    %tr
+      %th Title
+      %th Author
+      %th Submission date
+      %th Estimated time
+  - @activities.each do |activity|
+    %tr
+      %td= link_to activity.title, activity
+      %td= activity.author
+      %td= activity.submission_date
+      %td= activity.estimated_time
+    

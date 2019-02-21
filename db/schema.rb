@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_050834) do
+ActiveRecord::Schema.define(version: 2019_02_21_045742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 2018_07_03_050834) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "englipedia_activities", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "submission_date"
+    t.string "estimated_time"
+    t.text "attached_files", default: [], array: true
+    t.boolean "speaking"
+    t.boolean "listening"
+    t.boolean "reading"
+    t.boolean "writing"
+    t.text "description"
+    t.boolean "converted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "front_page_posts", force: :cascade do |t|

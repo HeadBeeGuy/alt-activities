@@ -1,0 +1,2 @@
+class EnglipediaActivity < ApplicationRecord
+end
