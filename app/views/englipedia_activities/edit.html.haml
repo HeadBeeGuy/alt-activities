@@ -1,0 +1,33 @@
+= form_for @activity do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    .form-row
+      .col
+        %label{"for" => "activity_title"} Title
+        = f.text_field :title, class: "form-control"
+      .col
+        %label{"for" => "activity_author"} Author
+        = f.text_field :author, class: "form-control"
+      .col
+        %label{"for" => "activity_submission_date"} Submission Date
+        = f.text_field :submission_date, class: "form-control"
+      .col
+        %label{"for" => "activity_estimated_time"} Estimated Time
+        = f.text_field :estimated_time, class: "form-control"
+
+  .form-group
+    %span Parts of learning:
+    = f.label "Speaking"
+    = f.check_box :speaking
+    = f.label "Listening"
+    = f.check_box :listening
+    = f.label "Reading"
+    = f.check_box :reading
+    = f.label "Writing"
+    = f.check_box :writing
+
+  .form-group
+    %label{"for" => "activity_description"} Description
+    = f.text_area :description, class: "form-control", rows: 16
+
+  = f.submit "Update activity", class: "btn btn-primary"
