@@ -26,6 +26,10 @@
     = f.label "Writing"
     = f.check_box :writing
 
+  %p
+    %span Included files: #{@activity.attached_files}
+    %small Non-editable. If we need to change files in the final activity, we should just do it through ALTopedia's file hosting.
+
   .form-group
     %label{"for" => "activity_description"} Description
     = f.text_area :description, class: "form-control", rows: 16

@@ -1,16 +1,34 @@
 -provide(:title, "Englipedia Activity - #{@activity.title}")
 
+%p 
+  %span= link_to "<< Back to all activities", englipedia_activities_path
+  %span= link_to "Edit this activity", edit_englipedia_activity_path(@activity), class: "btn btn-primary"
+  %span= link_to "Delete this activity", "#", class: "btn btn-primary"
+
+- if @activity.converted
+  %h2 This activity was already converted into an ALTopedia activity! Feel free to delete it.
 %h4 Englipedia Activity - #{@activity.title}
 %h6 by #{@activity.author}
 
 %p Originally submitted #{@activity.submission_date}
 %p Estimated time: #{@activity.estimated_time}
+%p Parts of learning:
 %ul
-  %li Speaking: #{@activity.speaking}
-  %li Reading: #{@activity.reading}
-  %li Listening: #{@activity.listening}
-  %li Writing: #{@activity.writing}
-%p Included files: #{@activity.attached_files}
+  - if @activity.speaking
+    %li Speaking
+  - if @activity.listening
+    %li Listening
+  - if @activity.reading
+    %li Reading
+  - if @activity.writing
+    %li Writing
+%p Included files:
+- if @links.any?
+  %ul
+    - @links.each do |link|
+      %li= link_to link, link
 
 %p Description:
 %p= markdown(@activity.description)
+
+%span= link_to "Looks good - make it an ALTopedia activity!", "#", class: "btn btn-primary"
