@@ -38,6 +38,14 @@ class EnglipediaActivitiesController < ApplicationController
     redirect_to englipedia_activities_url
   end
 
+  def convert
+    @activity = EnglipediaActivity.find(params[:id])
+    if @activity.convert_to_regular_activity
+      # @activity.converted!
+      redirect_to modqueue_url
+    end
+  end
+
   private
     def englipedia_activity_params
       params.require(:englipedia_activity).permit(:title, :author,

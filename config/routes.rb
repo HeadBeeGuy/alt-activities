@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get '/tag_search', to: 'tag_searches#show'
   get '/activity_search', to: 'activity_searches#show'
 	
-  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts, :englipedia_activities
+  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
 
 	resources :users do
 		member do
@@ -46,6 +46,12 @@ Rails.application.routes.draw do
 			delete :delete_attached_document
 		end
 	end
+
+  resources :englipedia_activities do
+    member do
+      put :convert
+    end
+  end
 
   resources :upvotes, only: [ :create, :destroy ]
   resources :taggings, only: [ :create, :destroy ]
