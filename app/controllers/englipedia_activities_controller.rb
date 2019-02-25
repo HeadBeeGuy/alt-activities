@@ -40,10 +40,9 @@ class EnglipediaActivitiesController < ApplicationController
 
   def convert
     @activity = EnglipediaActivity.find(params[:id])
-    if @activity.convert_to_regular_activity
-      # @activity.converted!
-      redirect_to modqueue_url
-    end
+    @activity.convert_to_regular_activity
+    # @activity.converted!
+    redirect_to modqueue_url
   end
 
   private
@@ -52,7 +51,8 @@ class EnglipediaActivitiesController < ApplicationController
                                                   :submission_date,
                                                   :estimated_time, :speaking,
                                                   :listening, :reading,
-                                                  :writing, :description)
+                                                  :writing, :warmup, :es, :jhs,
+                                                  :hs, :outline, :description)
     end
     
 end

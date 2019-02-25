@@ -3,7 +3,7 @@
 %p 
   %span= link_to "<< Back to all activities", englipedia_activities_path
   %span= link_to "Edit this activity", edit_englipedia_activity_path(@activity), class: "btn btn-primary"
-  %span= link_to "Delete this activity", "#", class: "btn btn-primary"
+  %span= link_to "Delete this activity", @activity, method: :delete, class: "btn btn-primary"
 
 - if @activity.converted
   %h2 This activity was already converted into an ALTopedia activity! Feel free to delete it.
@@ -22,11 +22,24 @@
     %li Reading
   - if @activity.writing
     %li Writing
+%p
+  Level or type:
+  - if @activity.warmup
+    %span Warm-up
+  - if @activity.es
+    %span Elementary
+  - if @activity.jhs
+    %span Junior High School
+  -if @activity.hs
+    %span High School
 %p Included files:
 - if @links.any?
   %ul
     - @links.each do |link|
       %li= link_to link, link
+
+%p Outline:
+%p= @activity.outline
 
 %p Description:
 %p= markdown(@activity.description)

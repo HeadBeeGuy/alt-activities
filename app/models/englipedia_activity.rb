@@ -18,8 +18,13 @@ class EnglipediaActivity < ApplicationRecord
     reading_tag = Tag.find_by_long_name("Reading")
     writing_tag = Tag.find_by_long_name("Writing")
 
+    warmup_tag = Tag.find_by_long_name("Warm-up")
+    es_tag = Tag.find_by_long_name("Elementary School")
+    jhs_tag = Tag.find_by_long_name("Junior High School")
+    hs_tag = Tag.find_by_long_name("High School")
+
     @new_activity = Activity.create!(name: title,
-                                     short_description: "Add the short description stuff in, Jake!",
+                                     short_description: outline,
                                      long_description: new_description,
                                      user: User.first,
                                      time_estimate: estimated_time,
@@ -29,6 +34,10 @@ class EnglipediaActivity < ApplicationRecord
     @new_activity.tags << speaking_tag if speaking?
     @new_activity.tags << reading_tag if reading?
     @new_activity.tags << writing_tag if listening?
+    @new_activity.tags << warmup_tag if warmup?
+    @new_activity.tags << es_tag if es?
+    @new_activity.tags << jhs_tag if jhs?
+    @new_activity.tags << hs_tag if hs?
 
     # attach files... this might be a doozy!
   end

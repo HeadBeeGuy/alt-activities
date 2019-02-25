@@ -69,10 +69,15 @@ ActiveRecord::Schema.define(version: 2019_02_21_045742) do
     t.string "submission_date"
     t.string "estimated_time"
     t.text "attached_files", default: [], array: true
+    t.boolean "warmup"
+    t.boolean "es"
+    t.boolean "jhs"
+    t.boolean "hs"
     t.boolean "speaking"
     t.boolean "listening"
     t.boolean "reading"
     t.boolean "writing"
+    t.text "outline"
     t.text "description"
     t.boolean "converted", default: false
     t.datetime "created_at", null: false

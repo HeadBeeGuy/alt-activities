@@ -16,11 +16,18 @@ class CreateEnglipediaActivities < ActiveRecord::Migration[5.2]
 
       # as with UUIDs, this may only work in Postgres
       t.text :attached_files, array: true, default: '{}'
+
+      t.boolean :warmup
+      t.boolean :es
+      t.boolean :jhs
+      t.boolean :hs
       
       t.boolean :speaking
       t.boolean :listening
       t.boolean :reading
       t.boolean :writing
+
+      t.text :outline
 
       t.text :description
 
@@ -33,16 +40,23 @@ class CreateEnglipediaActivities < ActiveRecord::Migration[5.2]
     # Seed the data for all of these at this point and only this point
     Dir.glob("lib/seeds/englipedia/*.txt") do |file|
       data = YAML.load(File.read(file))
-      EnglipediaActivity.create!(title: data[:title],
-                                 author: data[:author],
-                                 submission_date: data[:submission_date],
-                                 estimated_time: data[:estimated_time],
-                                 speaking: data[:parts_of_learning][:speaking],
-                                 listening: data[:parts_of_learning][:listening],
-                                 reading: data[:parts_of_learning][:reading],
-                                 writing: data[:parts_of_learning][:writing],
-                                 attached_files: data[:attached_files],
-                                 description: data[:description])
+      unless data[:title].nil?
+        EnglipediaActivity.create!(title: data[:title],
+                                   author: data[:author],
+                                   submission_date: data[:submission_date],
+                                   estimated_time: data[:estimated_time],
+                                   warmup: data[:level_info][:warmup],
+                                   es: data[:level_info][:es],
+                                   jhs: data[:level_info][:jhs],
+                                   hs: data[:level_info][:hs],
+                                   speaking: data[:parts_of_learning][:speaking],
+                                   listening: data[:parts_of_learning][:listening],
+                                   reading: data[:parts_of_learning][:reading],
+                                   writing: data[:parts_of_learning][:writing],
+                                   attached_files: data[:attached_files],
+                                   outline: data[:outline],
+                                   description: data[:description])
+      end
     end
   end
 

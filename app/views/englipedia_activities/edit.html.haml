@@ -26,9 +26,24 @@
     = f.label "Writing"
     = f.check_box :writing
 
+  .form-group
+    %span Level or type:
+    = f.label "Warm-up"
+    = f.check_box :warmup
+    = f.label "Elementary"
+    = f.check_box :es
+    = f.label "Junior High"
+    = f.check_box :jhs
+    = f.label "High School"
+    = f.check_box :hs
+
   %p
     %span Included files: #{@activity.attached_files}
     %small Non-editable. If we need to change files in the final activity, we should just do it through ALTopedia's file hosting.
+
+  .form-group
+    %label{"for" => "activity_outline"} Outline
+    = f.text_field :outline, class: "form-control"
 
   .form-group
     %label{"for" => "activity_description"} Description
