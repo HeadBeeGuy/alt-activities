@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class EnglipediaActivity < ApplicationRecord
 
   # validations will be pretty loose since the seed data has lots of quirks and
@@ -39,6 +41,14 @@ class EnglipediaActivity < ApplicationRecord
     @new_activity.tags << jhs_tag if jhs?
     @new_activity.tags << hs_tag if hs?
 
-    # attach files... this might be a doozy!
+    # thanks to https://stackoverflow.com/a/54185936
+    if attached_files.any?
+      file_location = "http://englipedia.co/www.englipedia.net/Documents/"
+      attached_files.each do |englipedia_file|
+        file_url = "#{file_location}#{englipedia_file.split('/').last}"
+        @new_activity.documents.attach(io: open(file_url),
+                                       filename: englipedia_file.split('/').last)
+      end
+    end
   end
 end
