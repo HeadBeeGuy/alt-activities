@@ -1,15 +1,18 @@
 
 class EnglipediaActivitiesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     @activities = EnglipediaActivity.all.page(params[:page]).per(40)
+    authorize @activities
   end
 
   def show
     # the archive location may change in the future
     englipedia_file_root = "http://englipedia.co/www.englipedia.net"
     @activity = EnglipediaActivity.find(params[:id])
+    authorize @activity
+
     # making it sub! modifies @activity's file list as well, but it doesn't
     # seem to save it to the db. But if I take it off, it won't persist the
     # substitution in @links. I think I'm missing an obvious Ruby pattern here,
@@ -19,10 +22,12 @@ class EnglipediaActivitiesController < ApplicationController
 
   def edit
     @activity = EnglipediaActivity.find(params[:id])
+    authorize @activity
   end
 
   def update
     @activity = EnglipediaActivity.find(params[:id])
+    authorize @activity
     if @activity.update_attributes(englipedia_activity_params)
       flash[:success] = "Updated activity info."
       redirect_to @activity
@@ -33,6 +38,7 @@ class EnglipediaActivitiesController < ApplicationController
 
   def destroy
     @activity = EnglipediaActivity.find(params[:id])
+    authorize @activity
     @activity.destroy
     flash[:success] = "Activity deleted."
     redirect_to englipedia_activities_url
@@ -40,6 +46,7 @@ class EnglipediaActivitiesController < ApplicationController
 
   def convert
     @activity = EnglipediaActivity.find(params[:id])
+    authorize @activity
     @activity.convert_to_regular_activity
     # @activity.converted!
     redirect_to modqueue_url
