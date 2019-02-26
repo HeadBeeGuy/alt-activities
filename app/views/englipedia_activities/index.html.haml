@@ -9,12 +9,16 @@
     %tr
       %th Title
       %th Author
-      %th Submission date
-      %th Estimated time
+      %th Outline
   - @activities.each do |activity|
     %tr
-      %td= link_to activity.title, activity
-      %td= activity.author
-      %td= activity.submission_date
-      %td= activity.estimated_time
+      - if activity.converted?
+        %td.table-danger= link_to activity.title, activity
+        %td.table-danger= activity.author
+        %td.table-danger= activity.outline
+      - else
+        %td= link_to activity.title, activity
+        %td= activity.author
+        %td= activity.outline
+= paginate @activities
     

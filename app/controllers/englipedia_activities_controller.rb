@@ -3,7 +3,7 @@ class EnglipediaActivitiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @activities = EnglipediaActivity.all
+    @activities = EnglipediaActivity.all.page(params[:page]).per(40)
   end
 
   def show
