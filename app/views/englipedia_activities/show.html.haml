@@ -10,6 +10,12 @@
 %h4 Englipedia Activity - #{@activity.title}
 %h6 by #{@activity.author}
 
+- if @similar.any?
+  %h4 Potential similar or identical activities:
+  %ul
+    - @similar.each do |activity|
+      %li= link_to activity.name, activity
+
 %p Originally submitted #{@activity.submission_date}
 %p Estimated time: #{@activity.estimated_time}
 %p Parts of learning:

@@ -13,6 +13,13 @@ class EnglipediaActivitiesController < ApplicationController
     @activity = EnglipediaActivity.find(params[:id])
     authorize @activity
 
+    @similar = Activity.where('name ILIKE ? OR short_description ILIKE ? OR ' +
+                                 'long_description ILIKE ?', 
+                                 @activity.title,
+                                 @activity.title,
+                                 @activity.title)
+                                   .approved.select(:id, :name)
+                                   .limit(3)
     # making it sub! modifies @activity's file list as well, but it doesn't
     # seem to save it to the db. But if I take it off, it won't persist the
     # substitution in @links. I think I'm missing an obvious Ruby pattern here,
@@ -48,7 +55,6 @@ class EnglipediaActivitiesController < ApplicationController
     @activity = EnglipediaActivity.find(params[:id])
     authorize @activity
     @activity.convert_to_regular_activity
-    # @activity.converted!
     redirect_to modqueue_url
   end
 
