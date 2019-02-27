@@ -60,4 +60,16 @@ class CreateEnglipediaActivities < ActiveRecord::Migration[5.2]
     end
   end
 
+  @archive_user = User.create(username: "Englipedia Archive",
+                              email: "englipedia_archive@example.org",
+                              home_country: "Cyberspace",
+                              location: "Japan",
+                              bio: "Archived activities from the Englipedia site.",
+                              password: "badpassword",
+                              password_confirmation: "badpassword",
+                              role: :normal,
+                              confirmed_at: Time.now)
+
+  @archive_user.save
+
 end

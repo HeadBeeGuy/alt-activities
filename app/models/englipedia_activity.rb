@@ -28,7 +28,7 @@ class EnglipediaActivity < ApplicationRecord
     @new_activity = Activity.create!(name: title,
                                      short_description: outline,
                                      long_description: new_description,
-                                     user: User.first,
+                                     user: User.find_by_username("Englipedia Archive"),
                                      time_estimate: estimated_time,
                                      status: :unapproved)
 
