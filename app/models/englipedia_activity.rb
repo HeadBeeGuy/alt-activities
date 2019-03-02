@@ -48,8 +48,13 @@ class EnglipediaActivity < ApplicationRecord
       file_location = "http://englipedia.co/www.englipedia.net/Documents/"
       attached_files.each do |englipedia_file|
         file_url = "#{file_location}#{englipedia_file.split('/').last}"
-        # @new_activity.documents.attach(io: open(file_url),
-        #                                filename: englipedia_file.split('/').last)
+        begin
+          @new_activity.documents.attach(io: open(file_url),
+                                         filename: englipedia_file.split('/').last)
+        rescue OpenURI::HTTPError => ex
+          # the file 404ed - nothing to do but ignore and move on!
+          next
+        end
       end
     end
   end

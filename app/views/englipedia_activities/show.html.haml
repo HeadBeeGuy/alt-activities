@@ -39,8 +39,8 @@
   -if @activity.hs
     %span High School
 %p Included files:
-%p Please check to see if any files give a 404 error! Currently the activities won't convert correctly if they do. I'll need to find a way to let us edit the list of activity files.
 - if @links.any?
+  %p If any of these files give a 404 error, they won't be included in the ALTopedia version.
   %ul
     - @links.each do |link|
       %li= link_to link, link

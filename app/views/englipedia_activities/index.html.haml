@@ -2,7 +2,7 @@
 
 %h3 Englipedia Activities
 
-%p These activities were imported from Englipedia.
+%p These activities were imported from Englipedia. Entries in red have been converted to ALTopedia activities and are safe to delete.
 
 %table.table.table-striped.table-sm
   %thead.thead-light
@@ -10,15 +10,18 @@
       %th Title
       %th Author
       %th Outline
+      %th
   - @activities.each do |activity|
     %tr
       - if activity.converted?
         %td.table-danger= link_to activity.title, activity
         %td.table-danger= activity.author
         %td.table-danger= activity.outline
+        %td= link_to "(Delete)", activity, method: :delete
       - else
         %td= link_to activity.title, activity
         %td= activity.author
         %td= activity.outline
+        %td
 = paginate @activities
     
