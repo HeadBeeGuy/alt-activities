@@ -37,3 +37,6 @@
 .ebextensions/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Englipedia Activity data - doesn't need to be stored in the git repository
+/lib/seeds/englipedia/
