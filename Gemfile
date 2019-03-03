@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
@@ -34,6 +34,7 @@ gem 'recaptcha'
 gem 'loofah', '~> 2.2.3'
 
 # 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
+# all newer versions of nokogiri seem to break EB deployment, which is frustrating!
 gem 'nokogiri', '1.8.2'
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
