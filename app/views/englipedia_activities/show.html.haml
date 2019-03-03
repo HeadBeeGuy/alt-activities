@@ -17,6 +17,7 @@
       %li= link_to activity.name, activity
 
 %p Originally submitted #{@activity.submission_date}
+%p= link_to @activity.original_url, @activity.original_url
 %p Estimated time: #{@activity.estimated_time}
 %p Parts of learning:
 %ul

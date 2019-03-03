@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_045742) do
     t.string "author"
     t.string "submission_date"
     t.string "estimated_time"
+    t.string "original_url"
     t.text "attached_files", default: [], array: true
     t.boolean "warmup"
     t.boolean "es"

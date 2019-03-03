@@ -13,6 +13,7 @@ class CreateEnglipediaActivities < ActiveRecord::Migration[5.2]
       t.string :author
       t.string :submission_date
       t.string :estimated_time
+      t.string :original_url
 
       # as with UUIDs, this may only work in Postgres
       t.text :attached_files, array: true, default: '{}'
@@ -44,6 +45,7 @@ class CreateEnglipediaActivities < ActiveRecord::Migration[5.2]
         EnglipediaActivity.create!(title: data[:title],
                                    author: data[:author],
                                    submission_date: data[:submission_date],
+                                   original_url: data[:original_url],
                                    estimated_time: data[:estimated_time],
                                    warmup: data[:level_info][:warmup],
                                    es: data[:level_info][:es],
