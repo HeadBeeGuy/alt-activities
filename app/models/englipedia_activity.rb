@@ -57,5 +57,7 @@ class EnglipediaActivity < ApplicationRecord
         end
       end
     end
+
+    @new_activity
   end
 end

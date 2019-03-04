@@ -54,8 +54,9 @@ class EnglipediaActivitiesController < ApplicationController
   def convert
     @activity = EnglipediaActivity.find(params[:id])
     authorize @activity
-    @activity.convert_to_regular_activity
-    redirect_to modqueue_url
+    @converted_activity = @activity.convert_to_regular_activity
+    flash[:success] = "Activity converted! Please choose all appropriate tags!"
+    redirect_to edit_activity_url(@converted_activity)
   end
 
   private
