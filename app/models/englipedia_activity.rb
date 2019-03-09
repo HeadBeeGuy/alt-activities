@@ -8,7 +8,7 @@ class EnglipediaActivity < ApplicationRecord
   validates :author, length: { maximum: 200 }
   validates :submission_date, length: { maximum: 200 }
   validates :estimated_time, length: { maximum: 200 }
-  validates :description, length: { maximum: 10000 }
+  validates :description, length: { maximum: 50000 }
 
   def convert_to_regular_activity
     new_description = "**Archived from Englipedia.**\n"
