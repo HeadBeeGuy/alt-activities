@@ -28,13 +28,19 @@ class ActivitiesController < ApplicationController
   
   def update
     @activity = Activity.find(params[:id])
-    
     authorize @activity
     if @activity.update_attributes(activity_params)
-      flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
-      @activity.edited!
+      # admins and moderators can edit activities without pulling them back to the mod queue
+      if current_user.admin? || current_user.moderator?
+        flash[:success] = "Activity updated."
+        @activity.approved!
+        redirect_to modqueue_url
+      else
+        flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
+        @activity.edited!
+        redirect_to activities_url
+      end
 			UpdateActivityCountWorker.perform_async(@activity.user.id)
-      redirect_to activities_url
     else
       render 'edit'
     end
