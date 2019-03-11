@@ -13,24 +13,24 @@ Activities can be assigned a variety of tags to help categorize them. By searchi
 
 Higher priority tasks:
 
-- Activity search system using AND search system with tags
 - Redirect users to their profiles upon account activation and possibly login
+- Let users link different activities together, so they can say that their activity was inspired by another, for example
+- Redirect users to their user page or another useful page upon activity submission
 
 ---
 
 Longer-term tasks:
 
+- Allow users to preview an activity before submission, and let them view their own pending activities
 - Dockerize the application since I need to learn how Docker works and it may make it easier to bundle things like anti-virus scanning
 - Scan all incoming files for viruses and warn moderators about them
 - OAuth integration - or maybe not, if the big OAuth providers keep behaving badly!
 - System for users to submit ideas for new tags or textbooks
 - Look into localizing model data as well (tag data and activity text)
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
-- Add a captcha to user registration and possibly activity submission for accounts that don't have any approved activities
 - Restrict the file types and file size of uploaded files. Maybe Rails 6.0 will build in some kind of validations?
 - Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
 - Allow users to publicly display activities that they've upvoted. Maybe this will be opt-in since I can see some users may not want all and sundry to see what they liked.
-- Let users link different activities together, so they can say that their activity was inspired by another, for example
 
 ---
 
