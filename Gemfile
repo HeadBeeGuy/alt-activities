@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.2'
-gem 'railties'
+gem 'rails', '5.2.2.1'
+gem 'railties', '~> 5.2.2.1'
 gem 'puma'
 gem 'bootsnap'
 gem 'listen'
