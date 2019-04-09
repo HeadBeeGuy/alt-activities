@@ -96,9 +96,8 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-		@activities = Activity.approved.order(upvote_count: :desc)
-			.select(:name, :short_description, :upvote_count, :id)
-      .includes(:tags).page(params[:page])
+		@activities = Activity.approved.order(created_at: :desc)
+			.select(:name, :short_description, :id).page(params[:page])
   end
   
 	# swiping from https://stackoverflow.com/a/49517939

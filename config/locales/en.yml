@@ -134,7 +134,6 @@ en:
   activities:
     page_titles:
       new_activity: "New Activity"
-      all_activities: "All Activities"
     activity_form:
       guidelines:
         guideline-heading: "Thank you for sharing your activity! Here are some guidelines to keep in mind:"
@@ -159,6 +158,9 @@ en:
       submit: "Submit"
     new_activity_header: "Submit a new activity"
     index:
+      title: "ALTopedia - Activities"
+      heading: "ALTopedia activity listings"
+      index-explanation: "The most recent activities are listed first."
       view: "View"
     edit:
       edit_heading: "Edit this activity"

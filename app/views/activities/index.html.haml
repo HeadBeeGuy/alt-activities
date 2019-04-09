@@ -1,19 +1,17 @@
-- provide(:title, t('activities.page_titles.all_activities'))
+- provide(:title, t('.title'))
 
+%h2= t('.heading')
+%p= t('.index-explanation')
 
 .row
   - @activities.each do |activity|
     .col-sm-6.col-md-4.col-lg-4.mt-4
-      .card
-        %h5.card-header
+      .card.box-shadow
+        %h5.card-header.text-center
           =link_to activity.name, activity
-          %span.badge.badge-info.float-right= activity.upvote_count
         .card-body
           %p.card-text= activity.short_description
           = link_to t('.view'), activity, class: "btn btn-outline-primary float-right"
-        .card-footer
-          - activity.tags.each do |tag|
-            %span= link_to tag.long_name, tag, class: "badge badge-success"
 
 %br
 
