@@ -27,6 +27,8 @@ module Workspace
     # given the relatively modest server and db load thus far.
     # Configuration files are still lying around, but I'll deactivate ElastiCache
     # until we get to the point where background jobs seem necessary.
-		# config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_adapter = :sidekiq
+    
+    config.time_zone = 'Asia/Tokyo'
   end
 end
