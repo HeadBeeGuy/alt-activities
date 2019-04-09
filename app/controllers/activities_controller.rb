@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
     authorize @activity
     if @activity.save
       flash[:success] = "Activity submitted! Once it's approved, it will show up on the site."
-      redirect_to activities_url
+      redirect_to current_user
     else
       render 'new'
     end
