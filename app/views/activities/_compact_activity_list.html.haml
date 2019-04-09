@@ -7,4 +7,5 @@
           %li.list-group-item
             %span
               =link_to activity.name, activity, class: "card-link"
-              %span.badge.badge-info.float-right= activity.upvote_count 
+              - if show_upvote_count
+                %span.badge.badge-info.float-right= activity.upvote_count 

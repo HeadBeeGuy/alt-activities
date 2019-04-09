@@ -29,9 +29,9 @@
     .activity-lists
       .row
         .col-sm-12.col-md-6
-          = render partial: 'activities/compact_activity_list', locals: { label: t('.newest-activities'), activity_list: @newest }
+          = render partial: 'activities/compact_activity_list', locals: { label: t('.newest-activities'), activity_list: @newest, show_upvote_count: false }
         .col-sm-12.col-md-6
-          = render partial: 'activities/compact_activity_list', locals: { label: t('.top-10-activities'), activity_list: @top10 }
+          = render partial: 'activities/compact_activity_list', locals: { label: t('.top-10-activities'), activity_list: @top10, show_upvote_count: true }
   .col-md-4.col-sm-12.secondary-content
     .nagajob
       = link_to image_tag("nagajob.jpg", class: "mw-100 rounded"), "http://www.nagajob.co.jp"

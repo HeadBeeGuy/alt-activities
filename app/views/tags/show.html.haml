@@ -13,7 +13,7 @@
         - if policy(@tag).delete?
           = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
   .col-md-4.col-sm-12
-    = render partial: 'activities/compact_activity_list', locals: { label: t('.top-5-label'), activity_list: @top5 }
+    = render partial: 'activities/compact_activity_list', locals: { label: t('.top-5-label'), activity_list: @top5, show_upvote_count: true }
 
 %h5.pt-2= t('.recent-activities-heading')
 .card-columns.pt-2
