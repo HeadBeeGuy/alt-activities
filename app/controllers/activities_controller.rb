@@ -29,6 +29,7 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
     authorize @activity
+    @user = @activity.user
     if @activity.update_attributes(activity_params)
       # admins and moderators can edit activities without pulling them back to the mod queue
       if current_user.admin? || current_user.moderator?
@@ -40,7 +41,8 @@ class ActivitiesController < ApplicationController
         @activity.edited!
         redirect_to activities_url
       end
-			UpdateActivityCountWorker.perform_async(@activity.user.id)
+      # UpdateActivityCountWorker.perform_async(@activity.user.id)
+      @user.update_attributes(activity_count: @user.activities.approved.count)
     else
       render 'edit'
     end
@@ -69,10 +71,12 @@ class ActivitiesController < ApplicationController
   def approve
     @activity = Activity.find(params[:id])
     authorize @activity
+    @user = @activity.user
     if @activity.unapproved? || @activity.edited?
       @activity.approved!
       flash[:success] = "Activity approved!"
-			UpdateActivityCountWorker.perform_async(@activity.user.id)
+			# UpdateActivityCountWorker.perform_async(@activity.user.id)
+      @user.update_attributes(activity_count: @user.activities.approved.count)
       redirect_to modqueue_url
     elsif @activity.approved?
       flash[:warning] = "Activity already approved!"
