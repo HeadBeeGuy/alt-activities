@@ -22,7 +22,7 @@ if Rails.env.development?
   # Seed a few users with specific roles
   admin_user = User.create!(username: "Local Admin",
                             email: "jake@example.com",
-                            home_country: Faker::Witcher.location,
+                            home_country: Faker::Games::Witcher.location,
                             location: Faker::Address.city,
                             bio: "I'm the admin user.",
                             password: "badpassword",
@@ -67,7 +67,7 @@ if Rails.env.development?
                                   email: Faker::Internet.safe_email,
                                   home_country: Faker::Address.country_code_long,
                                   location: Faker::Address.city,
-                                  bio: Faker::FamousLastWords.last_words,
+                                  bio: Faker::Quote.famous_last_words,
                                   password: "badpassword",
                                   password_confirmation: "badpassword",
                                   role: :normal,
@@ -79,13 +79,22 @@ if Rails.env.development?
     regular_users.sample.moderator!
   end
 
-  # Randomly create some more tags - Since more are being in created in
-  # production, the number in development is lower
+  # Randomly create some more tags - need to have enough to be greater than the
+  # number in production, since I refer tags by id on the live site
   tag_category_ids = TagCategory.pluck(:id)
-  30.times do
-    Tag.create!(short_name: Faker::Science.unique.element_symbol,
-                long_name: Faker::Science.unique.element,
-                description: Faker::Company.catch_phrase,
+
+  # This seed was popping up errors periodically
+  # 20.times do
+  #   Tag.create!(short_name: Faker::Science.unique.element_symbol,
+  #               long_name: Faker::Science.unique.element,
+  #               description: Faker::Company.catch_phrase,
+  #               tag_category_id: tag_category_ids.sample)
+  # end
+
+  80.times do |index|
+    Tag.create!(short_name: "extra-#{index}",
+                long_name: "Extra Tag #{index}",
+                description: "Description #{index}",
                 tag_category_id: tag_category_ids.sample)
   end
 
@@ -101,7 +110,7 @@ if Rails.env.development?
   # Randomly create activities
   60.times do
     activity_tags = tag_ids.sample( Random.rand(5..15) )
-    activity = Activity.create!(name: Faker::Lovecraft.sentence(3, 1),
+    activity = Activity.create!(name: Faker::Books::Lovecraft.sentence(3, 1),
                                 short_description: Faker::Company.bs,
                                 long_description: Faker::Hipster.paragraph_by_chars,
                                 user: regular_users.sample,
@@ -125,7 +134,7 @@ if Rails.env.development?
                       commentable_id: activity.id,
                       user: regular_users.sample,
                       status: :normal,
-                      content: Faker::Lebowski.quote,
+                      content: Faker::Movies::Lebowski.quote,
                       created_at: Time.now - Random.rand(0..200).days)
     end
 
@@ -144,7 +153,7 @@ if Rails.env.development?
   # create Front Page Posts
   5.times do
     fpp = FrontPagePost.create!(title: Faker::Lorem.sentence(3),
-                                excerpt: Faker::Simpsons.quote,
+                                excerpt: Faker::TvShows::Simpsons.quote,
                                 content: Faker::Hipster.paragraph_by_chars,
                                 user: admin_user,
                                 created_at: Time.now - Random.rand(0..100).days)
@@ -153,7 +162,7 @@ if Rails.env.development?
                     commentable_id: fpp.id,
                     user: regular_users.sample,
                     status: :normal,
-                    content: Faker::Shakespeare.romeo_and_juliet_quote,
+                    content: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
                     created_at: Time.now - Random.rand(0..200).days)
   end
 
@@ -161,7 +170,7 @@ if Rails.env.development?
   grammar_tags = TagCategory.find_by_name("Grammar points").tags
   20.times do
     new_textbook = Textbook.create!(name: Faker::Lorem.sentence(3),
-                                    additional_info: Faker::Simpsons.quote,
+                                    additional_info: Faker::TvShows::Simpsons.quote,
                                     level: Textbook.levels.to_a.sample[1])
     Random.rand(10..20).times do
       TextbookPage.create!(textbook: new_textbook,
@@ -176,7 +185,7 @@ if Rails.env.development?
                     commentable_id: tag_ids.sample,
                     user: regular_users.sample,
                     status: :normal,
-                    content: Faker::DumbAndDumber.quote,
+                    content: Faker::TvShows::DumbAndDumber.quote,
                     created_at: Time.now - Random.rand(0..200).days)
   end
 
