@@ -37,7 +37,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
 		@activities = @tag.activities.approved.order(created_at: :desc)
 			.select(:name, :short_description, :upvote_count, :id).page(params[:page])
-		@top5 = @tag.activities.approved.limit(5).select(:id, :name, :upvote_count)
+		@top5 = @tag.activities.approved.limit(5).select(:id, :name, :upvote_count, :short_description)
 			.order(upvote_count: :desc)
     @comment = Comment.new
     @comments = @tag.comments.visible.page(params[:page]).includes(:user)

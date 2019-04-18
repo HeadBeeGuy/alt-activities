@@ -1,9 +1,9 @@
 class SitePagesController < ApplicationController
 
 	def home
-    @top10 = Activity.approved.limit(10).select(:id, :name, :upvote_count)
+    @top10 = Activity.approved.limit(10).select(:id, :name, :upvote_count, :short_description)
       .order(upvote_count: :desc)
-    @newest = Activity.approved.limit(10).select(:id, :name, :upvote_count)
+    @newest = Activity.approved.limit(10).select(:id, :name, :short_description)
       .order(created_at: :desc)
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
       .select(:id, :title, :excerpt)
@@ -30,7 +30,7 @@ class SitePagesController < ApplicationController
     @warmups = Activity.find_with_all_tags([
       Tag.find_by_short_name("ES").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("ES").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
     @textbooks = Textbook.ES.select(:id, :name).order(name: :asc)
   end
   
@@ -41,7 +41,7 @@ class SitePagesController < ApplicationController
     @warmups = Activity.find_with_all_tags([
       Tag.find_by_short_name("JHS").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("JHS").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
     @textbooks = Textbook.JHS.select(:id, :name).order(name: :asc)
   end
   
@@ -52,7 +52,7 @@ class SitePagesController < ApplicationController
     @warmups = Activity.find_with_all_tags([
       Tag.find_by_short_name("HS").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_short_name("HS").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
     @textbooks = Textbook.HS.select(:id, :name).order(name: :asc)
   end
 
@@ -63,7 +63,7 @@ class SitePagesController < ApplicationController
     @warmups = Activity.find_with_all_tags([
       Tag.find_by_long_name("Conversation").id, Tag.find_by_short_name("warm-up").id], 10)
     @top10 = Tag.find_by_long_name("Conversation").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count).where(status: :approved).limit(10)
+      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
     @textbooks = Textbook.Conversation.select(:id, :name).order(name: :asc)
   end
 
