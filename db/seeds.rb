@@ -142,12 +142,16 @@ if Rails.env.development?
       Upvote.find_or_create_by(activity: activity,
                                user: regular_users.sample)
     end
-    CountUpvotesWorker.perform_async(activity.id)
   end
 
-  # Generate upvote counts for each user
+  # Generate activity counts for each user
   User.all.each do |user|
-    UpdateActivityCountWorker.perform_async(user.id)
+    user.update_attributes(activity_count: user.activities.count)
+  end
+
+  # Generate upvote count for each activity
+  Activity.all.each do |activity|
+    activity.update_attributes(upvote_count: activity.upvotes.count)
   end
 
   # create Front Page Posts
