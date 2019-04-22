@@ -1,4 +1,11 @@
 - provide(:title, t('.show-tag-title', tag_name: @tag.long_name) )
+- content_for :head do
+  <meta property="og:title" content="ALTopedia - #{@tag.long_name}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="#{request.original_url}" />
+  <meta property="og:image" content="https://www.altopedia.org#{asset_path "logo.png"}" />
+  <meta property="og:description" content="#{@tag.description}" />
+  <meta property="og:site_name" content="ALTopedia" />
 
 .row
   .col-sm-10.col-md-8.col-lg-8
