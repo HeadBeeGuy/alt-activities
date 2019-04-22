@@ -82,7 +82,9 @@ class SitePagesController < ApplicationController
   end
 
   def themes
-    @tags = TagCategory.find_by_name("Themes").tags.select(:id, :long_name, :description)
+    @theme_tags = TagCategory.find_by_name("Themes").tags.select(:id, :long_name, :description)
+      .order(long_name: :asc)
+    @holiday_tags = TagCategory.find_by_name("Holiday").tags.select(:id, :long_name, :description)
       .order(long_name: :asc)
   end
 
