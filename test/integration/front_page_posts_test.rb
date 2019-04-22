@@ -33,7 +33,7 @@ class FrontPagePostsTest < ActionDispatch::IntegrationTest
 
     get posts_path(newest_post)
     assert_match post_title, response.body
-    assert_no_match post_excerpt, response.body
+    # assert_no_match post_excerpt, response.body # excerpts are now quoted in the og meta tags
     assert_match post_body, response.body
   end
 

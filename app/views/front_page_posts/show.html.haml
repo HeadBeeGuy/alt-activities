@@ -1,4 +1,11 @@
 - provide(:title, "ALTopedia - #{@front_page_post.title}")
+- content_for :head do
+  <meta property="og:title" content="ALTopedia - #{@front_page_post.title}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="#{request.original_url}" />
+  <meta property="og:image" content="https://www.altopedia.org#{asset_path "logo.png"}" />
+  <meta property="og:description" content="#{@front_page_post.excerpt}" />
+  <meta property="og:site_name" content="ALTopedia" />
 
 .card.mb-4
   .card-header
