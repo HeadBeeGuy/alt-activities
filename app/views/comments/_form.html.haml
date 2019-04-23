@@ -4,7 +4,7 @@
     %small= t('.comment-guidelines')
     = form_for(@comment, remote: true) do |f|
       .input-group
-        = f.text_field :content, placeholder: t('.comment-placeholder'), class: 'form-control'
+        = f.text_area :content, placeholder: t('.comment-placeholder'), class: 'form-control', rows: 2
         = f.hidden_field :commentable_type, value: commentable_type
         = f.hidden_field :commentable_id, value: commentable_id
         .input-group-append
