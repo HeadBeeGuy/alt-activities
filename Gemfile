@@ -33,9 +33,9 @@ gem 'recaptcha'
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
 gem 'loofah', '~> 2.2.3'
 
-# 1.8.3 broke deployment with Elastic Beanstalk, so I'll try 1.8.2 for now
-# all newer versions of nokogiri seem to break EB deployment, which is frustrating!
-gem 'nokogiri', '1.8.2'
+# for a long time, any version of nokogiri after 1.8.2 broke deployment to ElasticBeanstalk
+# this seems to have been fixed at last! Maybe because I upgraded to a slightly beefier instance?
+gem 'nokogiri', '1.10.3'
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
 gem 'mini_racer'
