@@ -1,7 +1,16 @@
 - provide(:title, "ALTopedia - Job listings")
 
+%h2 Job Listings
+
+.anchors.card.box-shadow.p-3.mt-2
+  %p Interesting in leveling up your career? Check out what you can do! Remember to check back in from time to time, as we're constantly updating the listings!
+
+  - @job_posts.each do |job_post|
+    %h5= link_to job_post.title,  anchor: job_post
+
+
 - @job_posts.each do |job_post|
-  .job-listing.box-shadow.p-4.my-3.rounded
+  .job-listing.box-shadow.p-4.my-3.rounded{"id" => job_post.id}
     - if job_post.company_logo.attached?
       = image_tag job_post.company_logo, class: "float-right col-3 img-fluid img-thumbnail ml-2 mb-2"
     %h2.border-bottom.border-gray.pb-2= job_post.title
