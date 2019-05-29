@@ -1,7 +1,7 @@
 # ALTopedia
 
 
-This web app is built to allow English teachers to share activities with each other.
+This web app is built to allow English teachers to share activities with each other. It's a relatively standard Ruby on Rails application.
 
 It's more specifically designed around the needs of ALTs, (public school English teachers in Japan) who are creating activities to target a certain English grammar point for a class of elementary, junior high, or high school students.
 
@@ -9,13 +9,15 @@ The site is primarily built around the **Activity** model, which contains direct
 
 Activities can be assigned a variety of tags to help categorize them. By searching based on tags, users can find relevant activities for their particular needs (like school level, targetted grammar pattern, relevant materials).
 
+The minimum supported browser is IE11. A lot of ALTs have to use old computers that only have IE11 installed. There's probably a minimum threshold at which point we can drop this requirement, but looking at the analytics, it hasn't happened quite yet.
+
 ---
 
 Higher priority tasks:
 
-- Redirect users to their profiles upon account activation and possibly login
+- Rewrite the site's CSS. This is going to be a big undertaking, but the site is at the stage where we should think about how to build a more consistent and styled interface.
+- Upgrade to Rails 6.0
 - Let users link different activities together, so they can say that their activity was inspired by another, for example
-- Redirect users to their user page or another useful page upon activity submission
 
 ---
 
@@ -24,13 +26,8 @@ Longer-term tasks:
 - Allow users to preview an activity before submission, and let them view their own pending activities
 - Dockerize the application since I need to learn how Docker works and it may make it easier to bundle things like anti-virus scanning
 - Scan all incoming files for viruses and warn moderators about them
-- OAuth integration - or maybe not, if the big OAuth providers keep behaving badly!
-- System for users to submit ideas for new tags or textbooks
 - Look into localizing model data as well (tag data and activity text)
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff
-- Restrict the file types and file size of uploaded files. Maybe Rails 6.0 will build in some kind of validations?
-- Rewrite site CSS to get away from Bootstrap - its Flexbox classes have been frustrating to work with, and I feel like we'll eventually outgrow its limits. It's possible to heavily customize Bootstrap, but this may be more work in the end than just building the site's CSS from scratch.
-- Allow users to publicly display activities that they've upvoted. Maybe this will be opt-in since I can see some users may not want all and sundry to see what they liked.
 
 ---
 
@@ -44,8 +41,6 @@ Lower-priority and smaller tasks:
 Pages to add or revise:
 
 - Improve display of grammar page
-- See if a general "Contribute" section leads to more people submitting activities or offering to help with localization
-- Improve display of textbook page
 
 ---
 
