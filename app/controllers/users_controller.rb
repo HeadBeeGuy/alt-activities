@@ -41,10 +41,13 @@ class UsersController < ApplicationController
   end
   
   def index
+    unless user_signed_in? && ( current_user.admin? || current_user.moderator? )
+      redirect_to contributors_url
+    end
 		@moderators = User.moderator.select(:id, :username)
-    @top_contributors = User.select(:id, :username, :activity_count).where("activity_count > 0")
-      .order(activity_count: :desc).limit(8)
-    @all_users = User.normal.select(:id, :username, :activity_count).order(created_at: :desc).page(params[:page])
+		@admins = User.admin.select(:id, :username)
+    @all_users = User.select(:id, :username, :activity_count, :created_at)
+      .order(created_at: :desc).page(params[:page]).per(80)
   end
 
 	def silence
