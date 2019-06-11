@@ -132,6 +132,9 @@ en:
       title: "ALTopedia - Activity themes"
       header: "Activity themes"
       holidays: "Holidays"
+    contributors:
+      title: "ALTopedia - Contributors"
+      header: "Top contributors"
   activities:
     page_titles:
       new_activity: "New Activity"

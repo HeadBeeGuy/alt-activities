@@ -1,0 +1,20 @@
+-provide(:title, t('.title'))
+
+%h3= t('.header')
+
+- @top3.each do |user|
+  .card.p-2.mb-1.box-shadow
+    %span.h4.text-center= link_to "#{user.username} (#{user.activity_count})", user
+    .row
+      .col-lg-6.col-sm-10
+        %span Home country: #{user.home_country}
+      .col-lg-6.col-sm-10.text-right
+        %span.text-right Current location: #{user.location}
+    %span.text-center= user.bio
+
+.row.mt-2
+  - @top4to12.each do |user|
+    .card.col-sm-10.col-lg-4
+      .card-body
+        %span.font-weight-bold= link_to "#{user.username} (#{user.activity_count})", user
+
