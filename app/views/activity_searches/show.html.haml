@@ -1,14 +1,21 @@
 
 %h3 Search results
 %p Searching for "#{params[:search]}"
-.col.mt-4
-  - if @activities.any?
+- if @tags.any?
+  %h5 Tag matches
+  - @tags.each do |tag|
+    =link_to tag.long_name, tag, class: "badge badge-success"
+
+%h5.mt-4 Activity matches
+- if @activities.any?
+  .col.mt-4
     - @activities.each do |activity|
       .card
         .card-body
           %span.font-weight-bold= link_to activity.name, activity
           %span.font-weight-normal= activity.short_description
           %span.badge.badge-info.float-right= activity.upvote_count
-  - else
+- else
+  .col.mt-4
     %span Sorry! The search returned no results.
 
