@@ -184,6 +184,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rb-readline (0.5.5)
     rdoc (4.3.0)
     recaptcha (4.13.1)
       json
@@ -278,6 +279,7 @@ DEPENDENCIES
   rails (= 5.2.3)
   rails-controller-testing
   railties
+  rb-readline
   recaptcha
   redcarpet
   sass-rails

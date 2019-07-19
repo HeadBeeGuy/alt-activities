@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# ids don't seem to be being set correctly, which means that the uniqueness
+# validation fails. I'm probably setting the fixture data incorrectly, but
+# maybe this won't matter if tests just construct them in the test anyway
+
+<%# activity_link_one: %>
+<%#   original_id: influential_activity.id %>
+<%#   inspired_id: derivative_activity_one.id %>
+<%#   explanation: "My carefully considered derivation of this chestnut" %>
+
+<%# activity_link_two: %>
+<%#   original_id: influential_activity.id %>
+<%#   inspired_id: derivative_activity_two.id %>
+<%#   explanation: "The original author never thought of my snazzy idea!" %>

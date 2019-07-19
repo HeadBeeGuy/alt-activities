@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_045742) do
+ActiveRecord::Schema.define(version: 2019_06_18_072949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2019_02_21_045742) do
     t.integer "status", default: 0
     t.integer "upvote_count", default: 0
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activity_links", force: :cascade do |t|
+    t.integer "original_id"
+    t.integer "inspired_id"
+    t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inspired_id"], name: "index_activity_links_on_inspired_id"
+    t.index ["original_id", "inspired_id"], name: "index_activity_links_on_original_id_and_inspired_id", unique: true
+    t.index ["original_id"], name: "index_activity_links_on_original_id"
   end
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

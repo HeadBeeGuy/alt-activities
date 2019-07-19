@@ -7,7 +7,15 @@ class Activity < ApplicationRecord
   belongs_to :user
   
   has_many_attached :documents
-  
+
+  # names are a little awkward and inconsistent
+  has_many :inspireds, class_name: "ActivityLink", foreign_key: :original_id,
+    dependent: :destroy
+  has_many :originals, class_name: "ActivityLink", foreign_key: :inspired_id,
+    dependent: :destroy
+  has_many :inspired_activities, through: :inspireds, source: :inspired
+  has_many :source_activities, through: :originals, source: :original
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :short_description, presence: true, length: { maximum: 200 }
   validates :long_description, presence: true, length: { maximum: 6000 } # up from 3000 - as always, subject to change
@@ -50,6 +58,17 @@ class Activity < ApplicationRecord
     # activity_array = activity_array.select { |activity| activity.approved? }
     # take! doesn't appear to exist. Will there be two copies of this array in memory?
     activity_array.take(limit)
+  end
+
+  # the primary use case will be for users to choose which activities they were
+  # inspired by, so activity link creation will be focused in that direction,
+  # as opposed to users finding activities that were inspired by their own
+  def add_inspired_by(activity)
+    source_activities << activity
+  end
+
+  def remove_inspired_by(activity)
+    source_activities.delete(activity)
   end
 
 end

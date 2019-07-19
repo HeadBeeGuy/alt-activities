@@ -30,3 +30,27 @@ rebecca_activity:
   time_estimate: 7 minutes
   user: regular_user_two
   status: :approved
+
+influential_activity:
+  name: Very Influential Activity
+  short_description: Many will draw on me for inspiration
+  long_description: I am the well from which all shall spring
+  time_estimate: an eternity
+  user: regular_user_one
+  status: :approved
+
+derivative_activity_one:
+  name: My version of VIA
+  short_description: I saw VIA and got my own idea
+  long_description: regular user one never thought of this clever variation, but I did
+  time_estimate: 10 minutes
+  user: regular_user_two
+  status: :approved
+
+derivative_activity_two:
+  name: VIA - my style
+  short_description: Remix culture at its finest
+  long_description: I thought of yet another variation.
+  time_estimate: 17 minutes
+  user: regular_user_two
+  status: :approved
