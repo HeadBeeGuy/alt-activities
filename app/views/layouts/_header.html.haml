@@ -34,10 +34,10 @@
       = form_tag(activity_search_path, method: :get, class: "form-inline mr-2") do
         = text_field_tag :search
         = submit_tag "Search", class: "btn btn-primary"
-      - if I18n.locale == :ja
-        %li.nav-item= link_to "English", "https://en.altopedia.org", class: "nav-link"
-      - elsif I18n.locale == :en
-        %li.nav-item= link_to "日本語", "https://ja.altopedia.org", class: "nav-link"
+      -# - if I18n.locale == :ja
+      -#   %li.nav-item= link_to "English", "https://en.altopedia.org", class: "nav-link"
+      -# - elsif I18n.locale == :en
+      -#   %li.nav-item= link_to "日本語", "https://ja.altopedia.org", class: "nav-link"
 .nav-scroller.bg-white.box-shadow
   %nav.nav.nav-underline
     = link_to t('layouts.warm-ups'), warmups_path, class: "nav-link active"
