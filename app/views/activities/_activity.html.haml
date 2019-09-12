@@ -4,6 +4,11 @@
     %h5.card-title= activity.short_description
     .row
       .col-md-9
+        - if @source_activities.any?
+          %small= t('activities.show.source-activities')
+          %ul
+            - @source_activities.each do |activity|
+              %li= link_to activity.name, activity
         %p= markdown(activity.long_description)
         - if activity.documents.attached?
           %h6= t('activities.show.file-list')
@@ -37,6 +42,13 @@
   .card-footer.p-1
     %p.card-text.text-center
       %small.text-muted All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.
+  - if @inspired_activities.any?
+    .card-footer.p-2
+      %small= t('activities.show.inspired-activities')
+      %ul
+        - @inspired_activities.each do |activity|
+          %li
+            %span= link_to activity.name, activity
 
 = render partial: 'comments/comment_list', locals: { comments: @comments }
 

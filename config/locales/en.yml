@@ -184,6 +184,8 @@ en:
       delete_confirmation: "Are you sure you wanna delete this one?"
       resubmit: "Edit and Re-submit"
       edit-tags: "Edit tags"
+      source-activities: "This activity was inspired by:"
+      inspired-activities: "Activities inspired by this one:"
     thumbs-up:
       thumbs-up-label: "Total"
       thumbs-up-logged-out: "Sign in or register to give a thumbs up!"

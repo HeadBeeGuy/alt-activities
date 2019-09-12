@@ -66,6 +66,8 @@ class ActivitiesController < ApplicationController
     @comment = Comment.new
     @tagging = Tagging.new
     @activity_taggings = Tagging.where(activity: @activity).includes(:tag)
+    @source_activities = @activity.source_activities
+    @inspired_activities = @activity.inspired_activities
   end
   
   def approve
