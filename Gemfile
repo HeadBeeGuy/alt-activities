@@ -35,7 +35,7 @@ gem 'loofah', '~> 2.2.3'
 
 # for a long time, any version of nokogiri after 1.8.2 broke deployment to ElasticBeanstalk
 # this seems to have been fixed at last! Maybe because I upgraded to a slightly beefier instance?
-gem 'nokogiri', '1.10.3'
+gem 'nokogiri', '1.10.4'
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
 gem 'mini_racer'
