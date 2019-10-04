@@ -71,4 +71,7 @@ class Activity < ApplicationRecord
     source_activities.delete(activity)
   end
 
+  def name_and_summary
+    "#{self.name} - #{self.short_description}"
+  end
 end

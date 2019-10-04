@@ -231,4 +231,17 @@ en:
     form:
       add-tagging: "Add another tag"
       add-tag-button: "Add this tag"
+  activity_links:
+    new:
+      title: "ALTopedia - Activity link"
+      heading: "Link an activity"
+      explanation: "Was your activity originally inspired by another one? You can link them together so that other people will be able to see the connection. First, please confirm that this is your activity:"
+      search_explanation: "Next, please search for the name of the original activity:"
+      search: "Search"
+    link_search:
+      title: "ALTopedia - Link search results"
+      heading: "Activity Search Results"
+      your_activity: "Your activity:"
+      select_prompt: "Select the original activity that inspired yours:"
+      link_confirmation: "Link activities"
 

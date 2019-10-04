@@ -27,8 +27,11 @@
               = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
             - elsif activity.approved? && ( policy(activity).unapprove? )
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
+            = link_to "Link activity to another", new_activity_link_path(activity), class: "btn btn-outline-secondary btn-sm"
+          .btn-group{"role" => "group", "aria-label" => "Activity secondary controls"}
             = link_to t('activities.show.edit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
             = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "btn btn-outline-secondary btn-sm"
+          .btn-group
           %button.btn.btn-secondary.mt-2{"data-toggle"=>"collapse", "data-target"=>"#tag-editor-#{activity.id}", "aria-expanded"=>"false", "aria-controls"=>"tag-editor-#{activity.id}"}= t('activities.show.edit-tags')
           .dynamic-tag-editor.collapse{"id"=>"tag-editor-#{activity.id}"}
             = render "taggings/activity_tagging_list"

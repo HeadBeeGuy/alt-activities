@@ -18,4 +18,5 @@ class ActivitySearchesController < ApplicationController
       @activities = nil
     end
   end
+
 end
