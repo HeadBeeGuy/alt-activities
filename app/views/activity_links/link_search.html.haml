@@ -2,12 +2,12 @@
 %h3= t('.heading')
 %p
   %span= t('.your_activity')
-  %span= link_to @source_activity.name, @source_activity
+  %span= link_to @inspired_activity.name, @inspired_activity
 
 %p= t('.select_prompt')
 = form_for ActivityLink.create do |f|
   %ul
     = f.collection_radio_buttons :id, @activities, :id, :name_and_summary do |activity|
       %li #{activity.radio_button class:"form-check-input"} #{activity.label}
-    = hidden_field_tag :source_id, @source_activity.id
+    = hidden_field_tag :inspired_id, @inspired_activity.id
   = f.submit t('.link_confirmation'), class: "btn btn-primary"

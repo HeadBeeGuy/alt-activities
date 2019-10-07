@@ -1,17 +1,24 @@
 # This is pretty inelegant and likely mixes up or misuses Rails conventions.
 # URL persistence won't be important so if I come back to revise this, it's
 # okay if the routes change.
+# Also, verification is handled in the controller since I was having trouble
+# getting Pundit to work with this class.
 
 class ActivityLinksController < ApplicationController
+  before_action :authenticate_user!
 
   # it feels a little weird calling it "new" but I suppose it's appropriate
   def new
-    @source_activity = Activity.find(params[:source_id])
-    authorize @source_activity
+    @inspired_activity = Activity.find(params[:source_id])
+    unless ( current_user.activities.include?(@inspired_activity) ||
+        current_user.moderator? || current_user.admin? )
+      redirect_to @inspired_activity
+      flash[:warning] = "You can only create links to your own activities."
+    end
   end
 
   def link_search
-    @source_activity = Activity.find(params[:source_id])
+    @inspired_activity = Activity.find(params[:source_id])
     if params[:search]
       @activities = Activity.where('name ILIKE ? OR short_description ILIKE ? OR ' +
                                    'long_description ILIKE ?', 
@@ -26,15 +33,17 @@ class ActivityLinksController < ApplicationController
   end
 
   def create
-    @source_activity = Activity.find(params[:source_id])
-    @inspired_activity = Activity.find(params[:activity_link][:id])
-    @activity_link = ActivityLink.new(inspired: @source_activity,
-                                      original: @inspired_activity)
-    authorize @activity_link
-    if @activity_link.save
+    @inspired_activity = Activity.find(params[:inspired_id])
+    @original_activity = Activity.find(params[:activity_link][:id])
+    @activity_link = ActivityLink.new(inspired: @inspired_activity,
+                                      original: @original_activity)
+    if ( current_user.activities.include?(@inspired_activity) ||
+        current_user.moderator? || current_user.admin? ) && @activity_link.save 
       flash[:success] = "You linked the activities!"
+    else
+      flash[:warning] = "You can only create links to your own activities."
     end
-    redirect_to @source_activity
+    redirect_to @inspired_activity
   end
 
   def destroy
