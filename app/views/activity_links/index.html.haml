@@ -1,0 +1,13 @@
+- provide(:title, t('.title'))
+
+%h2= t('.heading')
+
+%table.table.table-striped.table-borderless.table-sm.table-responsive
+  .tbody
+    - @activity_links.each do |activity_link|
+      %tr
+        %td= link_to activity_link.original.name, activity_link.original
+        %td= t('.left-item-inspired-right')
+        %td= link_to activity_link.inspired.name, activity_link.inspired
+
+= paginate @activity_links

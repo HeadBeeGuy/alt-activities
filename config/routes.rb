@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   resources :upvotes, only: [ :create, :destroy ]
   resources :taggings, only: [ :create, :destroy ]
-  resources :activity_links, only: [ :create, :destroy ]
+  resources :activity_links, only: [ :create, :index, :destroy ]
   
   resources :comments do
     member do

@@ -244,4 +244,8 @@ en:
       your_activity: "Your activity:"
       select_prompt: "Select the original activity that inspired yours:"
       link_confirmation: "Link activities"
+    index:
+      title: "ALTopedia - Activity Links"
+      heading: "Linked Activities"
+      left-item-inspired-right: "inspired"
 

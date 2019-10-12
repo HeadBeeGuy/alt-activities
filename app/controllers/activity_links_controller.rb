@@ -5,7 +5,7 @@
 # getting Pundit to work with this class.
 
 class ActivityLinksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
 
   # it feels a little weird calling it "new" but I suppose it's appropriate
   def new
@@ -44,6 +44,11 @@ class ActivityLinksController < ApplicationController
       flash[:warning] = "You can only create links to your own activities."
     end
     redirect_to @inspired_activity
+  end
+
+  def index
+    @activity_links = ActivityLink.includes(:original, :inspired)
+      .page(params[:page]).order(created_at: :asc).per(20)
   end
 
   def destroy
