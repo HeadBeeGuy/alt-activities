@@ -1,12 +1,16 @@
 -provide(:title, t('.title'))
 
-%h3= t('.textbooks-heading')
-
-- @textbooks.each do |textbook|
-  .card
-    .card-body
-      %span.font-weight-bold= link_to textbook.name, textbook
-      %span.font-weight-normal= textbook.additional_info
+%h3.text-center= t('.textbooks-heading')
 
 - if policy(@textbooks).new?
   %p= link_to "Create a new textbook", new_textbook_path
+
+.card-columns.pt-2
+  - @textbooks.each do |textbook|
+    .card
+      .card-body
+        %h5.card-title= link_to textbook.name, textbook
+        .card-text= textbook.additional_info
+
+%p= link_to t('.get-in-touch'), contact_path
+

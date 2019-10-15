@@ -70,7 +70,8 @@ en:
   textbooks:
     index:
       title: "ALTopedia - Textbooks"
-      textbooks-heading: "Textbooks"
+      textbooks-heading: "Textbook Listings"
+      get-in-touch: "Can't find your textbook? Found an error? Get in touch and let us know!"
     show:
       textbook-page-title: "ALTopedia - Textbook: %{textbook_title}"
       textbook-heading: "Textbook: %{textbook_title}"
