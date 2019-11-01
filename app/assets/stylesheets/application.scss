@@ -144,3 +144,9 @@ a:hover {
   background-color: $altopedia_primary;  
   border-color: $altopedia_primary;
 }
+
+.ellipsis-overflow {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

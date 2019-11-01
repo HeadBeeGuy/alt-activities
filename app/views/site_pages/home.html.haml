@@ -36,14 +36,18 @@
     .nagajob
       = link_to image_tag("nagajob.jpg", class: "mw-100 rounded"), "http://www.nagajob.co.jp"
       %p.mt-2= link_to "Level up your career in Japan! Register now and get the inside scoop on jobs in scenic Nagano!", "https://www.facebook.com/Nagajobrecruit/"
-    .tag-of-the-moment
-      = render "tag_of_the_moment"
     .signup-reminder
       .card.mt-2
         .card-body
-          %h5 Help your fellow teachers!
+          %h5 You can help!
           %p Do you have a good game or activity? Want to give some advice or kudos to an activity? Join up and help out!
           %p= link_to "Contribute to ALTopedia!", contribute_path
+    .comment-ticker
+      .card.mt-2
+        .card-body
+          %h5 Recent comments
+          - @comments.each do |comment|
+            %p.ellipsis-overflow= link_to comment.content, comment.commentable
     #front-page-shoutbox.mt-2
       .card
         .card-body
