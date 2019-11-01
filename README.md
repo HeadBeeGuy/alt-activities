@@ -15,9 +15,8 @@ The minimum supported browser is IE11. A lot of ALTs have to use old computers t
 
 Higher priority tasks:
 
-- Rewrite the site's CSS. This is going to be a big undertaking, but the site is at the stage where we should think about how to build a more consistent and styled interface.
-- Upgrade to Rails 6.0
-- Let users link different activities together, so they can say that their activity was inspired by another, for example
+- Rewrite the site's CSS. This is in early progress. It will use CSS Grid since it's quite useful, and can be adapted back to IE11 with a little elbow grease.
+- Upgrade to Rails 6.0. This will necessitate upgrading to Ruby 2.6, which shouldn't be too hard but it will also require deploying another instance of the site on Elastic Beanstalk, making sure that instance works, and making the DNS point at it.
 
 ---
 
