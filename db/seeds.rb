@@ -62,7 +62,7 @@ if Rails.env.development?
 
   # Randomly create regular users
   regular_users = []
-  25.times do
+  35.times do
     regular_users << User.create!(username: Faker::Internet.unique.username(5..25).delete("-_."),
                                   email: Faker::Internet.safe_email,
                                   home_country: Faker::Address.country_code_long,
@@ -75,8 +75,8 @@ if Rails.env.development?
   end
   
   # promote two random mods
-  2.times do
-    regular_users.sample.moderator!
+  regular_users.sample(2).each do |user|
+    user.moderator!
   end
 
   # Randomly create some more tags - need to have enough to be greater than the
@@ -108,10 +108,10 @@ if Rails.env.development?
   school_level_tags = [es_tag, jhs_tag, hs_tag, conversation_tag]
 
   # Randomly create activities
-  60.times do
+  100.times do
     activity_tags = tag_ids.sample( Random.rand(5..15) )
-    activity = Activity.create!(name: Faker::Books::Lovecraft.sentence(3, 1),
-                                short_description: Faker::Company.bs,
+    activity = Activity.create!(name: Faker::Book.unique.title,
+                                short_description: Faker::Hacker.say_something_smart,
                                 long_description: Faker::Hipster.paragraph_by_chars,
                                 user: regular_users.sample,
                                 status: :approved,
@@ -138,7 +138,7 @@ if Rails.env.development?
                       created_at: Time.now - Random.rand(0..200).days)
     end
 
-    Random.rand(0..15).times do
+    Random.rand(0..18).times do
       Upvote.find_or_create_by(activity: activity,
                                user: regular_users.sample)
     end
@@ -191,6 +191,15 @@ if Rails.env.development?
                     status: :normal,
                     content: Faker::TvShows::DumbAndDumber.quote,
                     created_at: Time.now - Random.rand(0..200).days)
+  end
+
+  # Create activity links
+  Activity.all.sample(10).each do |original_activity|
+    inspired_activity = Activity.all.sample
+    unless original_activity.id == inspired_activity.id
+      ActivityLink.create!(original: original_activity,
+                           inspired: inspired_activity)
+    end
   end
 
 end
