@@ -31,7 +31,7 @@ gem 'rack', '~> 2.0.6' # GitHub security advisory
 gem 'recaptcha'
 
 # not quite sure what gem included this one, but GitHub notified me of a vulnerability in 2.1.1
-gem 'loofah', '~> 2.2.3'
+gem 'loofah', '~> 2.3.1'
 
 # for a long time, any version of nokogiri after 1.8.2 broke deployment to ElasticBeanstalk
 # this seems to have been fixed at last! Maybe because I upgraded to a slightly beefier instance?
