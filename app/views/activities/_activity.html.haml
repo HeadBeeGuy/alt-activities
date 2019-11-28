@@ -1,5 +1,10 @@
 .card.mb-4
-  %h3.card-header= activity.name
+  %h3.card-header
+    %span= activity.name
+    - if activity.unapproved?
+      %span (not approved yet)
+    - elsif activity.edited?
+      %span (edits not approved yet)
   .card-body
     %h5.card-title= activity.short_description
     .row
@@ -23,7 +28,7 @@
         %p= l(activity.created_at, format: :quite_short)
         - if user_signed_in? && policy(activity).update?
           .btn-group{"role" => "group", "aria-label" => "Activity controls"}
-            - if activity.unapproved? || activity.edited?
+            - if ( (activity.unapproved? || activity.edited? ) && policy(activity).approve? )
               = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
             - elsif activity.approved? && ( policy(activity).unapprove? )
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"

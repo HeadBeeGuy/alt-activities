@@ -34,11 +34,11 @@ class ActivityPolicy < ApplicationPolicy
   end
   
   def unapprove?
-    user and (user.admin? or user.moderator? or (user.activities.include?(activity)))
+    user and (user.admin? or user.moderator?)
   end
   
   def show?
-    activity.approved? or (user and (user.admin? or user.moderator?))
+    activity.approved? or (user and (user.admin? or user.moderator? or user.activities.include?(activity)))
   end
 
   def delete_attached_document?

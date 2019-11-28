@@ -12,8 +12,8 @@ class ActivitiesController < ApplicationController
     @tag_categories = TagCategory.all
     authorize @activity
     if @activity.save
-      flash[:success] = "Activity submitted! Once it's approved, it will show up on the site."
-      redirect_to current_user
+      flash[:success] = "Activity submitted! You can edit it if you like. It will be visible to other users once it's approved."
+      redirect_to @activity
     else
       render 'new'
     end
@@ -38,10 +38,13 @@ class ActivitiesController < ApplicationController
         redirect_to modqueue_url
       else
         flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
-        @activity.edited!
-        redirect_to activities_url
+        if @activity.approved?
+          @activity.edited!
+        else
+          @activity.unapproved!
+        end
+        redirect_to @activity
       end
-      # UpdateActivityCountWorker.perform_async(@activity.user.id)
       @user.update_attributes(activity_count: @user.activities.approved.count)
     else
       render 'edit'
@@ -54,7 +57,7 @@ class ActivitiesController < ApplicationController
 		activity_user_id = @activity.user.id # can't access the user id after it's destroyed
     @activity.destroy
     flash[:success] = "Activity deleted!"
-		UpdateActivityCountWorker.perform_async(activity_user_id)
+    @user.update_attributes(activity_count: @user.activities.approved.count)
     redirect_to activities_url
   end
   
@@ -77,7 +80,6 @@ class ActivitiesController < ApplicationController
     if @activity.unapproved? || @activity.edited?
       @activity.approved!
       flash[:success] = "Activity approved!"
-			# UpdateActivityCountWorker.perform_async(@activity.user.id)
       @user.update_attributes(activity_count: @user.activities.approved.count)
       redirect_to modqueue_url
     elsif @activity.approved?
@@ -94,7 +96,7 @@ class ActivitiesController < ApplicationController
       flash[:success] = "Activity moved back to mod queue."
       redirect_to @activity
     end
-		UpdateActivityCountWorker.perform_async(@activity.user.id)
+    @user.update_attributes(activity_count: @user.activities.approved.count)
   end
   
   def index

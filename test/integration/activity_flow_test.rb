@@ -24,8 +24,9 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
             short_description: "short", long_description: "long", time_estimate: "2 min", 
             tag_ids: [@tag.id] }}
     end
-    
-    follow_redirect!
+
+    @new_activity = @regular_user_one.activities.last
+    assert_redirected_to @new_activity
     assert_not flash.empty?
     
     #the easiest way to check if the activity isn't there would be to look for it in activities_path
@@ -40,11 +41,10 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     get modqueue_path
     assert_match activity_name, response.body
     
-    # this seems like this isn't a great way to do this, but without Capybara I don't think I can tell minitest to click on links 
-    get activity_path(Activity.find_by_name(activity_name))
+    get activity_path(@new_activity)
     assert_match activity_name, response.body
     
-    put approve_activity_path(Activity.find_by_name(activity_name))
+    put approve_activity_path(@new_activity)
     follow_redirect!
     # since the admin is redirected back to the modqueue, the activity shouldn't be there anymore
     assert_no_match activity_name, response.body
@@ -63,6 +63,7 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   test "regular users can edit an activity" do
 		@existing_activity = activities(:basic_activity_one)
 		@tag = tags(:basic_tag_one)
+    assert @existing_activity.approved?
 		sign_in(@regular_user_one)
 		get root_path
 		get activity_path(@existing_activity)
@@ -76,7 +77,8 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
             short_description: edited_short, long_description: edited_long, time_estimate: "2 min", 
             tag_ids: [@tag.id] }}
     end 
-		#verify that the activity is no longer visible
+    assert_redirected_to @existing_activity
+		#verify that the activity is no longer visible in listings
 		get tag_path(@tag)
 		assert_no_match @existing_activity.name, response.body
     delete destroy_user_session_path
@@ -104,5 +106,32 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		get activity_path(@existing_activity)
 		assert_match edited_short, response.body
 		assert_match edited_long, response.body
+  end
+
+  test "editing an unapproved activity preserves its unapproved status until a moderator approves it" do
+    @tag = tags(:basic_tag_one)
+    sign_in(@regular_user_one)
+    
+    get new_activity_path
+    activity_name = "I like to edit this activity"
+    assert_difference('Activity.unapproved.count', 1) do
+      # is there a way I can pass the tag ids by their fixture names? haven't been able to figure that out yet
+      post activities_path, params: { activity: { name: activity_name,
+            short_description: "short", long_description: "long", time_estimate: "2 min", 
+            tag_ids: [@tag.id] }}
+    end
+
+    @new_activity = @regular_user_one.activities.last
+    assert_redirected_to @new_activity
+    assert @new_activity.unapproved?
+    
+    get edit_activity_path(@new_activity)
+    assert_no_difference('Activity.approved.count') do
+			patch activity_path, params: { activity: { name: @new_activity.name,
+            short_description: "edited!", long_description: "edited!", time_estimate: "2 min", 
+            tag_ids: [@tag.id] }}
+    end 
+    assert_redirected_to @new_activity
+    assert @new_activity.unapproved?
   end
 end
