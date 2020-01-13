@@ -27,11 +27,9 @@ gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
 gem 'sidekiq' # the Rails background job solution of choice, it would appear!
 gem 'pg', '1.0.0' # all PostGres all the time!
-gem 'rack', '~> 2.0.6' # GitHub security advisory
+gem 'rack', '>= 2.0.8'
 gem 'recaptcha'
-
-# another GitHub security warning
-gem 'loofah', '2.3.1'
+gem 'loofah'
 
 # for a long time, any version of nokogiri after 1.8.2 broke deployment to ElasticBeanstalk
 # this seems to have been fixed at last! Maybe because I upgraded to a slightly beefier instance?
