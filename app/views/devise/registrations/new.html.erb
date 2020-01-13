@@ -10,7 +10,7 @@ Get in touch with us through the Contact page if registration doesn't work.
 We've had a lot of spam accounts signing up for the site, and they're pretty persistent!</p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= render "devise/shared/error_messages" %>
 
   <div class="col-sm-10 col-lg-4">
     <div class="field">
