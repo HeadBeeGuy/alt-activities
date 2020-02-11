@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.4.1'
 gem 'railties'
 gem 'puma'
 gem 'bootsnap'
@@ -11,11 +11,6 @@ gem 'listen'
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-# haven't needed to use it yet
-#gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
@@ -25,15 +20,13 @@ gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
-gem 'sidekiq' # the Rails background job solution of choice, it would appear!
-gem 'pg', '1.0.0' # all PostGres all the time!
-gem 'rack', '>= 2.0.8'
+gem 'sidekiq' # currently doing everything synchronously so it's unnecessary
+gem 'pg', '1.0.0'
+gem 'rack', '>= 2.1'
 gem 'recaptcha'
-gem 'loofah'
+gem 'loofah', '>= 2.4.0'
+gem 'nokogiri', '>= 1.10.4'
 
-# for a long time, any version of nokogiri after 1.8.2 broke deployment to ElasticBeanstalk
-# this seems to have been fixed at last! Maybe because I upgraded to a slightly beefier instance?
-gem 'nokogiri', '1.10.4'
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
 gem 'mini_racer'
@@ -47,34 +40,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rb-readline'
-  
-  # vestigial now, but I'm a bit afraid that removing it will break something
-  gem 'sqlite3'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '>= 3.3.0'
 	gem 'faker'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :production do
-  # gem 'pg', '~> 0.20' # now vestigial
 end
 
