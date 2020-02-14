@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '~> 2.6.5'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.4.1'
@@ -21,7 +23,7 @@ gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
 gem 'sidekiq' # currently doing everything synchronously so it's unnecessary
-gem 'pg', '1.0.0'
+gem 'pg', '1.2.2'
 gem 'rack', '>= 2.1'
 gem 'recaptcha'
 gem 'loofah', '>= 2.4.0'
