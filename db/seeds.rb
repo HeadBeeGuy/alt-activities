@@ -3,21 +3,21 @@
 require 'yaml'
 require 'faker'
 
-# seed in tags and tag categories from this yaml file
-tag_file = YAML.load_file('lib/seeds/tags.yaml')
-
-for current_category in 1..tag_file.length
-  TagCategory.create!(name: tag_file["tag_category_#{current_category}"]["name"])
-  for current_tag in 1..tag_file["tag_category_#{current_category}"]["tags"].length
-    Tag.create!(short_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["short_name"],
-                long_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["long_name"],
-                description: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["description"],
-                tag_category_id: current_category)
-  end
-end
-
 # seed the development environment with enough stuff to create a reasonable fascimile of the site
 if Rails.env.development?
+
+  # seed in tags and tag categories from this yaml file
+  tag_file = YAML.load_file('lib/seeds/tags.yaml')
+
+  for current_category in 1..tag_file.length
+    TagCategory.create!(name: tag_file["tag_category_#{current_category}"]["name"])
+    for current_tag in 1..tag_file["tag_category_#{current_category}"]["tags"].length
+      Tag.create!(short_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["short_name"],
+                  long_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["long_name"],
+                  description: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["description"],
+                  tag_category_id: current_category)
+    end
+  end
 
   # Seed a few users with specific roles
   admin_user = User.create!(username: "Local Admin",
@@ -54,7 +54,7 @@ if Rails.env.development?
   10.times do
     new_job = JobPost.create!(title: Faker::Coffee.blend_name,
                               external_url: "https://www.altopedia.org",
-                              content: Faker::Lorem.paragraph(20),
+                              content: Faker::Lorem.paragraph,
                               priority: Random.rand(0..2),
                               user: job_posting_user)
     new_job.company_logo.attach(io: File.open('app/assets/images/logo.png'), filename: 'logo.png')
@@ -63,8 +63,8 @@ if Rails.env.development?
   # Randomly create regular users
   regular_users = []
   35.times do
-    regular_users << User.create!(username: Faker::Internet.unique.username(5..25).delete("-_."),
-                                  email: Faker::Internet.safe_email,
+    regular_users << User.create!(username: Faker::Internet.unique.username(specifier: 6..15).delete("-_."),
+                                  email: Faker::Internet.unique.safe_email,
                                   home_country: Faker::Address.country_code_long,
                                   location: Faker::Address.city,
                                   bio: Faker::Quote.famous_last_words,
@@ -108,7 +108,7 @@ if Rails.env.development?
   school_level_tags = [es_tag, jhs_tag, hs_tag, conversation_tag]
 
   # Randomly create activities
-  100.times do
+  150.times do
     activity_tags = tag_ids.sample( Random.rand(5..15) )
     activity = Activity.create!(name: Faker::Book.unique.title,
                                 short_description: Faker::Hacker.say_something_smart,
@@ -155,9 +155,9 @@ if Rails.env.development?
   end
 
   # create Front Page Posts
-  5.times do
-    fpp = FrontPagePost.create!(title: Faker::Lorem.sentence(3),
-                                excerpt: Faker::TvShows::Simpsons.quote,
+  7.times do
+    fpp = FrontPagePost.create!(title: Faker::Lorem.sentence,
+                                excerpt: Faker::Lorem.paragraph,
                                 content: Faker::Hipster.paragraph_by_chars,
                                 user: admin_user,
                                 created_at: Time.now - Random.rand(0..100).days)
@@ -173,13 +173,13 @@ if Rails.env.development?
   # create Textbooks and populate them with pages
   grammar_tags = TagCategory.find_by_name("Grammar points").tags
   20.times do
-    new_textbook = Textbook.create!(name: Faker::Lorem.sentence(3),
+    new_textbook = Textbook.create!(name: Faker::Lorem.sentence(word_count: 3),
                                     additional_info: Faker::TvShows::Simpsons.quote,
                                     level: Textbook.levels.to_a.sample[1])
     Random.rand(10..20).times do
       TextbookPage.create!(textbook: new_textbook,
                            page: Random.rand(1..200),
-                           description: Faker::Lorem.sentence(3, true, 7),
+                           description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 5),
                            tag: grammar_tags.sample)
     end
   end
@@ -201,5 +201,6 @@ if Rails.env.development?
                            inspired: inspired_activity)
     end
   end
+
 
 end
