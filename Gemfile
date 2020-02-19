@@ -7,7 +7,7 @@ ruby '~> 2.6'
 gem 'rails', '5.2.4.1'
 gem 'railties'
 gem 'puma'
-gem 'bootsnap'
+# gem 'bootsnap'
 gem 'listen'
 # Use SCSS for stylesheets
 gem 'sass-rails'
