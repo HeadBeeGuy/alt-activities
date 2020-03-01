@@ -22,7 +22,6 @@ gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari' # for pagination
-gem 'sidekiq' # currently doing everything synchronously so it's unnecessary
 gem 'pg', '1.2.2'
 gem 'rack', '>= 2.1'
 gem 'recaptcha'

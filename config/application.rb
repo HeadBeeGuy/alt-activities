@@ -22,11 +22,8 @@ module Workspace
 		# apparently this is necessary if browsers don't support/run JavaScript for Ajax
 		config.action_view.embed_authenticity_token_in_remote_forms = true
 
-    # The app previously used Sidekiq, but now that I've used up the AWS Free Tier,
-    # ElastiCache will incur a monthly cost and it always seemed to be overkill
-    # given the relatively modest server and db load thus far.
-    # Configuration files are still lying around, but I'll deactivate ElastiCache
-    # until we get to the point where background jobs seem necessary.
+    # Sidekiq is nice and all, but after running the site for a while, it doesn't
+    # look like background jobs are necessary yet.
     # config.active_job.queue_adapter = :sidekiq
     
     config.time_zone = 'Asia/Tokyo'

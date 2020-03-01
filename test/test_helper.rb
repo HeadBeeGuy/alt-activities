@@ -1,7 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'sidekiq/testing'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -9,10 +8,6 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 	
-	# tests were keeping jobs in the Sidekiq queue, which then leaked into the development environment	
-	teardown do
-		Sidekiq::Worker.clear_all
-	end
 end
 
 # sounds like Devise tests don't work as well as they should in Rails 5

@@ -1,7 +1,4 @@
-# if I re-integrate Sidekiq, I'll have to come back in and de-comment the relevant
-# parts of this test
 require 'test_helper'
-# require 'sidekiq/testing'
 
 class UpvoteActionTest < ActionDispatch::IntegrationTest
 	include Devise::Test::IntegrationHelpers
@@ -22,15 +19,10 @@ class UpvoteActionTest < ActionDispatch::IntegrationTest
 		get activity_path(@activity)
 		assert_difference '@activity.upvote_count', 1 do
 			post upvotes_path, params: { activity_id: @activity.id }
-			# assert_equal 1, CountUpvotesWorker.jobs.size 
-			# CountUpvotesWorker.drain # makes Sidekiq execute the background job
-			# assert_equal 0, CountUpvotesWorker.jobs.size
 			@activity.reload # rather embarrassed at how long it took me to realize to do this!
 		end
 		assert_difference '@activity.upvote_count', -1 do
 			delete upvote_path(@activity), params: { activity_id: @activity.id }
-			# assert_equal 1, CountUpvotesWorker.jobs.size 
-			# CountUpvotesWorker.drain
 			@activity.reload 
 		end
 	end
@@ -41,16 +33,10 @@ class UpvoteActionTest < ActionDispatch::IntegrationTest
 		get activity_path(@activity)
 		assert_difference '@activity.upvote_count', 1 do
 			post upvotes_path, xhr: true, params: { activity_id: @activity.id }
-			# assert_equal 1, CountUpvotesWorker.jobs.size 
-			# CountUpvotesWorker.drain
-			# assert_equal 0, CountUpvotesWorker.jobs.size 
 			@activity.reload
 		end
 		assert_difference '@activity.upvote_count', -1 do
 			delete upvote_path(@activity), xhr: true, params: { activity_id: @activity.id }
-			# assert_equal 1, CountUpvotesWorker.jobs.size 
-			# CountUpvotesWorker.drain
-			# assert_equal 0, CountUpvotesWorker.jobs.size 
 			@activity.reload 
 		end
 	end
@@ -60,7 +46,6 @@ class UpvoteActionTest < ActionDispatch::IntegrationTest
 		get activity_path(@activity)
 		assert_no_difference '@activity.upvote_count' do
 			post upvotes_path, params: { activity_id: @activity.id }
-			assert_equal 0, CountUpvotesWorker.jobs.size 
 			@activity.reload
 		end
 		# I had a test to show you can't withdraw an upvote too, but withdrawing downvotes
@@ -73,13 +58,11 @@ class UpvoteActionTest < ActionDispatch::IntegrationTest
 		get activity_path(@activity)
 		assert_difference '@activity.upvote_count', 1 do
 			post upvotes_path, params: { activity_id: @activity.id }
-			CountUpvotesWorker.drain
 			@activity.reload
 		end
 
 		assert_no_difference '@activity.upvote_count' do
 			post upvotes_path, params: { activity_id: @activity.id }
-			CountUpvotesWorker.drain
 			@activity.reload
 		end
 	end
