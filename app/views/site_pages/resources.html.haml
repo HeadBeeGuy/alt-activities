@@ -1,35 +1,59 @@
--provide(:title, "ALTopedia - Resources")
+-provide(:title, t('.title'))
 
-%h2 Other useful resources
+%h2= t('.page-header')
 
-%p Couldn't find what you were looking for on ALTopedia? Here are some other sites that might be able to help you.
+%p= t('.page-explanation')
 
-.card-columns
-  .card.box-shadow
-    .card-body
-      %h5= link_to "ALT Training Online", "https://www.alttrainingonline.com"
-      %p.card-text Our sister site! Dive into lesson planning, career development, and the nitty-gritty of teaching English.
-  .card.box-shadow
-    .card-body
-      %h5= link_to "Englipedia archive", "http://englipedia.co/www.englipedia.net/Pages/default.html"
-      %p.card-text Englipedia was the biggest resource for English-teaching resources until its sunset in 2018. It still has a mountain of activities for a wide variety of grammar points and school levels, so check out the archive!
-  .card.box-shadow
-    .card-body
-      %h5= link_to "ALT Insider", "http://www.altinsider.com"
-      %p.card-text A wide variety of resources for living and working in Japan, including activities, lesson plans, and podcasts.
-
-
-%h5 Activity sites
-%ul
-  %li= link_to "TEFLtastic", "https://tefltastic.wordpress.com"
-  %li= link_to "Akita JET teaching resources", "http://akitajet.com/wiki/Teaching_resources"
-  %li= link_to "Kobe JET", "https://www.kobejet.com"
-  %li= link_to "ALT Wiki", "https://www.altwiki.net"
-  %li= link_to "Breaking News English", "https://breakingnewsenglish.com"
-  %li= link_to "English Web Book", "http://www.englishwebbook.com"
-  %li= link_to "Eigo Ganbare", "https://eigoganbare.com"
-
-%h5 Living and teaching in Japan
-%ul
-  %li= link_to "Reddit /r/teachinginjapan", "http://reddit.com/r/teachinginjapan"
-  %li= link_to "Reddit /r/ALTinjapan", "http://reddit.com/r/altinginjapan"
+.row
+  .col-lg-6.col-sm-10.mb-2
+    %h4.text-center Activites for ALTs
+    .card.box-shadow
+      .card-body
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h5.card-title= link_to "Englipedia archive", "http://englipedia.co/www.englipedia.net/Pages/default.html", class: "card-link"
+            %p Englipedia was the biggest resource for English-teaching resources until its sunset in 2018. The archive won't be around forever, but give it a check if you like!
+          %li.list-group-item
+            %h6= link_to "Akita JET teaching resources", "http://akitajet.com/wiki/Teaching_resources"
+            %h6= link_to "Kobe JET", "https://www.kobejet.com"
+            %h6= link_to "ALT Wiki", "https://www.altwiki.net"
+            %h6= link_to "English Web Book", "http://www.englishwebbook.com"
+            %h6= link_to "Eigo Ganbare", "https://eigoganbare.com"
+            %h6= link_to "A Fox in Japan", "http://www.afoxinjapan.com"
+            %h6= link_to "Let's Teach English", "http://www.letsteachenglish.com"
+            %h6= link_to "Kumamoto JET Wiki", "http://kumamotojet.com/mw/index.php?title=Main_Page"
+  .col-lg-6.col-sm-10.mb-2
+    %h4.text-center Clip Art, Flash Cards, and teaching materials
+    .card.box-shadow
+      .card-body
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h5.card-title= link_to "Irasutoya", "https://www.irasutoya.com", class: "card-link"
+            %p Japan's premiere clip art site. All pictures are 100% free, but you'll need to search in Japanese.
+          %li.list-group-item
+            %h6= link_to "Bingo Bongo Kids", "https://www.bingobongokids.com/"
+  .col-lg-6.col-sm-10.mb-2
+    %h4.text-center Ideas and other resources
+    .card.box-shadow
+      .card-body
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h5.card-title= link_to "Breaking News English", "https://breakingnewsenglish.com/", class: "card-link"
+            %p This site takes recent world news articles and generates exercises based on them. Useful for students high school age or older.
+          %li.list-group-item
+            %h6= link_to "FlatIcon", "https://www.flaticon.com/"
+  .col-lg-6.col-sm-10.mb-2
+    %h4.text-center Living in Japan
+    .card.box-shadow
+      .card-body
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h6= link_to "AccessJ", "http://www.accessj.com"
+            %h6= link_to "Kumamoto JET US Tax guide", "http://kumamotojet.com/shin/index.php/living-in-kumamoto/u-s-tax-guide/"
+  .col-lg-6.col-sm-10.mb-2
+    %h4.text-center Blogs
+    .card.box-shadow
+      .card-body
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h6= link_to "TEFLtastic", "https://tefltastic.wordpress.com/"
