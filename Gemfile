@@ -6,7 +6,7 @@ ruby '~> 2.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.4.1'
 gem 'railties'
-gem 'puma'
+gem 'puma', '>= 4.3.2'
 # gem 'bootsnap'
 gem 'listen'
 # Use SCSS for stylesheets
