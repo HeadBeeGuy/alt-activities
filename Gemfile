@@ -30,6 +30,7 @@ gem 'nokogiri', '>= 1.10.4'
 
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302
+# may no longer be necessary?
 gem 'mini_racer'
 
 # Use jquery as the JavaScript library
