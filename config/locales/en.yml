@@ -24,7 +24,7 @@ en:
     univ: "University"
     conversation: "Conversation"
     warm-ups: "Warm-ups"
-    grammar: "Grammar"
+    grammar: "Grammar points"
     contributors: "Contributors"
     contact: "Contact"
     acknowledgements: "Acknowledgements"
@@ -33,7 +33,7 @@ en:
     resources: "Resources"
     job-listings: "Job Listings"
     shoutbox: "Shoutbox"
-    themes: "Themes"
+    themes: "Activity Themes"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
