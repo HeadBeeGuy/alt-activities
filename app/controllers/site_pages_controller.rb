@@ -23,6 +23,7 @@ class SitePagesController < ApplicationController
     @comments = Comment.unapproved
     @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
       .limit(5)
+    @upvotes = Upvote.order(created_at: :desc).includes(:user, :activity).limit(5)
   end
   
   def es
