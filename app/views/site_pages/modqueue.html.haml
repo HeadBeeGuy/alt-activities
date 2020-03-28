@@ -50,8 +50,8 @@
         %td= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, remote: true
 
 .row
-  .col-sm-10.col-lg-6
-    %h4 Other useful administration links:
+  .col-sm-10.col-lg-4
+    %h4 Administration
     %ul
       %li= link_to "View all users", users_path
       -if current_user.admin?
@@ -62,11 +62,20 @@
       %li= link_to "Make a new textbook", new_textbook_path
       %li= link_to "Archived Englipedia activities", englipedia_activities_path
 
-  .col-sm-10.col-lg-5
+  .col-sm-10.col-lg-4
     %h4 The latest 5 users
     %ul
       - @newest_users.each do |user|
         %li 
           %span= link_to user.username, user
           %small (#{user.created_at.strftime("%B %d")})
+
+  .col-sm-10.col-lg-4
+    %h4 Most recent upvotes
+    %ul
+      - @upvotes.each do |upvote|
+        %li
+          %span= link_to upvote.user.username, upvote.user
+          %span ->
+          %span= link_to upvote.activity.name, upvote.activity
 
