@@ -50,6 +50,9 @@
 %p= @activity.outline
 
 %p Description:
-%p= markdown(@activity.description)
+- unless @activity.description.nil?
+  %p= markdown(@activity.description)
+- else
+  %p This activity had an empty description! Better go into the original page and see what the deal was!
 
 %span= link_to "Looks good - make it an ALTopedia activity!", convert_englipedia_activity_path, method: :put, class: "btn btn-primary"
