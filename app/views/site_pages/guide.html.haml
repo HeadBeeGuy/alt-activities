@@ -1,0 +1,63 @@
+- provide(:title, "ALTopedia - Site guide")
+
+%h2.text-center.mt-2 The ALTopedia Guide
+
+%p Here are some handy links to help you find useful activities on ALTopedia.
+
+%p You can use tags to find activities that follow a certain grammar point, theme, or part of learning. Click on a tag anywhere on the site and you'll find lots of similar activities!
+
+%h4.text-center Handy tags
+.card-columns.pt-2
+  .card.box-shadow
+    .card-body
+      %p Need to find a general game that can be used in a variety of situations?
+      .text-center= link_to "Try the 'can be used with many grammar points' tag!", tag_path(34), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Are you introducing yourself, or having students introduce themselves?
+      .text-center= link_to "Self-introductions tag", tag_path(102), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Reviewing vocabulary from a unit or lesson?
+      .text-center= link_to "Vocabulary Review tag", tag_path(35), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Are you at the end of the unit and want to review the material?
+      .text-center= link_to "Unit or Year Review", tag_path(122), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Do you have a Special Needs class?
+      .text-center= link_to "Special Needs", tag_path(105), class: "btn btn-success"
+      .text-center= link_to "Small class size", tag_path(36), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Is your school taking social distancing measures into account?
+      .text-center= link_to "Social Distancing", tag_path(123), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Do you need a quick warm-up for the beginning of a class?
+      .text-center= link_to "Warm-ups", tag_path(33), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Looking for an activity based on a specific textbook?
+      .text-center= link_to "Textbook tags", tag_category_path(7), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p Like to live dangerously? Want to check out activities that apply to grammar points that the site doesn't have yet?
+      .text-center= link_to "Catch-all grammar", tag_path(32), class: "btn btn-success"
+  .card.box-shadow
+    .card-body
+      %p No time to prepare? No materials? Need an activity to have in your proverbial pocket when you're on the spot?
+      .text-center= link_to "No prep activities", tag_path(87), class: "btn btn-success"
+
+.row
+  .card.box-shadow.mb-2
+    .card-body
+      %h4.text-center Finding an activity based on a textbook
+      %p ALTopedia has listings for a lot of different textbooks used in Japanese schools. If you have a page number (or the general unit that it's in), the listings will show the most appropriate grammar point.
+      .text-center= link_to "Textbook Listings", textbooks_path, class: "btn btn-success btn-lg"
+  .card.box-shadow.mb-2
+    .card-body
+      %h4.text-center Power searching
+      %p Once you get the hang of the tag system, you can do a search for activities that have several tags. For example, you can look for a Junior High School activity that uses the question sentence and passive grammar, or a Warm-up activity that doesn't require any materials or preparation. Give it a try!
+      .text-center= link_to "Tag Search", search_path, class: "btn btn-success btn-lg"

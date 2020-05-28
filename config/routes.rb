@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
   get '/contribute', to: 'site_pages#contribute'
   get '/contributors', to: 'site_pages#contributors'
+  get '/guide', to: 'site_pages#guide'
 
   get '/search', to: 'tag_searches#new'
   get '/tag_search', to: 'tag_searches#show'
