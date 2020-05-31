@@ -21,7 +21,7 @@ gem 'devise'
 gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
-gem 'kaminari' # for pagination
+gem 'kaminari', '>= 1.2.1'  # for pagination
 gem 'pg', '1.2.2'
 gem 'rack', '>= 2.1'
 gem 'recaptcha'
