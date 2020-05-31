@@ -11,16 +11,12 @@
 
 %h3.mt-4 Find activities by tags
 
-%p Do you need to find an activity to fit your requirements? Choose the tags that fit what you need. Keep in mind that this will find activities that contain ALL of the tags you specify.
+%p Do you need to find an activity to fit your requirements? Choose the tags that fit what you need. Keep in mind that this will specifically find activities that contain ALL of the tags you pick.
 
 %p You might not want to bookmark the search result page, since the URL could change in the future.
 
 =form_with(url: tag_search_path, method: :get) do
-  %button.btn.btn-success{"data-toggle" => "collapse", "type"=>"button",
-    "data-target"=>"#tag-list", "aria-expanded"=>"false",
-    "aria-controls"=>"collapseTagList"}
-    View all tags
-  %ul.collapse#tag-list.mt-4
+  %ul.mt-4
     = collection_check_boxes(:tag, :tag_ids, @tags, :id, :name_for_lists) do |tag|
       %li #{tag.check_box class: "form-check-input"} #{markdown(tag.label class: "form-check-label")}
 
