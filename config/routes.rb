@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 	get '/grammar', to: 'site_pages#grammar'
 	get '/warmups', to: 'site_pages#warmups'
 	get '/about', to: 'site_pages#about'
-	get '/altto', to: 'site_pages#altto'
   get '/contact', to: 'site_pages#contact'
   get '/resources', to: 'site_pages#resources'
   get '/thanks', to: 'site_pages#thanks'

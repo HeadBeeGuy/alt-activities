@@ -36,11 +36,6 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-	test "should get ALTTO page" do
-		get altto_path
-		assert_response :success
-	end
-
   test "should get high school page" do
     get hs_path
     assert_response :success
