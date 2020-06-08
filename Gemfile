@@ -42,6 +42,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# GitHub security advisory - not sure I'm even using websockets, but better safe than sorry
+gem "websocket-extensions", ">= 0.1.5"
+
 group :development, :test do
   gem 'byebug'
   gem 'rb-readline'
