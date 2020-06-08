@@ -1,49 +1,58 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Note: At some point, the short_name and long_name columns will go away, and
+# should get cleared out of the fixtures.
 
 basic_tag_one:
   short_name: Test tag
   long_name: This is a test tag
+  name: This is a test tag
   description: A test tag for tagging tests and testing tags, tu comprende??
   tag_category: tag_category_one
 
 basic_tag_two:
   short_name: Test tag two
   long_name: Test tag number 2
+  name: Test tag number 2
   description: These fixtures are really fussy
   tag_category: tag_category_one
 
 basic_tag_three:
   short_name: Test tag three
   long_name: This is another test tag
+  name: This is another test tag
   description: Do apostrophes break these fixtures?
   tag_category: tag_category_one
 
 es_tag:
   short_name: ES
   long_name: Elementary School
+  name: Elementary School
   description: I need to be here so es_path works in test.
   tag_category: grammar_category
 
 jhs_tag:
   short_name: JHS
   long_name: Junior High School
+  name: Junior High School
   description: I also need to be here for jhs_path in test
   tag_category: grammar_category
 
 hs_tag:
   short_name: HS
   long_name: High School
+  name: High School
   description: I have to be here lest hs_path break in test
   tag_category: grammar_category
 
 conversation_tag:
   short_name: Conversation
   long_name: Conversation
+  name: Conversation
   description: I am yet another tag for testing
   tag_category: grammar_category
 
 warmups_tag:
   short_name: warm-up
   long_name: Warm-ups
+  name: Warm-ups
   description: I, like my brothers, am here to help with tests
   tag_category: grammar_category

@@ -2,4 +2,4 @@
 
 .list-group
   - @tags.each do |tag|
-    = link_to "#{tag.short_name} - #{tag.description}", tag, class: "list-group-item list-group-action-item"
+    = link_to "#{tag.name} - #{tag.description}", tag, class: "list-group-item list-group-action-item"

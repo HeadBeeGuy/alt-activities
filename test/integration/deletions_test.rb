@@ -25,7 +25,7 @@ class DeletionsTest < ActionDispatch::IntegrationTest
                         user: @regular_user).any?
     assert @activity.tags.include? @tag
     get tag_path @tag
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     assert_match activity_name, response.body
 
     get activity_path @another_activity

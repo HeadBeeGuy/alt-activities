@@ -59,7 +59,7 @@ class TagsController < ApplicationController
   private
   
     def tag_params
-      params.require(:tag).permit(:short_name, :long_name, :description, :tag_category_id)
+      params.require(:tag).permit(:name, :description, :tag_category_id)
     end
   
 end

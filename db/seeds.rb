@@ -14,6 +14,7 @@ if Rails.env.development?
     for current_tag in 1..tag_file["tag_category_#{current_category}"]["tags"].length
       Tag.create!(short_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["short_name"],
                   long_name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["long_name"],
+                  name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["name"],
                   description: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["description"],
                   tag_category_id: current_category)
     end

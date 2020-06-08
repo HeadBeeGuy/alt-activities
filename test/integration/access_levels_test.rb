@@ -75,34 +75,34 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     sign_in(@moderator)
     get all_tags_path
     get tag_path(@tag)
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
     get all_tags_path
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     delete destroy_user_session_path
     
     sign_in(@regular_user_one)
     get all_tags_path
     get tag_path(@tag)
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
     get all_tags_path
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     delete destroy_user_session_path
     
     sign_in(@silenced)
     get all_tags_path
     get tag_path(@tag)
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
     get all_tags_path
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     delete destroy_user_session_path
   end
   
@@ -133,29 +133,27 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		sign_in(@admin)
 		get root_path
 		get tag_path(@tag.id)
-		new_short_name = "The Edited Tag"
-		new_long_name = "Edited tag"
+		new_name = "The Edited Tag"
 		get edit_tag_path(@tag)
-		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
-																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		patch tag_path, params: { tag: { name: new_name, description: @tag.description, 
+                                   tag_category_id: @tag.tag_category.id }}
 		get tag_path(@tag)
-		assert_match new_long_name, response.body
+		assert_match new_name, response.body
 	end
 
 	test "moderators and normal users can't edit tags" do
     @tag = tags(:basic_tag_one)
-		new_short_name = "The Edited Tag"
-		new_long_name = "Edited tag"
+		new_name = "Edited tag"
 		sign_in(@moderator)
 		get root_path
 		get tag_path(@tag.id)
 		get edit_tag_path(@tag)
 		assert_redirected_to root_url
 		assert_not flash.empty?
-		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
-																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		patch tag_path, params: { tag: { name: new_name, description: @tag.description, 
+                                   tag_category_id: @tag.tag_category.id }}
 		get tag_path(@tag)
-		assert_no_match new_long_name, response.body
+		assert_no_match new_name, response.body
     delete destroy_user_session_path
 		sign_in(@regular_user_one)
 		get root_path
@@ -163,10 +161,10 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		get edit_tag_path(@tag)
 		assert_redirected_to root_url
 		assert_not flash.empty?
-		patch tag_path, params: { tag: { short_name: new_short_name, long_name: new_long_name,
-																	 description: @tag.description, tag_category_id: @tag.tag_category.id }}
+		patch tag_path, params: { tag: { name: new_name, description: @tag.description, 
+                                   tag_category_id: @tag.tag_category.id }}
 		get tag_path(@tag)
-		assert_no_match new_long_name, response.body
+		assert_no_match new_name, response.body
 	end
 
 	test "an admin can delete a user" do
