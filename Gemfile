@@ -23,7 +23,7 @@ gem 'redcarpet' # for rendering Markdown in HTML
 gem 'aws-sdk-s3', require: false
 gem 'kaminari', '>= 1.2.1'  # for pagination
 gem 'pg', '1.2.2'
-gem 'rack', '>= 2.1'
+gem 'rack', '>= 2.2.3'
 gem 'recaptcha'
 gem 'loofah', '>= 2.4.0'
 gem 'nokogiri', '>= 1.10.4'
