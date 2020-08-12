@@ -93,8 +93,7 @@ if Rails.env.development?
   # end
 
   80.times do |index|
-    Tag.create!(short_name: "extra-#{index}",
-                long_name: "Extra Tag #{index}",
+    Tag.create!(name: "Extra Tag #{index}",
                 description: "Description #{index}",
                 tag_category_id: tag_category_ids.sample)
   end

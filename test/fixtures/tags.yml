@@ -52,7 +52,7 @@ conversation_tag:
 
 warmups_tag:
   short_name: warm-up
-  long_name: Warm-ups
-  name: Warm-ups
+  long_name: Warm-up
+  name: Warm-up
   description: I, like my brothers, am here to help with tests
   tag_category: grammar_category
