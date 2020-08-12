@@ -24,6 +24,16 @@ class Activity < ApplicationRecord
   
   enum status: [:unapproved, :approved, :edited]
 
+  include PgSearch::Model
+  pg_search_scope :text_search, against: [:name, :short_description, :long_description],
+    using: {
+      tsearch: { dictionary: 'english' },
+      trigram: {
+        only: [:name],
+        threshold: 0.3
+      }
+    }
+
   # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
   def to_param
     "#{id}-#{self.name.parameterize.truncate(80, '')}"

@@ -1,21 +1,25 @@
+- provide(:title, "ALTopedia - Search")
 
-%h3 Search results
-%p Searching for "#{params[:search]}"
+%h2.text-center Search results
+%p You searched for "#{params[:search]}"
 - if @tags.any?
-  %h5 Tag matches
-  - @tags.each do |tag|
-    =link_to tag.long_name, tag, class: "badge badge-success"
-
-%h5.mt-4 Activity matches
-- if @activities.any?
-  .col.mt-4
-    - @activities.each do |activity|
-      .card
+  %h5 Matching tags
+  .card-columns
+    - @tags.each do |tag|
+      .card.text-white.bg-success.box-shadow
         .card-body
-          %span.font-weight-bold= link_to activity.name, activity
-          %span.font-weight-normal= activity.short_description
-          %span.badge.badge-info.float-right= activity.upvote_count
+          %h5= link_to tag.name, tag, class: "text-white"
+          %span= link_to markdown(tag.description), tag, class: "text-white"
+
+- if @activities.any?
+  %h5.mt-4 Matching activities
+  .card-columns
+    - @activities.each do |activity|
+      .card.box-shadow
+        .card-body
+          %h5.font-weight-bold= link_to activity.name, activity
+          %p.font-weight-normal= activity.short_description
 - else
   .col.mt-4
-    %span Sorry! The search returned no results.
+    %p Sorry! The search couldn't find any activities or tags with that text.
 

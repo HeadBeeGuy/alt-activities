@@ -132,6 +132,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.2)
+    pg_search (2.3.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     popper_js (1.16.0)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -241,6 +244,7 @@ DEPENDENCIES
   mini_racer
   nokogiri (>= 1.10.4)
   pg (= 1.2.2)
+  pg_search
   puma (>= 4.3.5)
   pundit
   rack (>= 2.2.3)

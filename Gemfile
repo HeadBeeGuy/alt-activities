@@ -27,6 +27,7 @@ gem 'rack', '>= 2.2.3'
 gem 'recaptcha'
 gem 'loofah', '>= 2.4.0'
 gem 'nokogiri', '>= 1.10.4'
+gem 'pg_search'
 
 # someone on StackOverflow said this helped their deployment issue with autoprefixer
 # https://stackoverflow.com/a/51991302

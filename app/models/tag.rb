@@ -9,6 +9,17 @@ class Tag < ApplicationRecord
   validates :short_name, presence: true, length: { maximum: 40 }, uniqueness: true
   validates :long_name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :description, presence: true, length: { maximum: 100 }
+
+  include PgSearch::Model
+  pg_search_scope :text_search, against: [:name, :description],
+    using: {
+      tsearch: { dictionary: 'english' },
+      trigram: {
+        only: [:name],
+        threshold: 0.2
+      }
+    },
+    ranked_by: ":trigram"
   
   # Adding this because the activity creation form uses collection_check_boxes to display a checkbox for each tag in each category
   # It needs a symbol to pass in to generate the "label"
