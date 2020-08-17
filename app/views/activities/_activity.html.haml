@@ -46,7 +46,7 @@
             = link_to t('activities.show.resubmit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
   .card-footer{"id" => "activity-#{activity.id}-tags"}
     - activity.tags.each do |tag|
-      %span= link_to tag.long_name, tag, class: "badge badge-pill badge-success"
+      %span= link_to tag.name, tag, class: "badge badge-pill badge-success"
   .card-footer.p-1
     %p.card-text.text-center
       %small.text-muted All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.

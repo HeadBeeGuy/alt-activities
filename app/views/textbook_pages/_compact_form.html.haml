@@ -7,6 +7,6 @@
     .col-6.col-sm-8.col-lg-6
       = f.text_field :description, placeholder: "Description", class: 'form-control'
     .col-3.col-sm-8.col-lg-3
-      = f.collection_select :tag_id, @tags, :id, :long_name, {}, class: 'form-control'
+      = f.collection_select :tag_id, @tags, :id, :name, {}, class: 'form-control'
     .col-2
       = f.submit t('submit'), class: "btn btn-primary"

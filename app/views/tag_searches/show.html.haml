@@ -4,7 +4,7 @@
 %p You searched for activities that have all of these tags:
 .tag-list
   - @searched_tags.each do |tag|
-    %span= link_to tag.long_name, tag, class: "badge badge-pill badge-success"
+    %span= link_to tag.name, tag, class: "badge badge-pill badge-success"
 .col.mt-4
   - if @activities.any?
     - @activities.each do |activity|

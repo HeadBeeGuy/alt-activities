@@ -62,12 +62,12 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     sign_in(@admin)
     get all_tags_path # for some reason I have to access another page before I do the next get request
     get tag_path(@tag)
-    assert_match @tag.long_name, response.body
+    assert_match @tag.name, response.body
     assert_difference('Tag.count', -1) do
       delete tag_path(@tag)
     end
     get all_tags_path
-    assert_no_match @tag.long_name, response.body
+    assert_no_match @tag.name, response.body
   end
   
   test 'non-admins cannot delete tags' do

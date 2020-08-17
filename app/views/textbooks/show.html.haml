@@ -22,7 +22,7 @@
       %tr
         %td= page.page
         %td= markdown(page.description)
-        %td= link_to page.tag.long_name, page.tag
+        %td= link_to page.tag.name, page.tag
         - if policy(page).update?
           %td
             %span= link_to "(Edit)", edit_textbook_page_path(page)

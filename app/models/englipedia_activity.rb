@@ -15,15 +15,15 @@ class EnglipediaActivity < ApplicationRecord
     new_description << "**Originally submitted by #{author} on #{submission_date}.**\n\n"
     new_description << description
 
-    listening_tag = Tag.find_by_long_name("Listening")
-    speaking_tag = Tag.find_by_long_name("Speaking")
-    reading_tag = Tag.find_by_long_name("Reading")
-    writing_tag = Tag.find_by_long_name("Writing")
+    listening_tag = Tag.find_by_name("Listening")
+    speaking_tag = Tag.find_by_name("Speaking")
+    reading_tag = Tag.find_by_name("Reading")
+    writing_tag = Tag.find_by_name("Writing")
 
-    warmup_tag = Tag.find_by_long_name("Warm-up")
-    es_tag = Tag.find_by_long_name("Elementary School")
-    jhs_tag = Tag.find_by_long_name("Junior High School")
-    hs_tag = Tag.find_by_long_name("High School")
+    warmup_tag = Tag.find_by_name("Warm-up")
+    es_tag = Tag.find_by_name("Elementary School")
+    jhs_tag = Tag.find_by_name("Junior High School")
+    hs_tag = Tag.find_by_name("High School")
 
     @new_activity = Activity.create!(name: title,
                                      short_description: outline,

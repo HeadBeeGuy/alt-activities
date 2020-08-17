@@ -2,6 +2,6 @@
   .add-tagging.mt-2{"id" => "add-tagging-activity-#{@activity.id}"}
     = form_for(@tagging, remote: true) do |f|
       %small= t('.add-tagging')
-      = f.collection_select :tag_id, Tag.all, :id, :long_name, {}, class: 'form-control'
+      = f.collection_select :tag_id, Tag.all, :id, :name, {}, class: 'form-control'
       = f.hidden_field :activity_id, value: @activity.id
       = f.submit t('.add-tag-button'), class: "btn btn-primary"
