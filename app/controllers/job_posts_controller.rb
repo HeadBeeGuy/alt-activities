@@ -25,7 +25,7 @@ class JobPostsController < ApplicationController
 	def update
 		@job_post = JobPost.find(params[:id])
 		authorize @job_post
-		if @job_post.update_attributes(job_post_params)
+		if @job_post.update(job_post_params)
 			flash[:success] = "Post updated!"
 			redirect_to @job_post
 		else

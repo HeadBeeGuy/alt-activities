@@ -146,12 +146,12 @@ if Rails.env.development?
 
   # Generate activity counts for each user
   User.all.each do |user|
-    user.update_attributes(activity_count: user.activities.count)
+    user.update(activity_count: user.activities.count)
   end
 
   # Generate upvote count for each activity
   Activity.all.each do |activity|
-    activity.update_attributes(upvote_count: activity.upvotes.count)
+    activity.update(upvote_count: activity.upvotes.count)
   end
 
   # create Front Page Posts

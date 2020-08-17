@@ -35,7 +35,7 @@ class EnglipediaActivitiesController < ApplicationController
   def update
     @activity = EnglipediaActivity.find(params[:id])
     authorize @activity
-    if @activity.update_attributes(englipedia_activity_params)
+    if @activity.update(englipedia_activity_params)
       flash[:success] = "Updated activity info."
       redirect_to @activity
     else

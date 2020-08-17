@@ -35,7 +35,7 @@ class TextbookPagesController < ApplicationController
 	def update
 		@textbook_page = TextbookPage.find(params[:id])
 		authorize @textbook_page
-		if @textbook_page.update_attributes(textbook_page_params)
+		if @textbook_page.update(textbook_page_params)
 			flash[:success] = "Page updated!"
 			redirect_to @textbook_page.textbook
 		else

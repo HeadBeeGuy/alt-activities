@@ -26,7 +26,7 @@ class TextbooksController < ApplicationController
 	def update
 		@textbook = Textbook.find(params[:id])
 		authorize @textbook
-		if @textbook.update_attributes(textbook_params)
+		if @textbook.update(textbook_params)
 			flash[:success] = "Textbook updated!"
 			redirect_to @textbook
 		else

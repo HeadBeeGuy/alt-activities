@@ -26,7 +26,7 @@ class FrontPagePostsController < ApplicationController
 	def update
 		@front_page_post = FrontPagePost.find(params[:id])
 		authorize @front_page_post
-		if @front_page_post.update_attributes(front_page_post_params)
+		if @front_page_post.update(front_page_post_params)
 			flash[:success] = "Updated the post!"
 			redirect_to @front_page_post
 		else

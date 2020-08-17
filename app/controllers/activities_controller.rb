@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize @activity
     @user = @activity.user
-    if @activity.update_attributes(activity_params)
+    if @activity.update(activity_params)
       # admins and moderators can edit activities without pulling them back to the mod queue
       if current_user.admin? || current_user.moderator?
         flash[:success] = "Activity updated."
@@ -45,7 +45,7 @@ class ActivitiesController < ApplicationController
         end
         redirect_to @activity
       end
-      @user.update_attributes(activity_count: @user.activities.approved.count)
+      @user.update(activity_count: @user.activities.approved.count)
     else
       render 'edit'
     end
@@ -57,7 +57,7 @@ class ActivitiesController < ApplicationController
 		activity_user_id = @activity.user.id # can't access the user id after it's destroyed
     @activity.destroy
     flash[:success] = "Activity deleted!"
-    @user.update_attributes(activity_count: @user.activities.approved.count)
+    @user.update(activity_count: @user.activities.approved.count)
     redirect_to activities_url
   end
   
@@ -80,7 +80,7 @@ class ActivitiesController < ApplicationController
     if @activity.unapproved? || @activity.edited?
       @activity.approved!
       flash[:success] = "Activity approved!"
-      @user.update_attributes(activity_count: @user.activities.approved.count)
+      @user.update(activity_count: @user.activities.approved.count)
       redirect_to modqueue_url
     elsif @activity.approved?
       flash[:warning] = "Activity already approved!"
@@ -96,7 +96,7 @@ class ActivitiesController < ApplicationController
       flash[:success] = "Activity moved back to mod queue."
       redirect_to @activity
     end
-    @user.update_attributes(activity_count: @user.activities.approved.count)
+    @user.update(activity_count: @user.activities.approved.count)
   end
   
   def index

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 		else
 			whitelist = user_params
 		end
-		if @user.update_attributes(whitelist)
+		if @user.update(whitelist)
 			flash[:success] = "Updated user information!"
 			redirect_to @user
 		else
