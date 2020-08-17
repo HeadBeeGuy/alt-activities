@@ -41,10 +41,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '>= 0.4.0', group: :doc
 
-# GitHub security advisory - not sure I'm even using websockets, but better safe than sorry
+# GitHub told me to update these gems
 gem "websocket-extensions", ">= 0.1.5"
+gem "json", ">= 2.3.0"
 
 group :development, :test do
   gem 'byebug'
