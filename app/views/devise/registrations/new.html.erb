@@ -6,8 +6,8 @@
 <p><%= t('registration.sign-up-info-3') %></p>
 <p><%= t('registration.sign-up-info-4') %></p>
 <p>Please make sure you complete every Captcha on the page.
-Get in touch with us through the Contact page if registration doesn't work.
-We've had a lot of spam accounts signing up for the site, and they're pretty persistent!</p>
+Get in touch via the Contact page if registration doesn't work.
+Unfortunately, the Captchas are necessary to help keep spam bots from signing up.</p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages" %>

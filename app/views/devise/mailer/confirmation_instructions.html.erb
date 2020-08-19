@@ -1,5 +1,10 @@
-<p>Welcome to ALTopedia, <%= @email %>!</p>
+<p>Welcome to ALTopedia, <%= @email %>! Thank you for signing up!</p>
 
-<p>To complete your registration, please click the link below to confirm your e-mail address.</p>
+<p>We ask users to confirm that their e-mail is connected to their account when signing up. To do so, please click this link:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Or paste the following link into your web browser:</p>
+<p><%= confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Once you've confirmed your account, ALTopedia will only use this e-mail address if you forget your password and need to reset it. We won't sign you up for any e-mail lists or give your e-mail address to anyone else!</p>
