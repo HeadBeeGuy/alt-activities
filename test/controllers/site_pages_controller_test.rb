@@ -45,4 +45,9 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     get conversation_path
     assert_response :success
   end
+
+  test "should get online teaching page" do
+    get online_teaching_path
+    assert_response :success
+  end
 end
