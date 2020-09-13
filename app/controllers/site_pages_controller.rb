@@ -7,7 +7,7 @@ class SitePagesController < ApplicationController
       .order(created_at: :desc)
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
       .select(:id, :title, :excerpt)
-    @comments = Comment.order(created_at: :desc).limit(5)
+    @comments = Comment.order(created_at: :desc).limit(5).visible
       .select(:content, :commentable_id, :commentable_type)
 	end
 
