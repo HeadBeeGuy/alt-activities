@@ -24,6 +24,8 @@ class SitePagesController < ApplicationController
     @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
       .limit(5)
     @upvotes = Upvote.order(created_at: :desc).includes(:user, :activity).limit(5)
+    @activity_count = Activity.count
+    @user_count = User.count
   end
   
   def es
