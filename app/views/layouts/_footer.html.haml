@@ -6,7 +6,6 @@
         %li= link_to t('layouts.about'), about_path, class: "text-light"
         %li= link_to t('layouts.contact'), contact_path, class: "text-light"
         %li= link_to t('layouts.contributors'), contributors_path, class: "text-light"
-        -# %li= link_to t('layouts.acknowledgements'), thanks_path, class: "text-light"
     .col-md-4.mb-2
       %h5.text-light Community
       =link_to image_tag("fb_logo.png", class: "social-logo mr-4"), "https://fb.me/altopedia.net"
@@ -14,5 +13,4 @@
     .col-md-4.mb-2
       %h5.text-light= t('layouts.external-links')
       %ul.list-unstyled.text-small
-        -# %li= link_to t('layouts.altto'), altto_path, class: "text-light"
         %li= link_to t('layouts.resources'), resources_path, class: "text-light"

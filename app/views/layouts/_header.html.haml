@@ -12,8 +12,6 @@
           = link_to  current_user.username, current_user, class: "nav-link"
         - if current_user.admin? || current_user.moderator?
           %li.nav-item.active= link_to "Mod queue", modqueue_path, class: "nav-link"
-        - elsif current_user.job_poster?
-          %li.nav-item.active= link_to "Post new job listing", new_job_post_path, class: "nav-link"
       - else
         %li.nav-item.active
           = link_to t('layouts.log_in'), new_user_session_path, class: "nav-link"
@@ -23,10 +21,6 @@
         = link_to t('layouts.contribute'), contribute_path, class: "nav-link"
       %li.nav-item.active
         = link_to "Guide", guide_path, class: "nav-link"
-      -# %li.nav-item.active
-      -#   = link_to t('layouts.job-listings'), jobs_path, class: "nav-link"
-      -# %li.nav-item.active
-      -#   = link_to "ALTTO", altto_path, class: "nav-link"
       %li.nav-item.active
         = link_to "Tag Search", search_path, class: "nav-link"
       - if user_signed_in?
