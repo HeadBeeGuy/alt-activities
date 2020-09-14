@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   constraints(host: 'www.altopedia.org') do
-    get '/:param', to: redirect('https://www.altopedia.net/#{param}'), status: :moved_permanently
+    get '/:param', to: redirect('https://www.altopedia.net/%{param}'), status: :moved_permanently
   end
   
 	devise_for :users, controllers: { registrations: "registrations" }
