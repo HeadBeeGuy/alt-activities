@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   constraints(host: 'www.altopedia.org') do
-    get ':root', to: redirect('https://www.altopedia.net'), status: :moved_permanently
     get '/:param', to: redirect('https://www.altopedia.net/%{param}'), status: :moved_permanently
     get '/activities/:id', to: redirect('https://www.altopedia.net/activities/%{id}'), status: :moved_permanently
     get '/tags/:id', to: redirect('https://www.altopedia.net/tags/%{id}'), status: :moved_permanently
