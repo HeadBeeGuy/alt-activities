@@ -26,8 +26,8 @@ class FrontPagePostTest < ActiveSupport::TestCase
 		assert_not @post.valid?
 	end
 
-	test "a front page post's content can't be over 5000 characters" do
-		@post.content = "a" * 5001
+	test "a front page post's content can't be over 15000 characters" do
+		@post.content = "a" * 15001
 		assert_not @post.valid?
 	end
 end

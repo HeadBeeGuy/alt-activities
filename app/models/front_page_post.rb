@@ -3,7 +3,7 @@ class FrontPagePost < ApplicationRecord
 
 	validates :title, presence: true, length: { maximum: 80 }
 	validates :excerpt, length: { maximum: 1000 }
-	validates :content, presence: true, length: { maximum: 5000 }
+	validates :content, presence: true, length: { maximum: 15000 }
 
   has_many :comments, as: :commentable
   
