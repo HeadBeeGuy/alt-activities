@@ -15,8 +15,8 @@
       - else
         %li.nav-item.active
           = link_to t('layouts.log_in'), new_user_session_path, class: "nav-link"
-        %li.nav-item.active
-          = link_to t('layouts.register-new-account'), new_user_registration_path, class: "nav-link"
+        -# %li.nav-item.active
+        -#   = link_to t('layouts.register-new-account'), new_user_registration_path, class: "nav-link"
       %li.nav-item.active
         = link_to t('layouts.contribute'), contribute_path, class: "nav-link"
       %li.nav-item.active
