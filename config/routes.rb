@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  constraints(host: 'www.altopedia.org') do
-    root to: redirect('https://www.altopedia.net'), status: :moved_permanently
-    get '/:param', to: redirect('https://www.altopedia.net/%{param}'), status: :moved_permanently
-    get '/activities/:id', to: redirect('https://www.altopedia.net/activities/%{id}'), status: :moved_permanently
-    get '/tags/:id', to: redirect('https://www.altopedia.net/tags/%{id}'), status: :moved_permanently
-    get '/textbooks/:id', to: redirect('https://www.altopedia.net/textbooks/%{id}'), status: :moved_permanently
-  end
+  # May no longer be necessary - .org now completely hijacked
+  # constraints(host: 'www.altopedia.org') do
+  #   root to: redirect('https://www.altopedia.net'), status: :moved_permanently
+  #   get '/:param', to: redirect('https://www.altopedia.net/%{param}'), status: :moved_permanently
+  #   get '/activities/:id', to: redirect('https://www.altopedia.net/activities/%{id}'), status: :moved_permanently
+  #   get '/tags/:id', to: redirect('https://www.altopedia.net/tags/%{id}'), status: :moved_permanently
+  #   get '/textbooks/:id', to: redirect('https://www.altopedia.net/textbooks/%{id}'), status: :moved_permanently
+  # end
   
 	devise_for :users, controllers: { registrations: "registrations" }
 	root 'site_pages#home'
