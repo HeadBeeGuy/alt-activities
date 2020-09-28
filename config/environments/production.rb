@@ -69,15 +69,15 @@ Rails.application.configure do
   # some of these settings may be superfluous
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'www.altopedia.org'
+  host = 'www.altopedia.net'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'email-smtp.us-west-2.amazonaws.com',
+    :address        => 'email-smtp.ap-northeast-1.amazonaws.com',
     :port           => '587',
     :authentication => :plain,
     :user_name      => ENV['SES_SMTP_USERNAME'],
     :password       => ENV['SES_SMTP_PASSWORD'],
-    :domain         => 'altopedia.org',
+    :domain         => 'altopedia.net',
     :enable_starttls_auto => true
   }
 
