@@ -1,50 +1,46 @@
-<h2>Sorry - Sign-ups are currently disabled</h2>
-<p>Because of the sudden, unplanned move to ALTopedia.net, the e-mail system is going to have to be reconfigured.</p>
-<p>The site requires that users confirm their e-mail address to prevent spam accounts, so this means that new users can't register at the moment.</p>
-<p>I'll try and get this fixed as soon as I can. Sorry for the inconvenience!</p>
-<%# <%= recaptcha_tags %1> %>
-<%# <h2><%= t('registration.sign-up-heading') %1></h2> %>
+<%= recaptcha_tags %>
+<h2><%= t('registration.sign-up-heading') %></h2>
 
-<%# <p><%= t('registration.sign-up-info-1') %1></p> %>
-<%# <p><%= t('registration.sign-up-info-2') %1></p> %>
-<%# <p><%= t('registration.sign-up-info-3') %1></p> %>
-<%# <p><%= t('registration.sign-up-info-4') %1></p> %>
-<%# <p>Please make sure you complete every Captcha on the page. %>
-<%# Get in touch via the Contact page if registration doesn't work. %>
-<%# Unfortunately, the Captchas are necessary to help keep spam bots from signing up.</p> %>
+<p><%= t('registration.sign-up-info-1') %></p>
+<p><%= t('registration.sign-up-info-2') %></p>
+<p><%= t('registration.sign-up-info-3') %></p>
+<p><%= t('registration.sign-up-info-4') %></p>
+<p>Please make sure you complete every Captcha on the page.
+Get in touch via the Contact page if registration doesn't work.
+Unfortunately, the Captchas are necessary to help keep spam bots from signing up.</p>
 
-<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %1> %>
-<%#   <%= render "devise/shared/error_messages" %1> %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages" %>
 
-<%#   <div class="col-sm-10 col-lg-4"> %>
-<%#     <div class="field"> %>
-<%#       <%= f.label :username %1><br /> %>
-<%#       <%= f.text_field :username, autofocus: true, autocomplete: "email", class: "form-control" %1> %>
-<%#     </div> %>
+  <div class="col-sm-10 col-lg-4">
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
 
-<%#     <div class="field"> %>
-<%#       <%= f.label :email %1><br /> %>
-<%#       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %1> %>
-<%#     </div> %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
 
-<%#     <div class="field"> %>
-<%#       <%= f.label :password %1> %>
-<%#       <% if @minimum_password_length %1> %>
-<%#       <em>(<%= @minimum_password_length %1> characters minimum)</em> %>
-<%#       <% end %1><br /> %>
-<%#       <%= f.password_field :password, autocomplete: "off", class: "form-control" %1> %>
-<%#     </div> %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
 
-<%#     <div class="field"> %>
-<%#       <%= f.label :password_confirmation %1><br /> %>
-<%#       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %1> %>
-<%#     </div> %>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    </div>
 
-<%#     <div class="actions"> %>
-<%#       <%= f.submit t('registration.sign-up-button'), class: "btn btn-primary mt-2 mb-2" %1> %>
-<%#     </div> %>
-<%#   </div> %>
-<%#   <div class="g-recaptcha" data-sitekey="6Lci9oMUAAAAACJEoSVu_sqgDxQA57AVGNPVqk0m"></div> %>
-<%# <% end %1> %>
+    <div class="actions">
+      <%= f.submit t('registration.sign-up-button'), class: "btn btn-primary mt-2 mb-2" %>
+    </div>
+  </div>
+  <div class="g-recaptcha" data-sitekey="6Lci9oMUAAAAACJEoSVu_sqgDxQA57AVGNPVqk0m"></div>
+<% end %>
 
-<%# <%= render "devise/shared/links" %1> %>
+<%= render "devise/shared/links" %>
