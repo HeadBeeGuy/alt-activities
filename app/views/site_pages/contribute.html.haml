@@ -7,16 +7,13 @@
 %h4= link_to t('.submit-activity-link-heading'), new_activity_path
 %p= t('.submit-activity-explanation')
 
-%h5= link_to t('.translation-heading'), "https://github.com/HeadBeeGuy/alt-activities/blob/master/config/locales/en.yml"
-%p= t('.translation-explanation')
-
 %h5= link_to t('.textbook-info-heading'), contact_path
 %p= t('.textbook-info-explanation')
 
-%h5= t('.grammar-heading')
+%h5= link_to t('.grammar-heading'), contact_path
 %p= t('.grammar-explanation')
 
--# %h5= link_to t('.coding-heading'), "https://www.github.com/headbeeguy/alt-activities"
--# %p= t('.coding-explanation')
+%h5= link_to t('.comment-heading'), new_user_path
+%p= t('.comment-explanation')
 
 %p= t('.contact-text')
