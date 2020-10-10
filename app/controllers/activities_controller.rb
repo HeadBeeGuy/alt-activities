@@ -55,6 +55,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize @activity
 		activity_user_id = @activity.user.id # can't access the user id after it's destroyed
+    @user = @activity.user
     @activity.destroy
     flash[:success] = "Activity deleted!"
     @user.update(activity_count: @user.activities.approved.count)

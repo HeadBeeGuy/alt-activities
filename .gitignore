@@ -40,3 +40,10 @@
 
 # Englipedia Activity data - doesn't need to be stored in the git repository
 /lib/seeds/englipedia/
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

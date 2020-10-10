@@ -16,13 +16,15 @@ module Workspace
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     
-    # Rails 6 changed ActiveStorage to replace all attachments by default when editing
-    # In Rails 6.0 this line may not be necessary given that I'm specifying the defaults
-    # from 5.0 above, but it sounds like this may change again with 6.1 and beyond
-    config.active_storage.replace_on_assign_to_many = false
+    # the rails test suite bid me to add this line after upgrading to 5.2.0.rc2
+    Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
 
 		# apparently this is necessary if browsers don't support/run JavaScript for Ajax
 		config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    # Sidekiq is nice and all, but after running the site for a while, it doesn't
+    # look like background jobs are necessary yet.
+    # config.active_job.queue_adapter = :sidekiq
     
     config.time_zone = 'Asia/Tokyo'
   end
