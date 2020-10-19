@@ -27,11 +27,8 @@ en:
     grammar: "Grammar points"
     contributors: "Contributors"
     contact: "Contact"
-    acknowledgements: "Acknowledgements"
     external-links: "Elsewhere"
-    altto: "ALT Training Online"
-    resources: "Useful links and resources"
-    job-listings: "Job Listings"
+    resources: "Useful Links and Resources"
     shoutbox: "Shoutbox"
     themes: "Activity Themes"
   login:
@@ -139,9 +136,9 @@ en:
       title: "ALTopedia - Contributors"
       header: "Top contributors"
     resources:
-      title: "ALTopedia - Resources"
-      page-header: "Useful resources"
-      page-explanation: "There are a lot of useful sites out there to help you with your lessons. Check these out!"
+      title: "ALTopedia - Useful Links and Resources"
+      page-header: "Useful Links and Resources"
+      page-explanation: "There are a bunch of handy sites out there with materials that you can use in your classes. Please contact the site if any of these links break!"
   activities:
     page_titles:
       new_activity: "New Activity"
