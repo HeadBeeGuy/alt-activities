@@ -18,6 +18,7 @@
 /log/*
 !/log/.keep
 /tmp
+*.DS_Store
 
 # Less important in Rails 5.2, but no reason to expose it now
 /config/secrets.yml
@@ -40,3 +41,6 @@
 
 # Englipedia Activity data - doesn't need to be stored in the git repository
 /lib/seeds/englipedia/
+
+# Created as part of attempts to upgrade to Rails 6
+node_modules
