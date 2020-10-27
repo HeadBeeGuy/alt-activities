@@ -10,17 +10,17 @@ default: &default
 development:
   <<: *default
   encoding: utf-8
-  username: jake
+  username: postgres
   password:
-  host: localhost
-  database: altopedia-development
+  host: db
+  database: alt-activities-development
 
 test:
   <<: *default
-  username: jake
+  username: postgres
   password:
-  host: localhost
-  database: altopedia-test
+  host: db
+  database: alt-activities-test
 
 production:
   <<: *default
