@@ -7,7 +7,9 @@ COPY Gemfile.lock /alt-activities/Gemfile.lock
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 COPY . /alt-activities
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+RUN apt-get update && \
+    apt-get install apt-transport-https && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs && \
     apt-get install -y vim && \
     npm install -g yarn && \
@@ -20,5 +22,8 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
+RUN rake assets:precompile
+
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server"]
