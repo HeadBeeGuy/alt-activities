@@ -11,14 +11,14 @@ development:
   <<: *default
   encoding: utf-8
   username: postgres
-  password:
+  password: altopedia
   host: db
   database: alt-activities-development
 
 test:
   <<: *default
   username: postgres
-  password:
+  password: altopedia
   host: db
   database: alt-activities-test
 
