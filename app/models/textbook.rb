@@ -4,11 +4,15 @@ class Textbook < ApplicationRecord
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :additional_info, length: { maximum: 250 }
+  validates :year_published, numericality: { greater_than: 1900, less_than: 2100 }, allow_nil: true
 
 	enum level: [:general, :ES, :JHS, :HS, :University, :Conversation]
 
-  # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
   def to_param
-    "#{id}-#{self.name.parameterize.truncate(80, '')}"
+    "#{id}-#{self.name.parameterize.truncate(80, '')}#{"-#{self.year_published}" unless self.year_published.nil?}"
+  end
+
+  def name_for_lists
+    self.year_published.nil? ? self.name : self.name + " (#{self.year_published.to_s})"
   end
 end

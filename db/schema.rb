@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_105143) do
+ActiveRecord::Schema.define(version: 2020_11_18_023027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_105143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", default: 0
+    t.integer "year_published"
   end
 
   create_table "upvotes", force: :cascade do |t|

@@ -50,13 +50,13 @@ class TextbooksController < ApplicationController
 	end
 
 	def index
-    @textbooks = Textbook.all.order(name: :asc)
+    @textbooks = Textbook.all.order(name: :asc, year_published: :desc)
 	end
 
 	private
 
 		def textbook_params
-			params.require(:textbook).permit(:name, :additional_info, :level)
+			params.require(:textbook).permit(:name, :additional_info, :level, :year_published)
 		end
 
 end

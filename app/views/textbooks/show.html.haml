@@ -1,10 +1,14 @@
 -provide(:title, t('.textbook-page-title', textbook_title: @textbook.name) )
 
-%h3= t('.textbook-heading', textbook_title: @textbook.name)
+%h3
+  %span= t('.textbook-heading', textbook_title: @textbook.name)
+  - if !@textbook.year_published.nil?
+    %span (#{@textbook.year_published})
 
 %p= t('.textbook-description', description: @textbook.additional_info)
 
-%p= t('.textbook-level', level: @textbook.level)
+%p 
+  %span= t('.textbook-level', level: @textbook.level)
 
 - if user_signed_in? && policy(@textbook).update?
   .btn-group.float-left{"role" => "group", "aria-label" => "Textbook controls"}

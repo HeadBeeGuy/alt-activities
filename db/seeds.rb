@@ -175,7 +175,8 @@ if Rails.env.development?
   20.times do
     new_textbook = Textbook.create!(name: Faker::Lorem.sentence(word_count: 3),
                                     additional_info: Faker::TvShows::Simpsons.quote,
-                                    level: Textbook.levels.to_a.sample[1])
+                                    level: Textbook.levels.to_a.sample[1],
+                                    year_published: rand(1901..2099))
     Random.rand(10..20).times do
       TextbookPage.create!(textbook: new_textbook,
                            page: Random.rand(1..200),

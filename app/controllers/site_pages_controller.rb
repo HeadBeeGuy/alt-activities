@@ -36,7 +36,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_name("Elementary School").id, Tag.find_by_name("Warm-up").id], 10)
     @top10 = Tag.find_by_name("Elementary School").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
-    @textbooks = Textbook.ES.select(:id, :name).order(name: :asc)
+    @textbooks = Textbook.ES.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
   
   def jhs
@@ -47,7 +47,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_name("Junior High School").id, Tag.find_by_name("Warm-up").id], 10)
     @top10 = Tag.find_by_name("Junior High School").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
-    @textbooks = Textbook.JHS.select(:id, :name).order(name: :asc)
+    @textbooks = Textbook.JHS.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
   
 	def hs
@@ -58,7 +58,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_name("High School").id, Tag.find_by_name("Warm-up").id], 10)
     @top10 = Tag.find_by_name("High School").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
-    @textbooks = Textbook.HS.select(:id, :name).order(name: :asc)
+    @textbooks = Textbook.HS.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
 
 	def conversation
@@ -69,7 +69,7 @@ class SitePagesController < ApplicationController
       Tag.find_by_name("Conversation").id, Tag.find_by_name("Warm-up").id], 10)
     @top10 = Tag.find_by_name("Conversation").activities.order(upvote_count: :desc)
       .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
-    @textbooks = Textbook.Conversation.select(:id, :name).order(name: :asc)
+    @textbooks = Textbook.Conversation.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
 
 	def warmups
