@@ -33,7 +33,7 @@
         .col-sm-12.col-md-6
           = render partial: 'activities/compact_activity_list', locals: { label: t('.top-10-activities'), activity_list: @top10, show_upvote_count: true }
   .col-md-4.col-sm-12.secondary-content
-    -# = render 'tag_of_the_moment'
+    = render 'tag_of_the_moment'
     .crowdfunding
       .card.mt-2
         .card-body
@@ -42,15 +42,15 @@
           %h5= link_to "Patreon", "https://www.patreon.com/altopedia"
           %h5= link_to "Ko-fi", "https://www.ko-fi.com/altopedia"
           %p More perks will come to donors soon!
-    .signup-reminder
-      .card.mt-2
-        .card-body
-          %h5 You can help!
-          %p Do you have a good game or activity you'd like to share? Want to give some advice or thank someone for their activity?
-          %p
-            %span= link_to "Contribute to ALTopedia", contribute_path
-            %span or
-            %span= link_to "sign up!", new_user_path
+    -# .signup-reminder
+    -#   .card.mt-2
+    -#     .card-body
+    -#       %h5 You can help!
+    -#       %p Do you have a good game or activity you'd like to share? Want to give some advice or thank someone for their activity?
+    -#       %p
+    -#         %span= link_to "Contribute to ALTopedia", contribute_path
+    -#         %span or
+    -#         %span= link_to "sign up!", new_user_path
     -# .guide-callout
     -#   .card.mt-2
     -#     .card-body
