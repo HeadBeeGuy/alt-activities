@@ -1,3 +1,31 @@
 // Place all the styles related to the tag_searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$altopedia_primary: #29abe1;
+
+.category-tag-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
+
+.category-tag-grid-item {
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 3px;
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.category-tag-grid-item p {
+    margin: auto;
+}

@@ -15,9 +15,4 @@
 
 %p You might not want to bookmark the search result page, since the URL could change in the future.
 
-=form_with(url: tag_search_path, method: :get) do
-  %ul.mt-4
-    = collection_check_boxes(:tag, :tag_ids, @tags, :id, :name_for_lists) do |tag|
-      %li #{tag.check_box class: "form-check-input"} #{markdown(tag.label class: "form-check-label")}
-
-    =submit_tag "Search", class: "btn btn-primary"
+= render 'new'

@@ -2,7 +2,7 @@
 class TagSearchesController < ApplicationController
 
   def new
-    @tags = Tag.order(id: :asc)
+    @tag_categories = TagCategory.all
   end
 
   def show

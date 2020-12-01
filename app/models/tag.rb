@@ -27,7 +27,7 @@ class Tag < ApplicationRecord
   # Adding this because the activity creation form uses collection_check_boxes to display a checkbox for each tag in each category
   # It needs a symbol to pass in to generate the "label"
   def name_for_lists
-    "#{name} - #{description}"
+    "#{name}"
   end
 
   # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
