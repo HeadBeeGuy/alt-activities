@@ -7,12 +7,14 @@
           %h5.mb-0
             %button.btn.btn-link.btn-block.text-left.collapsed{"data-toggle" => "collapse", "data-target" => "#collapse-category-#{category.id}",
                                   "aria-expanded" => "false", "aria-controls" => "collapse-category-#{category.id}", "type" => "button"}
-              %h5= category.name
+              %h5{"id" => "title-#{category.name}"}= category.name
+          %ul.selected-list{"id" => "selected_items-#{category.id}"}
         %div.collapse{ "id" => "collapse-category-#{category.id}", "aria-labelledby" => "heading-#{category.name}", "data-parent" => "#accordionCategory" }
           .card-body
             .container
               %div.category-tag-grid.btn-group-toggle{"data-toggle" => "buttons"}
                 = collection_check_boxes(:tag, :tag_ids, category.tags, :id, :name_for_lists) do |tag|
-                  %li.btn.btn-primary.category-tag-grid-item{"aria-pressed" => "false"} #{tag.check_box class: "form-check-input"} #{markdown(tag.label class: "form-check-label")}
+                  %li.btn.btn-primary.category-tag-grid-item{"aria-pressed" => "false", "onClick" => "handleTagClick(this)"} #{tag.check_box class: "form-check-input"} #{markdown(tag.label class: "form-check-label")}
   .container
   =submit_tag "Search", class: "btn btn-primary"
+    
