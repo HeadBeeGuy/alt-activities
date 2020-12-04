@@ -5,3 +5,7 @@ tagging_one:
 tagging_two:
   activity_id: basic_activity_two
   tag_id: basic_tag_two
+
+tagging_three:
+  activity_id: trusted_activity
+  tag_id: basic_tag_one

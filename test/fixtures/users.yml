@@ -7,12 +7,15 @@ regular_user_one:
   location: Shreveport, LA
   bio: Just a regular user, doing regular stuff.
   role: :normal
+  trusted: :false
   confirmed_at: <%= DateTime.now %>
 
 regular_user_two:
   username: Regular Rebecca
   email: rebecca@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
+  role: :normal
+  trusted: :false
   confirmed_at: <%= DateTime.now %>
   
 moderator_user_one:
@@ -20,6 +23,7 @@ moderator_user_one:
   email: mark@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :moderator
+  trusted: :true
   confirmed_at: <%= DateTime.now %>
   
 admin_user_one:
@@ -27,6 +31,7 @@ admin_user_one:
   email: alex@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :admin
+  trusted: :true
   confirmed_at: <%= DateTime.now %>
   
 silenced_user_one:
@@ -34,6 +39,7 @@ silenced_user_one:
   email: call_me_sly@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :silenced
+  trusted: :false
   confirmed_at: <%= DateTime.now %>
 
 job_promoter:
@@ -43,3 +49,13 @@ job_promoter:
   role: :job_poster
   confirmed_at: <%= DateTime.now %>
   
+trusted_user:
+  username: Trusted Tommy
+  email: thomas_trusterson@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
+  home_country: Tuvalu
+  location: The Turkish Tropics
+  bio: I am extremely trustworthy.
+  role: :normal
+  trusted: :true
+  confirmed_at: <%= DateTime.now %>

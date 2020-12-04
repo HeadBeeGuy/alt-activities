@@ -12,7 +12,14 @@ class ActivitiesController < ApplicationController
     @tag_categories = TagCategory.all
     authorize @activity
     if @activity.save
-      flash[:success] = "Activity submitted! You can edit it if you like. It will be visible to other users once it's approved."
+      if current_user.trusted?
+        flash[:success] = "Your activity is now posted!"
+        @activity.approved!
+        @activity.request_moderator_check unless (current_user.moderator? || current_user.admin?)
+        @activity.user.update(activity_count: @activity.user.activities.approved.count)
+      else
+        flash[:success] = "Activity submitted! You can edit it if you like. It will be visible to other users once it's approved."
+      end
       redirect_to @activity
     else
       render 'new'
@@ -37,11 +44,12 @@ class ActivitiesController < ApplicationController
         @activity.approved!
         redirect_to modqueue_url
       else
-        flash[:success] = "Activity updated! Once the edits are approved, it will show up on the site."
-        if @activity.approved?
-          @activity.edited!
+        if @user.trusted?
+          @activity.request_moderator_check
+          flash[:success] = "Your activity was updated!"
         else
-          @activity.unapproved!
+          @activity.edited! unless @activity.unapproved?
+          flash[:success] = "Your activity was updated! It will be visible to all users once a moderator checks it."
         end
         redirect_to @activity
       end
@@ -119,6 +127,13 @@ class ActivitiesController < ApplicationController
 		@document.purge_later
 		redirect_back(fallback_location: root_url)
 	end
+
+  def verify_edits
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    @activity.i_saw_it
+    redirect_to modqueue_url
+  end
   
   private
   

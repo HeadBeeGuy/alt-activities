@@ -30,6 +30,20 @@
         %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
         %td= activity.short_description
 
+%h4 Unchecked activities
+
+%table.table.table-striped.table-sm
+  %thead
+    %tr
+      %th{"scope" => "col"} Name
+      %th{"scope" => "col"} Submitter
+      %th{"scope" => "col"} Short description
+  %tbody
+    - @unchecked.each do |activity|
+      %tr
+        %th{"scope" => "row"}= link_to activity.name, activity
+        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
+        %td= activity.short_description
 %h4 Unapproved comments
 
 %table.table.table-striped.table-sm

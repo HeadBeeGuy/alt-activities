@@ -54,3 +54,11 @@ derivative_activity_two:
   time_estimate: 17 minutes
   user: regular_user_two
   status: :approved
+
+trusted_user_activity:
+  name: Trusted Tommy Tango
+  short_description: Tommy does it again!
+  long_description: I've shown myself to be an upright user. My activities will always be visible.
+  time_estimate: A half-hour
+  user: trusted_user
+  status: :approved

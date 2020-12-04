@@ -40,6 +40,16 @@ class User < ApplicationRecord
 		self.save
 	end
 
+  def trust
+    self.trusted = true
+    self.save
+  end
+
+  def untrust
+    self.trusted = false
+    save
+  end
+
   # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
   def to_param
     "#{id}-#{self.username.parameterize.truncate(80, '')}"

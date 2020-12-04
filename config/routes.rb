@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 		member do
 			put :approve
 			put :unapprove
+      put :verify_edits
 			delete :delete_attached_document
 		end
 	end
