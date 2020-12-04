@@ -10,6 +10,7 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     @admin = users(:admin_user_one)
     @moderator = users(:moderator_user_one)
     @silenced = users(:silenced_user_one)
+    @trusted = users(:trusted_user)
     #@tag = tags(:basic_tag_one) # I had this in several tests, then tried to put it up here, but it broke tests! wha??
   end
   
@@ -353,5 +354,57 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 
 		assert_equal @regular_user_one.email, original_email
 		assert_equal @regular_user_one.username, original_username
+	end
+
+	test "a moderator can switch the trusted flag on a normal user" do
+		sign_in(@moderator)
+		get user_path(@regular_user_one)
+		assert_not @regular_user_one.trusted?
+
+		put trust_user_path(@regular_user_one)
+		@regular_user_one.reload
+		assert @regular_user_one.trusted?
+
+		get user_path(@regular_user_one)
+		put untrust_user_path(@regular_user_one)
+		@regular_user_one.reload
+		assert_not @regular_user_one.trusted?
+	end
+
+	test "a normal user cannot switch their own trusted flag" do
+		sign_in(@regular_user_one)
+		get user_path(@regular_user_one)
+		assert_not @regular_user_one.trusted?
+		assert @regular_user_one.normal?
+
+		put trust_user_path(@regular_user_one)
+		@regular_user_one.reload
+		assert_not @regular_user_one.trusted?
+		delete destroy_user_session_path
+
+		sign_in(@trusted)
+		get user_path(@trusted)
+		assert @trusted.normal?
+		assert @trusted.trusted?
+
+		put untrust_user_path(@trusted)
+		@trusted.reload
+		assert @trusted.trusted?
+	end
+
+	test "a normal user can't switch the trusted flag of another user" do
+		sign_in(@regular_user_one)
+		assert @regular_user_one.normal?
+
+		get user_path(@regular_user_two)
+		assert_not @regular_user_two.trusted?
+		put trust_user_path(@regular_user_two)
+		@regular_user_two.reload
+		assert_not @regular_user_two.trusted?
+
+		get user_path(@trusted)
+		assert @trusted.trusted?
+		put untrust_user_path(@trusted)
+		assert @trusted.trusted?
 	end
 end

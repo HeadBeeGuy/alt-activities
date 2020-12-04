@@ -42,10 +42,10 @@ class UserPolicy < ApplicationPolicy
 	end
 
 	def trust?
-    user and (user.admin? or user.moderator?)
+    user and (user.admin? or user.moderator?) and !target_user.trusted?
 	end
 
 	def untrust?
-    user and (user.admin? or user.moderator?)
+    user and (user.admin? or user.moderator?) and target_user.trusted?
 	end
 end
