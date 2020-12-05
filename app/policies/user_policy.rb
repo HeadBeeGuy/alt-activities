@@ -40,4 +40,12 @@ class UserPolicy < ApplicationPolicy
 	def demote?
 		user and user.admin? and target_user.moderator?
 	end
+
+	def trust?
+    user and (user.admin? or user.moderator?) and !target_user.trusted?
+	end
+
+	def untrust?
+    user and (user.admin? or user.moderator?) and target_user.trusted?
+	end
 end

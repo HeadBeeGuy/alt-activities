@@ -39,6 +39,10 @@
           =link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?" }, class: "btn btn-outline-secondary btn-sm"
         - if policy(@user).unsilence?
           =link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Remove this user's silenced status?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).trust?
+          =link_to "Trust", trust_user_path(@user), method: :put, data: { confirm: "Trust this user?" }, class: "btn btn-outline-secondary btn-sm"
+        - if policy(@user).untrust?
+          =link_to "Untrust", untrust_user_path(@user), method: :put, data: { confirm: "Remove this user's trusted status?" }, class: "btn btn-outline-secondary btn-sm"
         - if policy(@user).delete?
           =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
     .col-12

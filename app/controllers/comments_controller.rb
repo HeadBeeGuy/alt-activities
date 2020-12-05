@@ -20,13 +20,19 @@ class CommentsController < ApplicationController
     @commentable = COMMENTABLES.fetch(params[:comment][:commentable_type]).find(params[:comment][:commentable_id])
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
+    @comment.normal! if @comment.user.trusted?
     authorize @comment
     if @comment.save
-      respond_to do |format|
-        format.js
-        format.html { # is there a better way to format this in Ruby?
-          flash[:success] = "Comment submitted! It will show up once it's approved!"
-          redirect_to @comment.commentable }
+      if @comment.user.trusted?
+        flash[:success] = "Comment posted!"
+        redirect_to @comment.commentable
+      else
+        respond_to do |format|
+          format.js
+          format.html { # is there a better way to format this in Ruby?
+            flash[:success] = "Comment submitted! It will show up once it's approved!"
+            redirect_to @comment.commentable }
+        end
       end
     else
       flash[:warning] = "Your comment is blank or too long. Can you try revising it?"

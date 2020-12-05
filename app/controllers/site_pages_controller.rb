@@ -20,6 +20,7 @@ class SitePagesController < ApplicationController
     end
     @unapproved = Activity.unapproved.select(:id, :name, :user_id, :short_description)
     @edited = Activity.edited.select(:id, :name, :user_id, :short_description)
+    @unchecked = Activity.where(checked: :false).select(:id, :name, :user_id, :short_description)
     @comments = Comment.unapproved
     @newest_users = User.select(:id, :username, :created_at).order(created_at: :desc)
       .limit(5)

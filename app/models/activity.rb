@@ -84,4 +84,16 @@ class Activity < ApplicationRecord
   def name_and_summary
     "#{self.name} - #{self.short_description}"
   end
+
+  # verify that the activity has been checked by a moderator - doesn't affect
+  # visibility, just confirms that a moderator has seen changes
+  def i_saw_it
+    self.checked = true
+    self.save
+  end
+
+  def request_moderator_check
+    self.checked = false
+    self.save
+  end
 end

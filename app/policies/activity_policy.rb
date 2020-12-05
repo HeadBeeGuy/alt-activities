@@ -44,4 +44,8 @@ class ActivityPolicy < ApplicationPolicy
   def delete_attached_document?
     user.admin? or (user.activities.include?(activity))
   end
+
+  def verify_edits?
+    user and (user.admin? or user.moderator?)
+  end
 end

@@ -32,6 +32,8 @@
               = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
             - elsif activity.approved? && ( policy(activity).unapprove? )
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
+            - if !activity.checked? && policy(activity).verify_edits?
+              = link_to "Verify changes", verify_edits_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
             = link_to "Link activity to another", new_activity_link_path(activity), class: "btn btn-outline-secondary btn-sm"
           .btn-group{"role" => "group", "aria-label" => "Activity secondary controls"}
             = link_to t('activities.show.edit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"

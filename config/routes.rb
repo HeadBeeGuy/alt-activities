@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 			put :unsilence
 			put :promote
 			put :demote
+      put :trust
+      put :untrust
 		end
 	end
 	
@@ -54,6 +56,7 @@ Rails.application.routes.draw do
 		member do
 			put :approve
 			put :unapprove
+      put :verify_edits
 			delete :delete_attached_document
 		end
 	end

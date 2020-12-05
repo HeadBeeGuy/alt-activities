@@ -82,6 +82,22 @@ class UsersController < ApplicationController
 		redirect_to @user
 	end
 
+  def trust
+    @user = User.find(params[:id])
+    authorize @user
+    @user.trust
+    flash[:success] = "#{@user.username} can now post without moderator review."
+    redirect_to @user
+  end
+
+  def untrust
+    @user = User.find(params[:id])
+    authorize @user
+    @user.untrust
+    flash[:success] = "Content posted by #{@user.username} won't be visible until a moderator approves it."
+    redirect_to @user
+  end
+
    private
   
     def user_params
