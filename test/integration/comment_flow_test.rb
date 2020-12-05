@@ -9,6 +9,7 @@ class CommentFlowTest < ActionDispatch::IntegrationTest
     @admin = users(:admin_user_one)
     @moderator = users(:moderator_user_one)
     @silenced = users(:silenced_user_one)
+    @trusted = users(:trusted_user)
     @activity = activities(:basic_activity_one)
   end
 
@@ -273,5 +274,17 @@ class CommentFlowTest < ActionDispatch::IntegrationTest
     assert_match comment_text, response.body
   end
 
+  test "a trusted user can post a comment that is immediately visible" do
+    comment_text = "Allow me to drop some knowledge."
 
+    sign_in(@trusted)
+    get activity_path(@activity)
+    assert_difference('Comment.normal.count', 1) do
+      post comments_path, params: { comment: { content: comment_text,
+        commentable_type: @activity.class, commentable_id: @activity.id }}
+    end
+    assert_redirected_to @activity
+    follow_redirect!
+    assert_match comment_text, response.body
+  end
 end
