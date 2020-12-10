@@ -16,11 +16,17 @@
         %span= t('.bio')
         %span= @user.bio
       - if user_signed_in? && current_user.admin?
-        - if @user.sign_in_count > 0
-          %p Most recent sign-in date: #{@user.current_sign_in_at.strftime("%b %d %Y")} (#{@user.sign_in_count})
-          %p Most recent IP: #{@user.last_sign_in_ip}
-        - else
-          %p This user hasn't signed into their account yet.
+        %p.text-center
+          - if @user.sign_in_count > 0
+            %span Most recent sign-in date: #{@user.current_sign_in_at.strftime("%b %d %Y")} (#{@user.sign_in_count})
+            %span - IP: #{@user.last_sign_in_ip} -
+            %span
+              - if @user.trusted?
+                Trusted user
+              - else
+                Not yet trusted
+          - else
+            %span Account is unactivated.
     - if user_signed_in? && ( current_user == @user || current_user.admin? )
       .col-12
         %p= t('.upvotes')

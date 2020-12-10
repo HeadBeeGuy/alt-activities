@@ -83,10 +83,8 @@ class SitePagesController < ApplicationController
   end
 
   def contributors
-    # Currently offsetting the count by 1 since Englipedia Archive is the top user
-    # by activities, and that's not really fair
-    @top10 = User.select(:id, :username, :activity_count, :home_country, :location, :bio)
-      .order(activity_count: :desc).limit(12).offset(1)
+    @top10 = User.select(:id, :username, :activity_count, :home_country, :location, :bio, :trusted)
+      .where(trusted: :true).order(activity_count: :desc).limit(12)
     @top3 = @top10[0..2]
     @top4to12 = @top10[3..11]
   end

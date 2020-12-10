@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
 		@moderators = User.moderator.select(:id, :username)
 		@admins = User.admin.select(:id, :username)
-    @all_users = User.select(:id, :username, :activity_count, :created_at)
+    @all_users = User.select(:id, :username, :activity_count, :created_at, :trusted)
       .order(created_at: :desc).page(params[:page]).per(80)
   end
 
