@@ -31,16 +31,6 @@ if Rails.env.development?
                             role: :admin,
                             confirmed_at: Time.now)
 
-  job_posting_user = User.create!(username: "Jimmy Jobposter",
-                            email: "james@example.com",
-                            home_country: Faker::Address.country_code_long,
-                            location: Faker::Address.city,
-                            bio: "I post jobs! Come and visit!",
-                            password: "badpassword",
-                            password_confirmation: "badpassword",
-                            role: :job_poster,
-                            confirmed_at: Time.now)
-  
   silenced_user = User.create!(username: "Silenced Saxton",
                             email: "call_me_sax@example.com",
                             home_country: Faker::Address.country_code_long,
@@ -51,19 +41,9 @@ if Rails.env.development?
                             role: :silenced,
                             confirmed_at: Time.now)
 
-  # Randomly create job posts
-  10.times do
-    new_job = JobPost.create!(title: Faker::Coffee.blend_name,
-                              external_url: "https://www.altopedia.org",
-                              content: Faker::Lorem.paragraph,
-                              priority: Random.rand(0..2),
-                              user: job_posting_user)
-    new_job.company_logo.attach(io: File.open('app/assets/images/logo.png'), filename: 'logo.png')
-  end
-
   # Randomly create regular users
   regular_users = []
-  35.times do
+  55.times do
     regular_users << User.create!(username: Faker::Internet.unique.username(specifier: 6..15).delete("-_."),
                                   email: Faker::Internet.unique.safe_email,
                                   home_country: Faker::Address.country_code_long,
@@ -72,12 +52,18 @@ if Rails.env.development?
                                   password: "badpassword",
                                   password_confirmation: "badpassword",
                                   role: :normal,
+                                  trusted: :true,
                                   confirmed_at: Time.now)
   end
   
   # promote two random mods
   regular_users.sample(2).each do |user|
     user.moderator!
+  end
+
+  # untrust some of the users
+  regular_users.sample(5).each do |user|
+    user.untrust
   end
 
   # Randomly create some more tags - need to have enough to be greater than the
