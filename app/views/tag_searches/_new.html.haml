@@ -1,5 +1,5 @@
 .container
-=form_with(url: tag_search_path, method: :get) do
+=form_with(url: tag_search_path, method: :get, id: "tag-search-form") do
   .accordion{"id" => "accordionCategory"}
     - @tag_categories.each do |category|
       .card
@@ -12,9 +12,11 @@
         %div.collapse{ "id" => "collapse-category-#{category.id}", "aria-labelledby" => "heading-#{category.name}", "data-parent" => "#accordionCategory" }
           .card-body
             .container
-              %div.category-tag-grid.btn-group-toggle{"data-toggle" => "buttons"}
+              %div.category-tag-grid.btn-group-toggle{ "data-toggle" => "buttons" }
                 = collection_check_boxes(:tag, :tag_ids, category.tags, :id, :name_for_lists) do |tag|
-                  %li.btn.btn-primary.category-tag-grid-item{"aria-pressed" => "false", "onClick" => "handleTagClick(this)"} #{tag.check_box class: "form-check-input"} #{markdown(tag.label class: "form-check-label")}
+                  %label.btn.btn-primary.category-tag-grid-item{"aria-pressed" => "false", "data-bs-toggle" => "tooltip", "data-bs-placement" => "bottom", "title" => "#{Tag.find(tag.value).description}", "container" => 'body' }
+                    %p= tag.text
+                    %input{"class" => "form-check-input", "type" => "checkbox", "name" => "tag[tag_ids][]", "id" => "tag_tag_ids_#{tag.value}", "value" => tag.value, "onClick" => "handleTagClick(this)"}
   .container
   =submit_tag "Search", class: "btn btn-primary"
     
