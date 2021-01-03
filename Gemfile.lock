@@ -140,13 +140,14 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     mini_racer (0.3.1)
       libv8 (~> 8.4.255)
     minitest (5.14.2)
     nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.0.rc4)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.2)
     pg_search (2.3.5)
@@ -157,6 +158,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
+    racc (1.5.2)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -269,7 +271,7 @@ DEPENDENCIES
   listen
   loofah (>= 2.4.0)
   mini_racer
-  nokogiri (>= 1.10.4)
+  nokogiri (>= 1.11.0.rc4)
   pg (= 1.2.2)
   pg_search
   puma (>= 4.3.5)

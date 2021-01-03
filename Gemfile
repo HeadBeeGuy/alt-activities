@@ -26,7 +26,7 @@ gem 'pg', '1.2.2'
 gem 'rack', '>= 2.2.3'
 gem 'recaptcha'
 gem 'loofah', '>= 2.4.0'
-gem 'nokogiri', '>= 1.10.4'
+gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'pg_search'
 gem 'webpacker'
 
