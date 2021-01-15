@@ -33,7 +33,6 @@ Longer-term tasks:
 - Allow activities to link to specific textbook pages
 - Add a field to Tag Categories to control whether they're displayed collapsed by default on the Activity form page
 - Add more user profile information, and allow users to say more about themselves if they're so inclined. 
-- Remove the job listing functionality. It's no longer part of the site.
 - Switch permission management from Pundit to Cancancan. This will make the code in the controllers simpler since Cancancan allows standard controller methods to automatically load data for the current user given their permission level. This will likely involve rewriting a lot of integration tests since permission errors raise an exception instead of quietly failing.
 - See if the fancy new text editor in Rails 6 can be used with Markdown, since that's how Activities and FrontPagePosts are formatted.
 

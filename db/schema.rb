@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_112728) do
+ActiveRecord::Schema.define(version: 2021_01_14_024620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -115,19 +115,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_112728) do
     t.index ["user_id"], name: "index_front_page_posts_on_user_id"
   end
 
-  create_table "job_posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "title"
-    t.string "external_url"
-    t.text "content"
-    t.integer "priority", default: 0
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["created_at"], name: "index_job_posts_on_created_at"
-    t.index ["priority"], name: "index_job_posts_on_priority"
-    t.index ["user_id"], name: "index_job_posts_on_user_id"
-  end
-
   create_table "tag_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -223,7 +210,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_112728) do
   add_foreign_key "activities", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "front_page_posts", "users"
-  add_foreign_key "job_posts", "users"
   add_foreign_key "textbook_pages", "tags"
   add_foreign_key "textbook_pages", "textbooks"
 end

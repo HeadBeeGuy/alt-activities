@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 	get '/modqueue', to: 'site_pages#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
-  get '/jobs', to: 'job_posts#index'
   get '/shoutbox', to: 'site_pages#shoutbox'
   get '/discord', to: 'site_pages#render_discord'
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
@@ -39,7 +38,7 @@ Rails.application.routes.draw do
   get '/tag_search', to: 'tag_searches#show'
   get '/activity_search', to: 'activity_searches#show'
 
-  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts, :job_posts
+  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts
 
 	resources :users do
 		member do

@@ -17,7 +17,6 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
 	has_many :upvotes
   has_many :comments, dependent: :destroy
-  has_many :job_posts, dependent: :destroy
   
   enum role: [:silenced, :normal, :moderator, :admin, :job_poster]
   
