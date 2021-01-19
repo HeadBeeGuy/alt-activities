@@ -20,7 +20,7 @@ $(window).on("pageshow", function () {
         const ref = document.getElementById(`selected_items-${num}`);
         const text = checkbox.parentNode.innerText;
 
-        checkbox.parentNode.classList.contains('active') ? null : checkbox.parentNode.classList.add('active');
+        checkbox.parentNode.classList.contains('btn-active') ? null : toggleAlertBorder(checkbox);
 
         append(ref, text);
       }
@@ -64,5 +64,12 @@ const handleTagClick = function(e) {
 
       ref.removeChild(ref.childNodes[ind]);
     }
+
+    toggleAlertBorder(e)
     
+}
+
+const toggleAlertBorder = function(e) {
+  e.parentNode.classList.toggle('btn-active');
+  e.parentNode.classList.toggle('btn-success');
 }

@@ -1,7 +1,6 @@
 // Place all the styles related to the tag_searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$altopedia_primary: #29abe1;
 
 .category-tag-grid {
     display:grid;
@@ -32,4 +31,9 @@ $altopedia_primary: #29abe1;
 
 .selected-list li{
     list-style: none;
+}
+
+.btn-active {
+    border: 2px solid red;
+    background-color: #dc3545;
 }
