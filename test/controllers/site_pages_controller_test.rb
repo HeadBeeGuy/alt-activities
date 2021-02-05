@@ -50,4 +50,9 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     get online_teaching_path
     assert_response :success
   end
+
+  test "should get special needs page" do
+    get special_needs_path
+    assert_response :success
+  end
 end

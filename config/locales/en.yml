@@ -31,6 +31,8 @@ en:
     resources: "Useful Links and Resources"
     shoutbox: "Shoutbox"
     themes: "Activity Themes"
+    special-needs: "Special Needs"
+    online-teaching: "Online teaching"
   login:
     log_in: "Sign in"
     remember_me: "Remember me"
@@ -96,6 +98,10 @@ en:
       title: "ALTopedia - High School Activities"
       hs-heading: "High School"
       hs-explanation: "In Japan, High School consists of 3 grades. Students are usually between 15 and 18 years old. Education is no longer compulsory at this level, but most Japanese people attend high school. This level is where students begin to move into a career track, as different high schools can have different focuses. Admission is usually based on the results of entrance exams, requiring a certain score to pass."
+    special_needs:
+      title: "ALTopedia - Special Needs Class Activities"
+      special-needs-heading: "Special Needs"
+      special-needs-explanation: "Special Needs classes are classes in Elementary or Junior High School that focus on low student numbers with a greater degree of individual attention for each student than in full-sized classes. Students may be placed in these classes for a lot of different reasons: their relationships with their classmates, their academic ability relative to their peers, or their Japanese language skills. They often require more flexibility from the teachers, but they can be easier to manage than a full-sized class."
     conversation:
       title: "ALTopedia - English Conversation"
       conversation-heading: "English Conversation"

@@ -53,6 +53,13 @@ class SitePagesController < ApplicationController
     @textbooks = Textbook.HS.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
 
+  def special_needs
+    @all_activities = Tag.find_by_name("Special Needs").activities.order(created_at: :desc)
+			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
+    @top10 = Tag.find_by_name("Special Needs").activities.order(upvote_count: :desc)
+      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
+  end
+
 	def conversation
     @all_activities = Tag.find_by_name("Conversation").activities.order(created_at: :desc)
 			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)

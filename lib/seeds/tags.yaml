@@ -56,6 +56,11 @@ tag_category_2:
       name: Conversation
       description: Aimed at students with a wide variety of ages and class settings,
         including adult students.
+    tag_7:
+      short_name: special-needs
+      long_name: Special Needs
+      name: Special Needs
+      description: This activity can be used in Special Needs classes.
 tag_category_3:
   name: Grammar points
   tags:

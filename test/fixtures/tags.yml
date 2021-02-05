@@ -56,3 +56,10 @@ warmups_tag:
   name: Warm-up
   description: I, like my brothers, am here to help with tests
   tag_category: grammar_category
+
+special_needs_tag:
+  short_name: no-longer-needed
+  long_name: Actually, I need to remove these fields
+  name: Special Needs
+  description: You may be able to guess why I exist
+  tag_category: grammar_category
