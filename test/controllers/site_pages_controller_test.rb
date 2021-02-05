@@ -55,4 +55,19 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     get special_needs_path
     assert_response :success
   end
+
+  test "should get contact page" do
+    get contact_path
+    assert_response :success
+  end
+
+  test "should get resources page" do
+    get resources_path
+    assert_response :success
+  end
+
+  test "should get contributors page" do
+    get contributors_path
+    assert_response :success
+  end
 end
