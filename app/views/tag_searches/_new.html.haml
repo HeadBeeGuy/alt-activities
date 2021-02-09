@@ -16,7 +16,7 @@
                 = collection_check_boxes(:tag, :tag_ids, category.tags, :id, :name_for_lists) do |tag|
                   %label.btn.category-tag-grid-item.btn-success{"aria-pressed" => "false", "data-bs-toggle" => "tooltip", "data-bs-placement" => "bottom", "title" => "#{Tag.find(tag.value).description}", "container" => 'body'}
                     %p= tag.text
-                    %input{"class" => "form-check-input", "type" => "checkbox", "name" => "tag[tag_ids][]", "id" => "tag_tag_ids_#{tag.value}", "value" => tag.value, "onClick" => "handleTagClick(this)"}
+                    %input{"class" => "form-check-input", "type" => "checkbox", "name" => "tag[tag_ids][]", "id" => "tag_tag_ids_#{tag.value}", "data-id" => "#{category.id}", "data-text" => "#{tag.text}", "value" => "#{tag.value}"}
   .container
   =submit_tag "Search", class: "btn btn-primary"
     
