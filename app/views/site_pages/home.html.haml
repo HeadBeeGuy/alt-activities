@@ -10,7 +10,7 @@
 .row
   .col-md-8.col-sm-12.primary-content
     .site-banner
-      = image_tag "ALTopedia banner Valentines Day.png", height: '100', class: "img-fluid d-block mx-auto", alt: "ALTopedia"
+      = image_tag "Altopedia banner.png", height: '100', class: "img-fluid d-block mx-auto", alt: "ALTopedia"
       %p= t('.site-tagline')
     .news-posts
       .card.main-post
@@ -33,7 +33,7 @@
         .col-sm-12.col-md-6
           = render partial: 'activities/compact_activity_list', locals: { label: t('.top-10-activities'), activity_list: @top10, show_upvote_count: true }
   .col-md-4.col-sm-12.secondary-content
-    = render 'tag_of_the_moment'
+    -# = render 'tag_of_the_moment'
     .crowdfunding
       .card.mt-2
         .card-body
@@ -52,12 +52,12 @@
     -#         %span= link_to "Contribute to ALTopedia", contribute_path
     -#         %span or
     -#         %span= link_to "sign up!", new_user_path
-    -# .guide-callout
-    -#   .card.mt-2
-    -#     .card-body
-    -#       %h5 Check out the site guide!
-    -#       %p Are you new to the site, or wondering how to find activities?
-    -#       %p= link_to "The ALTopedia Guide", guide_path
+    .guide-callout
+      .card.mt-2
+        .card-body
+          %h5 Check out the site guide!
+          %p Are you new to the site, or wondering how to find activities?
+          %p= link_to "The ALTopedia Guide", guide_path
     .comment-ticker
       .card.mt-2
         .card-body
