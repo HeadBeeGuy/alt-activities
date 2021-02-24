@@ -2,8 +2,8 @@
 class TagSearchesController < ApplicationController
 
   def new
-    @tag_categories = TagCategory.all
-    @tags = Tag.all
+    @tag_categories = TagCategory.all.includes(:tags)
+    # @tags = Tag.all
   end
 
   def show

@@ -30,21 +30,23 @@
     %p= t('.tag_directions_2')
     %p
     .container
-      .accordion{"id" => "accordionCategory"} 
+      .accordion{"id" => "accordionCategory"}
         - @tag_categories.each do |category|
           .card
             .card-header{"id" => "heading-#{category.name}"}
               %h5.mb-0
                 %button.btn.btn-link.btn-block.text-left.collapsed{"data-toggle" => "collapse", "data-target" => "#collapse-category-#{category.id}",
                                       "aria-expanded" => "false", "aria-controls" => "collapse-category-#{category.id}", "type" => "button"}
-                  %h5= category.name
+                  %h5{"id" => "title-#{category.name}"}= category.name
               %ul.selected-list{"id" => "selected_items-#{category.id}"}
             %div.collapse{ "id" => "collapse-category-#{category.id}", "aria-labelledby" => "heading-#{category.name}", "data-parent" => "#accordionCategory" }
               .card-body
                 .container
-                  %div.category-tag-grid.btn-group-toggle{"data-toggle" => "buttons"}
-                    = f.collection_check_boxes :tag_ids, category.tags, :id, :name_for_lists do |tag_item|
-                      %li.btn.btn-primary.category-tag-grid-item{"aria-pressed" => "false", "onClick" => "handleTagClick(this)"} #{tag_item.check_box class: "form-check-input"} #{markdown(tag_item.label class: "form-check-label")}
+                  %div.category-tag-grid.btn-group-toggle{ "data-toggle" => "buttons" }
+                    = collection_check_boxes(:tag, :tag_ids, category.tags, :id, :name_for_lists) do |tag|
+                      %label.btn.category-tag-grid-item.btn-success{"aria-pressed" => "false", "data-bs-toggle" => "tooltip", "data-bs-placement" => "bottom", "title" => "#{tag.text.split('##')[1]}", "container" => 'body'}
+                        %p= tag.text.split('##')[0]
+                        %input{"class" => "form-check-input", "type" => "checkbox", "name" => "activity[tag_ids][]", "id" => "activity_tag_ids_#{tag.value}", "data-id" => "#{category.id}", "data-text" => "#{tag.text.split('##')[0]}", "value" => "#{tag.value}"}
     %h3= t('.file-heading')
     - if @activity.documents.attached?
       .edit-attached-files-list.mb-2

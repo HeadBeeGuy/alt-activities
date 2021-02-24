@@ -2,6 +2,11 @@
 // All this logic will automatically be available in application.js.
 
 function init() {
+  const form = document.querySelector('#tag-search-form'); //tag searches container
+  const tagChooser = document.querySelector('.tag-chooser');
+
+  if (!form && !tagChooser) return;
+
   //tooltips
   setTooltips();
   //checkboxes
@@ -9,6 +14,7 @@ function init() {
 }
 
 function setTooltips() {
+
   //Initialize tooltips, taken from the vanilla Bootstrap docs
   const tooltipTriggerList = [
     ...document.querySelectorAll('[data-bs-toggle="tooltip"]'),
@@ -16,16 +22,17 @@ function setTooltips() {
   tooltipTriggerList.map(function (el) {
     return new bootstrap.Tooltip(el);
   });
+
 }
 
 function setCheckboxes() {
   const checkboxes = [...document.querySelectorAll("input.form-check-input")];
 
-  console.log(checkboxes.length);
+  // console.log(checkboxes.length);
 
   if (checkboxes.length) {
     checkboxes.map((checkbox) => {
-      console.log(checkbox.checked);
+      // console.log(checkbox.checked);
 
       if (checkbox.checked) {
         const num = checkbox.dataset.id;
@@ -43,7 +50,7 @@ function setCheckboxes() {
         curItems.includes(text) ? null : append(ref, text);
       }
 
-      checkbox.addEventListener("click", handleTagClick);
+      checkbox.addEventListener("change", handleTagClick);
     });
   }
 }
@@ -90,5 +97,15 @@ const toggleAlertBorder = function (e) {
   e.parentNode.classList.toggle("btn-success");
 };
 
-$(document).on("turbolinks:load", init);
-window.addEventListener('pageshow', setCheckboxes);
+document.addEventListener("turbolinks:load", init);
+window.addEventListener('pageshow', init);
+
+// const intervalCheck = setInterval(function() {
+//   console.log('interval fired');
+//   if (document.readyState === 'complete') {
+//     console.log(document.readyState);
+//     clearInterval(intervalCheck);
+//     return init();
+//   }
+// }, 10);
+
