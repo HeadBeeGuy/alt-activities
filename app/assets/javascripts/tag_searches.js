@@ -1,10 +1,11 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-let tagsList;
+let tagsList, newActivity;
 
 function init() {
   const form = document.querySelector('#tag-search-form'); //tag searches container
+  newActivity = document.querySelector('#new_activity');
   const tagChooser = document.querySelector('.tag-chooser');
   tagsList = document.querySelector('#selected_items-3');
 
@@ -15,7 +16,7 @@ function init() {
   //checkboxes
   setCheckboxes();
   //see if there are more than three grammar tags selected
-  checkGrammarTags();
+  if (newActivity) checkGrammarTags();
 }
 
 function setTooltips() {
@@ -97,7 +98,7 @@ const handleTagClick = function () {
   toggleAlertBorder(this);
 
   //see if more than three grammar tags are selected
-  checkGrammarTags();
+  if (newActivity) checkGrammarTags();
 };
 
 const toggleAlertBorder = function (e) {
@@ -125,20 +126,9 @@ function checkGrammarTags() {
     if (checkbox.checked) acc++
     return acc;
   }, 0);
-  console.log(res);
-  console.log(tagsList);
   return res > 3 ? displayGrammarTagNotice() : removeGrammarTagNotice();
 }
 
 document.addEventListener("turbolinks:load", init);
 window.addEventListener('pageshow', init);
-
-// const intervalCheck = setInterval(function() {
-//   console.log('interval fired');
-//   if (document.readyState === 'complete') {
-//     console.log(document.readyState);
-//     clearInterval(intervalCheck);
-//     return init();
-//   }
-// }, 10);
 
