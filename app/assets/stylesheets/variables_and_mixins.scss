@@ -1,0 +1,129 @@
+
+$primary100: #e7f7fe;
+$primary200: #d2ebf7;
+$primary300: #b8dcec;
+$primary400: #80bed9;
+$primary500: #29abe1;
+$primary600: #0d9cd9;
+$primary700: #0084ba;
+$primary800: #007bb1;
+$primary900: #06669c;
+
+$tag100: #e3fdf0;
+$tag200: #9bebc3;
+$tag300: #53db97;
+$tag400: #33cc82;
+$tag500: #1be07d;
+$tag600: #00c366;
+$tag700: #169e5a;
+$tag800: #008f4e;
+$tag900: #006934;
+
+$user100: #dbe0ff;
+$user200: #c2c8f6;
+$user300: #9da6e3;
+$user400: #7682d5;
+$user500: #5c71ff;
+$user600: #4c64f7;
+$user700: #3d55f2;
+$user800: #2d49e9;
+$user900: #101bd2;
+
+$ru100: #f8f9fa;
+$ru200: #e1e7ec;
+$ru300: #d5dde5;
+$ru400: #ccd4db;
+$ru500: #aebecd;
+$ru600: #929fb1;
+$ru700: #6e7a8a;
+$ru800: #404b5a;
+$ru900: #202833;
+
+$desktop_breakpoint: 70rem;
+
+@mixin card-shadow {
+  box-shadow: 0.3rem 0.3rem 0.3rem $ru300;
+}
+
+@mixin full-size-card {
+  padding: 1.5rem 1.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0.3rem 0.3rem 0.3rem $ru300;
+
+  border-radius: 3px;
+  background-color: #fbfbfb;
+
+    h1 {
+      font-size: 2.3rem;
+      line-height: 2.5rem;
+      text-align: center;
+    }
+  
+  @media screen and (min-width: $desktop_breakpoint) {
+    width: 65rem;
+  }
+}
+ 
+@mixin compact-card {
+  box-shadow: 0.2rem 0.2rem 0.3rem $ru200;
+  background-color: #fbfbfb;
+  border-radius: 6px;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
+  
+  display: flex;
+  flex-direction: column;
+
+  .card-title {
+    align-self: center;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: $primary900;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2rem;
+  }
+
+  .card-tag-link {
+    align-self: center;
+    padding: 0.4rem;
+    background: linear-gradient(to top right, $tag500, $tag400);
+    color: $tag100;
+    border-radius: 0.4rem;
+    text-decoration: none;
+  }
+  .card-tag-link:hover {
+    background: $tag600;
+    box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+  }
+}
+
+@mixin ticker {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  .ticker-title {
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 0;
+    padding-top: 0.2rem;
+    color: $ru600;
+  }
+
+  .ticker-item a {
+    display: flex;
+    // padding: 0.5rem 1rem;
+    padding: 0.2rem 0.5rem;
+    text-decoration: none;
+    // color: $primary900;
+  }
+}
+
+@mixin button-shadow {
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+}
