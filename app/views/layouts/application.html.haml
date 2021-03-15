@@ -12,13 +12,14 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     = favicon_link_tag asset_path('favicon.ico')
     = favicon_link_tag asset_path('apple-touch-icon.png'), rel: 'apple-touch-icon'
-  %body.bg-light
-    .site-header
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"> 
+  %body
+    %header
       = render 'layouts/header' 
       - flash.each do |message_type, message|
         = content_tag :div, message, class: "alert alert-#{message_type}"
-    .site-body.mb-4
-      .container
-        = yield
-    .site-footer
+    %main{"role" => "main"}
+      = yield
+    %footer
       = render 'layouts/footer'
