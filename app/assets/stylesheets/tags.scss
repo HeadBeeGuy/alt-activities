@@ -1,3 +1,23 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tag-link {
+  color: $tag700;
+  text-decoration: none;
+}
+.tag-link:hover {
+  color: $tag900;
+  text-decoration: underline;
+}
+
+.full-tag-display {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $tag600;
+
+    h1 {
+      color: $tag900;
+    }
+}

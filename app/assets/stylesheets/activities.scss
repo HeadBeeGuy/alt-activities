@@ -1,3 +1,400 @@
 // Place all the styles related to the activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.activity-link {
+  color: $primary700;
+}
+.activity-link:hover {
+  color: $primary900;
+}
+
+/* ACTIVITY TICKERS */
+.activity-ticker {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+// .ticker-activity {
+// }
+.ticker-activity:hover {
+  background: $primary200;
+}
+
+.ticker-activity a {
+  display: flex;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: $primary900;
+}
+
+.ticker-title {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0;
+  padding-top: 0.2rem;
+  color: $ru600;
+}
+
+
+/* FULL-SIZED ACTIVITY DISPLAY */
+.full-activity-display {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $primary600;
+
+  h1 {
+    color: $primary900;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+.full-activity-heading {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.377);
+  padding-bottom: 1rem;
+
+  .activity-subheading {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+.full-activity-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-activity-info {
+  font-size: 0.8rem;
+  line-height: 1.3rem;
+  order: 2;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.activity-submitter-link {
+  color: $user600;
+}
+.activity-submitter-link:hover {
+  color: $user900;
+}
+
+.full-activity-description {
+  flex: 1;
+  order: 1;
+  margin-bottom: 1rem;
+}
+
+.activity-file-list {
+  background: $ru100;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+  
+  h6 {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .activity-file-link {
+    padding-left: 1rem;
+    color: $primary700;
+    font-size: 0.9rem;
+  }
+  .activity-file-link:hover {
+    color: $primary900;
+  }
+}
+
+.full-activity-controls {
+  order: 3;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.upvote-button {
+  height: 3rem;
+  cursor: pointer;
+  color: #fafafa;
+  background: $primary600;
+  border-radius: 0.3rem;
+  border: 0px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+.upvote-button:hover {
+  background: $primary700;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+}
+
+.thumbs-up-icon {
+  height: 2rem;
+}
+
+.upvote-count {
+  font-size: 2rem;
+}
+
+.activity-control-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.activity-control {
+  height: 1.8rem;
+  font-size: 0.9rem;
+  color: $ru900;
+  background-color: $ru200;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  margin-right: 1rem;
+  padding: 0 1rem;
+}
+.activity-control:hover {
+  background-color: $primary200;
+}
+
+.activity-tags-list {
+  li {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.activity-tag {
+  background: linear-gradient(to top right, $tag500, $tag400);
+  color: $ru100;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-right: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+}
+.activity-tag:hover {
+  background: $tag600;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+}
+
+.activity-license-info {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .full-activity-details {
+    flex-direction: row;
+  }
+
+  .full-activity-info {
+    order: 1;
+    width: 10rem;
+    text-align: left;
+  }
+  .full-activity-description {
+    order: 2;
+    padding: 0 0.8rem;
+  }
+  .full-activity-controls {
+    order: 3;
+    width: 10rem;
+  }
+
+  .activity-control-items {
+    flex-direction: column;
+  }
+
+  .activity-control {
+    margin-right: 0;
+  }
+
+  .thumbs-up-explanation {
+    display: none;
+  }
+
+}
+/* Activity list display on Tag pages and what-have-ya */
+.activity-card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  width: 18rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom right, #fefefe 50%, $primary100);
+  text-align: center;
+  border-radius: 0.3rem;
+  border-top: 0.3rem solid $primary500;
+  a {
+    text-decoration: none;
+  }
+}
+.activity-card:hover {
+  background: $primary100;
+  box-shadow: 0.3rem 0.3rem 0.4rem $ru200;
+}
+
+.activity-card-name {
+  padding: 0.7rem 0.4rem 0.5rem;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 700;
+  color: $primary900;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-card-description {
+  font-size: 0.8rem;
+  color: $primary800;
+  line-height: 0.9rem;
+  padding: 0 1rem 1rem;
+  margin: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ACTIVITY FORM */
+.activity-form-page {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $primary400;
+
+  h2 {
+    color: $primary800;
+    text-align: center;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-guidelines {
+  margin-top: 1.8rem;
+
+  ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+  }
+}
+
+.activity-form {
+  margin-top: 2rem;
+  h4 {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+}
+
+.form-input-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  color: $ru800;
+}
+
+.form-textfield {
+  height: 2rem;
+  border: 1px solid $ru700;
+  font-size: 1rem;
+  padding: 0 0.4rem;
+  border-radius: 0.2rem;
+  background: #fefefe;
+  font-family: "Inter";
+}
+
+.form-textarea {
+  border: 1px solid $ru700;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  background: #fefefe;
+  font-family: "Inter";
+}
+
+.form-tag-category-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0.5rem;
+  color: $tag900;
+  text-align: center;
+}
+
+.form-tag-category-guidelines {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.form-tag-category {
+  margin-bottom: 1.5rem;
+}
+
+.form-tag-name {
+  color: $tag900;
+  font-weight: 700;
+}
+
+.form-tag label {
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.form-tag {
+  min-height: 3rem;
+}
+
+.form-tag input[type="checkbox"] {
+  display: none;
+}
+
+.form-tag input[type="checkbox"]:checked + label {
+  background: $tag800;
+  color: #fafafa;
+  .form-tag-name {
+    color: $tag100;
+  }
+  transition: 300ms ease;
+}
+
+.activity-submit-button {
+  text-align: center;
+  padding: 1rem 1.3rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+}
+.activity-submit-button:hover {
+  background: $primary900;
+  cursor: pointer;
+  @include button-shadow;
+}
