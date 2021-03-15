@@ -16,7 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'haml' # personally I find haml much easier to write than ERB
 gem 'rails-controller-testing'
-gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'pundit'
 gem 'redcarpet' # for rendering Markdown in HTML
