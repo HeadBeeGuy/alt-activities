@@ -7,68 +7,51 @@
   <meta property="og:description" content="Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!" />
   <meta property="og:site_name" content="ALTopedia" />
 
-.row
-  .col-md-8.col-sm-12.primary-content
-    .site-banner
-      = image_tag "Altopedia banner.png", height: '100', class: "img-fluid d-block mx-auto", alt: "ALTopedia"
-      %p= t('.site-tagline')
-    .news-posts
-      .card.main-post
-        - if @top_posts.first
-          %h5.card-header= @top_posts.first.title
-          .card-body
-            %p= markdown_for_posts(@top_posts.first.excerpt)
-            %span.float-right= link_to t('.read-more'), posts_path(@top_posts.first)
-      - if @top_posts.second
-        .card.secondary-post
-          %h5.card-header= link_to @top_posts.second.title, posts_path(@top_posts.second)
-      - if @top_posts.third
-        .card.secondary-post
-          %h5.card-header= link_to @top_posts.third.title, posts_path(@top_posts.third)
-      %p.mt-2.text-right= link_to t('.front-page-posts-index'), front_page_posts_path
-    .activity-lists
-      .row
-        .col-sm-12.col-md-6
-          = render partial: 'activities/compact_activity_list', locals: { label: t('.newest-activities'), activity_list: @newest, show_upvote_count: false }
-        .col-sm-12.col-md-6
-          = render partial: 'activities/compact_activity_list', locals: { label: t('.top-10-activities'), activity_list: @top10, show_upvote_count: true }
-  .col-md-4.col-sm-12.secondary-content
-    -# = render 'tag_of_the_moment'
-    .crowdfunding
-      .card.mt-2
-        .card-body
-          %h5 Help keep the site running!
-          %p ALTopedia is ad-free and independent. You can help out with the server costs by donating to the site through:
-          %h5= link_to "Patreon", "https://www.patreon.com/altopedia"
-          %h5= link_to "Ko-fi", "https://www.ko-fi.com/altopedia"
-          %small (Note: Currently I'm having issues converting Ko-fi donations into Paypal balance. Please try to use Patreon if you can!)
-          %p More perks will come to donors soon!
-    -# .signup-reminder
-    -#   .card.mt-2
-    -#     .card-body
-    -#       %h5 You can help!
-    -#       %p Do you have a good game or activity you'd like to share? Want to give some advice or thank someone for their activity?
-    -#       %p
-    -#         %span= link_to "Contribute to ALTopedia", contribute_path
-    -#         %span or
-    -#         %span= link_to "sign up!", new_user_path
-    .guide-callout
-      .card.mt-2
-        .card-body
-          %h5 Check out the site guide!
-          %p Are you new to the site, or wondering how to find activities?
-          %p= link_to "The ALTopedia Guide", guide_path
-    .comment-ticker
-      .card.mt-2
-        .card-body
-          %h5 Recent comments
-          - @comments.each do |comment|
-            %p.ellipsis-overflow= link_to comment.content, comment.commentable
-    #front-page-shoutbox.mt-2
-      .card
-        .card-body
-          %p Questions? Need some ideas? Talk to other teachers!
-          .text-center= link_to "Load Discord", discord_path, class: "btn btn-primary", remote: true
-          .text-center= link_to "Load Shoutbox", fp_shoutbox_path, class: "btn btn-primary mt-2", remote: true
-    #front-page-discord.mt-2
-
+.front-page
+  .fp-primary-items
+    .fp-site-banner
+    .fp-news
+      %p.fp-news-header News
+      - @top_posts.each do |post|
+        .news-card
+          = link_to post do
+            %p.news-headline= post.title
+            %p.news-excerpt= post.excerpt
+            %p.read-more-link= t('.read-more')
+      %p.fp-post-index-link= link_to t('.front-page-posts-index'), front_page_posts_path
+  .fp-callouts
+    .callout
+      %p.card-title Tag of the week
+      %p.card-text Let's take a look at Tag 50!
+      = link_to "Tag 50!", tag_path(50), class: "card-tag-link"
+    .fp-user-card
+      - if user_signed_in?
+        = link_to image_tag("logo.png", size: "70x70"), current_user
+        .fp-user-controls
+          %span Welcome back, #{link_to current_user.username, current_user}!
+          = link_to "Edit your profile", edit_user_path(current_user), class: "fp-edit-profile-link"
+      - else
+        %p.card-title You can join ALTopedia!
+        %p= link_to "Make a new account", new_user_registration_path
+        %p= link_to "Sign in, already!", new_user_session_path
+    .fp-funding
+      %p.card-title Please help support the site!
+      %p.card-text ALTopedia is ad-free and independent.
+      %p.card-text The community is the sole source of funding. Please consider contributing to help keep the site alive.
+      = link_to "Check out the options!", contribute_path
+    .fp-comment-ticker
+      %ul.comment-ticker
+        %p.ticker-title Recent comments
+        - @comments.each do |comment|
+          %li.ticker-item= link_to comment.content, comment.commentable, title: comment.content
+  .fp-tickers
+    .fp-activity-ticker
+      %p.ticker-title= t('.newest-activities')
+      %ul.user-activity-ticker
+        - @newest.each do |activity|
+          %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
+    .fp-activity-ticker
+      %p.ticker-title= t('.top-10-activities')
+      %ul.user-activity-ticker
+        - @top10.each do |activity|
+          %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
