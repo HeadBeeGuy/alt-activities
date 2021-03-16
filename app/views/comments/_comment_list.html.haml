@@ -1,20 +1,17 @@
-.comment-list.mb-4
-  %h5= t('.comment_heading')
-  - comments.each do |comment|
-    .card.mb-2{"id" => comment.id}
-      .card-body.p-2.box-shadow
-        %small= link_to comment.user.username, comment.user, class: "border-bottom"
-        %small.float-right= l(comment.created_at, format: :quite_short)
-        - unless comment.solved?
-          %p= comment.content
-        - else
-          %p.text-muted.small (solved) #{comment.content}
+.comment-section
+  %ul.comment-list
+    - comments.each do |comment|
+      %li.comment
+        .commenter-info
+          = image_tag "logo.png", size: "70x70", class: "commenter-pic"
+          = link_to comment.user.username, comment.user
+          %p= l(comment.created_at, format: :quite_short)
+        .comment-text= comment.content
         - if user_signed_in?
-          .btn-group{"role" => "group", "aria-label" => "Comment controls"}
-            - if policy(comment).solve?
-              = link_to t('.solve-link'), solve_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm", remote: true
+          .comment-controls
             - if policy(comment).unapprove?
-              = link_to t('.hide-link'), unapprove_comment_path(comment), method: :put, class: "btn btn-outline-secondary btn-sm", remote: true
+              = link_to t('.hide-link'), unapprove_comment_path(comment), method: :put, class: "comment-control-link"
             - if policy(comment).delete?
-              = link_to t('.delete-link'), comment, method: :delete, data: { confirm: t('.delete-confirmation') }, class: "btn btn-outline-secondary btn-sm", remote: true
+              = link_to t('.delete-link'), comment, method: :delete, data: { confirm: t('.delete-confirmation') }, class: "comment-control-link", remote: true
+
 = paginate comments

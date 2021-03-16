@@ -20,6 +20,7 @@
       - flash.each do |message_type, message|
         = content_tag :div, message, class: "alert alert-#{message_type}"
     %main{"role" => "main"}
-      = yield
+      .main-body-content
+        = yield
     %footer
       = render 'layouts/footer'
