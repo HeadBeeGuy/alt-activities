@@ -1,24 +1,23 @@
-<div class="text-center">
-  <h2><%= t('login.log_in') %></h2>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
+<%= provide(:title, "ALTopedia - Log in") %>
 
-    <%= f.text_field :login, autofocus: true, type: "email-or-username", placeholder: t('login.email_username_prompt'), class: "form-control" %>
-    <%= f.label :login, class: "sr-only" %>
-    <%= f.password_field :password, autocomplete: "off", type: "password", placeholder: t('login.password_prompt'), class: "form-control" %>
-    <%= f.label :password, class: "sr-only" %>
+<div class="login-page">
+  <h2><%= t('login.log_in') %></h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
+
+    <%= f.label :login, "Username or e-mail address", class: "username-label" %>
+    <%= f.text_field :login, autofocus: true, type: "email-or-username", class: "username-input" %>
+    <%= f.password_field :password, autocomplete: "off", type: "password", class: "password-input" %>
+    <%= f.label :password, "Password", class: "password-label" %>
 
     <% if devise_mapping.rememberable? -%>
       <div class="checkbox mb-3">
         <%= f.check_box :remember_me %>
-        <%= f.label t('login.remember_me') %>
+        <%= f.label t('login.remember_me'), class: "username-label" %>
       </div>
     <% end %>
-
-    <div>
-      <%= f.submit t('layouts.log_in'), class: "btn btn-lg btn-primary btn-block" %>
-    </div>
-    <% end %>
-
+    <%= f.submit t('layouts.log_in'), class: "login-submit-button" %>
     <%= render "devise/shared/links" %>
+  <% end %>
 
-  </div>
+
+</div>
