@@ -3,7 +3,7 @@
     - comments.each do |comment|
       %li.comment
         .commenter-info
-          = image_tag "logo.png", size: "70x70", class: "commenter-pic"
+          = image_tag "sample avatar.png", size: "70x70", class: "commenter-pic"
           = link_to comment.user.username, comment.user
           %p= l(comment.created_at, format: :quite_short)
         .comment-text= comment.content

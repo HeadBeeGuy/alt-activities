@@ -26,7 +26,7 @@
       = link_to "Tag 50!", tag_path(50), class: "card-tag-link"
     .fp-user-card
       - if user_signed_in?
-        = link_to image_tag("logo.png", size: "70x70"), current_user
+        = link_to image_tag("sample avatar.png", size: "70x70"), current_user
         .fp-user-controls
           %span Welcome back, #{link_to current_user.username, current_user}!
           = link_to "Edit your profile", edit_user_path(current_user), class: "fp-edit-profile-link"
