@@ -1,62 +1,55 @@
 - provide(:title, t('.title', username: @user.username))
 
-.box-shadow.p-4.my-3.rounded.bg-white
-  %h1.text-center.border-bottom.border-gray.mb-3.p-2= @user.username
-  .row
-    .col-sm-10.col-lg-6
-      %p
-        %span= t('.home-country')
-        %span= @user.home_country
-    .col-sm-10.col-lg-6
-      %p
-        %span= t('.location')
-        %span= @user.location
-    .col-12
-      %p
-        %span= t('.bio')
-        %span= @user.bio
+.full-user-display
+  %h1= @user.username
+  .user-profile
+    .user-profile-primary-info
+      = image_tag "logo.png", size: "100x100", class: "user-profile-image"
+      %span.profile-info-label= (t'.home-country')
+      %span.profile-info-text= @user.home_country
+      %span.profile-info-label= (t'.location')
+      %span.profile-info-text= @user.location
       - if user_signed_in? && current_user.admin?
-        %p.text-center
-          - if @user.sign_in_count > 0
-            %span Most recent sign-in date: #{@user.current_sign_in_at.strftime("%b %d %Y")} (#{@user.sign_in_count})
-            %span - IP: #{@user.last_sign_in_ip} -
-            %span
-              - if @user.trusted?
-                Trusted user
-              - else
-                Not yet trusted
-          - else
-            %span Account is unactivated.
-    - if user_signed_in? && ( current_user == @user || current_user.admin? )
-      .col-12
-        %p= t('.upvotes')
-        %ul
+        - if @user.sign_in_count < 1
+          %span.profile-info-label Account unactivated
+        - else
+          %span.profile-info-label #{@user.sign_in_count} logins
+          %span.profile-info-label Last seen:
+          %span.profile-info-text= @user.current_sign_in_at.strftime("%b %d %Y")
+          %span.profile-info-label Last IP:
+          %span.profile-info-text= @user.last_sign_in_ip
+        %span.profile-info-label Account created:
+        %span.profile-info-text= @user.created_at.strftime("%b %d %Y")
+          
+      - if user_signed_in? && policy(@user).update?
+        %ul.user-control-items
+          %li= link_to "Edit your profile", edit_user_path(@user), class: "user-control primary-user-control"
+          - if policy(@user).promote? 
+            %li= link_to "Promote to mod", promote_user_path(@user), method: :put, data: { confirm: "Make this user a moderator?"}, class: "user-control"
+          - if policy(@user).demote? 
+            %li= link_to "Demote", demote_user_path(@user), method: :put, data: { confirm: "Demote this user?"}, class: "user-control"
+          - if policy(@user).silence? 
+            %li= link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?"}, class: "user-control"
+          - if policy(@user).unsilence? 
+            %li= link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Desilence this user?"}, class: "user-control"
+          - if policy(@user).trust? 
+            %li= link_to "Trust", trust_user_path(@user), method: :put, data: { confirm: "Allow this user to post without mod review?"}, class: "user-control"
+          - if policy(@user).untrust? 
+            %li= link_to "Untrust", untrust_user_path(@user), method: :put, data: { confirm: "Remove this user's trusted status?"}, class: "user-control"
+          - if policy(@user).delete? 
+            %li= link_to "Delete account", @user, method: :delete, data: { confirm: "Delete this account and all of its activities?"}, class: "user-control"
+    .user-profile-secondary-info
+      .user-bio
+        %span.profile-info-label= t('.bio')
+        %p= @user.bio
+      - if @user.activities.any?
+        %span.profile-info-label= t('.activity-list')
+        %ul.activity-tracker
+          - @activities.each do |activity|
+            %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
+        = paginate @activities
+      - if user_signed_in? && ( current_user == @user || current_user.admin? ) && @upvotes.any?
+        %span.profile-info-label= t('.upvotes')
+        %ul.activity-tracker
           - @upvotes.each do |upvote|
-            %li= link_to upvote.activity.name, upvote.activity
-    - if user_signed_in?
-      .btn-group.m-2{"role" => "group", "aria-label" => "User controls"}
-        - if policy(@user).update?
-          =link_to t('.edit'), edit_user_path(@user), class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).promote?
-          =link_to "Promote to moderator", promote_user_path(@user), method: :put, data: { confirm: "Promote this user to moderator?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).demote?
-          =link_to "Demote", demote_user_path(@user), method: :put, data: { confirm: "Demote this user?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).silence?
-          =link_to "Silence", silence_user_path(@user), method: :put, data: { confirm: "Silence this user?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).unsilence?
-          =link_to "Unsilence", unsilence_user_path(@user), method: :put, data: { confirm: "Remove this user's silenced status?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).trust?
-          =link_to "Trust", trust_user_path(@user), method: :put, data: { confirm: "Trust this user?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).untrust?
-          =link_to "Untrust", untrust_user_path(@user), method: :put, data: { confirm: "Remove this user's trusted status?" }, class: "btn btn-outline-secondary btn-sm"
-        - if policy(@user).delete?
-          =link_to "Delete this user", @user, method: :delete, data: { confirm: "Delete this user and all of their activities?" }, class: "btn btn-outline-secondary btn-sm"
-    .col-12
-      %h6= t('.activity-list')
-      - @activities.each do |activity|
-        .card
-          .card-body
-            %span.font-weight-bold= link_to activity.name, activity
-            %span.font-weight-normal= activity.short_description
-            %span.badge.badge-info.float-right= activity.upvote_count
-      = paginate @activities
+            %li.ticker-activity= link_to upvote.activity.name, upvote.activity, title: upvote.activity.short_description
