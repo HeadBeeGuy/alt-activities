@@ -7,18 +7,17 @@
   <meta property="og:description" content="#{@front_page_post.excerpt}" />
   <meta property="og:site_name" content="ALTopedia" />
 
-.card.mb-4
-  .card-header
-    %h2= @front_page_post.title
-  .card-body
-    .post-content= markdown_for_posts(@front_page_post.content)
-    - if user_signed_in? && policy(@front_page_post).update?
-      .btn-group.float-right{"role" => "group", "aria-label" => "Post controls"}
-        = link_to "Edit post", edit_front_page_post_path(@front_page_post), class: "btn btn-outline-secondary btn-sm"
-        = link_to "Delete post", @front_page_post, method: :delete, data: { confirm: "Are you sure you wanna delete this post?" }, class: "btn btn-outline-secondary btn-sm"
-  .card-footer.text-right
-    %p by #{@front_page_post.user.username}
-    %p= l(@front_page_post.created_at, format: :quite_short)
+.full-fpp-display
+  %h1= @front_page_post.title
+  .full-fpp-info
+    %p.full-fpp-author= link_to @front_page_post.user.username, @front_page_post.user, class: "user-link"
+    %p.full-fpp-date= l(@front_page_post.created_at, format: :quite_short)
+  = markdown_for_posts(@front_page_post.content)
+  - if user_signed_in? && policy(@front_page_post).update?
+    %ul.general-controls 
+      %li= link_to "Edit", edit_front_page_post_path(@front_page_post)
+      %li= link_to "Delete", @front_page_post, method: :delete, data: { confirm: "Delete this post?" }
+
 
 = render partial: 'comments/comment_list', locals: { comments: @comments }
 = render partial: 'comments/form', locals: { commentable_type: "FrontPagePost", commentable_id: @front_page_post.id }
