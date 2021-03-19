@@ -4,7 +4,7 @@
 
 @import "variables_and_mixins";
 
-$temp_textbook_color: #945707;
+$temp_textbook_color: #996c39;
 
 .full-textbook-display {
   @include full-size-card;
@@ -58,6 +58,10 @@ $temp_textbook_color: #945707;
   
   tr:nth-child(even) {
     background: $ru200;
+  }
+
+  p {
+    margin: 0;
   }
 }
 
