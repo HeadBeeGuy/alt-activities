@@ -371,6 +371,9 @@
 
 .form-tag {
   min-height: 3rem;
+  p {
+    display: inline; // fix for RedCarpet Markdown
+  }
 }
 
 .form-tag input[type="checkbox"] {
