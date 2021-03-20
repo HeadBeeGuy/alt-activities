@@ -281,9 +281,31 @@ footer {
   width: 95%;
 }
 
+.flash {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  max-width: 60vw;
+  padding: 1rem 20vw;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  @include card-shadow;
+}
+.flash-alert, .alert-warning, .alert-notice {
+  background: $alert;
+}
+.flash-warning, .alert-alert, .alert-error {
+  background: $warning;
+}
+.flash-success, .alert-success {
+  background: $tag100;
+}
+
 @media screen and (min-width: $desktop_breakpoint) {
   .main-body-content {
-    width: 65rem; /* Override on front page? */
+    width: 65rem;
   }
 
   footer {
