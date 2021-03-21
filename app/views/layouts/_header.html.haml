@@ -16,6 +16,8 @@
     %li.primary-nav-item
       = link_to t('layouts.contribute'), contribute_path, class: "primary-nav-link"
     %li.primary-nav-item
+      = link_to "Tag Search", search_path, class: "primary-nav-link"
+    %li.primary-nav-item
       = form_tag(activity_search_path, method: :get, class: "nav-search") do
         = text_field_tag :search, nil, class: "nav-search-textfield"
         = submit_tag "Search", class: "nav-search-button"

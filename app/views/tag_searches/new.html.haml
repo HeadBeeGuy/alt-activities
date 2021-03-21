@@ -1,18 +1,19 @@
 -provide(:title, "ALTopedia - Search")
 
-%h3 Text search
+.full-generic-page
+  -# %h3 Text search
 
-.text-search
-  %p Search all activities on the site:
-  = form_tag(activity_search_path, method: :get) do
-    = text_field_tag :search
-    = submit_tag "Search", class: "btn btn-primary"
+  -# .text-search
+  -#   %p Search all activities on the site:
+  -#   = form_tag(activity_search_path, method: :get) do
+  -#     = text_field_tag :search
+  -#     = submit_tag "Search", class: "btn btn-primary"
 
 
-%h3.mt-4 Find activities by tags
+  %h3 Find activities by tags
 
-%p Do you need to find an activity to fit your requirements? Choose the tags that fit what you need. Keep in mind that this will specifically find activities that contain ALL of the tags you pick.
+  %p Do you need to find an activity to fit your requirements? Choose the tags that fit what you need. Keep in mind that this will specifically find activities that contain ALL of the tags you pick.
 
-%p You might not want to bookmark the search result page, since the URL could change in the future.
+  %p You might not want to bookmark the search result page, since the URL could change in the future.
 
-= render 'new'
+  = render 'new'

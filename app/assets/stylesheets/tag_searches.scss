@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables_and_mixins";
+
 .category-tag-grid {
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
@@ -49,4 +51,19 @@
 #grammar-tags-notice {
     font-size: 1.2rem;
     color: #dc3545;
+}
+
+.tag-search-tag-selector {
+    // display: flex;
+    // flex-direction: row;
+}
+
+#tag-accumulator {
+    position: sticky;
+    top: 10px;
+
+    margin-bottom: 0.5rem;
+    background: $ru200;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
