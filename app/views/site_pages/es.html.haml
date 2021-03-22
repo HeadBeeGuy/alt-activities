@@ -1,8 +1,7 @@
 - provide(:title, t('.title'))
 
-%h2.text-center= t('.es-heading')
-%p.mb-2= t('.es-explanation')
-
-=render "activities/school_level_activity_list"
+.full-generic-page
+  %h2= t('.es-heading')
+  = render partial: 'activities/school_level_activity_list', locals: { explanation: t('.es-explanation'), textbooks: @textbooks, activities: @es_activities }
 
 

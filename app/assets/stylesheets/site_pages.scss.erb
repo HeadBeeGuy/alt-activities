@@ -337,3 +337,23 @@
     justify-content: space-around;
   }
 }
+
+/* SCHOOL LEVEL PAGES */
+.school-level-listing {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .school-level-listing {
+    flex-direction: row;
+  }
+
+  .school-explanation {
+    flex: 2;
+  }
+
+  .school-level-activity-list {
+    flex: 3;
+  }
+}
