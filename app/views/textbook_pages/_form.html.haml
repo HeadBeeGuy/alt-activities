@@ -1,11 +1,8 @@
-.form-group
-  = form_for(@textbook_page) do |f|
-    = render 'shared/error_messages', object: f.object
-    .field
-      .form-group
-        = f.collection_select :textbook_id, @textbooks, :id, :name, {}, class: 'form-control'
-        = f.text_field :page, placeholder: "Page number", class: 'form-control'
-        = f.text_field :description, placeholder: "Description", class: 'form-control'
-        = f.collection_select :tag_id, @tags, :id, :name, {}, class: 'form-control'
-        = f.submit "Submit", class: "btn btn-primary"
+= form_with model: @textbook_page, class: "general-form" do |f|
+  = render 'shared/error_messages', object: f.object
+  = f.collection_select :textbook_id, @textbooks, :id, :name, {}, class: "form-select"
+  = f.text_field :page, placeholder: "Page number", class: "form-textfield"
+  = f.text_field :description, placeholder: "Description", class: "form-textfield"
+  = f.collection_select :tag_id, @tags, :id, :name, {}, class: "form-select"
+  = f.submit "Submit", class: "submit-button"
 

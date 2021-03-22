@@ -316,3 +316,24 @@
     margin: 0;
   }
 }
+
+/* TRIPLE COLUMN LAYOUT */
+.triple-column {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.single-column {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .triple-column {
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
