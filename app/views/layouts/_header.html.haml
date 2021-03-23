@@ -6,6 +6,9 @@
     - if user_signed_in?
       %li.primary-nav-item
         = link_to "Your profile", current_user, class: "primary-nav-link nav-profile-link"
+      - if current_user.moderator? || current_user.admin?
+        %li.primary-nav-item
+          = link_to "Mod Stuff", modqueue_path, class: "primary-nav-link"
       %li.primary-nav-item
         = link_to t('layouts.log_out'), destroy_user_session_path, method: :delete, class: "primary-nav-link"
     - else
@@ -25,11 +28,11 @@
     %li.secondary-nav-item
       = link_to t('layouts.textbook_listing'), textbooks_path, class: "secondary-nav-link"
     %li.secondary-nav-item
-      = link_to t('layouts.grammar'), grammar_path, class: "secondary-nav-link"
-    %li.secondary-nav-item
       = link_to t('layouts.es'), es_path, class: "secondary-nav-link"
     %li.secondary-nav-item
       = link_to t('layouts.jhs'), jhs_path, class: "secondary-nav-link"
     %li.secondary-nav-item
       = link_to t('layouts.hs'), hs_path, class: "secondary-nav-link"
+    %li.secondary-nav-item
+      = link_to t('layouts.special-needs'), special_needs_path, class: "secondary-nav-link"
 

@@ -1,14 +1,18 @@
 .footer-section
   %h3 ALTopedia
-  = link_to "ALTopedia", root_url, class: "footer-link"
   = link_to t('layouts.about'), about_path, class: "footer-link"
   = link_to t('layouts.contact'), contact_path, class: "footer-link"
   = link_to t('layouts.contributors'), contributors_path, class: "footer-link"
   = link_to "Support the site", root_url, class: "footer-link"
 .footer-section
+  %h3
+  = link_to t('layouts.grammar'), grammar_path, class: "footer-link"
+  = link_to t('layouts.themes'), themes_path, class: "footer-link"
+.footer-section
   %h3 Community
   = link_to "Facebook", "https://fb.me/altopedia.net", class: "footer-link"
   = link_to "Discord", "https://discord.gg/KTPmKJk", class: "footer-link"
+  = link_to "YouTube", "https://www.youtube.com/channel/UCxnejGwBAdYO5-kU6td4G5Q", class: "footer-link"
 .footer-section
   %h3 Resources
   = link_to t('layouts.resources'), resources_path, class: "footer-link"

@@ -3,8 +3,8 @@
 .full-generic-page
   %h2= t('.textbooks-heading')
 
-  -# - if policy(@textbooks).new?
-  -#   %p= link_to "Create a new textbook", new_textbook_path
+  - if policy(@es_textbooks).new?
+    %p= link_to "Create a new textbook", new_textbook_path
 
   .triple-column
     .single-column

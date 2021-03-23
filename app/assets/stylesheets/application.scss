@@ -135,6 +135,10 @@ header {
   height: auto;
   font-size: 0.8rem;
 }
+.secondary-nav-link:hover {
+  color: $primary900;
+  text-decoration: underline;
+}
 
 .nav-search {
   display: flex;

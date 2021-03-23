@@ -7,7 +7,7 @@
 /* COMMENT LIST DISPLAY */
 .comment-section {
   margin-bottom: 2rem;
-  width: 100%; /* Might need to fix in IE11? */
+  width: 100%; 
 }
 
 .comment-list {
@@ -29,7 +29,7 @@
 .commenter-info {
   display: flex;
   flex-direction: row;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -64,6 +64,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    font-size: 0.7rem;
     width: 7rem;
   }
 }

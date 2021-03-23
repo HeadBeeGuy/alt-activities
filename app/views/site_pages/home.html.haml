@@ -20,20 +20,18 @@
             %p.read-more-link= t('.read-more')
       %p.fp-post-index-link= link_to t('.front-page-posts-index'), front_page_posts_path
   .fp-callouts
-    .callout
-      %p.card-title Tag of the week
-      %p.card-text Let's take a look at Tag 50!
-      = link_to "Tag 50!", tag_path(50), class: "card-tag-link"
-    .fp-user-card
-      - if user_signed_in?
+    = render "tag_of_the_moment"
+    - if user_signed_in?
+      .fp-user-card
         = link_to image_tag("sample avatar.png", size: "70x70"), current_user
         .fp-user-controls
           %span Welcome back, #{link_to current_user.username, current_user}!
           = link_to "Edit your profile", edit_user_path(current_user), class: "fp-edit-profile-link"
-      - else
+    - else
+      .callout
         %p.card-title You can join ALTopedia!
-        %p= link_to "Make a new account", new_user_registration_path
-        %p= link_to "Sign in, already!", new_user_session_path
+        %p.card-text= link_to "Make a new account", new_user_registration_path
+        %p.card-text= link_to "Sign in", new_user_session_path
     .fp-funding
       %p.card-title Please help support the site!
       %p.card-text ALTopedia is ad-free and independent.

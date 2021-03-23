@@ -5,6 +5,12 @@
   .user-profile
     .user-profile-primary-info
       = image_tag "sample avatar.png", size: "100x100", class: "user-profile-image"
+      - if @user.admin?
+        %span.profile-user-status
+          %span.moderator-text Administrator
+      - elsif @user.moderator?
+        %span.profile-user-status
+          %span.moderator-text Moderator
       %span.profile-info-label= (t'.home-country')
       %span.profile-info-text= @user.home_country
       %span.profile-info-label= (t'.location')
@@ -18,6 +24,8 @@
           %span.profile-info-text= @user.current_sign_in_at.strftime("%b %d %Y")
           %span.profile-info-label Last IP:
           %span.profile-info-text= @user.last_sign_in_ip
+        %span.profile-info-label Status:
+        %span.profile-info-text= @user.role
         %span.profile-info-label Account created:
         %span.profile-info-text= @user.created_at.strftime("%b %d %Y")
           

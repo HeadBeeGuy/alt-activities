@@ -18,8 +18,6 @@
   align-items: stretch;
 }
 
-// .ticker-activity {
-// }
 .ticker-activity:hover {
   background: $primary200;
 }
@@ -76,6 +74,10 @@
   order: 2;
   margin-bottom: 1.5rem;
   text-align: center;
+  
+  p {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .activity-submitter-link {
@@ -89,6 +91,15 @@
   flex: 1;
   order: 1;
   margin-bottom: 1rem;
+
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+  ul {
+    list-style: disc;
+    margin: 0 0 1.3rem 1.5rem;
+  }
 }
 
 .activity-file-list {
@@ -96,6 +107,11 @@
   border-radius: 1rem;
   padding: 0.8rem;
   box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
   
   h6 {
     font-size: 0.8rem;
@@ -152,17 +168,16 @@
 }
 
 .activity-control {
-  height: 1.8rem;
+  height: 1.6rem;
   font-size: 0.9rem;
-  color: $ru900;
-  background-color: $ru200;
+  color: $ru700;
   border-radius: 0.3rem;
   text-decoration: none;
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
   margin-right: 1rem;
   padding: 0 1rem;
 }

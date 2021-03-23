@@ -3,9 +3,9 @@
     - comments.each do |comment|
       %li.comment
         .commenter-info
-          = image_tag "sample avatar.png", size: "70x70", class: "commenter-pic"
-          = link_to comment.user.username, comment.user
-          %p= l(comment.created_at, format: :quite_short)
+          = link_to (image_tag "sample avatar.png", size: "70x70", class: "commenter-pic"), comment.user
+          %span= link_to comment.user.username, comment.user, class: "user-link"
+          %span= l(comment.created_at, format: :quite_short)
         .comment-text= comment.content
         - if user_signed_in?
           .comment-controls
