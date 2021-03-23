@@ -234,7 +234,7 @@ header {
 
 main {
   background-color: #f3f3f3;
-  flex: 1;
+  flex: 1 0 auto; // IE11 bug fix
   
   display: flex;
   flex-direction: column;
