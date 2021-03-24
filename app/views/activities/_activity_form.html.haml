@@ -34,7 +34,7 @@
         - @tag_categories.each do |category|
           %li.form-tag-category
             %p.form-tag-category-name= category.name
-            %ul.form-tag-list
+            %ul.form-tag-list{data:{ catid: "#{category.id}"}}
               = f.collection_check_boxes(:tag_ids, category.tags, :id, :name_for_lists) do |tag|
                 %li.form-tag
                   = tag.check_box(class: "form-tag-checkbox")
