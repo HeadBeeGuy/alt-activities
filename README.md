@@ -64,13 +64,12 @@ These pages must be restyled or rebuilt before the site should go live:
 - The Mod Queue
 - The Thumbs Up partial
 - The Contributors page
-- Front Page Post Index
 - The front page logo
 - Search results page
+- The pagination partial (from the kaminari gem)
 
 These would be nice to get working:
 
-- Front Page Post form
 - Comments index page
 - Tag form
 - Grammar Points page

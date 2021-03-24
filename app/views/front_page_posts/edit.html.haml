@@ -1,5 +1,5 @@
-- provide(:title, "Edit this here post")
+- provide(:title, "Edit post: #{@front_page_post.title}")
 
-%h3 Edit Post
-
-= render "form"
+.full-generic-page
+  %h3 Edit Post
+  = render "form"
