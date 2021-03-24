@@ -9,7 +9,7 @@
           %ul.form-tag-list
             = collection_check_boxes(:tag, :tag_ids, category.tags, :id, :name_for_lists) do |tag|
               %li.form-tag
-                = tag.check_box(class: "form-tag-checkbox")
+                = tag.check_box({class: "form-tag-checkbox", data: { id: "#{category.id}", text: "#{tag.text.split('##')[0]}"}})
                 = tag.label do 
                   %span.form-tag-name #{tag.text.split('##')[0]} -
                   = markdown(tag.text.split('##')[1])

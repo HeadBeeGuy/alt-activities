@@ -66,4 +66,12 @@
     background: $ru200;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    max-height: 20vh;
+    overflow-y: auto;
+}
+
+#tag-accumulator li {
+    list-style: none;
+    background-color: $ru400;
+    cursor: pointer;
 }
