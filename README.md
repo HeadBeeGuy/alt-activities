@@ -62,15 +62,16 @@ Current bugs:
 These pages must be restyled or rebuilt before the site should go live:
 
 - The Mod Queue
-- Comment form and index page
 - The Thumbs Up partial
 - The Contributors page
-- Front Post Page Index
+- Front Page Post Index
 - The front page logo
+- Search results page
 
 These would be nice to get working:
 
-- Front Post Page form
+- Front Page Post form
+- Comments index page
 - Tag form
 - Grammar Points page
 - Activity Themes page

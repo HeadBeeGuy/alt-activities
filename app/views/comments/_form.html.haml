@@ -2,13 +2,12 @@
   #comment-form
     %h5= t('.form-header')
     %small= t('.comment-guidelines')
-    = form_for(@comment, remote: true) do |f|
-      .input-group
-        = f.text_area :content, placeholder: t('.comment-placeholder'), class: 'form-control', rows: 2
+    = form_with model: @comment, remote: true do |f|
+      .comment-form-content
+        = f.text_area :content, class: "comment-textarea", rows: 2, maxlength: 500
         = f.hidden_field :commentable_type, value: commentable_type
         = f.hidden_field :commentable_id, value: commentable_id
-        .input-group-append
-          = f.submit t('submit'), class: "btn btn-outline-primary"
+        = f.submit t('submit'), class: "comment-submit-button"
 - else
   %p= link_to t('.please-log-in'), new_user_session_path 
 

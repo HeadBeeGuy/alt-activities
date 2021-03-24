@@ -87,5 +87,54 @@
   .ticker-item:hover {
     background: #e2ee75c2;
   }
+}
 
+/* COMMENT FORM */
+#comment-form {
+  align-self: stretch;
+  margin-bottom: 2rem;
+}
+
+.comment-form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-textarea {
+  border: 1px solid $ru700;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: #fefefe;
+  font-family: "Inter";
+}
+
+.comment-submit-button {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0 0 0.4rem 0.4rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .comment-form-content {
+    flex-direction: row;
+  }
+
+  .comment-textarea {
+    border-radius: 0.5rem 0 0 0.5rem;
+    flex: 7;
+  }
+
+  .comment-submit-button {
+    flex: 1;
+    border-radius: 0 0.4rem 0.4rem 0;
+  }
+  .comment-submit-button:hover {
+    cursor: pointer;
+    background: $primary900;
+  }
 }
