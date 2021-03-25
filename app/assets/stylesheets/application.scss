@@ -412,3 +412,35 @@ footer {
   height: 2rem;
   font-family: "Inter";
 }
+
+/* KAMINARI PAGINATION STYLES */
+ul.pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 1rem 0;
+
+  .active {
+    background: $primary200;
+    color: $primary900;
+    opacity: 0.8;
+    border-radius: 0.4rem;
+  }
+}
+
+li.page-item {
+  .page-link {
+    padding: 0.6rem;
+    text-decoration: none;
+    color: $primary700;
+    line-height: 2rem;
+  }
+}
+li.page-item:not(.active) {
+  .page-link:hover {
+    background: $ru200;
+    text-decoration: underline;
+    border-radius: 0.4rem;
+  }
+}
