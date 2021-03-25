@@ -63,7 +63,6 @@ These pages must be restyled or rebuilt before the site should go live:
 
 - The Mod Queue
 - The Contributors page
-- The front page logo
 
 These would be nice to get working:
 
