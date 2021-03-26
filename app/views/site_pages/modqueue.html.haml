@@ -1,97 +1,71 @@
-- provide(:title, "Moderator queue")
+- provide(:title, "ALTopedia - Moderation Home")
 
-%h4 Unapproved activities
+.full-generic-page
 
-%table.table.table-striped.table-sm
-  %thead
-    %tr
-      %th{"scope" => "col"} Name
-      %th{"scope" => "col"} Submitter
-      %th{"scope" => "col"} Short description
-  %tbody
-    - @unapproved.each do |activity|
-      %tr
-        %th{"scope" => "row"}= link_to activity.name, activity
-        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
-        %td= activity.short_description
+  %h2 Moderation
 
-%h4 Edited activities
+  - if @unapproved.any?
+    %h4 Unapproved
+    %ul.activity-card-list
+      - @unapproved.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
+  - if @edited.any?
+    %h4 Edited
+    %ul.activity-card-list
+      - @edited.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
+  - if @unchecked.any?
+    %h4 Unchecked
+    %ul.activity-card-list
+      - @unchecked.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
+  
+  - if @comments.any?
+    %h4 Comments
+    %ul.comment-mod-list
+      - @comments.each do |comment|
+        %li.comment-for-moderation{"id" => comment.id}
+          %span.comment-content-moderation= comment.content
+          %small= link_to comment.user.username, comment.user
+          %small= link_to "Source", comment.commentable
+          %span= link_to "Approve", approve_comment_path(comment), method: :put, remote: true
+          %small= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, remote: true
 
-%table.table.table-striped.table-sm
-  %thead
-    %tr
-      %th{"scope" => "col"} Name
-      %th{"scope" => "col"} Submitter
-      %th{"scope" => "col"} Short description
-  %tbody
-    - @edited.each do |activity|
-      %tr
-        %th{"scope" => "row"}= link_to activity.name, activity
-        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
-        %td= activity.short_description
+  .triple-column
+    .column
+      %h4 Administration
+      %ul
+        %li= link_to "View all users", users_path
+        -if current_user.admin?
+          %li= link_to "Write a new front page post", new_front_page_post_path
+          %li= link_to "Make a new tag", new_tag_path
+          %li= link_to "Make a new tag category", new_tag_category_path
+        %li= link_to "Make a new textbook", new_textbook_path
+        %li= link_to "Archived Englipedia activities", englipedia_activities_path
+    .column
+      %h4 The latest 5 users
+      %ul
+        - @newest_users.each do |user|
+          %li 
+            %span= link_to user.username, user, class: "user-link"
+            %small (#{user.created_at.strftime("%B %-d")})
+    .column
+      %h4 Most recent upvotes
+      %ul
+        - @upvotes.each do |upvote|
+          %li
+            %span= link_to upvote.user.username, upvote.user, class: "user-link"
+            %span ->
+            %span= link_to upvote.activity.name, upvote.activity, class: "activity-link"
 
-%h4 Unchecked activities
-
-%table.table.table-striped.table-sm
-  %thead
-    %tr
-      %th{"scope" => "col"} Name
-      %th{"scope" => "col"} Submitter
-      %th{"scope" => "col"} Short description
-  %tbody
-    - @unchecked.each do |activity|
-      %tr
-        %th{"scope" => "row"}= link_to activity.name, activity
-        %td= link_to "#{activity.user.username} (#{activity.user.activity_count})", activity.user
-        %td= activity.short_description
-%h4 Unapproved comments
-
-%table.table.table-striped.table-sm
-  %thead
-    %tr
-      %th{"scope" => "col"} User
-      %th{"scope" => "col"} Source
-      %th{"scope" => "col"} Comment
-      %th
-      %th
-  %tbody
-    - @comments.each do |comment|
-      %tr{"id" => comment.id}
-        %td= link_to comment.user.username, comment.user
-        %td= link_to "Source", comment.commentable
-        %td= comment.content
-        %td= link_to "Approve", approve_comment_path(comment), method: :put, remote: true
-        %td= link_to "Delete", comment, method: :delete, data: { confirm: "Delete this comment?" }, remote: true
-
-.row
-  .col-sm-10.col-lg-4
-    %h4 Administration
-    %ul
-      %li= link_to "View all users", users_path
-      -if current_user.admin?
-        %li= link_to "Write a new front page post", new_front_page_post_path
-        %li= link_to "Make a new tag", new_tag_path
-        %li= link_to "Make a new tag category", new_tag_category_path
-      %li= link_to "Make a new textbook", new_textbook_path
-      %li= link_to "Archived Englipedia activities", englipedia_activities_path
-
-  .col-sm-10.col-lg-4
-    %h4 The latest 5 users
-    %ul
-      - @newest_users.each do |user|
-        %li 
-          %span= link_to user.username, user
-          %small (#{user.created_at.strftime("%B %d")})
-
-  .col-sm-10.col-lg-4
-    %h4 Most recent upvotes
-    %ul
-      - @upvotes.each do |upvote|
-        %li
-          %span= link_to upvote.user.username, upvote.user
-          %span ->
-          %span= link_to upvote.activity.name, upvote.activity
-
-  .col-sm-10.col-lg-4
-    %h4 Stats
-    %p #{@activity_count} activities, #{@user_count} users
+    
+  %p #{@activity_count} activities, #{@user_count} users

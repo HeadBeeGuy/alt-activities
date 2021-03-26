@@ -257,3 +257,31 @@
     flex: 3;
   }
 }
+
+/* MOD PAGE STYLES */
+.comment-mod-list {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.comment-for-moderation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom right, $primary100, $user100);
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .comment-for-moderation {
+    flex-direction: row;
+  }
+
+  .comment-content-moderation {
+    max-width: 40vw;
+  }
+}
