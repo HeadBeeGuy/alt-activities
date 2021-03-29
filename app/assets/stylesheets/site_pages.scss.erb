@@ -285,3 +285,51 @@
     max-width: 40vw;
   }
 }
+
+/* CONTRIBUTORS PAGE */
+.top-contributor-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.top-contributor-card {
+  border-top: 3px solid $user600;
+  border-radius: 0.4rem;
+  box-shadow: 0.2rem 0.2rem 0.3rem $ru200;
+  background-color: #fbfbfb;
+  width: 80vw;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contributor-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+
+  p  {
+    margin: 0;
+  }
+}
+
+.top-contributor-link {
+  color: $user700;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.top-contributor-link:hover {
+  color: $user900;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .top-contributor-card {
+    width: 30%;
+    margin-right: 2rem;
+  }
+}

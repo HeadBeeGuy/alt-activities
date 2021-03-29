@@ -83,10 +83,8 @@ class SitePagesController < ApplicationController
   end
 
   def contributors
-    @top10 = User.select(:id, :username, :activity_count, :home_country, :location, :bio, :trusted)
-      .where(trusted: :true).order(activity_count: :desc).limit(12)
-    @top3 = @top10[0..2]
-    @top4to12 = @top10[3..11]
+    @top6= User.select(:id, :username, :activity_count, :home_country, :location, :bio, :trusted)
+      .where(trusted: :true).order(activity_count: :desc).limit(6)
   end
 
   def render_compact_shoutbox
