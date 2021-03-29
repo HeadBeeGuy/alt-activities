@@ -1,6 +1,7 @@
 .container
 =form_with(url: tag_search_path, method: :get, id: "tag-search-form") do
   .accordion{"id" => "accordionCategory"}
+    = render 'select2'
     - @tag_categories.each do |category|
       .card
         .card-header{"id" => "heading-#{category.name}"}
