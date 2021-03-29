@@ -1,19 +1,21 @@
 - provide(:title, t('.title'))
 
-%h2= t('.heading')
-%p= t('.index-explanation')
+.full-generic-page
+  %h4 This page hasn't been rebuilt with the new interface yet. It still works, but it looks messy. It will get looked at soon. Sorry for the inconvenience!
+  %h2= t('.heading')
+  %p= t('.index-explanation')
 
-.row
-  - @activities.each do |activity|
-    .col-sm-6.col-md-4.col-lg-4.mt-4
-      .card.box-shadow
-        %h5.card-header.text-center
-          =link_to activity.name, activity
-        .card-body
-          %p.card-text= activity.short_description
-          = link_to t('.view'), activity, class: "btn btn-outline-primary float-right"
+  .row
+    - @activities.each do |activity|
+      .col-sm-6.col-md-4.col-lg-4.mt-4
+        .card.box-shadow
+          %h5.card-header.text-center
+            =link_to activity.name, activity
+          .card-body
+            %p.card-text= activity.short_description
+            = link_to t('.view'), activity, class: "btn btn-outline-primary float-right"
 
-%br
+  %br
 
-= paginate @activities
+  = paginate @activities
 

@@ -1,17 +1,19 @@
 - provide(:title, t('.title'))
 
-%h3= t('.header')
+.full-generic-page
+  %h4 This page hasn't been rebuilt with the new interface yet. It still works, but it looks messy. It will get looked at soon. Sorry for the inconvenience!
+  %h3= t('.header')
 
-.row
-  - @theme_tags.each do |tag|
-    .card.col-sm-8.col-md-6.col-lg-3
-      .card-body
-        %span.font-weight-bold= link_to tag.name, tag
+  .row
+    - @theme_tags.each do |tag|
+      .card.col-sm-8.col-md-6.col-lg-3
+        .card-body
+          %span.font-weight-bold= link_to tag.name, tag
 
-%h3.mt-3= t('.holidays')
+  %h3.mt-3= t('.holidays')
 
-.row
-  - @holiday_tags.each do |tag|
-    .card.col-sm-8.col-md-6.col-lg-3
-      .card-body
-        %span.font-weight-bold= link_to tag.name, tag
+  .row
+    - @holiday_tags.each do |tag|
+      .card.col-sm-8.col-md-6.col-lg-3
+        .card-body
+          %span.font-weight-bold= link_to tag.name, tag
