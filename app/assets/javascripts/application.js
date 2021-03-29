@@ -17,7 +17,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap
-//= require select2
 //= require activestorage
 //= require_tree .
 

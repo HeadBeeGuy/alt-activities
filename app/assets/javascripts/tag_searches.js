@@ -132,11 +132,3 @@ function checkGrammarTags() {
 document.addEventListener("turbolinks:load", init);
 window.addEventListener('pageshow', init);
 
-$(document).ready(function() {
-  console.log('hello');
-  const select = $('select#tag-search-select');
-  console.log(select);
-  $('select#tag-search-select').select2();
-  // $('select#tag-search-select').select2();
-});
-
