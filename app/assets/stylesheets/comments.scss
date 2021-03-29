@@ -1,3 +1,140 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables_and_mixins";
+
+/* COMMENT LIST DISPLAY */
+.comment-section {
+  margin-bottom: 2rem;
+  width: 100%; 
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* INDIVIDUAL COMMENT DISPLAY */
+.comment {
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  @include card-shadow;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commenter-info {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-text {
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.comment-date {
+  margin: 0;
+}
+
+.comment-control-link {
+  color: $ru500;
+  font-size: 0.8rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+.comment-control-link:hover {
+  color: $ru800;
+}
+
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .comment {
+    flex-direction: row;
+  }
+
+  .commenter-info {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    width: 7rem;
+  }
+}
+
+/* COMMENT TICKER */
+.comment-ticker {
+  @include ticker;
+
+  .ticker-item a {
+    color: $ru700;
+    font-size: 0.8rem;
+
+    display: block;
+
+    max-width: 17rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ticker-item:hover {
+    background: #e2ee75c2;
+  }
+}
+
+/* COMMENT FORM */
+#comment-form {
+  align-self: stretch;
+  margin-bottom: 2rem;
+}
+
+.comment-form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-textarea {
+  border: 1px solid $ru700;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: #fefefe;
+  font-family: "Inter";
+}
+
+.comment-submit-button {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0 0 0.4rem 0.4rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .comment-form-content {
+    flex-direction: row;
+  }
+
+  .comment-textarea {
+    border-radius: 0.5rem 0 0 0.5rem;
+    flex: 7;
+  }
+
+  .comment-submit-button {
+    flex: 1;
+    border-radius: 0 0.4rem 0.4rem 0;
+  }
+  .comment-submit-button:hover {
+    cursor: pointer;
+    background: $primary900;
+  }
+}

@@ -1,66 +1,54 @@
 -provide(:title, t('.title'))
 
-%h2.text-center= t('.page-header')
+.full-generic-page
+  %h2.text-center= t('.page-header')
 
-%p= t('.page-explanation')
+  %p= t('.page-explanation')
 
-.row
-  .col-lg-6.col-sm-10.mb-2
-    %h4.text-center Activites for ALTs
-    .card.box-shadow
-      .card-body
-        %ul.list-group.list-group-flush
-          %li.list-group-item
-            %h6= link_to "Akita JET teaching resources", "http://akitajet.com/wiki/Teaching_resources"
-            %h6= link_to "Kobe JET", "https://www.kobejet.com"
-            %h6= link_to "ALT Wiki", "https://www.altwiki.net"
-            -# %h6= link_to "English Web Book", "http://www.englishwebbook.com"
-            %h6= link_to "A Fox in Japan", "http://www.afoxinjapan.com"
-            %h6= link_to "Let's Teach English", "http://www.letsteachenglish.com"
-            %h6= link_to "ALT(er)native teaching", "https://alternativeteaching.school.blog"
-            %h6= link_to "Jenerally Jen", "https://jenerallyjen.wordpress.com/"
-  .col-lg-6.col-sm-10.mb-2
-    %h4.text-center Clip Art, Flash Cards, and teaching materials
-    .card.box-shadow
-      .card-body
-        %ul.list-group.list-group-flush
-          %li.list-group-item
-            %h5.card-title= link_to "Irasutoya", "https://www.irasutoya.com", class: "card-link"
-            %p Japan's premiere clip art site. All pictures are 100% free, but you'll need to search in Japanese.
-          %li.list-group-item
-            %h5.card-title= link_to "Breaking News English", "https://breakingnewsenglish.com/", class: "card-link"
-            %p This site takes recent world news articles and generates exercises based on them. Useful for students high school age or older.
-          %li.list-group-item
-            %h5.card-title= link_to "Jeopardy Labs", "https://jeopardylabs.com", class: "card-link"
-            %p Make your own Jeopardy quizzes in a web browser. You can set the number of teams or download your quizzes for offline use.
-          %li.list-group-item
-            %h6= link_to "Bingo Bongo Kids", "https://www.bingobongokids.com/"
-            %h6= link_to "iSL Collective", "https://en.islcollective.com"
-            %h6= link_to "FlatIcon", "https://www.flaticon.com/"
-            %h6= link_to "Learn English Kids", "https://learnenglishkids.britishcouncil.org/worksheets"
-            %h6= link_to "TeachThis", "http://teachthis.com"
-            %h6= link_to "Teachers Pay Teachers", "https://teacherspayteachers.com"
-            %h6= link_to "English Grammar Online", "https://www.ego4u.com/en/cram-up/grammar"
-            %h6= link_to "Flagpedia", "https://flagpedia.net"
-            %h6= link_to "Tay's Teaching Toolkit", "https://www.taysteachingtoolkit.com"
-            %h6= link_to "All ESL", "https://allesl.com"
-  .col-lg-6.col-sm-10.mb-2
-    %h4.text-center Living in Japan
-    .card.box-shadow
-      .card-body
-        %ul.list-group.list-group-flush
-          %li.list-group-item
-            %h6= link_to "AJET Connect Magazine", "https://issuu.com/ajetconnect"
-            %h6= link_to "AccessJ", "http://www.accessj.com"
-            %h6= link_to "Kumamoto JET US Tax guide", "http://kumamotojet.com/shin/index.php/living-in-kumamoto/u-s-tax-guide/"
-  .col-lg-6.col-sm-10.mb-2
-    %h4.text-center Blogs and Such
-    .card.box-shadow
-      .card-body
-        %ul.list-group.list-group-flush
-          %li.list-group-item
-            %h5.card-title= link_to "Let's Speak English", "https://www.marycagle.com/", class: "card-link"
-            %p A very cute webcomic about the life of an ALT who taught in Miyagi.
-          %li.list-group-item
-            %h6= link_to "The Geordie Gaijin", "https://thegeordiegaijin.wordpress.com"
-            %h6= link_to "TEFLtastic", "https://tefltastic.wordpress.com/"
+  .link-collections
+    .link-collection
+      %h3 Activites for ALTs
+      %ul
+        %li= link_to "Akita JET teaching resources", "http://akitajet.com/wiki/Teaching_resources"
+        %li= link_to "Kobe JET", "https://www.kobejet.com"
+        %li= link_to "ALT Wiki", "https://www.altwiki.net"
+        %li= link_to "A Fox in Japan", "http://www.afoxinjapan.com"
+        %li= link_to "Let's Teach English", "http://www.letsteachenglish.com"
+        %li= link_to "ALT(er)native teaching", "https://alternativeteaching.school.blog"
+        %li= link_to "Jenerally Jen", "https://jenerallyjen.wordpress.com/"
+    .link-collection
+      %h3 Clip Art, Flash Cards, and teaching materials
+      %ul
+        %li
+          %p= link_to "Irasutoya", "https://www.irasutoya.com"
+          %p Japan's premiere clip art site. All pictures are 100% free, but you'll need to search in Japanese.
+        %li
+          %p= link_to "Breaking News English", "https://breakingnewsenglish.com/"
+          %p This site takes recent world news articles and generates exercises based on them. Useful for students high school age or older.
+        %li
+          %p= link_to "Jeopardy Labs", "https://jeopardylabs.com"
+          %p Make your own Jeopardy quizzes in a web browser. You can set the number of teams or download your quizzes for offline use.
+        %li= link_to "Bingo Bongo Kids", "https://www.bingobongokids.com/"
+        %li= link_to "iSL Collective", "https://en.islcollective.com"
+        %li= link_to "FlatIcon", "https://www.flaticon.com/"
+        %li= link_to "Learn English Kids", "https://learnenglishkids.britishcouncil.org/worksheets"
+        %li= link_to "TeachThis", "http://teachthis.com"
+        %li= link_to "Teachers Pay Teachers", "https://teacherspayteachers.com"
+        %li= link_to "English Grammar Online", "https://www.ego4u.com/en/cram-up/grammar"
+        %li= link_to "Flagpedia", "https://flagpedia.net"
+        %li= link_to "Tay's Teaching Toolkit", "https://www.taysteachingtoolkit.com"
+        %li= link_to "All ESL", "https://allesl.com"
+    .link-collection
+      %h3 Living in Japan
+      %ul
+        %li= link_to "AJET Connect Magazine", "https://issuu.com/ajetconnect"
+        %li= link_to "AccessJ", "http://www.accessj.com"
+        %li= link_to "Kumamoto JET US Tax guide", "http://kumamotojet.com/shin/index.php/living-in-kumamoto/u-s-tax-guide/"
+    .link-collection
+      %h3 Blogs and Such
+      %ul
+        %li
+          %p= link_to "Let's Speak English", "https://www.marycagle.com/"
+          %p A very cute webcomic about the life of an ALT who taught in Miyagi.
+        %li= link_to "The Geordie Gaijin", "https://thegeordiegaijin.wordpress.com"
+        %li= link_to "TEFLtastic", "https://tefltastic.wordpress.com/"

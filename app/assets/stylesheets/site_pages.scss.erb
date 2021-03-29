@@ -1,0 +1,359 @@
+// Place all the styles related to the SitePages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables_and_mixins";
+
+/* FRONT PAGE STYLES */
+.front-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.callout, .fp-activity-ticker, .fp-comment-ticker {
+  @include compact-card;
+}
+
+.callout {
+  padding: 0.8rem;
+}
+
+.fp-primary-items, .fp-callouts, .fp-tickers {
+  display: flex;
+  flex-direction: column;
+  // align-items: stretch;
+}
+
+.fp-site-banner {
+  background-image: url('<%= asset_path 'Altopedia banner.png' %>');
+  height: 8rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.fp-activity-ticker .ticker-activity {
+  font-size: 0.8rem;
+  
+  a {
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+.fp-user-card {
+  @include compact-card;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top: 3px solid $user600;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.fp-user-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fp-edit-profile-link {
+  color: $ru600;
+  text-decoration: none;
+}
+.fp-edit-profile-link:hover{
+  color: $user800;
+  text-decoration: underline;
+}
+
+.fp-funding {
+  @include compact-card;
+  padding: 0.8rem;
+
+  a {
+    font-size: 0.9rem;
+    color: $primary900;
+    align-self: center;
+  }
+}
+
+.fp-news {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.fp-news-header {
+  margin: 0;
+  font-size: 0.9rem;
+  color: $ru700;
+}
+
+.news-card {
+  @include compact-card;
+  padding: 0.8rem;
+  border-top: 3px solid $primary300;
+  background: linear-gradient(to bottom right, #fbfbfb 85%, $primary100);
+  
+  p {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: $primary800;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.news-headline {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.9rem;
+}
+
+.news-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.8rem;
+}
+
+.read-more-link {
+  font-size: 0.8rem;
+  color: $primary700;
+  text-align: right;
+}
+
+.fp-post-index-link {
+  font-size: 0.9rem;
+  text-align: right;
+  line-height: 1.1rem;
+  
+  a {
+    text-decoration: none;
+    color: $primary700;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: $primary800;
+  }
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .front-page {
+    flex-direction: row;
+    width: 85vw;
+    max-width: 85rem;
+  }
+
+  .fp-primary-items {
+    order: 2;
+    flex: 2;
+    padding: 0 1rem;
+  }
+
+  .fp-callouts {
+    order: 3;
+    flex: 1;
+    max-width: 20rem;
+  }
+
+  .fp-tickers {
+    order: 1;
+    flex: 1;
+    max-width: 20rem;
+  }
+}
+
+/* LOGIN PAGE STYLES */
+.login-page {
+  @include full-size-card;
+  border-top: 0.3rem solid $primary200;
+  
+  h2 {
+    color: $primary900;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.username-label, .password-label {
+  color: $ru600;
+  font-size: 0.9rem;
+  margin: 0.4rem;
+}
+
+.username-input, .password-input {
+  width: 20rem;
+  max-width: 80vw;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.8rem;
+  border: 1px solid $ru400;
+  font-family: "Inter";
+  background: #fbfbfb;
+}
+.username-input:focus, .password-input:focus {
+  background: #fefefe;
+}
+
+.username-input {
+  border-radius: 5px 5px 0 0;
+}
+.password-input {
+  border-radius: 0 0 5px 5px;
+}
+
+.login-submit-button {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+}
+.login-submit-button:hover {
+  cursor: pointer;
+  background: $primary900;
+}
+
+.login-link {
+  color: $primary700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.login-link:hover {
+  text-decoration: underline;
+  color: $primary900;
+}
+
+/* FRONT PAGE POST STYLES */
+.full-fpp-display {
+  @include full-size-card;
+  border-top: 0.3rem solid $primary400;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: $primary700;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    max-width: 45rem;
+  }
+}
+
+.full-fpp-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.full-fpp-author {
+  margin: 0 3rem 0 0;
+}
+
+.full-fpp-date {
+  color: $ru600;
+  margin: 0;
+}
+
+/* GENERIC PAGE STYLES */
+.full-generic-page {
+  @include full-size-card;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h1, h2 {
+    align-self: center;
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* RESOURCES PAGE STYLES */
+
+.link-collections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.link-collection {
+  width: 30rem;
+  max-width: 80vw;
+  font-size: 0.9rem;
+
+  h3 {
+    text-align: center;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    margin: 0;
+  }
+}
+
+/* TRIPLE COLUMN LAYOUT */
+.triple-column {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.single-column {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .triple-column {
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+/* SCHOOL LEVEL PAGES */
+.school-level-listing {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .school-level-listing {
+    flex-direction: row;
+  }
+
+  .school-explanation {
+    flex: 2;
+  }
+
+  .school-level-activity-list {
+    flex: 3;
+  }
+}

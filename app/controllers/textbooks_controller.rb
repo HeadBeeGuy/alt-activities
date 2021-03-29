@@ -44,13 +44,16 @@ class TextbooksController < ApplicationController
 
 	def show
 		@textbook = Textbook.find(params[:id])
+		@pages = @textbook.textbook_pages.order(page: :asc).includes(:tag)
 		if policy(@textbook).update?
 			@tags = Tag.all
 		end
 	end
 
 	def index
-    @textbooks = Textbook.all.order(name: :asc, year_published: :desc)
+		@es_textbooks = Textbook.ES.order(name: :asc, year_published: :desc)
+		@jhs_textbooks = Textbook.JHS.order(name: :asc, year_published: :desc)
+		@hs_textbooks = Textbook.HS.order(name: :asc, year_published: :desc)
 	end
 
 	private

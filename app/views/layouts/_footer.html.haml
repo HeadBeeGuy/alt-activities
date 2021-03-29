@@ -1,16 +1,19 @@
-%footer.container-fluid.p-4.mt-4
-  .row
-    .col-md-4.mb-2
-      %h5.text-light ALTopedia
-      %ul.list-unstyled.text-small
-        %li= link_to t('layouts.about'), about_path, class: "text-light"
-        %li= link_to t('layouts.contact'), contact_path, class: "text-light"
-        %li= link_to t('layouts.contributors'), contributors_path, class: "text-light"
-    .col-md-4.mb-2
-      %h5.text-light Community
-      =link_to image_tag("fb_logo.png", class: "social-logo mr-4"), "https://fb.me/altopedia.net"
-      =link_to image_tag("discord_logo.png", class: "social-logo"), "https://discord.gg/KTPmKJk"
-    .col-md-4.mb-2
-      %h5.text-light= t('layouts.external-links')
-      %ul.list-unstyled.text-small
-        %li= link_to t('layouts.resources'), resources_path, class: "text-light"
+.footer-section
+  %h3 ALTopedia
+  = link_to t('layouts.about'), about_path, class: "footer-link"
+  = link_to t('layouts.contact'), contact_path, class: "footer-link"
+  = link_to t('layouts.contributors'), contributors_path, class: "footer-link"
+  = link_to "Support the site", root_url, class: "footer-link"
+.footer-section
+  %h3
+  = link_to t('layouts.grammar'), grammar_path, class: "footer-link"
+  = link_to t('layouts.themes'), themes_path, class: "footer-link"
+.footer-section
+  %h3 Community
+  = link_to "Facebook", "https://fb.me/altopedia.net", class: "footer-link"
+  = link_to "Discord", "https://discord.gg/KTPmKJk", class: "footer-link"
+  = link_to "YouTube", "https://www.youtube.com/channel/UCxnejGwBAdYO5-kU6td4G5Q", class: "footer-link"
+.footer-section
+  %h3 Resources
+  = link_to t('layouts.resources'), resources_path, class: "footer-link"
+.footer-section

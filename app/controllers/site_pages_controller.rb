@@ -30,34 +30,27 @@ class SitePagesController < ApplicationController
   end
   
   def es
-    @all_activities = Tag.find_by_name("Elementary School").activities.order(created_at: :desc)
-			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
-    @top10 = Tag.find_by_name("Elementary School").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
+    @es_activities = Tag.find_by_name("Elementary School").activities.approved.
+      order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
     @textbooks = Textbook.ES.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
   
   def jhs
-    @all_activities = Tag.find_by_name("Junior High School").activities.order(created_at: :desc)
-			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
-    @top10 = Tag.find_by_name("Junior High School").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
+    @jhs_activities = Tag.find_by_name("Junior High School").activities.approved.
+      order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
     @textbooks = Textbook.JHS.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
   
 	def hs
-    @all_activities = Tag.find_by_name("High School").activities.order(created_at: :desc)
-			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
-    @top10 = Tag.find_by_name("High School").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
+    @hs_activities = Tag.find_by_name("High School").activities.approved.
+      order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
     @textbooks = Textbook.HS.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
   end
 
   def special_needs
-    @all_activities = Tag.find_by_name("Special Needs").activities.order(created_at: :desc)
-			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
-    @top10 = Tag.find_by_name("Special Needs").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
+    @hs_activities = Tag.find_by_name("Special Needs").activities.approved.
+      order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
+    @textbooks = []
   end
 
 	def conversation

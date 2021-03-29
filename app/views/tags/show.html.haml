@@ -7,32 +7,23 @@
   <meta property="og:description" content="#{@tag.description}" />
   <meta property="og:site_name" content="ALTopedia" />
 
-.row
-  .col-sm-10.col-md-9.col-lg-9
-    %h3= @tag.name
-    %p= link_to "#{@tag.tag_category.name}", @tag.tag_category
+.full-tag-display 
+  %h1= @tag.name
+  %p= markdown( @tag.description )
 
-    %p= markdown( @tag.description )
-
-    %h5.pt-2= t('.recent-activities-heading')
-    .card-columns.pt-2
+  - if @activities.any?
+    %ul.activity-card-list
       - @activities.each do |activity|
-        .card
-          .card-body
-            -# %span.badge.badge-info.float-right= activity.upvote_count
-            %h5.card-title= link_to activity.name, activity
-            %p.card-text= activity.short_description
-    %br
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
     = paginate @activities
-
-    - if user_signed_in? && policy(@tag).edit?
-      .btn-group.float-right{"role" => "group", "aria-label" => "Tag controls"}
-        = link_to "Edit Tag", edit_tag_path(@tag), class: "btn btn-outline-secondary btn-sm"
-        - if policy(@tag).delete?
-          = link_to "Delete", @tag, method: :delete, data: { confirm: "Are you sure you wanna delete this tag?" }, class: "btn btn-outline-secondary btn-sm"
-  .col-md-3.col-sm-12
-    = render partial: 'activities/compact_activity_list', locals: { label: t('.top-5-label'), activity_list: @top5, show_upvote_count: false }
-
+  
+  - if user_signed_in? && policy(@tag).edit?
+    %ul.general-controls
+      %li= link_to "Edit", edit_tag_path(@tag)
+      %li= link_to "Delete", @tag, method: :delete, data: { confirm: "Really delete this tag?" }
 
 = render partial: 'comments/comment_list', locals: { comments: @comments }
 

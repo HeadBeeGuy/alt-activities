@@ -2,27 +2,21 @@
 
 -# Not splitting this out into a partial yet - User creation and user editing will need to look different
 
-.col-sm-12.col-md-8
-  %h3= t('.heading')
+.full-user-display
+  %h1= t('.heading')
 
-  %p= t('.profile-instructions')
-
-  = form_for(@user) do |f|
+  = form_with model: @user, class: "user-edit-form" do |f|
     = render 'shared/error_messages', object: f.object
-    .form-group
-      %label{"for" => "username"}= t('.username')
-      = f.text_field :username, class: 'form-control', disabled: !current_user.admin?
-    .form-group
-      %label{"for" => "email"}= t('.email')
-      = f.text_field :email, class: 'form-control', disabled: !current_user.admin?
-    .form-group
-      %label{"for" => "home_country"}= t('.home-country')
-      = f.text_field :home_country, class: 'form-control'
-    .form-group
-      %label{"for" => "location"}= t('.location')
-      = f.text_field :location, class: 'form-control'
-    .form-group
-      %label{"for" => "bio"}= t('.bio')
-      = f.text_area :bio, class: 'form-control', rows: 4
+    = f.label :username, t('.username'), class: "form-label"
+    = f.text_field :username, class: 'form-textfield', minlength: 4, maxlength: 28, disabled: !current_user.admin?
+    = f.label :email, t('.email'), class: "form-label"
+    = f.email_field :email, class: 'form-textfield', disabled: !current_user.admin?
+    = f.label :home_country, t('.home_country'), class: "form-label"
+    = f.text_field :home_country, class: 'form-textfield', maxlength: 30
+    = f.label :location, t('.location'), class: "form-label"
+    = f.text_field :location, class: 'form-textfield', maxlength: 30
+    = f.label :bio, t('.bio'), class: "form-label"
+    = f.text_area :bio, class: 'form-textarea', maxlength: 200, rows: 6
 
-    = f.submit t('submit'), class: "btn btn-primary"
+    = f.submit t('submit'), class: "submit-button"
+

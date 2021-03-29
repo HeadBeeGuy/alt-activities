@@ -4,7 +4,7 @@ en:
   submit: "Submit"
   time:
     formats:
-      quite_short: "%B %d, %Y"
+      quite_short: "%B %-d, %Y"
   layouts:
     site_title: "ALTopedia"
     log_in: "Log in"
@@ -34,7 +34,7 @@ en:
     special-needs: "Special Needs"
     online-teaching: "Online Teaching"
   login:
-    log_in: "Sign in"
+    log_in: "Sign in to ALTopedia"
     remember_me: "Remember me"
     email_username_prompt: "E-mail address or username"
     password_prompt: "Password"
@@ -48,9 +48,9 @@ en:
       user-status: "User status:"
       home-country: "Home country:"
       location: "Location:"
-      bio: "User bio:"
-      upvotes: "Your thumbs up:"
-      edit: "Edit info"
+      bio: "Bio:"
+      upvotes: "Favorite activities:"
+      edit: "Edit profile"
       activity-list: "This user's activities:"
     edit:
       title: "Edit user"
@@ -69,23 +69,23 @@ en:
   textbooks:
     index:
       title: "ALTopedia - Textbooks"
-      textbooks-heading: "Textbook Listings"
+      textbooks-heading: "Textbooks"
       get-in-touch: "Can't find your textbook? Found an error? Get in touch and let us know!"
     show:
       textbook-page-title: "ALTopedia - Textbook: %{textbook_title}"
       textbook-heading: "Textbook: %{textbook_title}"
       textbook-description: "Description: %{description}"
       textbook-level: "Level: %{level}"
-      page-number: "Page Number"
-      page-description: "Description"
-      grammar-point: "Grammar point"
+      page-number: "Page"
+      page-description: "Information"
+      grammar-point: "Tag"
   site_pages:
     home:
-      site-tagline: "Find activities, games, and worksheets to use in your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
+      site-tagline: "Find activities, games, and worksheets for your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
       read-more: "Read more"
       newest-activities: "Newest activities"
-      top-10-activities: "Top 10 Site-wide"
-      front-page-posts-index: "View all news posts"
+      top-10-activities: "Top 10 activities"
+      front-page-posts-index: "View all posts"
     es:
       title: "ALTopedia - Elementary School Activities"
       es-heading: "Elementary School"
@@ -161,18 +161,18 @@ en:
         rule-5: "Please don't advertise any services or companies."
         rule-6: "By posting your activity on the site, you will make it available under the terms of the Creative Commons BY-NC-SA 4.0 license. This means that the activity will be posted for free on the site, and while others can use it for non-commercial purposes, they have to give you credit."
         rule-7: "If you decide you want to take your activity down, you can do so at any time. You can also edit it in the future if you want to change anything."
-      activity_title: "Title of this activity:"
-      short_description: "Short description (This is what will get shown in activity listings):"
-      long_description: "Detailed description and directions:"
-      time_estimate: "Estimated time:"
+      activity_title: "Title of this activity (50 characters max)"
+      short_description: "Short description (200 characters max)"
+      long_description: "Detailed description and directions"
+      time_estimate: "Estimated time"
       tag_heading: "Tags"
-      tag_directions_1: "Choose the tags that apply to your activity. You don't have to choose tags for every category."
-      tag_directions_2: "The more accurate your tags are, the easier people will be able to find your activity!"
+      tag_directions_1: "Click on the tags that apply to your activity. You don't have to choose tags for every category."
+      tag_directions_2: "In general, please try to choose tags that are directly relevant to this activity."
       file-heading: "Files"
       file-attach-text: "If your activity has any files, please attach them:"
       attached-files-header: "This activity contains these files:"
-      delete-attached-files: "Click on the X to delete them. You don't need to re-submit the activity if you're just deleting files."
-      submit: "Submit"
+      delete-attached-files: "Click on the X to remove them. You don't need to re-submit the activity if you're just removing files."
+      submit: "Submit Activity"
     new_activity_header: "Submit a new activity"
     index:
       title: "ALTopedia - Activities"
@@ -223,7 +223,7 @@ en:
       form-header: "Write a comment"
       comment-guidelines: "Please make sure your comment contains positive or constructive feedback."
       comment-placeholder: "Comment"
-      please-log-in: "Sign in or register an account to leave a comment."
+      please-log-in: "Sign in or create an account to leave a comment."
     submission:
       submitted-comment: "Thank you! Your comment will show up once it's approved."
   registration:

@@ -1,64 +1,60 @@
-.card.mb-4
-  %h3.card-header
-    %span= activity.name
-    - if activity.unapproved?
-      %span (not approved yet)
-    - elsif activity.edited?
-      %span (edits not approved yet)
-  .card-body
-    %h5.card-title= activity.short_description
-    .row
-      .col-md-9
-        - if @source_activities.any?
-          %small= t('activities.show.source-activities')
-          %ul
-            - @source_activities.each do |activity|
-              %li= link_to activity.name, activity
-        %p= markdown(activity.long_description)
-        - if activity.documents.attached?
-          %h6= t('activities.show.file-list')
-          - activity.documents.each do |document|
-            %p= link_to document.blob.filename, url_for(document)
-      .col-md-3
-        = render "thumbs_up"
-        %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
-        %p
-          =t('activities.show.submitted_by')
-          =link_to activity.user.username, activity.user
-        %p= l(activity.created_at, format: :quite_short)
-        - if user_signed_in? && policy(activity).update?
-          .btn-group{"role" => "group", "aria-label" => "Activity controls"}
-            - if ( (activity.unapproved? || activity.edited? ) && policy(activity).approve? )
-              = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "btn btn-outline-secondary btn-sm"
-            - elsif activity.approved? && ( policy(activity).unapprove? )
-              = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
-            - if !activity.checked? && policy(activity).verify_edits?
-              = link_to "Verify changes", verify_edits_activity_path(activity), method: :put, class: "btn btn-outline-secondary btn-sm"
-            = link_to "Link activity to another", new_activity_link_path(activity), class: "btn btn-outline-secondary btn-sm"
-          .btn-group{"role" => "group", "aria-label" => "Activity secondary controls"}
-            = link_to t('activities.show.edit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
-            = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "btn btn-outline-secondary btn-sm"
-          .btn-group
-          %button.btn.btn-secondary.mt-2{"data-toggle"=>"collapse", "data-target"=>"#tag-editor-#{activity.id}", "aria-expanded"=>"false", "aria-controls"=>"tag-editor-#{activity.id}"}= t('activities.show.edit-tags')
-          .dynamic-tag-editor.collapse{"id"=>"tag-editor-#{activity.id}"}
-            = render "taggings/activity_tagging_list"
-            = render "taggings/form"
-        - elsif user_signed_in? && activity.user == current_user
-          .btn-group.float-right{"role" => "group", "aria-label" => "Activity controls"}
-            = link_to t('activities.show.resubmit'), edit_activity_path(activity), class: "btn btn-outline-secondary btn-sm"
-  .card-footer{"id" => "activity-#{activity.id}-tags"}
-    - activity.tags.each do |tag|
-      %span= link_to tag.name, tag, class: "badge badge-pill badge-success"
-  .card-footer.p-1
-    %p.card-text.text-center
-      %small.text-muted All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.
-  - if @inspired_activities.any?
-    .card-footer.p-2
-      %small= t('activities.show.inspired-activities')
-      %ul
+.full-activity-display
+  .full-activity-heading
+    %h1= activity.name
+    %p.activity-subheading= activity.short_description
+  .full-activity-details
+    .full-activity-info
+      %p.full-activity-submitter
+        Submitted by
+        %span= link_to activity.user.username, activity.user, class: "user-link"
+      %p= l(activity.created_at, format: :quite_short)
+      - if @source_activities.any?
+        - @source_activities.each do |activity|
+          %p
+            Inspired by:
+            = link_to activity.name, activity
+      - if @inspired_activities.any?
         - @inspired_activities.each do |activity|
+          %p
+            Inspired:
+            = link_to activity.name, activity
+      %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
+    .full-activity-description
+      = markdown(activity.long_description)
+      - if activity.documents.attached?
+        .activity-file-list
+          %h6 Files:
+          %ul
+            - activity.documents.each do |document|
+              %li.activity_file
+                = link_to document.blob.filename, url_for(document)
+    .full-activity-controls
+      <button class="upvote-button" href="#">
+      <svg class="thumbs-up-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+      </svg>
+      <span class="thumbs-up-explanation">Thumbs up!</span>
+      %span.upvote-count= activity.upvote_count
+      </button>
+      - if user_signed_in? && policy(activity).update?
+        %ul.activity_control_items
           %li
-            %span= link_to activity.name, activity
+            = link_to t('activities.show.edit'), edit_activity_path(activity), class: "activity-control"
+            - if ( (activity.unapproved? || activity.edited? ) && policy(activity).approve? )
+              = link_to t('activities.show.approve'), approve_activity_path(activity), method: :put, data: { confirm: "Approve this activity?" }, class: "activity-control"
+            - elsif activity.approved? && ( policy(activity).unapprove? )
+              = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "activity-control"
+            - if !activity.checked? && policy(activity).verify_edits?
+              = link_to "Verify changes", verify_edits_activity_path(activity), method: :put, class: "activity-control"
+            = link_to "Link", new_activity_link_path(activity), class: "activity-control"
+            = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "activity-control"
+  .activity-tags-display
+    %ul.activity-tags-list
+      - activity.tags.each do |tag|
+        %li= link_to tag.name, tag, class: "activity-tag"
+  .activity-license-info
+    %p All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.
+  
 
 = render partial: 'comments/comment_list', locals: { comments: @comments }
 

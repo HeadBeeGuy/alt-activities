@@ -1,12 +1,7 @@
-= form_for(@textbook.textbook_pages.build) do |f|
+= form_with model: @textbook.textbook_pages.build, class: "compact-textbook-page-form" do |f|
   = render 'shared/error_messages', object: f.object
-  .form-row
-    = f.hidden_field :textbook_id, value: @textbook.id
-    .col-1.col-sm-3.col-lg-1
-      = f.text_field :page, placeholder: "Page #", class: 'form-control'
-    .col-6.col-sm-8.col-lg-6
-      = f.text_field :description, placeholder: "Description", class: 'form-control'
-    .col-3.col-sm-8.col-lg-3
-      = f.collection_select :tag_id, @tags, :id, :name, {}, class: 'form-control'
-    .col-2
-      = f.submit t('submit'), class: "btn btn-primary"
+  = f.hidden_field :textbook_id, value: @textbook.id
+  = f.text_field :page, placeholder: "Page #", class: "form-textfield"
+  = f.text_field :description, placeholder: "Description", class: "form-textfield"
+  = f.collection_select :tag_id, @tags, :id, :name, {}, class: "form-select"
+  = f.submit "Submit", class: "compact-submit-button"

@@ -1,3 +1,183 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables_and_mixins";
+
+.user-link {
+  color: $user600;
+}
+.user-link:hover {
+  color: $user900;
+}
+
+/* FULL-SIZED USER DISPLAY */
+.full-user-display {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $user300;
+
+  h1 {
+    color: $user700;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-primary-info, .user-profile-secondary-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-image {
+  align-self: center;
+}
+
+.profile-info-label  {
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: $ru700;
+}
+
+.profile-info-text, .profile-info-url, .user-bio-text {
+  margin-left: 1rem;
+}
+
+.profile-info-url a {
+  color: $user600;
+}
+
+.profile-user-status {
+  align-self: center;
+}
+
+.premium-supporter-text {
+  color: $user800;
+}
+
+.moderator-text {
+  color: $user700;
+}
+
+.user-control-items {
+  margin-top: 1rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-control {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: $ru600;
+  line-height: 1.7rem;
+}
+
+.primary-user-control {
+  padding: 0.5rem 0.6rem;
+  background: $user400;
+  color: #fefefe;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  line-height: 2rem;
+}
+.primary-user-control:hover {
+  background: $user600;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .user-profile {
+    flex-direction: row;
+  }
+
+  .user-profile-primary-info {
+    flex: 1;
+  }
+
+  .user-profile-secondary-info {
+    flex: 3;
+  }
+}
+
+/* USER SIGN-UP PAGE */
+
+.new-user-page {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $user200;
+
+  h1 {
+    color: $user500;
+    font-size: 1.7rem;
+    line-height: 2rem;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ul {
+    list-style: disc;
+    margin: 0 2rem 1rem;
+  }
+}
+
+.signup-explanation {
+  margin-bottom: 1rem;
+}
+
+.user-registration-form, .user-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-textfield {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-family: "Inter";
+    height: 2.2rem;
+  }
+
+}
+
+/* USER EDIT PAGE */
+
+.user-edit-form {
+  margin: 1rem 0;
+
+  .form-textfield, .form-textarea {
+    width: 30rem;
+    max-width: 80vw;
+    margin-bottom: 1rem;
+  }
+
+  .user-preference {
+    min-height: 3rem;
+    padding: 0 5vw;
+    margin-bottom: 0.5rem;
+  }
+
+  .user-preference label {
+    padding: 0.8rem;
+    transition: 300ms ease;
+    border-radius: 0.3rem;
+    line-height: 2rem;
+  }
+
+  .user-preference input[type="checkbox"]:checked + label {
+    background: $primary500;
+    transition: 300ms ease;
+    color: #fafafa;
+  }
+
+  .submit-button {
+    margin-top: 1rem;
+  }
+}

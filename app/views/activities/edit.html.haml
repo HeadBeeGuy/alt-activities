@@ -1,9 +1,6 @@
-- provide(:title, "Edit Activity")
+- provide(:title, "ALTopedia - Edit #{@activity.name}")
 
-%h2= t('.edit_heading')
 
-%p= t('.edit_directions_1')
-
-%p= t('.edit_directions_2')
-
-= render "activity_form"
+.activity-form-page
+  %h2= t('.edit_heading')
+  = render "activity_form"

@@ -1,38 +1,30 @@
 -provide(:title, t('.textbook-page-title', textbook_title: @textbook.name) )
 
-%h3
-  %span= t('.textbook-heading', textbook_title: @textbook.name)
-  - if !@textbook.year_published.nil?
-    %span (#{@textbook.year_published})
+.full-textbook-display
+  %h1= @textbook.name
+  .full-textbook-info
+    %p.full-textbook-description= @textbook.additional_info
+    - unless @textbook.year_published.nil?
+      %p.full-textbook-year= @textbook.year_published
+    %p.full.textbook-level= @textbook.level
 
-%p= t('.textbook-description', description: @textbook.additional_info)
-
-%p 
-  %span= t('.textbook-level', level: @textbook.level)
-
-- if user_signed_in? && policy(@textbook).update?
-  .btn-group.float-left{"role" => "group", "aria-label" => "Textbook controls"}
-    = link_to "Edit Textbook", edit_textbook_path(@textbook), class: "btn btn-outline-secondary btn-sm"
-    = link_to "Delete", @textbook, method: :delete, data: { confirm: "Are you sure you wanna delete this textbook and all of its pages?" }, class: "btn btn-outline-secondary btn-sm"
-
-%table.table.table-striped.table-sm
-  %thead
-    %tr
+  %table.textbook-page-listing
+    %thead
       %th{"scope" => "col"}= t('.page-number')
       %th{"scope" => "col"}= t('.page-description')
       %th{"scope" => "col"}= t('.grammar-point')
-  %tbody
-    - @textbook.textbook_pages.order(page: :asc).each do |page|
-      %tr
-        %td= page.page
-        %td= markdown(page.description)
-        %td= link_to page.tag.name, page.tag
-        - if policy(page).update?
-          %td
-            %span= link_to "(Edit)", edit_textbook_page_path(page)
-            %span= link_to "(Delete)", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }
+    %tbody
+      - @pages.each do |page|
+        %tr
+          %td= page.page
+          %td= markdown(page.description)
+          %td 
+            %span= link_to page.tag.name, page.tag, class: "tag-link"
+            - if policy(page).update?
+              %span= link_to "Edit", edit_textbook_page_path(page), class: "comment-control-link"
+              %span= link_to "Delete", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }, class: "comment-control-link"
 
-- if policy(@textbook).update?
-  %p Add a new page quickly:
-  = render 'textbook_pages/compact_form'
-  %p= link_to "Add pages manually (a little more robust)", new_textbook_page_path
+  - if policy(@textbook).update?
+    %p Add a new page quickly:
+    = render 'textbook_pages/compact_form'
+    %p= link_to "Add pages manually", new_textbook_page_path

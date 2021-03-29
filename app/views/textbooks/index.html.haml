@@ -1,16 +1,30 @@
 -provide(:title, t('.title'))
 
-%h3.text-center= t('.textbooks-heading')
+.full-generic-page
+  %h2= t('.textbooks-heading')
 
-- if policy(@textbooks).new?
-  %p= link_to "Create a new textbook", new_textbook_path
+  - if policy(@es_textbooks).new?
+    %p= link_to "Create a new textbook", new_textbook_path
 
-.card-columns.pt-2
-  - @textbooks.each do |textbook|
-    .card
-      .card-body
-        %h5.card-title= link_to textbook.name_for_lists, textbook
-        .card-text= textbook.additional_info
+  .triple-column
+    .single-column
+      %h4 Elementary
+      %ul
+        - unless @es_textbooks.nil?
+          - @es_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+    .single-column
+      %h4 Junior High
+      %ul
+        - unless @jhs_textbooks.nil?
+          - @jhs_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+    .single-column
+      %h4 High School
+      %ul
+        - unless @hs_textbooks.nil?
+          - @hs_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
 
-%p= link_to t('.get-in-touch'), contact_path
+  %p= link_to t('.get-in-touch'), contact_path
 

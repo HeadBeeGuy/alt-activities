@@ -1,3 +1,28 @@
 // Place all the styles related to the textbook_pages controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+  // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables_and_mixins";
+
+.compact-textbook-page-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.compact-submit-button {
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru400;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .compact-textbook-page-form {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

@@ -1,3 +1,112 @@
 // Place all the styles related to the textbooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables_and_mixins";
+
+.textbook-link {
+  color: $tb500;
+  text-decoration: none;
+}
+.textbook-link:hover {
+  text-decoration: underline;
+}
+
+.full-textbook-display {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $tb500;
+
+  h1 {
+    color: $tb500;
+  }
+  padding: 0.8rem 0.1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.full-textbook-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  color: $ru800;
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    margin: 0;
+  }
+}
+
+.textbook-page-listing {
+  // align-self: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  thead th:nth-child(1) {
+    width: 3rem;
+  }
+
+  thead th:nth-child(2) {
+    width: 60%;
+  }
+
+  td {
+    padding: 0.4rem 0.2rem;
+  }
+
+  tbody td:nth-child(1) {
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  tr:nth-child(even) {
+    background: $ru200;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.combined-search-link {
+  color: $ru600;
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+.combined-search-link:hover {
+  color: $ru800;
+  text-decoration: underline;
+}
+
+.textbook-search-explanation {
+  align-self: center;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  text-decoration: none;
+  padding: 0 0.2rem;
+  color: $primary700;
+}
+.textbook-search-explanation:hover {
+  text-decoration: underline;
+  color: $primary900;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .full-textbook-display {
+    padding: 0.8rem;
+  }
+
+  .full-textbook-info {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .textbook-page-listing {
+    td {
+      padding: 0.2rem;
+    }
+  }
+}

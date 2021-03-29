@@ -56,3 +56,26 @@ Pages to add or revise:
 Current bugs:
  
 - If a user submits an activity that fails validation (like a text field being too long) and they attached files, it generates a server error instead of returning them to the form with an error message display. Maybe this is fixed in Rails 6 now?
+
+---
+
+These pages must be restyled or rebuilt before the site should go live:
+
+- The Mod Queue
+- The Thumbs Up partial
+- The Contributors page
+- Front Page Post Index
+- The front page logo
+- Search results page
+
+These would be nice to get working:
+
+- Front Page Post form
+- Comments index page
+- Tag form
+- Grammar Points page
+- Activity Themes page
+- Tag Index page
+- All Tag Category pages
+- Activity index page
+- Activity Link pages
