@@ -17,7 +17,7 @@ const append = (ref, item) => {
   //Add an li element to the list in the category header
   const html = `
     <li onclick="handleTagAccClick(this)" data-value="${item.value}" data-text="${item.dataset.text}">
-      <p>${item.dataset.text}</p>
+      <span>${item.dataset.text}</span>
     </li>
   `
   ref.insertAdjacentHTML('afterbegin', html);
