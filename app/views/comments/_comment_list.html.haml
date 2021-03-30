@@ -3,7 +3,7 @@
     - comments.each do |comment|
       %li.comment
         .commenter-info
-          = link_to (image_tag "sample avatar.png", size: "70x70", class: "commenter-pic"), comment.user
+          = link_to (image_tag "general avatar.png", size: "70x70", class: "commenter-pic"), comment.user
           %span= link_to comment.user.username, comment.user, class: "user-link"
           %span= l(comment.created_at, format: :quite_short)
         .comment-text= comment.content

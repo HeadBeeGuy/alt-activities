@@ -1,12 +1,15 @@
 - provide(:title, t('.title'))
 
-%h3= t('.grammar-heading')
+.full-generic-page
+  %h4 This page hasn't been rebuilt with the new interface yet. It still works, but it looks messy. It will get looked at soon. Sorry for the inconvenience!
 
-%p= link_to t('.all-tags'), all_tags_path
+  %h3= t('.grammar-heading')
 
-%p This list is still quite incomplete! Please let us know if we're missing any significant grammar points, or any of the grammar points have inaccurate information.
+  %p= link_to t('.all-tags'), all_tags_path
 
-- @tags.each do |tag|
-  .card
-    .card-body
-      %p= link_to markdown("#{tag.name_for_lists}"), tag
+  %p This list is still quite incomplete! Please let us know if we're missing any significant grammar points, or any of the grammar points have inaccurate information.
+
+  - @tags.each do |tag|
+    .card
+      .card-body
+        %p= link_to markdown("#{tag.name_for_lists}"), tag

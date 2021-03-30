@@ -72,6 +72,10 @@
 
 #tag-accumulator li {
     list-style: none;
-    background-color: $ru400;
+    background-color: $tag100;
+    color: $tag900;
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem 0;
     cursor: pointer;
 }

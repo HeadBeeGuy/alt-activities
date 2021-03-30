@@ -23,7 +23,7 @@
     = render "tag_of_the_moment"
     - if user_signed_in?
       .fp-user-card
-        = link_to image_tag("sample avatar.png", size: "70x70"), current_user
+        = link_to image_tag("general avatar.png", size: "70x70"), current_user
         .fp-user-controls
           %span Welcome back, #{link_to current_user.username, current_user}!
           = link_to "Edit your profile", edit_user_path(current_user), class: "fp-edit-profile-link"

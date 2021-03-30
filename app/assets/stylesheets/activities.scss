@@ -135,9 +135,15 @@
   margin-bottom: 1.5rem;
 }
 
-.upvote-button {
+#thumbs-up-voter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upvote-active-button {
+  align-self: center;
   height: 3rem;
-  cursor: pointer;
   color: #fafafa;
   background: $primary600;
   border-radius: 0.3rem;
@@ -148,9 +154,33 @@
   justify-content: space-around;
   align-items: center;
   padding: 0 0.5rem;
+  width: 8rem;
 }
-.upvote-button:hover {
+.upvote-active-button:hover {
+  cursor: pointer;
   background: $primary700;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+}
+
+.upvote-inactive-button {
+  align-self: center;
+  height: 3rem;
+  color: #fafafa;
+  background: $ru600;
+  opacity: 0.4;
+  border-radius: 0.3rem;
+  border: 0px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0.5rem;
+  width: 8rem;
+}
+.upvote-inactive-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
   box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
 }
 
@@ -243,7 +273,7 @@
   }
 
 }
-/* Activity list display on Tag pages and what-have-ya */
+/* COMPACT ACTIVITY CARDS FOR LISTINGS */
 .activity-card-list {
   display: flex;
   flex-direction: row;

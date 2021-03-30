@@ -4,7 +4,7 @@
   %h1= @user.username
   .user-profile
     .user-profile-primary-info
-      = image_tag "sample avatar.png", size: "100x100", class: "user-profile-image"
+      = image_tag "general avatar.png", size: "100x100", class: "user-profile-image"
       - if @user.admin?
         %span.profile-user-status
           %span.moderator-text Administrator

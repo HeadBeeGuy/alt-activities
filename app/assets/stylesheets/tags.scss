@@ -22,3 +22,53 @@
       color: $tag900;
     }
 }
+
+.tag-card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.tag-card {
+  width: 25rem;
+  max-width: 75vw;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom right, #fefefe 50%, $tag100);
+  text-align: center;
+  border-radius: 0.3rem;
+  border-top: 0.3rem solid $tag600;
+  a {
+    text-decoration: none;
+  }
+}
+.tag-card:hover {
+  background: $tag100;
+  box-shadow: 0.3rem 0.3rem 0.4rem $ru200;
+}
+
+.tag-card-name {
+  padding: 0.7rem 0.4rem 0.5rem;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 700;
+  color: $tag900;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-card-description p {
+  font-size: 0.8rem;
+  color: $tag800;
+  line-height: 0.9rem;
+  padding: 0 1rem 1rem;
+  margin: 0;
+  max-width: 24rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

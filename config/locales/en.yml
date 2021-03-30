@@ -143,7 +143,10 @@ en:
       holidays: "Holidays"
     contributors:
       title: "ALTopedia - Contributors"
-      header: "Top contributors"
+      activity-contributors-heading: "Top activity contributors"
+      activity-contributors-explanation: "These users have posted the most activities."
+      code-contributors-heading: "Code contributors"
+      code-contributors-explanation: "These users wrote the code for the web site. You can help as well!"
     resources:
       title: "ALTopedia - Useful Links and Resources"
       page-header: "Useful Links and Resources"
@@ -199,7 +202,7 @@ en:
       inspired-activities: "Activities inspired by this one:"
     thumbs-up:
       thumbs-up-label: "Total"
-      thumbs-up-logged-out: "Sign in or register to give a thumbs up!"
+      thumbs-up-logged-out: "Sign in to add this activity to your favorites."
       submit-thumbs-up: "Thumbs up!"
       delete-thumbs-up: "Thumbs up"
     school-level-listing:

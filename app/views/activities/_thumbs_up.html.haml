@@ -1,12 +1,9 @@
-%p 
-  = t('activities.thumbs-up.thumbs-up-label')
-  %span.badge.badge-info.badge-pill#thumbs-up-count= @activity.upvote_count
-#thumbs-up-voter.mb-2
+#thumbs-up-voter
   - if user_signed_in?
     - unless Upvote.find_by(activity_id: @activity.id, user_id: current_user.id)
       = render "create_thumbs_up"
     - else
       = render "delete_thumbs_up"
   - else
-    %p= link_to t('activities.thumbs-up.thumbs-up-logged-out'), new_user_session_path 
+    %small= link_to t('activities.thumbs-up.thumbs-up-logged-out'), new_user_session_path 
 

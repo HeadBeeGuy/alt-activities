@@ -1,12 +1,14 @@
 - provide(:title, t('.title'))
 
-- @front_page_posts.each do |post|
-  .card.mb-2
-    .card-header
-      %h5= link_to post.title, post
-    .card-body.p-2.pl-4
-      %p= markdown_for_posts(post.excerpt)
-      .span.text-right= l(post.created_at, format: :quite_short)
+.full-generic-page
+  %h2 News Posts
+  - @front_page_posts.each do |post|
+    .news-card
+      = link_to post do
+        %p.news-headline= post.title
+        %p.news-excerpt= post.excerpt
+        %p.read-more-link= l(post.created_at, format: :quite_short)
+        %p.read-more-link= t('.read-more')
 
-=paginate @front_page_posts
+  =paginate @front_page_posts
 

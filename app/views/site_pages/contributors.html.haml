@@ -1,20 +1,36 @@
 -provide(:title, t('.title'))
 
-%h3= t('.header')
+.full-generic-page
+  %h2= t('.activity-contributors-heading')
+  %p= t('.activity-contributors-explanation')
 
-- @top3.each do |user|
-  .card.p-2.mb-1.box-shadow
-    %span.h4.text-center= link_to "#{user.username} (#{user.activity_count})", user
-    .row
-      .col-lg-6.col-sm-10
-        %span Home country: #{user.home_country}
-      .col-lg-6.col-sm-10.text-right
-        %span.text-right Current location: #{user.location}
-    %span.text-center= user.bio
+  .top-contributor-display
+    - @top6.each do |user|
+      .top-contributor-card
+        = link_to (image_tag "sample avatar.png", size: "100x100", class: "user-profile-image"), user
+        .contributor-info
+          = link_to user.username, user, class: "top-contributor-link"
+          %span #{user.activity_count} activities
+          %span.profile-info-label= (t'users.show.home-country')
+          %span.profile-info-text= user.home_country
+          %span.profile-info-label= (t'users.show.location')
+          %span.profile-info-text= user.location
 
-.row.mt-2
-  - @top4to12.each do |user|
-    .card.col-sm-10.col-lg-4
-      .card-body
-        %span.font-weight-bold= link_to "#{user.username} (#{user.activity_count})", user
+  %h2= t('.code-contributors-heading')
+  %p= link_to t('.code-contributors-explanation'), "https://github.com/HeadBeeGuy/alt-activities/graphs/contributors"
+
+  .top-contributor-display
+    .top-contributor-card
+      = link_to (image_tag "sample avatar.png", size: "100x100", class: "user-profile-image"), "https://github.com/HeadBeeGuy"
+      .contributor-info
+        = link_to "Jake", "https://github.com/HeadBeeGuy", class: "top-contributor-link"
+        .contributor-info 
+          %p Site architecture, design, deployment, administration.
+    .top-contributor-card
+      = link_to (image_tag "sample avatar.png", size: "100x100", class: "user-profile-image"), "https://github.com/tkopdx"
+      .contributor-info
+        = link_to "Colin", "https://github.com/tkopdx", class: "top-contributor-link"
+        .contributor-info 
+          %p JavaScript and CSS wizardry.
+
 

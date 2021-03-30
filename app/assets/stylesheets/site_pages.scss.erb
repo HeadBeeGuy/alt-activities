@@ -26,7 +26,7 @@
 }
 
 .fp-site-banner {
-  background-image: url('<%= asset_path 'Altopedia banner.png' %>');
+  background-image: url('<%= asset_path 'ALTopedia banner April.png' %>');
   height: 8rem;
   background-repeat: no-repeat;
   background-size: contain;
@@ -75,70 +75,6 @@
     font-size: 0.9rem;
     color: $primary900;
     align-self: center;
-  }
-}
-
-.fp-news {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-.fp-news-header {
-  margin: 0;
-  font-size: 0.9rem;
-  color: $ru700;
-}
-
-.news-card {
-  @include compact-card;
-  padding: 0.8rem;
-  border-top: 3px solid $primary300;
-  background: linear-gradient(to bottom right, #fbfbfb 85%, $primary100);
-  
-  p {
-    margin: 0;
-  }
-  
-  a {
-    text-decoration: none;
-    color: $primary800;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-}
-
-.news-headline {
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: 500;
-  line-height: 1.9rem;
-}
-
-.news-excerpt {
-  font-size: 0.9rem;
-  line-height: 1.8rem;
-}
-
-.read-more-link {
-  font-size: 0.8rem;
-  color: $primary700;
-  text-align: right;
-}
-
-.fp-post-index-link {
-  font-size: 0.9rem;
-  text-align: right;
-  line-height: 1.1rem;
-  
-  a {
-    text-decoration: none;
-    color: $primary700;
-  }
-  a:hover {
-    text-decoration: underline;
-    color: $primary800;
   }
 }
 
@@ -241,42 +177,6 @@
   color: $primary900;
 }
 
-/* FRONT PAGE POST STYLES */
-.full-fpp-display {
-  @include full-size-card;
-  border-top: 0.3rem solid $primary400;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h1 {
-    color: $primary700;
-    margin-bottom: 0.5rem;
-  }
-  
-  p {
-    max-width: 45rem;
-  }
-}
-
-.full-fpp-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.full-fpp-author {
-  margin: 0 3rem 0 0;
-}
-
-.full-fpp-date {
-  color: $ru600;
-  margin: 0;
-}
-
 /* GENERIC PAGE STYLES */
 .full-generic-page {
   @include full-size-card;
@@ -355,5 +255,81 @@
 
   .school-level-activity-list {
     flex: 3;
+  }
+}
+
+/* MOD PAGE STYLES */
+.comment-mod-list {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.comment-for-moderation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom right, $primary100, $user100);
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .comment-for-moderation {
+    flex-direction: row;
+  }
+
+  .comment-content-moderation {
+    max-width: 40vw;
+  }
+}
+
+/* CONTRIBUTORS PAGE */
+.top-contributor-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.top-contributor-card {
+  border-top: 3px solid $user600;
+  border-radius: 0.4rem;
+  box-shadow: 0.2rem 0.2rem 0.3rem $ru200;
+  background-color: #fbfbfb;
+  width: 80vw;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contributor-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+
+  p  {
+    margin: 0;
+  }
+}
+
+.top-contributor-link {
+  color: $user700;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.top-contributor-link:hover {
+  color: $user900;
+}
+
+@media screen and (min-width: $desktop_breakpoint) {
+  .top-contributor-card {
+    width: 30%;
+    margin-right: 2rem;
   }
 }
