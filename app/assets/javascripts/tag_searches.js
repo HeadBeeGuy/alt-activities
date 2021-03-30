@@ -1,15 +1,30 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-let tagAcc, selectValues;
+let tagAcc;
 
 function init() {
   const form = document.querySelector('#tag-search-form'); //tag searches container
-  tagAcc = document.querySelector('#tag-accumulator');
   if (!form) return;
+  tagAcc = document.querySelector('#tag-accumulator');
   const tags = [...document.querySelectorAll('.form-tag-checkbox')];
 
+  //select2 initialization only works with a jQuery call
+  const select = document.querySelector('#tag-search-select');
+
+  if (select) {
+    // console.log('found select');
+    $('select#tag-search-select').select2({
+      placeholder: 'Text search for all tags',
+      width: '90%'
+    });
+  
+    $('select#tag-search-select').on('select2:select', handleSelect);
+    $('select#tag-search-select').on('select2:unselect', handleUnselect);
+  }
+
   tags.map(tag => {if (tag.checked) append(tagAcc, tag.value, tag.dataset.text)});
+  if (tags.some(tag => tag.checked)) sendEventToSelect();
   tags.map(tag => tag.addEventListener('change', handleTagClick));
 }
 
@@ -58,14 +73,14 @@ const handleTagAccClick = (item) => {
 }
 
 handleSelect = (e) => {
-  console.log(e.params.data);
+  // console.log(e.params.data);
   append(tagAcc, e.params.data.id, e.params.data.text);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
   tag.checked = true;
 }
 
 handleUnselect = (e) => {
-  console.log(e.params.data);
+  // console.log(e.params.data);
   remove(tagAcc, e.params.data.id);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
   tag.checked = false;
@@ -79,15 +94,4 @@ const sendEventToSelect = () => {
 
 document.addEventListener("turbolinks:load", init);
 window.addEventListener('pageshow', init);
-
-$(document).ready(function() {
-  //select2 initialization only works with a jQuery call
-  $('select#tag-search-select').select2({
-    placeholder: 'Text search for all tags',
-    width: '90%'
-  });
-
-  $('select#tag-search-select').on('select2:select', handleSelect);
-  $('select#tag-search-select').on('select2:unselect', handleUnselect);
-})
 
