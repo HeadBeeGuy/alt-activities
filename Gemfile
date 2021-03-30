@@ -43,6 +43,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '>= 0.4.0', group: :doc
 
+# add select2 library for select elements in tag search
+gem 'select2-rails'
+
 # GitHub told me to update these gems
 gem "websocket-extensions", ">= 0.1.5"
 gem "json", ">= 2.3.0"
