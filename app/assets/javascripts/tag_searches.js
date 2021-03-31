@@ -4,11 +4,6 @@
 let tagAcc;
 
 function init() {
-  const form = document.querySelector('#tag-search-form'); //tag searches container
-  if (!form) return;
-  tagAcc = document.querySelector('#tag-accumulator');
-  const tags = [...document.querySelectorAll('.form-tag-checkbox')];
-
   //select2 initialization only works with a jQuery call
   const select = document.querySelector('#tag-search-select');
 
@@ -22,6 +17,11 @@ function init() {
     $('select#tag-search-select').on('select2:select', handleSelect);
     $('select#tag-search-select').on('select2:unselect', handleUnselect);
   }
+
+  const form = document.querySelector('#tag-search-form'); //tag searches container
+  if (!form) return;
+  tagAcc = document.querySelector('#tag-accumulator');
+  const tags = [...document.querySelectorAll('.form-tag-checkbox')];
 
   tags.map(tag => {if (tag.checked) append(tagAcc, tag.value, tag.dataset.text)});
   if (tags.some(tag => tag.checked)) sendEventToSelect();
@@ -41,7 +41,7 @@ const append = (ref, val, text) => {
   ref.insertAdjacentHTML('afterbegin', html);
 };
 
-const remove = (ref, value, update) => {
+const remove = (ref, value) => {
   const curEl = tagAcc.querySelector(`[data-value='${value}']`);
   if (!curEl) return;
 

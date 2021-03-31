@@ -30,6 +30,7 @@
     %p= t('.tag_directions_1')
     %p= t('.tag_directions_2')
     .activity-form-tag-picker
+      = render 'tag_searches/select2'
       %ul.activity-form-tag-categories
         - @tag_categories.each do |category|
           %li.form-tag-category

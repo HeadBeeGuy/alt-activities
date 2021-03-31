@@ -3,6 +3,7 @@
     = form_for(@tagging, remote: true) do |f|
       %small= t('.add-tagging')
       -# replace the following select with tag searches select2 partial and change name to match "tagging[tag_id]"
-      = f.collection_select :tag_id, Tag.all, :id, :name, {}, class: 'form-control' 
+      =select_tag "tagging[tag_id][]", option_groups_from_collection_for_select(TagCategory.all.includes(:tags), :tags, :name, :id, :name), multiple: true, id: "tag-search-select"
+      -# = f.collection_select :tag_id, Tag.all, :id, :name, {}, class: 'form-control' 
       = f.hidden_field :activity_id, value: @activity.id
       = f.submit t('.add-tag-button'), class: "btn btn-primary"
