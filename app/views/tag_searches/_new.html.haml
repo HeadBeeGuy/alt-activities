@@ -2,6 +2,8 @@
   .tag-search-tag-selector
     #tag-accumulator
       %p Searching for activities that include all of these tags:
+    = render 'select2'
+    %p Or browse by category
     %ul
       - @tag_categories.each do |category|
         %li.form-tag-category

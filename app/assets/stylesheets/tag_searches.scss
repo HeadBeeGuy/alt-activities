@@ -4,6 +4,10 @@
 
 @import "variables_and_mixins";
 
+.select2-container {
+    padding: 5px;
+}
+
 .category-tag-grid {
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
