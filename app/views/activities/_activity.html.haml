@@ -45,7 +45,7 @@
   .activity-tags-display
     %ul.activity-tags-list
       - if user_signed_in? && policy(activity).update?
-        -# = render 'taggings/form' will uncomment once the partial is changed
+        = render 'taggings/form'
         = render 'taggings/activity_tagging_list'
       - else
         - activity.tags.each do |tag|

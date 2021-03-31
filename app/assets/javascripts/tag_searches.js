@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-let tagAcc;
+let tagAcc, form, newActivityForm;
 
 function init() {
   //select2 initialization only works with a jQuery call
@@ -18,8 +18,9 @@ function init() {
     $('select#tag-search-select').on('select2:unselect', handleUnselect);
   }
 
-  const form = document.querySelector('#tag-search-form'); //tag searches container
-  if (!form) return;
+  form = document.querySelector('#tag-search-form'); //tag searches container
+  newActivityForm = document.querySelector('.activity-form'); //new activity form
+  if (!form && !newActivityForm) return;
   tagAcc = document.querySelector('#tag-accumulator');
   const tags = [...document.querySelectorAll('.form-tag-checkbox')];
 
@@ -29,6 +30,7 @@ function init() {
 }
 
 const append = (ref, val, text) => {
+  if (!tagAcc) return;
   const curEl = tagAcc.querySelector(`[data-value='${val}']`);
   if (curEl) return;
   
@@ -42,6 +44,7 @@ const append = (ref, val, text) => {
 };
 
 const remove = (ref, value) => {
+  if (!tagAcc) return;
   const curEl = tagAcc.querySelector(`[data-value='${value}']`);
   if (!curEl) return;
 
@@ -53,12 +56,12 @@ const handleTagClick = function () {
   if (this.checked) {
     append(tagAcc, this.value, this.dataset.text);
     const option = document.querySelector(`option[value="${this.value}"]`);
-    option.selected = true;
+    form ? option.selected = true : option.disabled = true;
     sendEventToSelect();
   } else {
     remove(tagAcc, this.value);
     const option = document.querySelector(`option[value="${this.value}"]`);
-    option.selected = false;
+    form ? option.selected = false : option.disabled = false;
     sendEventToSelect();
   }
 };
@@ -76,14 +79,16 @@ handleSelect = (e) => {
   // console.log(e.params.data);
   append(tagAcc, e.params.data.id, e.params.data.text);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
-  tag.checked = true;
+  if (form) tag.checked = true
+  if (newActivityForm) tag.disabled = true;
 }
 
 handleUnselect = (e) => {
   // console.log(e.params.data);
   remove(tagAcc, e.params.data.id);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
-  tag.checked = false;
+  if (form) tag.checked = false
+  if (newActivityForm) tag.disabled = false;
 }
 
 const sendEventToSelect = () => {
