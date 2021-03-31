@@ -44,8 +44,13 @@
             = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "activity-control"
   .activity-tags-display
     %ul.activity-tags-list
-      - activity.tags.each do |tag|
-        %li= link_to tag.name, tag, class: "activity-tag"
+      - if user_signed_in? && policy(activity).update?
+        -# = render 'tag_searches/select2'
+        = render 'taggings/activity_tagging_list'
+      - else
+        - activity.tags.each do |tag|
+          %li
+            = link_to tag.name, tag, class: "activity-tag" 
   .activity-license-info
     %p All content is provided under the #{link_to "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License",  "https://creativecommons.org/licenses/by-nc-sa/4.0/"}.
   
