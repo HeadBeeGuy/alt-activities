@@ -1,18 +1,23 @@
 -provide(:title, "ALTopedia - Tag search")
 
-%h3 Search results
-%p You searched for activities that have all of these tags:
-.tag-list
-  - @searched_tags.each do |tag|
-    %span= link_to tag.name, tag, class: "badge badge-pill badge-success"
-.col.mt-4
+.full-generic-page
+  %h3 Search results
+  %p You searched for activities that have all of these tags:
+  %ul.tag-card-list
+    - @searched_tags.each do |tag|
+      %li.tag-card
+        = link_to tag, title: tag.description do
+          %p.tag-card-name= tag.name
+          .tag-card-description= markdown(tag.description)
   - if @activities.any?
-    - @activities.each do |activity|
-      .card
-        .card-body
-          %span.font-weight-bold= link_to activity.name, activity
-          %span.font-weight-normal= activity.short_description
-          %span.badge.badge-info.float-right= activity.upvote_count
+    %h3 Matching activities
+    %ul.activity-card-list
+      - @activities.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
   - else
-    %span Unfortunately, no activities matched all of your tags! Try specifying fewer tags to see if you can find anything.
+    %p Unfortunately, no activities matched all of your tags! Try specifying fewer tags to see if you can find anything.
+    %p= link_to "Try another search", tag_search_path
 

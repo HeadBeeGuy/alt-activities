@@ -17,9 +17,6 @@
     margin-bottom: 0.5rem;
   }
   
-  p {
-    max-width: 45rem;
-  }
 }
 
 .full-fpp-info {
@@ -37,6 +34,24 @@
 .full-fpp-date {
   color: $ru600;
   margin: 0;
+}
+
+.fpp-content {
+  align-self: center;
+  max-width: 45rem;
+
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 1rem;
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .fp-news {
@@ -80,7 +95,7 @@
 
 .news-excerpt {
   font-size: 0.9rem;
-  line-height: 1.8rem;
+  line-height: 1.3rem;
 }
 
 .read-more-link {

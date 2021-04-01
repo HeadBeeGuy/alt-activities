@@ -64,10 +64,6 @@ Current bugs:
 
 Pages that still need to be rebuilt or need fixes in the new interface:
 
-- The Special Needs page doesn't pick up on the correct tag
-- Tag form
-- Headings and <strong> text seem to cause display issues in activities and Front Page Posts
-- Tag Search results page
 - School level pages and others that overrun their width in IE11
 - Comments index page
 - Grammar Points page

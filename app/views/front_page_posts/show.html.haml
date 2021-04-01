@@ -12,7 +12,7 @@
   .full-fpp-info
     %p.full-fpp-author= link_to @front_page_post.user.username, @front_page_post.user, class: "user-link"
     %p.full-fpp-date= l(@front_page_post.created_at, format: :quite_short)
-  = markdown_for_posts(@front_page_post.content)
+  .fpp-content= markdown_for_posts(@front_page_post.content)
   - if user_signed_in? && policy(@front_page_post).update?
     %ul.general-controls 
       %li= link_to "Edit", edit_front_page_post_path(@front_page_post)

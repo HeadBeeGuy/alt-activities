@@ -48,7 +48,7 @@ class SitePagesController < ApplicationController
   end
 
   def special_needs
-    @hs_activities = Tag.find_by_name("Special Needs").activities.approved.
+    @sn_activities = Tag.find_by_name("Special Needs").activities.approved.
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
     @textbooks = []
   end

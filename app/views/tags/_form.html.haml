@@ -1,8 +1,9 @@
-.form_group
-  = form_for(@tag) do |f|
-    .field
-      .form-group
-        = f.text_field :name, placeholder: "Name", class: 'form-control'
-        = f.text_area :description, placeholder: "Description", class: 'form-control', rows: 2
-        = f.collection_select :tag_category_id, TagCategory.all, :id, :name, {}, class: 'form-control'
-        = f.submit "Submit", class:"btn btn-primary"
+= form_with model: @tag, class: "user-edit-form" do |f|
+  = render 'shared/error_messages', object: f.object
+  = f.label :name, "Name", class: "form-label"
+  = f.text_field :name, placeholder: "Name", class: "form-textfield", maxlength: 50, required: true
+  = f.label :description, "Short description", class: "form-label"
+  = f.text_area :description, placeholder: "Description", class: "form-textarea", rows: 3, maxlength: 100, required: true
+  = f.label :tag_category, "Tag Category", class: "form-label"
+  = f.collection_select :tag_category_id, TagCategory.all, :id, :name, {}, class: "form-select"
+  = f.submit "Submit", class: "submit-button"
