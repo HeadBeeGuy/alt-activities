@@ -1,7 +1,7 @@
 .comment-section
   %ul.comment-list
     - comments.each do |comment|
-      %li.comment
+      %li.comment{"id" => comment.id}
         .commenter-info
           = link_to (image_tag "general avatar.png", size: "70x70", class: "commenter-pic"), comment.user
           %span= link_to comment.user.username, comment.user, class: "user-link"
@@ -9,6 +9,8 @@
         .comment-text= comment.content
         - if user_signed_in?
           .comment-controls
+            - if show_source
+              = link_to "(Source)", polymorphic_url(comment.commentable, anchor: comment.id), class: "comment-control-link"
             - if policy(comment).unapprove?
               = link_to t('.hide-link'), unapprove_comment_path(comment), method: :put, class: "comment-control-link"
             - if policy(comment).delete?

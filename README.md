@@ -27,7 +27,6 @@ Higher priority tasks:
 Longer-term tasks:
 
 - Redo a lot of the development seeds
-- See if links to comments can be generated with anchors on the target page
 - Make embedded resources like /users/5/comments
 - Add in a flag for "workshop" activities that premium users can create to request feedback
 - Get the site working with webhooks to allow integration with Discord and Stripe
@@ -65,9 +64,6 @@ Current bugs:
 Pages that still need to be rebuilt or need fixes in the new interface:
 
 - School level pages and others that overrun their width in IE11
-- Comments index page
-- Grammar Points page
-- Activity Themes page
 - Tag Index page
 - All Tag Category pages
 - Activity index page

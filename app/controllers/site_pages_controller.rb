@@ -8,7 +8,7 @@ class SitePagesController < ApplicationController
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
       .select(:id, :title, :excerpt)
     @comments = Comment.order(created_at: :desc).limit(5).visible
-      .select(:content, :commentable_id, :commentable_type)
+      .select(:id, :content, :commentable_id, :commentable_type)
 	end
 
   def modqueue

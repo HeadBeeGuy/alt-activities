@@ -25,6 +25,6 @@
       %li= link_to "Edit", edit_tag_path(@tag)
       %li= link_to "Delete", @tag, method: :delete, data: { confirm: "Really delete this tag?" }
 
-= render partial: 'comments/comment_list', locals: { comments: @comments }
+= render partial: 'comments/comment_list', locals: { comments: @comments, show_source: false }
 
 = render partial: 'comments/form', locals: { commentable_type: "Tag", commentable_id: @tag.id }

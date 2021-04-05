@@ -41,7 +41,7 @@
       %ul.comment-ticker
         %p.ticker-title Recent comments
         - @comments.each do |comment|
-          %li.ticker-item= link_to comment.content, comment.commentable, title: comment.content
+          %li.ticker-item= link_to comment.content, polymorphic_url(comment.commentable, anchor: comment.id), title: comment.content
   .fp-tickers
     .fp-activity-ticker
       %p.ticker-title= t('.newest-activities')
