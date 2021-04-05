@@ -26,11 +26,6 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get warm-ups page" do
-    get warmups_path
-    assert_response :success
-  end
-
   test "should get the page that displays all tags" do
     get all_tags_path
     assert_response :success

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  # May no longer be necessary - .org now completely hijacked
   # constraints(host: 'www.altopedia.org') do
   #   root to: redirect('https://www.altopedia.net'), status: :moved_permanently
   #   get '/:param', to: redirect('https://www.altopedia.net/%{param}'), status: :moved_permanently
@@ -16,19 +15,16 @@ Rails.application.routes.draw do
 	get '/jhs', to: 'site_pages#jhs'
 	get '/hs', to: 'site_pages#hs'
 	get '/special_needs', to: 'site_pages#special_needs'
-  get '/conversation', to: 'site_pages#conversation'
 	get '/grammar', to: 'site_pages#grammar'
 	get '/warmups', to: 'site_pages#warmups'
 	get '/about', to: 'site_pages#about'
   get '/contact', to: 'site_pages#contact'
   get '/resources', to: 'site_pages#resources'
-  get '/thanks', to: 'site_pages#thanks'
   get '/themes', to: 'site_pages#themes'
 	get '/modqueue', to: 'site_pages#modqueue'
 	get '/all_tags', to: 'tag_categories#index'
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
   get '/shoutbox', to: 'site_pages#shoutbox'
-  get '/discord', to: 'site_pages#render_discord'
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
   get '/contribute', to: 'site_pages#contribute'
   get '/contributors', to: 'site_pages#contributors'
@@ -82,59 +78,4 @@ Rails.application.routes.draw do
   get '/activity_links/new/:source_id', to: 'activity_links#new', as: 'new_activity_link'
   get '/activity_links/:source_id/search', to: 'activity_links#link_search', as: 'link_search'
 	
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
