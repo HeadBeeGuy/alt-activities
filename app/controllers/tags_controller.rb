@@ -11,7 +11,7 @@ class TagsController < ApplicationController
     authorize @tag
     if @tag.save
       flash[:success] = "Tag created!"
-      redirect_to all_tags_url
+      redirect_to @tag
     else
       render 'edit'
     end
@@ -45,7 +45,8 @@ class TagsController < ApplicationController
   end
   
   def index
-    @tags = Tag.all
+    @tag_categories = TagCategory.order(name: :asc).includes(:tags)
+      .order('tags.name ASC')
   end
   
   def destroy
@@ -53,7 +54,7 @@ class TagsController < ApplicationController
     authorize @tag
     @tag.destroy
     flash[:success] = "Tag destroyed!"
-    redirect_to all_tags_url
+    redirect_to tags_url
   end
   
   private

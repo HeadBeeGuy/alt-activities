@@ -61,48 +61,48 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
   test 'tags can be deleted by admins' do
     @tag = tags(:basic_tag_one)
     sign_in(@admin)
-    get all_tags_path # for some reason I have to access another page before I do the next get request
+    get tags_path # for some reason I have to access another page before I do the next get request
     get tag_path(@tag)
     assert_match @tag.name, response.body
     assert_difference('Tag.count', -1) do
       delete tag_path(@tag)
     end
-    get all_tags_path
+    get tags_path
     assert_no_match @tag.name, response.body
   end
   
   test 'non-admins cannot delete tags' do
     @tag = tags(:basic_tag_one)
     sign_in(@moderator)
-    get all_tags_path
+    get tags_path
     get tag_path(@tag)
     assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
-    get all_tags_path
+    get tags_path
     assert_match @tag.name, response.body
     delete destroy_user_session_path
     
     sign_in(@regular_user_one)
-    get all_tags_path
+    get tags_path
     get tag_path(@tag)
     assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
-    get all_tags_path
+    get tags_path
     assert_match @tag.name, response.body
     delete destroy_user_session_path
     
     sign_in(@silenced)
-    get all_tags_path
+    get tags_path
     get tag_path(@tag)
     assert_match @tag.name, response.body
     assert_no_difference 'Tag.count' do
       delete tag_path(@tag)
     end
-    get all_tags_path
+    get tags_path
     assert_match @tag.name, response.body
     delete destroy_user_session_path
   end

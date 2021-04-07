@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get '/resources', to: 'site_pages#resources'
   get '/themes', to: 'site_pages#themes'
 	get '/modqueue', to: 'site_pages#modqueue'
-	get '/all_tags', to: 'tag_categories#index'
   get '/posts/:id', to: 'front_page_posts#show', as: :posts
   get '/shoutbox', to: 'site_pages#shoutbox'
   get '/render_compact_shoutbox', to: 'site_pages#render_compact_shoutbox', as: 'fp_shoutbox'
