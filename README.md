@@ -64,7 +64,6 @@ Current bugs:
 Pages that still need to be rebuilt or need fixes in the new interface:
 
 - School level pages and others that overrun their width in IE11
-- Tag Index page
 - All Tag Category pages
 - Activity index page
 - Activity Link pages

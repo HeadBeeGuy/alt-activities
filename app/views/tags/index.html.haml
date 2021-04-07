@@ -1,5 +1,13 @@
-- provide(:title, "All tags")
+- provide(:title, t('.title'))
 
-.list-group
-  - @tags.each do |tag|
-    = link_to "#{tag.name} - #{tag.description}", tag, class: "list-group-item list-group-action-item"
+.full-tag-display
+  %h1= t('.heading')
+  %p= t('.explanation')
+  - @tag_categories.each do |category|
+    %h3= category.name
+    %ul.tag-card-list
+      - category.tags.each do |tag|
+        %li.tag-card
+          = link_to tag, title: tag.description do
+            %p.tag-card-name= tag.name
+            .tag-card-description= markdown(tag.description)

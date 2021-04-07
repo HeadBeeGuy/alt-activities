@@ -215,6 +215,10 @@ en:
       top-5-label: "Top 5 activities"
       description: "Description: %{tag_description}"
       recent-activities-heading: "Recent activities"
+    index:
+      title: "ALTopedia - Tag Listings"
+      heading: "Tag Listings"
+      explanation: "Here are all the tags on the site, sorted by category. Many activities await!"
   comments:
     comment_list:
       comment_heading: "Comments"
