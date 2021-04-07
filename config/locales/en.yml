@@ -243,8 +243,8 @@ en:
     activity_tagging_list:
       remove-tagging: "Remove any unneccessary tags by clicking on these:"
     form:
-      add-tagging: "Add another tag"
-      add-tag-button: "Add this tag"
+      add-tagging: "Add another tag to this activity"
+      add-tag-button: "Add tag"
   activity_links:
     new:
       title: "ALTopedia - Activity link"

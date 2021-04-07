@@ -45,8 +45,8 @@
   .activity-tags-display
     %ul.activity-tags-list
       - if user_signed_in? && policy(activity).update?
-        = render 'taggings/form'
         = render 'taggings/activity_tagging_list'
+        = render 'taggings/form'
       - else
         - activity.tags.each do |tag|
           %li
