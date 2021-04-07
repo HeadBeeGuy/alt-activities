@@ -1,0 +1,8 @@
+<li data-id="<%= tagging.tag.id %>">
+    <%= link_to tagging.tag.name, tagging.tag, class: "activity-tag" %>
+    <span>
+        <%= form_for( tagging, html: { method: :delete, data: {confirm: "You are about to remove this tag from the activity. Are you sure?"} }, remote: true) do |f| %>
+            <%= f.submit "x" %>
+        <% end %>
+    </span>
+</li>
