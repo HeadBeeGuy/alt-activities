@@ -29,11 +29,6 @@ gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'pg_search'
 gem 'webpacker'
 
-# someone on StackOverflow said this helped their deployment issue with autoprefixer
-# https://stackoverflow.com/a/51991302
-# may no longer be necessary?
-gem 'mini_racer'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
