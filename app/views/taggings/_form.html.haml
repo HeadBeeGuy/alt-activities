@@ -1,7 +1,8 @@
 - if user_signed_in? && policy(@activity).edit?
-  .add-tagging.mt-2{"id" => "add-tagging-activity-#{@activity.id}"}
+  .add-tagging{"id" => "add-tagging-activity-#{@activity.id}"}
     = form_for(@tagging, remote: true) do |f|
       %small= t('.add-tagging')
-      = f.collection_select :tag_id, Tag.all, :id, :name, {}, class: 'form-control'
+      -# replace the following select with tag searches select2 partial and change name to match "tagging[tag_id]"
+      = select_tag "tagging[tag_id]", option_groups_from_collection_for_select(TagCategory.all.includes(:tags), :tags, :name, :id, :name), id: "edit-tag-search-select"
       = f.hidden_field :activity_id, value: @activity.id
-      = f.submit t('.add-tag-button'), class: "btn btn-primary"
+      = f.submit t('.add-tag-button'), class: "tagging-submit-button"

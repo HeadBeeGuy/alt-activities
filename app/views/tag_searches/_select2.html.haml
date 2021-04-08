@@ -1,0 +1,2 @@
+%p Search tags
+=select_tag "tag[tag_ids][]", option_groups_from_collection_for_select(@tag_categories, :tags, :name, :id, :name), multiple: true, id: "tag-search-select"

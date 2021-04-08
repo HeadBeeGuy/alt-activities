@@ -1,1 +1,1 @@
-$('#activity-' + '<%= @tagging.activity_id %>' + '-tags').append("<span class=\"badge badge-pill badge-primary\"><%= @tagging.tag.name %></span>");
+$('.activity-tags-list').prepend("<%= j render(@tagging) %>");

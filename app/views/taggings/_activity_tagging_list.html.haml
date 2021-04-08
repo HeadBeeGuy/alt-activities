@@ -1,5 +1,6 @@
-.edit-tag-list
-  %small= t('.remove-tagging')
-  - @activity_taggings.each do |tagging|
-    = form_for( tagging, html: { method: :delete }, remote: true) do |f|
-      = f.submit "#{tagging.tag.name} (delete)", class: "btn btn-danger btn-sm badge-danger"
+- @activity_taggings.each do |tagging|
+  %li{"data-id": "#{tagging.tag.id}"}
+    = link_to tagging.tag.name, tagging.tag, class: "activity-tag"
+    %span
+      = form_for( tagging, html: { method: :delete, data: {confirm: "You are about to remove this tag from the activity. Are you sure?"} }, remote: true) do |f|
+        = f.submit "x"
