@@ -46,7 +46,7 @@ class TextbooksController < ApplicationController
 		@textbook = Textbook.find(params[:id])
 		@pages = @textbook.textbook_pages.order(page: :asc).includes(:tag)
 		if policy(@textbook).update?
-			@tags = Tag.all
+			@tags = Tag.select(:id, :name).order(name: :asc)
 		end
 	end
 
