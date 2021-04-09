@@ -110,7 +110,7 @@ class ActivitiesController < ApplicationController
   
   def index
 		@activities = Activity.approved.order(created_at: :desc)
-			.select(:name, :short_description, :id).page(params[:page])
+			.select(:name, :short_description, :id).page(params[:page]).per(50)
   end
   
 	# swiping from https://stackoverflow.com/a/49517939

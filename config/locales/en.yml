@@ -178,10 +178,9 @@ en:
       submit: "Submit Activity"
     new_activity_header: "Submit a new activity"
     index:
-      title: "ALTopedia - Activities"
-      heading: "ALTopedia activity listings"
-      index-explanation: "The most recent activities are listed first."
-      view: "View"
+      title: "ALTopedia - All Activities"
+      heading: "Activities"
+      index-explanation: "This is a listing of every activity on ALTopedia. Browse away!"
     edit:
       edit_heading: "Edit this activity"
       edit_directions_1: "When you submit your edits, the activity will be taken off the live site and placed back into the mod queue."
