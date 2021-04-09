@@ -265,4 +265,8 @@ en:
       title: "ALTopedia - Activity Links"
       heading: "Linked Activities"
       left-item-inspired-right: "inspired"
+  tag_categories:
+    show:
+      title: "ALTopedia - Tag Category: %{name}"
+      heading: "Category: %{name}"
 

@@ -1,0 +1,5 @@
+= form_with model: @tag_category, class: "user-edit-form" do |f|
+  = render 'shared/error_messages', object: f.object
+  = f.label :name, "Name", class: "form-label"
+  = f.text_field :name, class: "form-textfield", maxlength: 50, required: true
+  = f.submit "Submit", class: "submit-button"

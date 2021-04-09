@@ -7,6 +7,7 @@ class TagCategoriesController < ApplicationController
 
   def show
     @tag_category = TagCategory.find(params[:id])
+    @tags = @tag_category.tags.select(:id, :name, :description)
   end
 
   def new
@@ -30,6 +31,14 @@ class TagCategoriesController < ApplicationController
   end
 
   def update
+    @tag_category = TagCategory.new(tag_category_params)
+    authorize @tag_category
+    if @tag_category.update(tag_category_params)
+      flash[:success] = "Tag category updated!"
+      redirect_to tag_categories_url
+    else
+      render 'edit'
+    end
   end
 
   def destroy

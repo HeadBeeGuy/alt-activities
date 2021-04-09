@@ -1,8 +1,16 @@
-- provide(:title, "Show Tag Category")
+- provide(:title, t('.title', name: @tag_category.name))
 
-%h4 Category: #{@tag_category.name}
+.full-tag-display
+  %h1= t('.heading', name: @tag_category.name)
 
-%p Tags in this category:
-%ul
-- @tag_category.tags.each do |tag|
-  %li= link_to tag.name, tag
+  %ul.tag-card-list
+    - @tags.each do |tag|
+      %li.tag-card
+        = link_to tag, title: tag.description do
+          %p.tag-card-name= tag.name
+          .tag-card-description= markdown(tag.description)
+
+  - if user_signed_in? && policy(@tag_category).edit?
+    %ul.general-controls
+      %li= link_to "Edit", edit_tag_category_path(@tag_category)
+      %li= link_to "Delete", @tag_category, method: :delete, data: { confirm: "Delete this category? It's not coming back!" }
