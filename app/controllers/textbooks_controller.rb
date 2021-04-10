@@ -51,9 +51,9 @@ class TextbooksController < ApplicationController
 	end
 
 	def index
-		@es_textbooks = Textbook.ES.order(name: :asc, year_published: :desc)
-		@jhs_textbooks = Textbook.JHS.order(name: :asc, year_published: :desc)
-		@hs_textbooks = Textbook.HS.order(name: :asc, year_published: :desc)
+		@es_textbooks = Textbook.ES.order(year_published: :desc, name: :asc)
+		@jhs_textbooks = Textbook.JHS.order(year_published: :desc, name: :asc)
+		@hs_textbooks = Textbook.HS.order(year_published: :desc, name: :asc)
 	end
 
 	private
