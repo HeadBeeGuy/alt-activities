@@ -28,6 +28,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 2rem;
+  max-width: 100%; // IE11
 }
 
 .tag-card {
