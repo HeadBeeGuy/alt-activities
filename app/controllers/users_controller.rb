@@ -101,10 +101,12 @@ class UsersController < ApplicationController
    private
   
     def user_params
-      params.require(:user).permit(:username, :email, :home_country, :location, :bio)
+      params.require(:user).permit(:username, :email, :home_country, :location, 
+				:bio, :teaching_history, :offsite_link, :initial_premium, :display_favorites)
     end
 
 		def user_params_for_edit
-      params.require(:user).permit(:home_country, :location, :bio)
+      params.require(:user).permit(:home_country, :location, :bio, :teaching_history,
+				:display_favorites)
     end
 end

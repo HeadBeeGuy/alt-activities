@@ -16,7 +16,7 @@ basic_activity_two:
   status: :approved
 
 roger_activity:
-  name: Regular Roger's activity
+  name: Regular Roger activity
   short_description: This is a short description
   long_description: I only exist to ensure that nobody unauthorized can edit this activity
   time_estimate: 7 minutes
@@ -24,8 +24,8 @@ roger_activity:
   status: :approved
   
 rebecca_activity:
-  name: Regular Rebecca's activity
-  short_description: This is a short description
+  name: Regular Rebecca activity
+  short_description: Stop putting apostrophes in these, ya goof ya
   long_description: I only exist to ensure that nobody unauthorized can edit this activity
   time_estimate: 7 minutes
   user: regular_user_two

@@ -11,10 +11,18 @@
       - elsif @user.moderator?
         %span.profile-user-status
           %span.moderator-text Moderator
+      - if @user.initial_premium?
+        %span.profile-user-status
+          %span.supporter-text Supporter
       %span.profile-info-label= (t'.home-country')
       %span.profile-info-text= @user.home_country
       %span.profile-info-label= (t'.location')
       %span.profile-info-text= @user.location
+      %span.profile-info-label= (t'.teaching-history')
+      %span.profile-info-text= @user.teaching_history
+      - unless @user.offsite_link.nil?
+        %span.profile-info-label= (t'.offsite-link')
+        %span.profile-info-text= @user.offsite_link
       - if user_signed_in? && current_user.admin?
         - if @user.sign_in_count < 1
           %span.profile-info-label Account unactivated
@@ -56,7 +64,7 @@
           - @activities.each do |activity|
             %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
         = paginate @activities
-      - if user_signed_in? && ( current_user == @user || current_user.admin? ) && @upvotes.any?
+      - if ((user_signed_in? && ( current_user == @user || current_user.admin? )) || @user.display_favorites? ) && @upvotes.any?
         %span.profile-info-label= t('.upvotes')
         %ul.activity-tracker
           - @upvotes.each do |upvote|

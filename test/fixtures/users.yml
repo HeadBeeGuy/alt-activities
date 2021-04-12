@@ -8,6 +8,9 @@ regular_user_one:
   bio: Just a regular user, doing regular stuff.
   role: :normal
   trusted: :false
+  teaching_history: A school or two.
+  initial_premium: :false
+  display_favorites: :false
   confirmed_at: <%= DateTime.now %>
 
 regular_user_two:
@@ -16,6 +19,9 @@ regular_user_two:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :normal
   trusted: :false
+  teaching_history: A school or two.
+  initial_premium: :false
+  display_favorites: :false
   confirmed_at: <%= DateTime.now %>
   
 moderator_user_one:
@@ -24,6 +30,9 @@ moderator_user_one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :moderator
   trusted: :true
+  teaching_history: A school or two.
+  initial_premium: :true
+  display_favorites: :false
   confirmed_at: <%= DateTime.now %>
   
 admin_user_one:
@@ -32,6 +41,9 @@ admin_user_one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :admin
   trusted: :true
+  teaching_history: A school or two.
+  initial_premium: :true
+  display_favorites: :false
   confirmed_at: <%= DateTime.now %>
   
 silenced_user_one:
@@ -40,6 +52,9 @@ silenced_user_one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :silenced
   trusted: :false
+  teaching_history: Some schools.
+  initial_premium: :false
+  display_favorites: :false
   confirmed_at: <%= DateTime.now %>
 
 job_promoter:
@@ -47,6 +62,9 @@ job_promoter:
   email: i_got_da_jobz@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'badpassword') %>
   role: :job_poster
+  teaching_history: A school or two.
+  initial_premium: :false
+  display_favorites: :true
   confirmed_at: <%= DateTime.now %>
   
 trusted_user:
@@ -58,4 +76,7 @@ trusted_user:
   bio: I am extremely trustworthy.
   role: :normal
   trusted: :true
+  teaching_history: A school or two.
+  initial_premium: :true
+  display_favorites: :true
   confirmed_at: <%= DateTime.now %>

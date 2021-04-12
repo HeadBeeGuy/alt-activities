@@ -12,7 +12,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :home_country, length: { maximum: 30 }
 	validates :location, length: { maximum: 30 }
-	validates :bio, length: { maximum: 200 }
+	validates :bio, length: { maximum: 500 }
+  validates :teaching_history, length: { maximum: 300 }
+  validates :offsite_link, length: { maximum: 100 }
   
   has_many :activities, dependent: :destroy
 	has_many :upvotes
@@ -49,7 +51,6 @@ class User < ApplicationRecord
     save
   end
 
-  # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
   def to_param
     "#{id}-#{self.username.parameterize.truncate(80, '')}"
   end

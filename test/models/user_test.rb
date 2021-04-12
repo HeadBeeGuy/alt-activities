@@ -36,8 +36,8 @@ class UserTest < ActiveSupport::TestCase
 		assert_not @user.valid?
 	end
 
-	test "bio can't be longer than 200 characters" do
-		@user.bio = "a" * 201
+	test "bio can't be longer than 500 characters" do
+		@user.bio = "a" * 501
 		assert_not @user.valid?
 	end
 
@@ -55,6 +55,16 @@ class UserTest < ActiveSupport::TestCase
 		@user.username = @second_user.username
 		assert_not @user.valid?
 		@user.username = @second_user.username.upcase
+		assert_not @user.valid?
+	end
+
+	test "teaching history can't be more than 300 characters" do
+		@user.teaching_history = "t" * 301
+		assert_not @user.valid?
+	end
+
+	test "offsite link can't be more than 100 characters" do
+		@user.offsite_link = "h" * 101
 		assert_not @user.valid?
 	end
 end

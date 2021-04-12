@@ -57,7 +57,6 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # this won't work in tag_test.rb! Do I have to do this in integration tests?
   test 'tags can be deleted by admins' do
     @tag = tags(:basic_tag_one)
     sign_in(@admin)
@@ -207,30 +206,6 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
     delete destroy_user_session_path
 	end
 	
-	test "a user can successfully edit their information" do
-		new_home_country = "Pottsylvania"
-		new_location = "Frostbite Falls"
-		new_bio = "I am not suspicious."
-		sign_in(@regular_user_one)
-		get root_path
-		get user_path(@regular_user_one)
-		assert_match @regular_user_one.username, response.body
-		assert_match @regular_user_one.home_country, response.body
-		get edit_user_path(@regular_user_one)
-		patch user_path, params: { user: { home_country: new_home_country,
-															location: new_location,
-															bio: new_bio }}
-		assert_redirected_to user_path(@regular_user_one)
-		assert_not flash.empty?
-		follow_redirect!
-		get user_path(@regular_user_one)
-
-		assert_match @regular_user_one.username, response.body
-		assert_match new_home_country, response.body
-		assert_match new_location, response.body
-		assert_match new_bio, response.body
-	end
-
 	test "an admin can edit a user's username and e-mail" do
 		new_username = "Edited Eddy"
 		new_email = "edders@example.com"
@@ -406,5 +381,28 @@ class AccessLevelsTest < ActionDispatch::IntegrationTest
 		assert @trusted.trusted?
 		put untrust_user_path(@trusted)
 		assert @trusted.trusted?
+	end
+
+	test "a normal user can't set their own initial premium flag" do
+		sign_in(@regular_user_one)
+		assert @regular_user_one.normal?
+		assert_not @regular_user_one.initial_premium?
+
+		get user_path(@regular_user_one)
+		patch user_path, params: { user: { initial_premium: true } }
+
+		@regular_user_one.reload
+		assert_not @regular_user_one.initial_premium?
+	end
+
+	test "an admin can set a user's initial premium flag" do
+		assert_not @regular_user_two.initial_premium?
+
+		sign_in(@admin)
+		get user_path(@regular_user_two)
+		patch user_path, params: { user: { initial_premium: :true }}
+
+		@regular_user_two.reload
+		assert @regular_user_two.initial_premium?
 	end
 end
