@@ -17,7 +17,6 @@ Once everything is working, the web server and db containers can be started up w
 
 Higher priority tasks:
 
-- Add a longer description field to each Tag for much more information about each. Grammar tags should have example sentences, Japanese terms, and possibly off-site links, a la Englipedia. This should help users get the gist of each grammar point more easily, provide more things for the built-in search to catch, and provide more fodder for search engines. This will be relatively easy to accomplish technically, but will require a lot of time to populate on the live site.
 - Add a description field for Tag Categories to guide people on how to choose them when submitting an activity. For example, there probably shouldn't be more than 3 grammar point tags for a given activity.
 
 ---

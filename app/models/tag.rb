@@ -12,9 +12,10 @@ class Tag < ApplicationRecord
   # these are the only validations necessary from here on out
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :description, presence: true, length: { maximum: 100 }
+  validates :explanation, length: { maximum: 2000 }
 
   include PgSearch::Model
-  pg_search_scope :text_search, against: [:name, :description],
+  pg_search_scope :text_search, against: [:name, :description, :explanation],
     using: {
       tsearch: { dictionary: 'english' },
       trigram: {
@@ -24,13 +25,11 @@ class Tag < ApplicationRecord
     },
     ranked_by: ":trigram"
   
-  # Adding this because the activity creation form uses collection_check_boxes to display a checkbox for each tag in each category
-  # It needs a symbol to pass in to generate the "label"
+  # used in pages like the Tag Search page in form labels
   def name_for_lists
     "#{name}###{description}"
   end
 
-  # swiped wholesale from https://old.reddit.com/r/ruby/comments/9qpbok/custom_urls_in_ruby_on_rails_how_you_can_use/e8azvb9/
   def to_param
     "#{id}-#{self.name.parameterize.truncate(80, '')}"
   end

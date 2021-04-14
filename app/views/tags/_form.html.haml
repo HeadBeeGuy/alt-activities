@@ -4,6 +4,9 @@
   = f.text_field :name, placeholder: "Name", class: "form-textfield", maxlength: 50, required: true
   = f.label :description, "Short description", class: "form-label"
   = f.text_area :description, placeholder: "Description", class: "form-textarea", rows: 3, maxlength: 100, required: true
+  = f.label :explanation, "Explanation", class: "form-label"
+  %small= link_to "Markdown reference", "https://commonmark.org/help/"
+  = f.text_area :explanation, class: "form-textarea", rows: 5, maxlength: 2000
   = f.label :tag_category, "Tag Category", class: "form-label"
   = f.collection_select :tag_category_id, TagCategory.all, :id, :name, {}, class: "form-select"
   = f.submit "Submit", class: "submit-button"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_11_083439) do
+ActiveRecord::Schema.define(version: 2021_04_14_004445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_083439) do
     t.datetime "updated_at", null: false
     t.integer "tag_category_id"
     t.string "name"
+    t.text "explanation"
     t.index ["short_name"], name: "index_tags_on_short_name"
   end
 

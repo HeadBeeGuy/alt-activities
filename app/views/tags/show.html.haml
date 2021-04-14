@@ -9,7 +9,9 @@
 
 .full-tag-display 
   %h1= @tag.name
-  %p= markdown( @tag.description )
+  .full-tag-description= markdown(@tag.description)
+  - unless @tag.explanation.nil?
+    .full-tag-explanation= markdown(@tag.explanation)
 
   - if @activities.any?
     %ul.activity-card-list

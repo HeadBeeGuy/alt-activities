@@ -27,5 +27,10 @@ class TagTest < ActiveSupport::TestCase
     @tag.description = "a" * 101
     assert_not @tag.valid?
   end
+
+  test "a tag's explanation cannot be over 2000 characters" do
+    @tag.explanation = "e" * 2001
+    assert_not @tag.valid?
+  end
   
 end
