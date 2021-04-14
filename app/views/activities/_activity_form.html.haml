@@ -16,16 +16,16 @@
     %ul.activity-text-fields
       %li.form-input-item
         = f.label :name, t('.activity_title'), class: "form-label"
-        = f.text_field :name, class: "form-textfield", maxlength: 50
+        = f.text_field :name, class: "form-textfield", maxlength: 50, required: true
       %li.form-input-item
         = f.label :short_description, t('.short_description'), class: "form-label"
-        = f.text_field :short_description, class: "form-textfield", maxlength: 200
+        = f.text_field :short_description, class: "form-textfield", maxlength: 200, required: true
       %li.form-input-item
         = f.label :time_estimate, t('.time_estimate'), class: "form-label"
         = f.text_field :time_estimate, class: "form-textfield", maxlength: 200
       %li.form-input-item
         = f.label :long_description, t('.long_description'), class: "form-label"
-        = f.text_area :long_description, class: "form-textarea", rows: 12, maxlength: 6000
+        = f.text_area :long_description, class: "form-textarea", rows: 12, maxlength: 6000, required: true
     %h4= t('.tag_heading')
     %p= t('.tag_directions_1')
     .activity-form-tag-picker
