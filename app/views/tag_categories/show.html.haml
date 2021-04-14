@@ -11,6 +11,9 @@
           .tag-card-description= markdown(tag.description)
 
   - if user_signed_in? && policy(@tag_category).edit?
+    %p Instructions: 
+    .full-category-instructions= @tag_category.instruction
+    %p Suggested maximum: #{@tag_category.suggested_max}
     %ul.general-controls
       %li= link_to "Edit", edit_tag_category_path(@tag_category)
       %li= link_to "Delete", @tag_category, method: :delete, data: { confirm: "Delete this category? It's not coming back!" }

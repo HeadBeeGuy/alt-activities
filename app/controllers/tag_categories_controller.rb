@@ -2,7 +2,7 @@ class TagCategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @tag_categories = TagCategory.all
+    @tag_categories = TagCategory.order(name: :asc)
   end
 
   def show
@@ -31,7 +31,7 @@ class TagCategoriesController < ApplicationController
   end
 
   def update
-    @tag_category = TagCategory.new(tag_category_params)
+    @tag_category = TagCategory.find(params[:id])
     authorize @tag_category
     if @tag_category.update(tag_category_params)
       flash[:success] = "Tag category updated!"
@@ -52,6 +52,6 @@ class TagCategoriesController < ApplicationController
   private
     
     def tag_category_params
-      params.require(:tag_category).permit(:name)
+      params.require(:tag_category).permit(:name, :instruction, :suggested_max)
     end
 end

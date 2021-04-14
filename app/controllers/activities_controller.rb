@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     authorize @activity
-    @tag_categories = TagCategory.includes(:tags).order("tags.name ASC")
+    @tag_categories = TagCategory.order(name: :asc).includes(:tags).order("tags.name ASC")
   end
   
   def create

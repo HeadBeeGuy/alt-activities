@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_004445) do
+ActiveRecord::Schema.define(version: 2021_04_14_053801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_004445) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "instruction"
+    t.integer "suggested_max", default: 0
   end
 
   create_table "taggings", force: :cascade do |t|

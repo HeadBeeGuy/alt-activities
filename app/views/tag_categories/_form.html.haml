@@ -2,4 +2,8 @@
   = render 'shared/error_messages', object: f.object
   = f.label :name, "Name", class: "form-label"
   = f.text_field :name, class: "form-textfield", maxlength: 50, required: true
+  = f.label :instruction, "Instruction for the Activity form", class: "form-label"
+  = f.text_area :instruction, class: "form-textarea", maxlength: 500, rows: 4
+  = f.label :suggested_max, "Suggested Max number of tags per activity", class: "form-label"
+  = f.number_field :suggested_max, class: "form-textarea", within: 0..20
   = f.submit "Submit", class: "submit-button"

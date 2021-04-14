@@ -2,6 +2,10 @@
 
 tag_category_one:
   name: Test Tag Category 1
+  instruction: Stay calm. Just hold a bunch of tags.
+  suggested_max: 5
 
 grammar_category:
   name: Grammar points
+  instruction: Select 3, at most. Otherwise this activity pops up in every search.
+  suggested_max: 3

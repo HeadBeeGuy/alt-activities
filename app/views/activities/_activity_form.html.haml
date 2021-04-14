@@ -28,13 +28,14 @@
         = f.text_area :long_description, class: "form-textarea", rows: 12, maxlength: 6000
     %h4= t('.tag_heading')
     %p= t('.tag_directions_1')
-    %p= t('.tag_directions_2')
     .activity-form-tag-picker
       =select_tag "activity[tag_ids][]", option_groups_from_collection_for_select(@tag_categories, :tags, :name, :id, :name), multiple: true, id: "tag-search-select"
       %ul.activity-form-tag-categories
         - @tag_categories.each do |category|
-          %li.form-tag-category
+          %li.form-tag-category{ "suggested_max" => category.suggested_max }
             %p.form-tag-category-name= category.name
+            - unless category.instruction.nil?
+              .form-tag-category-instructions= markdown(category.instruction)
             %ul.form-tag-list{data:{ catid: "#{category.id}"}}
               = f.collection_check_boxes(:tag_ids, category.tags, :id, :name_for_lists) do |tag|
                 %li.form-tag
