@@ -17,7 +17,9 @@ Once everything is working, the web server and db containers can be started up w
 
 Higher priority tasks:
 
-- Add a description field for Tag Categories to guide people on how to choose them when submitting an activity. For example, there probably shouldn't be more than 3 grammar point tags for a given activity.
+- Add in some JavaScript to nudge users not to pick more than the suggested maximum Tags in each Tag Category on the Activity form.
+- Add in the Activity Workshop feature.
+- Allow premium members to set an avatar. Make a default avatar for regular users.
 
 ---
 
@@ -25,7 +27,6 @@ Longer-term tasks:
 
 - Redo a lot of the development seeds
 - Make embedded resources like /users/5/comments
-- Add in a flag for "workshop" activities that premium users can create to request feedback
 - Get the site working with webhooks to allow integration with Discord and Stripe
 - Add in a purchasing system for premium accounts. Users will be able to purchase either subscriptions or non-recurring memberships that will apply a certain period of premium membership, after which their accounts will revert to regular accounts.
 - Allow activities to link to specific textbook pages
@@ -49,15 +50,18 @@ Lower-priority and smaller tasks:
 Pages to add or revise:
 
 - A section for what to do during downtime at school - Japanese study, online study programs, programming tutorials, and so on.
+- Mobile breakpoints could use revising. Maybe two steps where one removes padding on the side of each page, and then another which switches to the mobile layout. Right now lower-resolution laptop screens trigger the mobile layout.
 
 ---
 
 Current bugs:
  
 - If a user submits an activity that fails validation (like a text field being too long) and they attached files, it generates a server error instead of returning them to the form with an error message display.
+- IE11: The "generic" page overruns the right margin, as well as Resources and some others.
 
 ---
 
 Pages that still need to be rebuilt or need fixes in the new interface:
 
 - Activity Link pages
+- User index page
