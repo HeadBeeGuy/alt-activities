@@ -5,7 +5,7 @@ class FrontPagePost < ApplicationRecord
 	validates :excerpt, length: { maximum: 1000 }
 	validates :content, presence: true, length: { maximum: 15000 }
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   
   def to_param
     "#{id}-#{self.title.parameterize.truncate(80, '')}"

@@ -1,7 +1,7 @@
 class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :activities, through: :taggings
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :textbook_pages, dependent: :destroy
   belongs_to :tag_category
   
