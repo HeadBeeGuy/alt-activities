@@ -21,6 +21,15 @@
             %p.activity-card-name= activity.name
             %p.activity-card-description= activity.short_description
     = paginate @activities
+
+  - if @top5.any?
+    %h3= t('.top-5-label')
+    %ul.activity-card-list
+      - @top5.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
   
   - if user_signed_in? && policy(@tag).edit?
     %ul.general-controls
