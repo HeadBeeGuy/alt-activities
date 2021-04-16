@@ -56,8 +56,12 @@
             %li= link_to "Delete account", @user, method: :delete, data: { confirm: "Delete this account and all of its activities?"}, class: "user-control"
     .user-profile-secondary-info
       .user-bio
-        %span.profile-info-label= t('.bio')
-        %p= @user.bio
+        - unless @user.bio.nil?
+          %span.profile-info-label= t('.bio')
+          - if @user.initial_premium?
+            = markdown(@user.bio, level: :permissive)
+          - else
+            = markdown(@user.bio)
       - if @user.activities.any?
         %span.profile-info-label= t('.activity-list')
         %ul.activity-tracker

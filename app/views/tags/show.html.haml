@@ -11,7 +11,7 @@
   %h1= @tag.name
   .full-tag-description= markdown(@tag.description)
   - unless @tag.explanation.nil?
-    .full-tag-explanation= markdown(@tag.explanation)
+    .full-tag-explanation= markdown(@tag.explanation, level: :image_and_video)
 
   - if @activities.any?
     %ul.activity-card-list

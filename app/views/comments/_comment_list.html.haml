@@ -6,7 +6,10 @@
           = link_to (image_tag "general avatar.png", size: "70x70", class: "commenter-pic"), comment.user
           %span= link_to comment.user.username, comment.user, class: "user-link"
           %span= l(comment.created_at, format: :quite_short)
-        .comment-text= comment.content
+        - if comment.user.initial_premium?
+          .comment-text= markdown(comment.content, level: :permissive)
+        - else
+          .comment-text= markdown(comment.content)
         - if user_signed_in?
           .comment-controls
             - if show_source
