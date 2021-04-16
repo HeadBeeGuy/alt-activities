@@ -19,7 +19,6 @@ Higher priority tasks:
 
 - Add in some JavaScript to nudge users not to pick more than the suggested maximum Tags in each Tag Category on the Activity form.
 - Add in the Activity Workshop feature.
-- Allow premium members to set an avatar. Make a default avatar for regular users.
 
 ---
 

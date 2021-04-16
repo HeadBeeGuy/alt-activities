@@ -1,0 +1,9 @@
+- display_size = "70x70"
+- if size == "100"
+  - display_size = "100x100"
+- if user.avatar.attached?
+  = image_tag user.avatar, size: display_size, class: "user-avatar-image"
+- elsif user.initial_premium?
+  = image_tag "avatars/supporter.png", size: display_size, class: "user-avatar-image"
+- else
+  = image_tag "avatars/regular.png", size: display_size, class: "user-avatar-image"

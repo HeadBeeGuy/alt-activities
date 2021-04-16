@@ -20,6 +20,11 @@ class User < ApplicationRecord
 	has_many :upvotes
   has_many :comments, dependent: :destroy
   
+  has_one_attached :avatar
+  validates :avatar, content_type: [ 'image/png', 'image/gif', 'image/jpg', 'image/jpeg'],
+    dimension: { height: { max: 100}, width: { max: 100 } , message: 'is larger than 100x100 pixels.' },
+    size: { less_than: 1.megabytes, message: 'is not smaller than 1 megabyte.' }
+  
   enum role: [:silenced, :normal, :moderator, :admin, :job_poster]
   
   # making a "login" virtual attribute, as per Devise wiki: 

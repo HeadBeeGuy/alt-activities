@@ -102,7 +102,8 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:username, :email, :home_country, :location, 
-				:bio, :teaching_history, :offsite_link, :initial_premium, :display_favorites)
+				:bio, :teaching_history, :offsite_link, :initial_premium, :display_favorites,
+				:avatar)
     end
 
 		def user_params_normal
@@ -112,6 +113,6 @@ class UsersController < ApplicationController
 
 		def user_params_premium
       params.require(:user).permit(:home_country, :location, :bio, :teaching_history,
-				:display_favorites, :offsite_link)
+				:display_favorites, :offsite_link, :avatar)
     end
 end

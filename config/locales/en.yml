@@ -64,6 +64,8 @@ en:
       location: "Location"
       teaching-history: "Teaching history (school levels, locations, etc)"
       bio: "Your bio (teaching philosophy, goals, hobbies, etc)"
+      avatar: "Your avatar (max 100 pixels by 100 pixels)"
+      avatar-callout: "Supporters of the site can upload an avatar!"
       offsite-link: "Personal link (web site, Youtube channel, Instagram, etc)"
     index:
       title: "ALTopedia - Contributors"

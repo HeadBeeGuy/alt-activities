@@ -19,6 +19,10 @@
     = f.text_area :teaching_history, class: 'form-textarea', maxlength: 300, rows: 2
     = f.label :bio, t('.bio'), class: "form-label"
     = f.text_area :bio, class: 'form-textarea', maxlength: 500, rows: 6
+    - if !current_user.initial_premium?
+      %small= t('.avatar-callout')
+    = f.label :avatar, t('.avatar'), class: "form-label"
+    = f.file_field :avatar, disabled: !(@user.initial_premium? || current_user.admin? )
     %ul.user-preferences
       %li.user-preference
         = f.check_box :display_favorites, class: "preference-checkbox"

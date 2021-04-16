@@ -29,6 +29,9 @@ gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'pg_search'
 gem 'webpacker'
 
+gem 'active_storage_validations'
+gem 'mini_magick', '>= 4.9.5'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
