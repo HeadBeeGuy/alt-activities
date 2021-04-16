@@ -38,7 +38,7 @@ class FrontPagePostsController < ApplicationController
 		@front_page_post = FrontPagePost.find(params[:id])
     @comment = Comment.new
     @comments = @front_page_post.comments.visible.page(params[:page])
-      .includes(:user)
+      .includes(:user).order(created_at: :asc)
 	end
 
 	def index

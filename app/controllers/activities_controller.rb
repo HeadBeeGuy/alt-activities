@@ -73,7 +73,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     authorize @activity
-    @comments = @activity.comments.visible.order(created_at: :desc)
+    @comments = @activity.comments.visible.order(created_at: :asc)
       .includes(:user).page(params[:page])
     @comment = Comment.new
     @tagging = Tagging.new

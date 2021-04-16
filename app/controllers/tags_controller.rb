@@ -41,7 +41,7 @@ class TagsController < ApplicationController
 		@top5 = @tag.activities.approved.limit(5).select(:id, :name, :upvote_count, :short_description)
 			.order(upvote_count: :desc)
     @comment = Comment.new
-    @comments = @tag.comments.visible.page(params[:page]).includes(:user)
+    @comments = @tag.comments.visible.page(params[:page]).includes(:user).order(created_at: :asc)
   end
   
   def index
