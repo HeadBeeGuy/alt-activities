@@ -29,8 +29,7 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find(params[:id])
     authorize @activity
-    @tag_categories = TagCategory.includes(:tags).order("tags.name ASC")
-    @tags = Tag.all
+    @tag_categories = TagCategory.order(name: :asc).includes(:tags).order("tags.name ASC")
   end
   
   def update
