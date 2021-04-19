@@ -53,23 +53,6 @@ class SitePagesController < ApplicationController
     @textbooks = []
   end
 
-	def conversation
-    @all_activities = Tag.find_by_name("Conversation").activities.order(created_at: :desc)
-			.select(:id, :name, :short_description).page(params[:page]).where(status: :approved)
-    @top10 = Tag.find_by_name("Conversation").activities.order(upvote_count: :desc)
-      .select(:id, :name, :upvote_count, :short_description).approved.limit(10)
-    @textbooks = Textbook.Conversation.select(:id, :name, :year_published).order(name: :asc, year_published: :desc)
-  end
-
-	def warmups
-    @top10_es = Activity.find_with_all_tags([
-      Tag.find_by_name("Elementary School").id, Tag.find_by_name("Warm-up").id], 10)
-    @top10_jhs = Activity.find_with_all_tags([
-      Tag.find_by_name("Junior High School").id, Tag.find_by_name("Warm-up").id], 10)
-    @all_warmups = Tag.find_by_name("Warm-up").activities.order(upvote_count: :desc)
-      .select(:id, :name, :short_description).where(status: :approved).page(params[:page])
-  end
-
   def grammar
 		@tags = TagCategory.find_by_name("Grammar points").tags.select(:id, :name, :description)
 		  .order(name: :asc)
@@ -83,14 +66,12 @@ class SitePagesController < ApplicationController
   end
 
   def contributors
-    @top6= User.select(:id, :username, :activity_count, :home_country, :location, :bio, :trusted)
+    @top6= User.select(:id, :username, :activity_count, :home_country, :location, 
+      :initial_premium, :trusted)
       .where(trusted: :true).order(activity_count: :desc).limit(6)
   end
 
   def render_compact_shoutbox
-    # JavaScript only at the moment. Maybe at some point I could render the
-    # front page again, although unless JavaScript is enabled, I don't know how
-    # the user will be able to use iShoutbox
     respond_to do |format|
       format.js
     end

@@ -3,7 +3,7 @@
     - comments.each do |comment|
       %li.comment{"id" => comment.id}
         .commenter-info
-          = render partial: "users/avatar", locals: { user: comment.user, size: "70" }
+          = link_to (render partial: "users/avatar", locals: { user: comment.user, size: "70" }), comment.user
           -# = link_to (image_tag "general avatar.png", size: "70x70", class: "commenter-pic"), comment.user
           %span= link_to comment.user.username, comment.user, class: "user-link"
           %span= l(comment.created_at, format: :quite_short)
