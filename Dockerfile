@@ -1,9 +1,11 @@
-FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y postgresql-client
+FROM ruby:2.7-slim-buster
+RUN apt-get update -qq && apt-get install -y postgresql-client \
+    libpq-dev \
+    curl \
+    build-essential
 RUN mkdir /alt-activities
 WORKDIR /alt-activities
-COPY Gemfile /alt-activities/Gemfile
-COPY Gemfile.lock /alt-activities/Gemfile.lock
+COPY Gemfile Gemfile.lock /alt-activities/
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 COPY . /alt-activities
 

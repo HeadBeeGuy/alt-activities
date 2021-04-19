@@ -1,4 +1,11 @@
 .dockerignore
 .git
 logs/
-tmp/
+/log/
+/tmp/
+
+/storage/
+.elasticbeanstalk/
+.ebextensions/
+/lib/seeds/englipedia
+/yarn-error.log
