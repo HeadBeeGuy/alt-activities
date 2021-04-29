@@ -4,7 +4,7 @@
   %h2 News Posts
   - @front_page_posts.each do |post|
     .news-card
-      = link_to post do
+      = link_to posts_path(post) do
         %p.news-headline= post.title
         %p.news-excerpt= post.excerpt
         %p.read-more-link= l(post.created_at, format: :quite_short)
