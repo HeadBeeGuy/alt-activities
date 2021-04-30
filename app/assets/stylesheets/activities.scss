@@ -436,6 +436,17 @@
   transition: 300ms ease;
 }
 
+.danger-list {
+  background-color: $warning;
+  padding: 10px;
+}
+
+#grammar-tags-notice {
+  font-size: 1.2rem;
+  background-color: $warning;
+  padding: 10px;
+}
+
 .activity-submit-button {
   text-align: center;
   padding: 1rem 1.3rem;
