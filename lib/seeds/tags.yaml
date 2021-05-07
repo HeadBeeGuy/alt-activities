@@ -46,7 +46,7 @@ tag_category_2:
 tag_category_3:
   name: Grammar points
   instruction: What grammar points is this activity specifically designed to practice? If it's more than three, please consider choosing the "Flexible" tag instead.
-  suggested_max: 2
+  suggested_max: 3
   tags:
     tag_1:
       name: Comparative
@@ -212,6 +212,8 @@ tag_category_8:
       description: Activity applies to Christmas.
 tag_category_9:
   name: Skills Development
+  instruction: This category might stick around, or it might not.
+  suggested_max: 0
   tags:
     tag_1:
       name: Presentation
@@ -236,6 +238,8 @@ tag_category_9:
       description: Develops students creative skills.
 tag_category_10:
   name: Themes
+  instruction: Pick as many as you want on this one!
+  suggested_max: 0
   tags:
     tag_1:
       name: Food

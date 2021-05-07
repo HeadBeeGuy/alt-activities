@@ -10,7 +10,9 @@ if Rails.env.development?
   tag_file = YAML.load_file('lib/seeds/tags.yaml')
 
   for current_category in 1..tag_file.length
-    TagCategory.create!(name: tag_file["tag_category_#{current_category}"]["name"])
+    TagCategory.create!(name: tag_file["tag_category_#{current_category}"]["name"],
+                        instruction: tag_file["tag_category_#{current_category}"]["instruction"],
+                        suggested_max: tag_file["tag_category_#{current_category}"]["suggested_max"].to_i)
     for current_tag in 1..tag_file["tag_category_#{current_category}"]["tags"].length
       Tag.create!(name: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["name"],
                   description: tag_file["tag_category_#{current_category}"]["tags"]["tag_#{current_tag}"]["description"],

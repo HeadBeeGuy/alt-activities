@@ -17,7 +17,6 @@ Once everything is working, the web server and db containers can be started up w
 
 Higher priority tasks:
 
-- Add in some JavaScript to nudge users not to pick more than the suggested maximum Tags in each Tag Category on the Activity form.
 - Add in the Activity Workshop feature.
 
 ---
@@ -55,7 +54,6 @@ Pages to add or revise:
 Current bugs:
  
 - If a user submits an activity that fails validation (like a text field being too long) and they attached files, it generates a server error instead of returning them to the form with an error message display.
-- IE11: The "generic" page overruns the right margin, as well as Resources and some others.
 
 ---
 
