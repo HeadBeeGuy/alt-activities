@@ -437,14 +437,17 @@
 }
 
 .danger-list {
-  background-color: $warning;
-  padding: 10px;
+  background-color: $alert;
+  border-radius: 0.3rem;
+  transition-duration: 0.5s;
 }
 
 #grammar-tags-notice {
   font-size: 1.2rem;
-  background-color: $warning;
+  background-color: $alert;
   padding: 10px;
+  border-radius: 0.3rem;
+  transition-duration: 0.5s;
 }
 
 .activity-submit-button {
