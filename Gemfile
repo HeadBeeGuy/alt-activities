@@ -4,7 +4,7 @@ ruby '~> 2.7.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.3.1'
+gem 'rails', '6.1.3.2'
 gem 'railties'
 gem 'puma', '>= 4.3.5'
 # gem 'bootsnap'
