@@ -48,4 +48,12 @@ class ActivityPolicy < ApplicationPolicy
   def verify_edits?
     user and (user.admin? or user.moderator?)
   end
+
+  def start_workshop?
+    user.admin? or (user.activities.include?(activity) and user.initial_premium?)
+  end
+
+  def end_workshop?
+    user.admin? or (user.activities.include?(activity) and user.initial_premium?)
+  end
 end

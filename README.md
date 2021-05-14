@@ -17,20 +17,19 @@ Once everything is working, the web server and db containers can be started up w
 
 Higher priority tasks:
 
-- Add in the Activity Workshop feature.
+- De-emphasize the older versions of textbooks when they don't seem to be in use any more
+- Get the site working with webhooks to allow integration with Discord and Stripe
+- Add in a purchasing system for premium accounts. Users will be able to purchase either subscriptions or non-recurring memberships that will apply a certain period of premium membership, after which their accounts will revert to regular accounts.
+- Allow activities to link to specific textbook pages
 
 ---
 
 Longer-term tasks:
 
 - Make embedded resources like /users/5/comments
-- Get the site working with webhooks to allow integration with Discord and Stripe
-- Add in a purchasing system for premium accounts. Users will be able to purchase either subscriptions or non-recurring memberships that will apply a certain period of premium membership, after which their accounts will revert to regular accounts.
-- Allow activities to link to specific textbook pages
 - Switch permission management from Pundit to Cancancan. This will make the code in the controllers simpler since Cancancan allows standard controller methods to automatically load data for the current user given their permission level. This will likely involve rewriting a lot of integration tests since permission errors raise an exception instead of quietly failing.
 - See if it's feasible to make a built-in chat system since Shoutbox is apparently breaking on a lot of browsers
 - See what needs to be added for accessibility (screen readers and so on)
-- De-emphasize the older versions of textbooks when they don't seem to be in use any more
 - Scan all incoming files for viruses and warn moderators about them
 - Look into localizing model data as well (tag data and activity text)
 - Parse user-submitted text more thoroughly for HTML or other hinky stuff

@@ -111,6 +111,26 @@ class ActivitiesController < ApplicationController
 		@activities = Activity.approved.order(created_at: :desc)
 			.select(:name, :short_description, :id).page(params[:page]).per(50)
   end
+
+  def start_workshop
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    unless @activity.workshop?
+      @activity.update(workshop: :true)
+      flash[:success] = "This activity is now in workshop mode!"
+      redirect_to @activity
+    end
+  end
+
+  def end_workshop
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    if @activity.workshop?
+      @activity.update(workshop: :false)
+      flash[:success] = "Workshop mode is now switched off for this activity."
+      redirect_to @activity
+    end
+  end
   
 	# swiping from https://stackoverflow.com/a/49517939
 	# and https://stackoverflow.com/a/49635423

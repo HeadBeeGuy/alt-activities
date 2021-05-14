@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 			put :approve
 			put :unapprove
       put :verify_edits
+      put :start_workshop
+      put :end_workshop
 			delete :delete_attached_document
 		end
 	end

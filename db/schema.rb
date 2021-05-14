@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_053801) do
+ActiveRecord::Schema.define(version: 2021_05_07_045034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_053801) do
     t.integer "status", default: 0
     t.integer "upvote_count", default: 0
     t.boolean "checked", default: true
+    t.boolean "workshop", default: false
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 

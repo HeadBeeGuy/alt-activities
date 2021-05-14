@@ -5,6 +5,8 @@ class SitePagesController < ApplicationController
       .order(upvote_count: :desc)
     @newest = Activity.approved.limit(10).select(:id, :name, :short_description)
       .order(created_at: :desc)
+    @workshop_activities = Activity.approved.where(workshop: :true)
+      .select(:id, :name, :short_description).order(created_at: :desc)
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
       .select(:id, :title, :excerpt)
     @comments = Comment.order(created_at: :desc).limit(5).visible

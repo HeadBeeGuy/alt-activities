@@ -91,6 +91,8 @@ en:
       read-more: "Read more"
       newest-activities: "Newest activities"
       top-10-activities: "Top 10 activities"
+      workshop-activities: "The Activity Workshop"
+      workshop-explanation: "Requesting your feedback!"
       front-page-posts-index: "View all posts"
     es:
       title: "ALTopedia - Elementary School Activities"
@@ -194,7 +196,7 @@ en:
     show:
       file-list: "Files:"
       time_estimate: "Estimated time: %{time_estimate}"
-      submitted_by: "Submitted by: "
+      submitted_by: "Submitted by"
       approve: "Approve"
       approve_confirmation: "Approve this activity?"
       deapprove: "Return to mod queue"

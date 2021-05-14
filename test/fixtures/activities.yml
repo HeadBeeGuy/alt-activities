@@ -6,6 +6,7 @@ basic_activity_one:
   time_estimate: 5 minutes
   user: regular_user_one
   status: :approved
+  workshop: :false
   
 basic_activity_two:
   name: Second Test Activity
@@ -14,6 +15,7 @@ basic_activity_two:
   time_estimate: 7 minutes
   user: regular_user_one
   status: :approved
+  workshop: :false
 
 roger_activity:
   name: Regular Roger activity
@@ -22,6 +24,7 @@ roger_activity:
   time_estimate: 7 minutes
   user: regular_user_one
   status: :approved
+  workshop: :false
   
 rebecca_activity:
   name: Regular Rebecca activity
@@ -30,6 +33,7 @@ rebecca_activity:
   time_estimate: 7 minutes
   user: regular_user_two
   status: :approved
+  workshop: :false
 
 influential_activity:
   name: Very Influential Activity
@@ -38,6 +42,7 @@ influential_activity:
   time_estimate: an eternity
   user: regular_user_one
   status: :approved
+  workshop: :false
 
 derivative_activity_one:
   name: My version of VIA
@@ -46,6 +51,7 @@ derivative_activity_one:
   time_estimate: 10 minutes
   user: regular_user_two
   status: :approved
+  workshop: :false
 
 derivative_activity_two:
   name: VIA - my style
@@ -54,6 +60,7 @@ derivative_activity_two:
   time_estimate: 17 minutes
   user: regular_user_two
   status: :approved
+  workshop: :false
 
 trusted_user_activity:
   name: Trusted Tommy Tango
@@ -62,3 +69,13 @@ trusted_user_activity:
   time_estimate: A half-hour
   user: trusted_user
   status: :approved
+  workshop: :false
+
+workshop_activity:
+  name: Workshop Activity
+  short_description: What does everyone think?
+  long_description: This activity is under development, so I beseech all of you for feedback.
+  time_estimate: Maybe a week
+  user: regular_user_two
+  status: :approved
+  workshop: :true

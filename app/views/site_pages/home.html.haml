@@ -46,6 +46,13 @@
         - @comments.each do |comment|
           %li.ticker-item= link_to comment.content, polymorphic_url(comment.commentable, anchor: comment.id), title: comment.content
   .fp-tickers
+    - if @workshop_activities.any?
+      .fp-activity-ticker
+        %p.ticker-title= t('.workshop-activities')
+        %span.ticker-subtitle= t('.workshop-explanation')
+        %ul.user-activity-ticker
+          - @workshop_activities.each do |activity|
+            %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
     .fp-activity-ticker
       %p.ticker-title= t('.newest-activities')
       %ul.user-activity-ticker
