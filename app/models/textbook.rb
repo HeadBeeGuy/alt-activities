@@ -15,4 +15,7 @@ class Textbook < ApplicationRecord
   def name_for_lists
     self.year_published.nil? ? self.name : self.name + " (#{self.year_published.to_s})"
   end
+
+  scope :current, -> { where(current: :true) }
+  scope :obselete, -> { where(current: :false) }
 end

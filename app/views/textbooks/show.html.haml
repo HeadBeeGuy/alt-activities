@@ -7,6 +7,8 @@
     - unless @textbook.year_published.nil?
       %p.full-textbook-year= @textbook.year_published
     %p.full.textbook-level= @textbook.level
+    - unless @textbook.current?
+      %p.full-textbook-obselete (obselete)
 
   %table.textbook-page-listing
     %thead
@@ -28,3 +30,7 @@
     %p Add a new page quickly:
     = render 'textbook_pages/compact_form'
     %p= link_to "Add pages manually", new_textbook_page_path
+
+    %ul.general-controls
+      %li= link_to "Edit", edit_textbook_path(@textbook)
+      %li= link_to "Delete", @textbook, method: :delete, data: { confirm: "Delete this textbook?" }
