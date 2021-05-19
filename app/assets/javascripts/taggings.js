@@ -9,7 +9,7 @@ function taggingsInit() {
     //select2 initialization only works with a jQuery call
     const select = document.querySelector('#edit-tag-search-select');
 
-    if (select) {
+    if (select && !select.classList.contains('select2-hidden-accessible')) {
         // console.log('found select');
         $('select#edit-tag-search-select').select2({
             placeholder: 'Select a tag and press submit to add it',
@@ -23,6 +23,7 @@ function taggingsInit() {
 function disableSelectedTags() {
     tags.map( tag => {
         const option = document.querySelector(`option[value="${tag.dataset.id}"]`);
+        if (!option) return;
         option.disabled = true;
         if (option.selected) option.selected = false;
     })

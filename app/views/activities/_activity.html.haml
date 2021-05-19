@@ -47,6 +47,7 @@
       - if user_signed_in? && policy(activity).update?
         = render 'taggings/activity_tagging_list'
         = render 'taggings/form'
+        = render 'activity_links/new'
       - else
         - activity.tags.each do |tag|
           %li
