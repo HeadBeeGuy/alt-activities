@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/contributors', to: 'site_pages#contributors'
   get '/guide', to: 'site_pages#guide'
   get '/online_teaching', to: 'site_pages#online_teaching'
+  get '/support', to: 'site_pages#support'
 
   get '/search', to: 'tag_searches#new'
   get '/tag_search', to: 'tag_searches#show'
