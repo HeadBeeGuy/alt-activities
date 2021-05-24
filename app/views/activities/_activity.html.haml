@@ -40,7 +40,6 @@
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "activity-control"
             - if !activity.checked? && policy(activity).verify_edits?
               = link_to "Verify changes", verify_edits_activity_path(activity), method: :put, class: "activity-control"
-            = link_to "Link", new_activity_link_path(activity), class: "activity-control"
             = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "activity-control"
   .activity-tags-display
     %ul.activity-tags-list

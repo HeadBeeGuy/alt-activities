@@ -178,7 +178,8 @@ header {
     background: #f3f3f3;
   }
 
-  .site-logo {
+  .site-logo, 
+  .logo-shadow {
     background: radial-gradient($primary500 30%, $primary600);
     border-radius: 20rem;
     padding: 0.4rem;
@@ -188,6 +189,11 @@ header {
     top: 0.3rem;
     left: 0.3rem;
     margin: 0;
+    z-index: 2;
+  }
+
+  .logo-shadow {
+    z-index: 0;
   }
 
   .primary-nav {
@@ -195,24 +201,16 @@ header {
     padding-left: 4rem;
     background: linear-gradient(to right, $primary600 65%, $primary500);
     height: 3rem;
-  }
-  // .primary-nav::after {
-  //   background: linear-gradient(to bottom right, green, green 50%, transparent 50%, transparent);
-  //   width: 5rem;
-  //   height: 100%;
-  //   content: "";
-  // }
-
-  .primary-nav::after {
-    content: '';
-    width: 2rem;
-    height: 0;
-    border-bottom: 3rem solid #f3f3f3;
-    border-left: 3rem solid transparent;
+    z-index: 0;
   }
 
   .primary-nav, .secondary-nav {
     padding-right: 0;
+    transform: skew(-30deg);
+  }
+
+  .primary-nav, .secondary-nav, .logo-shadow {
+    box-shadow: 1px 3px 7px 2px rgb(177, 177, 177);
   }
 
   .primary-nav-link {
@@ -221,19 +219,13 @@ header {
 
   .primary-nav-item, .secondary-nav-item {
     margin-right: 1.5rem;
+    transform: skew(30deg);
   }
 
   .secondary-nav {
     margin: 0 auto 0 5rem;
     padding-left: 4rem;
-  }
-
-  .secondary-nav::after {
-    content: '';
-    width: 2rem;
-    height: 0;
-    border-bottom: 2rem solid #f3f3f3;
-    border-left: 2rem solid transparent;
+    z-index: 1;
   }
 }
 

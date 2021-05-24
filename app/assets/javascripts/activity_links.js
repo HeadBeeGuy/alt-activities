@@ -12,11 +12,14 @@ function activityLinksInit() {
             placeholder: 'Search for an activity and press link to add it',
             width: '90%',
             ajax: {
-                url: '/activities',
+                url: '/activity_links/link_search',
                 dataType: 'json',
                 delay: 300,
                 data: function (params) {
-                    return {term: params.term}
+                    return {
+                        term: params.term,
+                        inspired_id: parseInt(document.querySelector('#inspired_id').value)
+                    }
                 },
                 processResults: (data) => {
                     return {

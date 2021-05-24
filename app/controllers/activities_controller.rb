@@ -108,17 +108,8 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-    respond_to do |format|
-      if params[:term]
-        @activities = Activity.text_search(params[:term])
-                      .approved.select(:id, :name)
-      else  
-        @activities = Activity.approved.order(created_at: :desc)
-          .select(:name, :short_description, :id).page(params[:page]).per(50)
-      end
-      format.json
-      format.html
-    end
+    @activities = Activity.approved.order(created_at: :desc)
+      .select(:name, :short_description, :id).page(params[:page]).per(50)
   end
   
 	# swiping from https://stackoverflow.com/a/49517939
