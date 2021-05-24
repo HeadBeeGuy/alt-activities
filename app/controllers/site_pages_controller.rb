@@ -36,7 +36,7 @@ class SitePagesController < ApplicationController
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
     @textbooks = Textbook.ES.current.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
-    @old_textbooks = Textbook.ES.obselete.select(:id, :name, :year_published)
+    @old_textbooks = Textbook.ES.obsolete.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
   end
   
@@ -45,7 +45,7 @@ class SitePagesController < ApplicationController
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
     @textbooks = Textbook.JHS.current.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
-    @old_textbooks = Textbook.JHS.obselete.select(:id, :name, :year_published)
+    @old_textbooks = Textbook.JHS.obsolete.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
   end
   
@@ -54,7 +54,7 @@ class SitePagesController < ApplicationController
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
     @textbooks = Textbook.HS.current.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
-    @old_textbooks = Textbook.HS.obselete.select(:id, :name, :year_published)
+    @old_textbooks = Textbook.HS.obsolete.select(:id, :name, :year_published)
       .order(year_published: :desc, name: :asc)
   end
 

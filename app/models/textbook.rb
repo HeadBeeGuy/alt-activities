@@ -17,5 +17,5 @@ class Textbook < ApplicationRecord
   end
 
   scope :current, -> { where(current: :true) }
-  scope :obselete, -> { where(current: :false) }
+  scope :obsolete, -> { where(current: :false) }
 end

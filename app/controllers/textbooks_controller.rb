@@ -52,11 +52,11 @@ class TextbooksController < ApplicationController
 
 	def index
 		@es_textbooks = Textbook.ES.current.order(year_published: :desc, name: :asc)
-		@es_old_textbooks = Textbook.ES.obselete.order(year_published: :desc, name: :asc)
+		@es_old_textbooks = Textbook.ES.obsolete.order(year_published: :desc, name: :asc)
 		@jhs_textbooks = Textbook.JHS.current.order(year_published: :desc, name: :asc)
-		@jhs_old_textbooks = Textbook.JHS.obselete.order(year_published: :desc, name: :asc)
+		@jhs_old_textbooks = Textbook.JHS.obsolete.order(year_published: :desc, name: :asc)
 		@hs_textbooks = Textbook.HS.current.order(year_published: :desc, name: :asc)
-		@hs_old_textbooks = Textbook.HS.obselete.order(year_published: :desc, name: :asc)
+		@hs_old_textbooks = Textbook.HS.obsolete.order(year_published: :desc, name: :asc)
 	end
 
 	private
