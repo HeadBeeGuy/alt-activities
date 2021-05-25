@@ -1,6 +1,8 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+let linkBut;
+
 function activityLinksInit() {
     //select2 initialization only works with a jQuery call
     const select = document.querySelector('#activity_link_id');
@@ -31,6 +33,21 @@ function activityLinksInit() {
             templateResult: (item) => item.name,
             templateSelection: (item) => item.name
         });
+        $('select#activity_link_id').on('select2:select', handleLinkSelect);
+        $('select#activity_link_id').on('select2:unselect', handleLinkUnselect);
+    }
+    linkBut = document.querySelector('input[value="Link"]');
+}
+
+handleLinkSelect = () => {
+    if (linkBut.disabled) {
+        return linkBut.disabled = false; 
+    }
+}
+
+handleLinkUnselect = () => {
+    if (!linkBut.disabled) {
+        return linkBut.disabled = true; 
     }
 }
 
