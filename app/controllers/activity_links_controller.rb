@@ -22,7 +22,7 @@ class ActivityLinksController < ApplicationController
       if params[:term]
         @inspired_activity = Activity.find(params[:inspired_id])
         @activities = Activity.text_search(params[:term])
-                      .approved.select(:id, :name).select {|activity| activity != @inspired_activity && !@inspired_activity.source_activities.include?(activity)}
+                      .approved.select(:id, :name, :user_id, :short_description).includes(:user).select {|activity| activity != @inspired_activity && !@inspired_activity.source_activities.include?(activity)}
       else  
         @activities = nil
       end

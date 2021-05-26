@@ -11,7 +11,8 @@ function activityLinksInit() {
 
     if (select && !select.classList.contains('select2-hidden-accessible')) {
         $('select#activity_link_id').select2({
-            placeholder: 'Search for an activity and press link to add it',
+            placeholder: "Search for an activity and press link to add it",
+            allowClear: true,
             width: '90%',
             ajax: {
                 url: '/activity_links/link_search',
@@ -30,8 +31,12 @@ function activityLinksInit() {
                 }
             },
             minimumInputLength: 2,
-            templateResult: (item) => item.name,
-            templateSelection: (item) => item.name
+            templateResult: (item) => {
+                if (item.name) return `${item.name} - ${item.description} (${item.author})`
+            },
+            templateSelection: (item) => {
+                if (item.name) return `${item.name} - ${item.description} (${item.author})`
+            }
         });
         $('select#activity_link_id').on('select2:select', handleLinkSelect);
         $('select#activity_link_id').on('select2:unselect', handleLinkUnselect);
