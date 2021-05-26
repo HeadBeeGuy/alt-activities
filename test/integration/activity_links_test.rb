@@ -17,16 +17,11 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     assert @user.activities.include? @inspired_activity
     get activity_path(@inspired_activity)
     assert_no_match @original_activity, response.body
-    get new_activity_link_path(@inspired_activity)
     assert_difference('ActivityLink.count', 1) do
-      get link_search_path(inspired_id: @inspired_activity.id,
-                           search: @original_activity.name)
-      assert_match @original_activity.name, response.body
-      post activity_links_path, params: { activity_link: { id: @original_activity.id },
-                                          inspired_id: @inspired_activity.id } 
+      post activity_links_path, xhr: true, params: { activity_link: 
+        { id: @original_activity.id }, inspired_id: @inspired_activity.id } 
     end
-    assert_redirected_to @inspired_activity
-    follow_redirect!
+    get activity_path(@inspired_activity)
     assert_match @original_activity.name, response.body
   end
 
@@ -37,11 +32,8 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     get activity_path(@someone_elses_activity)
     assert_no_match @original_activity.name, response.body
     assert_no_difference 'ActivityLink.count' do
-      get new_activity_link_path(@someone_elses_activity)
-      get link_search_path(inspired_id: @someone_elses_activity.id,
-                           search: @original_activity.name)
-      post activity_links_path, params: { activity_link: { id: @original_activity.id },
-                                          inspired_id: @someone_elses_activity.id } 
+      post activity_links_path, xhr: true, params: { activity_link: 
+        { id: @original_activity.id }, inspired_id: @someone_elses_activity.id } 
     end
   end
   
@@ -51,16 +43,11 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     assert_not @moderator.activities.include? @original_activity
     get activity_path(@inspired_activity)
     assert_no_match @original_activity, response.body
-    get new_activity_link_path(@inspired_activity)
     assert_difference('ActivityLink.count', 1) do
-      get link_search_path(inspired_id: @inspired_activity.id,
-                           search: @original_activity.name)
-      assert_match @original_activity.name, response.body
-      post activity_links_path, params: { activity_link: { id: @original_activity.id },
-                                          inspired_id: @inspired_activity.id } 
+      post activity_links_path, xhr: true, params: { activity_link: 
+        { id: @original_activity.id }, inspired_id: @inspired_activity.id } 
     end
-    assert_redirected_to @inspired_activity
-    follow_redirect!
+    get activity_path(@inspired_activity)
     assert_match @original_activity.name, response.body
   end
 
@@ -70,16 +57,11 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     assert_not @admin.activities.include? @original_activity
     get activity_path(@inspired_activity)
     assert_no_match @original_activity, response.body
-    get new_activity_link_path(@inspired_activity)
     assert_difference('ActivityLink.count', 1) do
-      get link_search_path(inspired_id: @inspired_activity.id,
-                           search: @original_activity.name)
-      assert_match @original_activity.name, response.body
-      post activity_links_path, params: { activity_link: { id: @original_activity.id },
-                                          inspired_id: @inspired_activity.id } 
+      post activity_links_path, xhr: true, params: { activity_link: 
+        { id: @original_activity.id }, inspired_id: @inspired_activity.id } 
     end
-    assert_redirected_to @inspired_activity
-    follow_redirect!
+    get activity_path(@inspired_activity)
     assert_match @original_activity.name, response.body
   end
 end

@@ -1,0 +1,5 @@
+%small Is this activity inspired by another activity? Link it here!
+= form_for ActivityLink.create do |f|
+    = render 'activity_links/select'
+    = hidden_field_tag :inspired_id, @activity.id
+    = f.submit 'Link', class: "tagging-submit-button", disabled: true

@@ -78,6 +78,6 @@ Rails.application.routes.draw do
   end
 
   get '/activity_links/new/:source_id', to: 'activity_links#new', as: 'new_activity_link'
-  get '/activity_links/:source_id/search', to: 'activity_links#link_search', as: 'link_search'
+  get '/activity_links/link_search', to: 'activity_links#link_search', as: 'link_search'
 	
 end

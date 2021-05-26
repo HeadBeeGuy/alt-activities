@@ -18,17 +18,16 @@ class ActivityLinksController < ApplicationController
   end
 
   def link_search
-    @inspired_activity = Activity.find(params[:source_id])
-    if params[:search]
-      @activities = Activity.where('name ILIKE ? OR short_description ILIKE ? OR ' +
-                                   'long_description ILIKE ?', 
-                                   "%#{params[:search]}%",
-                                   "%#{params[:search]}%",
-                                   "%#{params[:search]}%")
-                     .approved.select(:id, :name, :short_description)
-                     .limit(8).order(upvote_count: :desc)
-    else
-      @activities = nil
+    respond_to do |format|
+      if params[:term]
+        @inspired_activity = Activity.find(params[:inspired_id])
+        @activities = Activity.text_search(params[:term])
+                      .approved.select(:id, :name, :user_id, :short_description).includes(:user).select {|activity| activity != @inspired_activity && !@inspired_activity.source_activities.include?(activity)}
+      else  
+        @activities = nil
+      end
+      format.json
+      format.html
     end
   end
 

@@ -69,15 +69,22 @@
 
 .tagging-submit-button {
     text-align: center;
-    background: linear-gradient(to top right, $primary700, $primary800);
+    // background: linear-gradient(to top right, $primary700, $primary800);
+    background: $primary700;
     padding: 0.4rem;
     color: #fefefe;
     border: none;
     border-radius: 0.4rem;
     font-size: 0.9rem;
     box-shadow: 0.2rem 0.2rem 0.2rem $ru400;
+    transition: all 0.2s;
 }
 .tagging-submit-button:hover {
     cursor: pointer;
     background: $primary900;
+}
+
+.tagging-submit-button:disabled {
+    background: $ru600;
+    box-shadow: none;
 }

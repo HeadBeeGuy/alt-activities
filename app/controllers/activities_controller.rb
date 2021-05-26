@@ -108,8 +108,8 @@ class ActivitiesController < ApplicationController
   end
   
   def index
-		@activities = Activity.approved.order(created_at: :desc)
-			.select(:name, :short_description, :id).page(params[:page]).per(50)
+    @activities = Activity.approved.order(created_at: :desc)
+      .select(:name, :short_description, :id).page(params[:page]).per(50)
   end
 
   def start_workshop
