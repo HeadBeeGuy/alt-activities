@@ -123,6 +123,7 @@ if Rails.env.development?
                                 user: regular_users.sample,
                                 status: :approved,
                                 tag_ids: activity_tags,
+                                workshop: :false,
                                 created_at: Time.now - Random.rand(0..365).days)
 
     # toss a school level on it because it's pretty important

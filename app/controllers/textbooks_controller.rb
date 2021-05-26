@@ -51,15 +51,19 @@ class TextbooksController < ApplicationController
 	end
 
 	def index
-		@es_textbooks = Textbook.ES.order(year_published: :desc, name: :asc)
-		@jhs_textbooks = Textbook.JHS.order(year_published: :desc, name: :asc)
-		@hs_textbooks = Textbook.HS.order(year_published: :desc, name: :asc)
+		@es_textbooks = Textbook.ES.current.order(year_published: :desc, name: :asc)
+		@es_old_textbooks = Textbook.ES.obsolete.order(year_published: :desc, name: :asc)
+		@jhs_textbooks = Textbook.JHS.current.order(year_published: :desc, name: :asc)
+		@jhs_old_textbooks = Textbook.JHS.obsolete.order(year_published: :desc, name: :asc)
+		@hs_textbooks = Textbook.HS.current.order(year_published: :desc, name: :asc)
+		@hs_old_textbooks = Textbook.HS.obsolete.order(year_published: :desc, name: :asc)
 	end
 
 	private
 
 		def textbook_params
-			params.require(:textbook).permit(:name, :additional_info, :level, :year_published)
+			params.require(:textbook).permit(:name, :additional_info, :level, 
+				:year_published, :current)
 		end
 
 end

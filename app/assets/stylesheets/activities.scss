@@ -37,6 +37,13 @@
   color: $ru600;
 }
 
+.ticker-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0;
+  padding-top: 0.2rem;
+  color: $ru800;
+}
 
 /* FULL-SIZED ACTIVITY DISPLAY */
 .full-activity-display {
@@ -60,6 +67,14 @@
   .activity-subheading {
     text-align: center;
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .workshop-subheading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: $user600;
+    margin-bottom: 0.5rem;
   }
 }
 

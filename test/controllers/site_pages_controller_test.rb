@@ -55,4 +55,9 @@ class SitePagesControllerTest < ActionDispatch::IntegrationTest
     get contributors_path
     assert_response :success
   end
+
+  test "should get support page" do
+    get support_path
+    assert_response :success
+  end
 end

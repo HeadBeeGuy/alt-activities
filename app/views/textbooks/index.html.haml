@@ -13,17 +13,32 @@
         - unless @es_textbooks.nil?
           - @es_textbooks.each do |textbook|
             %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+      - unless @es_old_textbooks.nil?
+        %h5 Older textbooks
+        %ul
+          - @es_old_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
     .single-column
       %h4 Junior High
       %ul
         - unless @jhs_textbooks.nil?
           - @jhs_textbooks.each do |textbook|
             %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+      - unless @jhs_old_textbooks.nil?
+        %h5 Older textbooks
+        %ul
+          - @jhs_old_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
     .single-column
       %h4 High School
       %ul
         - unless @hs_textbooks.nil?
           - @hs_textbooks.each do |textbook|
+            %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+      - unless @hs_old_textbooks.nil?
+        %h5 Older textbooks
+        %ul
+          - @hs_old_textbooks.each do |textbook|
             %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
 
   %p= link_to t('.get-in-touch'), contact_path

@@ -9,6 +9,9 @@
   = f.label :year_published, "Publication year (optional)", class: "form-label"
   = f.number_field :year_published, in: 1999..2025, step: 1, class: "form-textfield"
 
+  = f.label :current, "Currently in use?", class: "form-label"
+  = f.check_box :current, class: "form-checkbox"
+
   = f.label :level, "Textbook level", class: "form-label"
   = f.select :level, Textbook.levels.map { |key, value| [key, key] }, {}, class: "form-select"
 

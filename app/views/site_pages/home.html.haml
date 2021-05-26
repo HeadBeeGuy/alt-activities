@@ -39,13 +39,20 @@
       %p.card-title Please help support the site!
       %p.card-text ALTopedia is ad-free and independent.
       %p.card-text The community is the sole source of funding. Please consider contributing to help keep the site alive.
-      = link_to "Check out the options!", contribute_path
+      = link_to "Support ALTopedia", support_path
     .fp-comment-ticker
       %ul.comment-ticker
         %p.ticker-title Recent comments
         - @comments.each do |comment|
           %li.ticker-item= link_to comment.content, polymorphic_url(comment.commentable, anchor: comment.id), title: comment.content
   .fp-tickers
+    - if @workshop_activities.any?
+      .fp-activity-ticker
+        %p.ticker-title= t('.workshop-activities')
+        %span.ticker-subtitle= t('.workshop-explanation')
+        %ul.user-activity-ticker
+          - @workshop_activities.each do |activity|
+            %li.ticker-activity= link_to activity.name, activity, title: activity.short_description
     .fp-activity-ticker
       %p.ticker-title= t('.newest-activities')
       %ul.user-activity-ticker

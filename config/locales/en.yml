@@ -33,6 +33,7 @@ en:
     themes: "Activity Themes"
     special-needs: "Special Needs"
     online-teaching: "Online Teaching"
+    support: "Support the site"
   login:
     log_in: "Sign in to ALTopedia"
     remember_me: "Remember me"
@@ -91,6 +92,8 @@ en:
       read-more: "Read more"
       newest-activities: "Newest activities"
       top-10-activities: "Top 10 activities"
+      workshop-activities: "The Activity Workshop"
+      workshop-explanation: "Requesting your feedback!"
       front-page-posts-index: "View all posts"
     es:
       title: "ALTopedia - Elementary School Activities"
@@ -157,6 +160,9 @@ en:
       title: "ALTopedia - Useful Links and Resources"
       page-header: "Useful Links and Resources"
       page-explanation: "There are a bunch of handy sites out there with materials that you can use in your classes. Please contact the site if any of these links break!"
+    support:
+      title: "ALTopedia - Supporting the site"
+      heading: "How you can support ALTopedia"
   activities:
     page_titles:
       new_activity: "ALTopedia - Submit a new activity"
@@ -194,7 +200,7 @@ en:
     show:
       file-list: "Files:"
       time_estimate: "Estimated time: %{time_estimate}"
-      submitted_by: "Submitted by: "
+      submitted_by: "Submitted by"
       approve: "Approve"
       approve_confirmation: "Approve this activity?"
       deapprove: "Return to mod queue"

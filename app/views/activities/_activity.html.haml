@@ -2,10 +2,12 @@
   .full-activity-heading
     %h1= activity.name
     %p.activity-subheading= activity.short_description
+    - if activity.workshop?
+      %p.workshop-subheading This activity is being workshopped. Please give your feedback on how to improve it!
   .full-activity-details
     .full-activity-info
       %p.full-activity-submitter
-        Submitted by
+        %span= t('activities.show.submitted_by')
         %span= link_to activity.user.username, activity.user, class: "user-link"
       %p= l(activity.created_at, format: :quite_short)
       - if @source_activities.any?
@@ -40,6 +42,10 @@
               = link_to t('activities.show.deapprove'), unapprove_activity_path(activity), method: :put, class: "activity-control"
             - if !activity.checked? && policy(activity).verify_edits?
               = link_to "Verify changes", verify_edits_activity_path(activity), method: :put, class: "activity-control"
+            - if policy(activity).start_workshop? && !activity.workshop?
+              = link_to "Workshop", start_workshop_activity_path(activity), class: "activity-control", method: :put
+            - if policy(activity).end_workshop? && activity.workshop?
+              = link_to "Finish Workshop", end_workshop_activity_path(activity), class: "activity-control", method: :put
             = link_to t('activities.show.delete'), activity, method: :delete, data: { confirm: t('activities.show.delete_confirmation') }, class: "activity-control"
   .activity-tags-display
     %ul.activity-tags-list

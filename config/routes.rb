@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/contributors', to: 'site_pages#contributors'
   get '/guide', to: 'site_pages#guide'
   get '/online_teaching', to: 'site_pages#online_teaching'
+  get '/support', to: 'site_pages#support'
 
   get '/search', to: 'tag_searches#new'
   get '/tag_search', to: 'tag_searches#show'
@@ -52,6 +53,8 @@ Rails.application.routes.draw do
 			put :approve
 			put :unapprove
       put :verify_edits
+      put :start_workshop
+      put :end_workshop
 			delete :delete_attached_document
 		end
 	end

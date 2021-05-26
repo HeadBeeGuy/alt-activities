@@ -6,6 +6,11 @@
       %ul
         - @textbooks.each do |textbook|
           %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
+    - if @old_textbooks.any?
+      %h5 Older Textbooks
+      %ul
+        - @old_textbooks.each do |textbook|
+          %li= link_to textbook.name_for_lists, textbook, class: "textbook-link"
   .school-level-activity-list
     - unless activities.nil?
       %h3 Recent Activities

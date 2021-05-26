@@ -5,6 +5,8 @@ class SitePagesController < ApplicationController
       .order(upvote_count: :desc)
     @newest = Activity.approved.limit(10).select(:id, :name, :short_description)
       .order(created_at: :desc)
+    @workshop_activities = Activity.approved.where(workshop: :true)
+      .select(:id, :name, :short_description).order(created_at: :desc)
 		@top_posts = FrontPagePost.order(created_at: :desc).limit(3)
       .select(:id, :title, :excerpt)
     @comments = Comment.order(created_at: :desc).limit(5).visible
@@ -32,25 +34,35 @@ class SitePagesController < ApplicationController
   def es
     @es_activities = Tag.find_by_name("Elementary School").activities.approved.
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
-    @textbooks = Textbook.ES.select(:id, :name, :year_published).order(year_published: :desc, name: :asc)
+    @textbooks = Textbook.ES.current.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
+    @old_textbooks = Textbook.ES.obsolete.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
   end
   
   def jhs
     @jhs_activities = Tag.find_by_name("Junior High School").activities.approved.
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(40)
-    @textbooks = Textbook.JHS.select(:id, :name, :year_published).order(year_published: :desc, name: :asc)
+    @textbooks = Textbook.JHS.current.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
+    @old_textbooks = Textbook.JHS.obsolete.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
   end
   
 	def hs
     @hs_activities = Tag.find_by_name("High School").activities.approved.
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
-    @textbooks = Textbook.HS.select(:id, :name, :year_published).order(year_published: :desc, name: :asc)
+    @textbooks = Textbook.HS.current.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
+    @old_textbooks = Textbook.HS.obsolete.select(:id, :name, :year_published)
+      .order(year_published: :desc, name: :asc)
   end
 
   def special_needs
     @sn_activities = Tag.find_by_name("Special Needs").activities.approved.
       order(created_at: :desc).select(:id, :name, :short_description).page(params[:page]).per(30)
     @textbooks = []
+    @old_textbooks = []
   end
 
   def grammar
