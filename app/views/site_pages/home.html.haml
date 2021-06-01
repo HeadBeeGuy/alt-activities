@@ -21,8 +21,9 @@
       %p.fp-post-index-link= link_to t('.front-page-posts-index'), front_page_posts_path
   .fp-callouts
     .callout
-      %p.card-title Do you need an activity for class?
-      %p= link_to "Start by checking out your textbook's listings.", textbooks_path
+      %p.card-title Please take the June survey!
+      %p We're requesting feedback on the site and your ideas for what to work on next.
+      %p= link_to "Fill out the anonymous survey here!", "https://forms.gle/FqUhmYBXZZhzyXKC9"
     -# = render "tag_of_the_moment"
     - if user_signed_in?
       .fp-user-card
