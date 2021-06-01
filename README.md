@@ -25,6 +25,7 @@ Higher priority tasks:
 
 Longer-term tasks:
 
+- Build in ActivityLink deletion into the Activity Show page. Currently this is a bit tricky since ActivityLinks objects aren't passed into the page directly, but are used to generate lists of Activities instead.
 - Make embedded resources like /users/5/comments
 - Switch permission management from Pundit to Cancancan. This will make the code in the controllers simpler since Cancancan allows standard controller methods to automatically load data for the current user given their permission level. This will likely involve rewriting a lot of integration tests since permission errors raise an exception instead of quietly failing.
 - See if it's feasible to make a built-in chat system since Shoutbox is apparently breaking on a lot of browsers
@@ -57,5 +58,4 @@ Current bugs:
 
 Pages that still need to be rebuilt or need fixes in the new interface:
 
-- Activity Link pages
 - User index page

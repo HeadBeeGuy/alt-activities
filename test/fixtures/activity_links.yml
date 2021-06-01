@@ -13,3 +13,8 @@
 <%#   original_id: influential_activity.id %>
 <%#   inspired_id: derivative_activity_two.id %>
 <%#   explanation: "The original author never thought of my snazzy idea!" %>
+
+activity_link_one:
+  original: influential_activity
+  inspired: derivative_activity_two
+  explanation: "My carefully considered derivation of this chestnut"

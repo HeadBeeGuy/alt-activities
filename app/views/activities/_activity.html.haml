@@ -11,10 +11,10 @@
         %span= link_to activity.user.username, activity.user, class: "user-link"
       %p= l(activity.created_at, format: :quite_short)
       - if @source_activities.any?
-        - @source_activities.each do |activity|
+        - @source_activities.each do |source_activity|
           %p
             Inspired by:
-            = link_to activity.name, activity
+            = link_to source_activity.name, source_activity
       - if @inspired_activities.any?
         - @inspired_activities.each do |activity|
           %p

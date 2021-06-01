@@ -10,6 +10,8 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     @inspired_activity = activities(:derivative_activity_one)
     @original_activity = activities(:influential_activity)
     @someone_elses_activity = activities(:basic_activity_one)
+    @derivative_activity = activities(:derivative_activity_two)
+    @link = activity_links(:activity_link_one)
   end
 
   test "a user can successfully create an activity link on one of their activities" do
@@ -63,5 +65,37 @@ class ActivityLinksTest < ActionDispatch::IntegrationTest
     end
     get activity_path(@inspired_activity)
     assert_match @original_activity.name, response.body
+  end
+
+  test "a moderator can remove an activity link from the index page" do
+    sign_in @moderator
+
+    get activity_path(@original_activity)
+    assert_match @derivative_activity.name, response.body
+    assert @derivative_activity.originals.include? @link
+
+    get activity_links_path
+    assert_match @derivative_activity.name, response.body
+
+    assert_difference 'ActivityLink.count', -1 do
+      delete activity_link_path(@link)
+    end
+
+    get activity_links_path
+    assert_no_match @derivative_activity.name, response.body
+    get activity_path(@original_activity)
+    assert_no_match @derivative_activity.name, response.body
+  end
+
+  test "a normal user cannot delete activity links to activities they do not own" do
+    @user = users(:regular_user_one)
+    assert @user.normal?
+    sign_in @user
+    assert_not @user.activities.include? @derivative_activity
+    get activity_links_path
+    assert_match @original_activity.name, response.body
+    assert_no_difference 'ActivityLink.count' do
+      delete activity_link_path(@link)
+    end
   end
 end

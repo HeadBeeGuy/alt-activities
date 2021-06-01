@@ -1,13 +1,7 @@
-# This is pretty inelegant and likely mixes up or misuses Rails conventions.
-# URL persistence won't be important so if I come back to revise this, it's
-# okay if the routes change.
-# Also, verification is handled in the controller since I was having trouble
-# getting Pundit to work with this class.
 
 class ActivityLinksController < ApplicationController
   before_action :authenticate_user!, except: :index
 
-  # it feels a little weird calling it "new" but I suppose it's appropriate
   def new
     @inspired_activity = Activity.find(params[:source_id])
     unless ( current_user.activities.include?(@inspired_activity) ||
@@ -22,7 +16,8 @@ class ActivityLinksController < ApplicationController
       if params[:term]
         @inspired_activity = Activity.find(params[:inspired_id])
         @activities = Activity.text_search(params[:term])
-                      .approved.select(:id, :name, :user_id, :short_description).includes(:user).select {|activity| activity != @inspired_activity && !@inspired_activity.source_activities.include?(activity)}
+          .approved.select(:id, :name, :user_id, :short_description)
+          .includes(:user).select {|activity| activity != @inspired_activity && !@inspired_activity.source_activities.include?(activity)}
       else  
         @activities = nil
       end
@@ -51,7 +46,16 @@ class ActivityLinksController < ApplicationController
   end
 
   def destroy
-    # Not yet implemented - going to wait until the functionality is live and I
-    # understand it better
+    @activity_link = ActivityLink.find(params[:id])
+    authorize @activity_link
+    @inspired_activity = @activity_link.inspired
+    if ( current_user.activities.include?(@inspired_activity) ||
+        current_user.moderator? || current_user.admin? )
+      @activity_link.destroy
+      flash[:success] = "Removed the link between the activities."
+    else
+      flash[:warning] = "You don't have permission to remove this link."
+    end
+    redirect_back fallback_location: activity_links_url
   end
 end

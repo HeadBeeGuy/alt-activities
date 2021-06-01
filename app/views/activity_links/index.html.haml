@@ -1,13 +1,14 @@
 - provide(:title, t('.title'))
 
-%h2= t('.heading')
+.full-generic-page
+  %h2= t('.heading')
 
-%table.table.table-striped.table-borderless.table-sm.table-responsive
-  .tbody
-    - @activity_links.each do |activity_link|
-      %tr
-        %td= link_to activity_link.original.name, activity_link.original
-        %td= t('.left-item-inspired-right')
-        %td= link_to activity_link.inspired.name, activity_link.inspired
+  - @activity_links.each do |activity_link|
+    %p
+      %span= link_to activity_link.original.name, activity_link.original
+      %span= t('.left-item-inspired-right')
+      %span= link_to activity_link.inspired.name, activity_link.inspired
+      - if user_signed_in? && ( current_user.admin? || current_user.moderator? )
+        %small= link_to "(remove link)", activity_link, method: :delete, data: { confirm: "Remove the link between these activities?" }
 
-= paginate @activity_links
+  = paginate @activity_links
