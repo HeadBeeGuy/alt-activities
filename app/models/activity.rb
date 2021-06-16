@@ -16,6 +16,10 @@ class Activity < ApplicationRecord
   has_many :inspired_activities, through: :inspireds, source: :inspired
   has_many :source_activities, through: :originals, source: :original
 
+  has_many :textbook_page_links
+  has_many :linked_pages, through: :textbook_page_links, source: :textbook_page,
+    dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :short_description, presence: true, length: { maximum: 200 }
   validates :long_description, presence: true, length: { maximum: 6000 }

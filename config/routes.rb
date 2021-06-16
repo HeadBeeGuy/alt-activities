@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   get '/tag_search', to: 'tag_searches#show'
   get '/activity_search', to: 'activity_searches#show'
 
-  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts
+  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts,
+    :textbook_page_links
 
 	resources :users do
 		member do

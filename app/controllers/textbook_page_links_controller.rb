@@ -1,0 +1,2 @@
+class TextbookPageLinksController < ApplicationController
+end

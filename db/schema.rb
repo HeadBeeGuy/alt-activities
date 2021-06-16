@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_044559) do
+ActiveRecord::Schema.define(version: 2021_06_16_011200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -146,6 +146,15 @@ ActiveRecord::Schema.define(version: 2021_05_14_044559) do
     t.index ["short_name"], name: "index_tags_on_short_name"
   end
 
+  create_table "textbook_page_links", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "textbook_page_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_textbook_page_links_on_activity_id"
+    t.index ["textbook_page_id"], name: "index_textbook_page_links_on_textbook_page_id"
+  end
+
   create_table "textbook_pages", force: :cascade do |t|
     t.bigint "textbook_id"
     t.integer "page"
@@ -219,6 +228,8 @@ ActiveRecord::Schema.define(version: 2021_05_14_044559) do
   add_foreign_key "activities", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "front_page_posts", "users"
+  add_foreign_key "textbook_page_links", "activities"
+  add_foreign_key "textbook_page_links", "textbook_pages"
   add_foreign_key "textbook_pages", "tags"
   add_foreign_key "textbook_pages", "textbooks"
 end

@@ -6,3 +6,9 @@ textbook_page_one:
   textbook: textbook_one
   tag: basic_tag_one
 
+
+textbook_page_two:
+  page: 100
+  description: Well into the middle of this textbook.
+  textbook: textbook_two
+  tag: basic_tag_two
