@@ -10,23 +10,21 @@
     - unless @textbook.current?
       %p.full-textbook-obsolete (obsolete)
 
-  %table.textbook-page-listing
-    %thead
-      %th{"scope" => "col"}= t('.page-number')
-      %th{"scope" => "col"}= t('.page-description')
-      %th{"scope" => "col"}= t('.grammar-point')
-    %tbody
+  .textbook-page-listing
+    %ol.textbook-page-list
       - @pages.each do |page|
-        %tr
-          %td= page.page
-          %td= markdown(page.description)
-          %td 
-            %span= link_to page.tag.name, page.tag, class: "tag-link"
-            - if policy(page).update?
-              %span= link_to "Edit", edit_textbook_page_path(page), class: "comment-control-link"
-              %span= link_to "Delete", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }, class: "comment-control-link"
+        %li
+          .textbook-page
+            %span.page-number= page.page
+            %span.page-description= markdown(page.description)
+            %span.page-tags= link_to page.tag.name, page.tag, class: "tag-link"
+            - if policy(@textbook).update?
+              %span.textbook-page-controls
+                %span= link_to "Edit", edit_textbook_page_path(page), class: "comment-control-link"
+                %span= link_to "Delete", page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }, class: "comment-control-link"
+          .textbook-page-linked-activities
 
-  - if policy(@textbook).update?
+  - if policy(@textbook).edit?
     %p Add a new page quickly:
     = render 'textbook_pages/compact_form'
     %p= link_to "Add pages manually", new_textbook_page_path
