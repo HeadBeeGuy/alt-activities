@@ -21,6 +21,13 @@
             Inspired:
             = link_to activity.name, activity
       %p= t('activities.show.time_estimate', time_estimate: activity.time_estimate)
+      - if @page_links.any?
+        %p Intended for:
+        - @page_links.each do |page_link|
+          %p
+            %span= link_to "#{page_link.textbook_page.textbook.name} page #{page_link.textbook_page.page}", page_link.textbook_page, class: "textbook-link"
+            - if user_signed_in? && policy(activity).edit?
+              %small= link_to "(Remove link)", page_link, method: :delete, data: { confirm: "Remove the link to this page?" }
     .full-activity-description
       = markdown(activity.long_description)
       - if activity.documents.attached?

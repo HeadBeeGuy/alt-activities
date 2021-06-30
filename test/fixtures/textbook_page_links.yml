@@ -6,3 +6,7 @@ textbook_page_link_one:
 textbook_page_link_two:
   activity: basic_activity_two
   textbook_page: textbook_page_two
+
+textbook_page_link_three:
+  activity: rebecca_activity
+  textbook_page: textbook_page_two

@@ -86,6 +86,8 @@ en:
       page-number: "Page"
       page-description: "Information"
       grammar-point: "Tag"
+  textbook_pages:
+    show:      
   site_pages:
     home:
       site-tagline: "Find activities, games, and worksheets for your English classes. Share your ideas and help your fellow teachers make their classes awesome!"

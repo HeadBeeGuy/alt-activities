@@ -79,6 +79,7 @@ class ActivitiesController < ApplicationController
     @activity_taggings = Tagging.where(activity: @activity).includes(:tag)
     @source_activities = @activity.source_activities
     @inspired_activities = @activity.inspired_activities
+    @page_links = TextbookPageLink.where(activity: @activity).includes(:textbook_page, textbook_page: [:textbook])
   end
   
   def approve

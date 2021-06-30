@@ -1,13 +1,28 @@
--provide(:title, "Textbook page")
--# This page probably shouldn't be visited very often, but including it since it's a REST resource
--# For any conceivable use, users should see pages as part of a larger Textbook listing
+-provide(:title, "ALTopedia - #{@textbook.name} page #{@textbook_page.page}")
 
-%h5 Textbook page:
+.full-textbook-display
+  %h1 #{@textbook.name} page #{@textbook_page.page}
 
-%p= link_to "Textbook: #{@textbook_page.textbook.name}", @textbook_page.textbook
-%p Page #  #{@textbook_page.page} - #{markdown(@textbook_page.description)}
-%p= link_to "Grammar point: #{@textbook_page.tag.name}", @textbook_page.tag
+  %p= link_to @textbook_page.textbook.name_for_lists, @textbook_page.textbook
+  %p= markdown(@textbook_page.description)
+  %p= link_to @textbook_page.tag.name, @textbook_page.tag, class: "tag-link"
 
--if policy(@textbook_page).edit?
-  %p= link_to "Edit", edit_textbook_page_path(@textbook_page)
-  %p= link_to "Delete", @textbook_page, method: :delete, data: { confirm: "Are you sure you wanna delete this page?" }
+  - if @linked_activities.any?
+    %h2 Linked Activities
+    %ul.activity-card-list
+      - @linked_activities.each do |activity|
+        %li.activity-card
+          = link_to activity, title: activity.short_description do
+            %p.activity-card-name= activity.name
+            %p.activity-card-description= activity.short_description
+
+  - if user_signed_in? && @activities.any?
+    = form_with model: @textbook_page_link do |f|
+      = f.select "activity_id", options_from_collection_for_select(@activities, 'id', 'name')
+      = f.hidden_field :textbook_page_id, value: @textbook_page.id
+      = f.submit "Submit", class: "submit-button"
+
+  -if policy(@textbook_page).edit?
+    %ul.general-controls
+      %li= link_to "Edit", edit_textbook_page_path(@textbook_page)
+      %li= link_to "Delete", @textbook_page, method: :delete, data: { confirm: "Delete this textbook?" }

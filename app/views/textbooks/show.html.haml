@@ -15,7 +15,7 @@
       - @pages.each do |page|
         %li
           .textbook-page
-            %span.page-number= page.page
+            %span.page-number= link_to page.page, page, class: "textbook-link"
             %span.page-description= markdown(page.description)
             %span.page-tags= link_to page.tag.name, page.tag, class: "tag-link"
             - if policy(@textbook).update?
