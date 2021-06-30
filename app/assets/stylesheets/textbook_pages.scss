@@ -4,20 +4,39 @@
 
 @import "variables_and_mixins";
 
+.textbook-page-link {
+  color: $tbp500;
+  text-decoration: none;
+}
+.textbook-page-link:hover {
+  text-decoration: underline;
+}
+
 .compact-textbook-page-form {
   display: flex;
   flex-direction: column;
 }
 
-.compact-submit-button {
-  text-align: center;
-  padding: 0.2rem 1rem;
-  background: linear-gradient(to top right, $primary700, $primary800);
-  color: #fefefe;
-  border: none;
-  border-radius: 0.3rem;
-  font-size: 0.8rem;
-  box-shadow: 0.2rem 0.2rem 0.2rem $ru400;
+.textbook-page-link-controls {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.full-textbook-page-display {
+  @include full-size-card;
+
+  border-top: 0.3rem solid $tbp500;
+
+  h1 {
+    color: $tbp500;
+    margin-bottom: 2rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+
 }
 
 @media screen and (min-width: $desktop_breakpoint) {

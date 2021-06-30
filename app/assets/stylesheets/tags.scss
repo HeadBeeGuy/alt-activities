@@ -78,3 +78,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* TAG PILLS */
+/* TODO: make more links use this instead of .activity-tag or .card-tag-link */
+
+.tag-pill-large {
+  padding: 0.4rem;
+  background: linear-gradient(to top right, $tag600, $tag500);
+  color: $tag100;
+  border-radius: 0.4rem;
+  text-decoration: none;
+}
+.tag-pill-large:hover {
+  background: $tag600;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
+}

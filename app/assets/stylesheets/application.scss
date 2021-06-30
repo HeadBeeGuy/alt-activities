@@ -340,6 +340,20 @@ footer {
   background: $primary900;
 }
 
+.compact-submit-button {
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background: linear-gradient(to top right, $primary700, $primary800);
+  color: #fefefe;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem $ru400;
+}
+.compact-submit-button:hover {
+  cursor: pointer;
+}
+
 .general-controls {
   display: flex;
   flex-direction: row;

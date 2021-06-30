@@ -1,14 +1,19 @@
 -provide(:title, "ALTopedia - #{@textbook.name} page #{@textbook_page.page}")
 
-.full-textbook-display
+.full-textbook-page-display
   %h1 #{@textbook.name} page #{@textbook_page.page}
 
-  %p= link_to @textbook_page.textbook.name_for_lists, @textbook_page.textbook
-  %p= markdown(@textbook_page.description)
-  %p= link_to @textbook_page.tag.name, @textbook_page.tag, class: "tag-link"
+  .triple-column
+    .single-column
+      %span= markdown @textbook_page.description
+    .single-column
+      =link_to @textbook_page.tag.name, @textbook_page.tag, class: "tag-pill-large"
+    .single-column
+      %p= link_to @textbook_page.textbook.name_for_lists, @textbook_page.textbook, class: "textbook-link"
+
 
   - if @linked_activities.any?
-    %h2 Linked Activities
+    %h3= t('.linked-activities-heading')
     %ul.activity-card-list
       - @linked_activities.each do |activity|
         %li.activity-card
@@ -17,10 +22,12 @@
             %p.activity-card-description= activity.short_description
 
   - if user_signed_in? && @activities.any?
-    = form_with model: @textbook_page_link do |f|
-      = f.select "activity_id", options_from_collection_for_select(@activities, 'id', 'name')
-      = f.hidden_field :textbook_page_id, value: @textbook_page.id
-      = f.submit "Submit", class: "submit-button"
+    .textbook-page-link-controls
+      %p= t('.create-link-explanation')
+      = form_with model: @textbook_page_link do |f|
+        = f.select "activity_id", options_from_collection_for_select(@activities, 'id', 'name')
+        = f.hidden_field :textbook_page_id, value: @textbook_page.id
+        = f.submit t('.submit'), class: "compact-submit-button"
 
   -if policy(@textbook_page).edit?
     %ul.general-controls

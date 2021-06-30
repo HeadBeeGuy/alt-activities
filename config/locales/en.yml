@@ -87,7 +87,10 @@ en:
       page-description: "Information"
       grammar-point: "Tag"
   textbook_pages:
-    show:      
+    show:
+      linked-activities-heading: "Linked Activities"
+      create-link-explanation: "Does one of your activities specifically focus on this page or unit? Link it here:"
+      submit: "Link"
   site_pages:
     home:
       site-tagline: "Find activities, games, and worksheets for your English classes. Share your ideas and help your fellow teachers make their classes awesome!"
