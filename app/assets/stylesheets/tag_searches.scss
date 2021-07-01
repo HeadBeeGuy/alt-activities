@@ -4,6 +4,25 @@
 
 @import "variables_and_mixins";
 
+h5.hide,
+h3.hide {
+    visibility: hidden;
+}
+
+p.warning {
+    color:white;
+    background-color: $warning;
+    padding: 5px;
+}
+
+.tag-search-tag-selector {
+    height: 50vh;
+    width: 100%;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid rgba(128, 128, 128, 0.39);
+}
+
 .category-tag-grid {
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
@@ -87,4 +106,78 @@
 .tagging-submit-button:disabled {
     background: $ru600;
     box-shadow: none;
+}
+
+.sorting-buttons button {
+    background: $ru500;
+    padding: 4px;
+    border-radius: 3px;
+    margin: 3px;
+    border: none;
+    color: white;
+}
+
+.sorting-buttons button:hover {
+    background: $ru700;
+}
+
+.sorting-buttons button.active-sort {
+    background: $ru900;
+}
+
+.pagination-buttons,
+.narrow-tags,
+.sorting-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.narrow-tags,
+.sorting-buttons {
+    justify-content: left;
+}
+
+.pagination-buttons button {
+    margin: 10px;
+    text-align: center;
+    // background: linear-gradient(to top right, $primary700, $primary800);
+    background: $primary500;
+    padding: 0.4rem;
+    color: #fefefe;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem $ru400;
+    transition: all 0.2s;
+}
+
+.tagging-submit-button:hover {
+    cursor: pointer;
+    background: $primary900;
+}
+
+.pagination-buttons button.active {
+    background: $primary800;
+}
+
+.pagination-buttons button:hover {
+    background: $primary700;
+}
+
+.narrow-tags button {
+    background: linear-gradient(to top right, $tag500, $tag400);
+    color: $ru100;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin: 0.1rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    border: none;
+}
+
+.narrow-tags button:hover {
+    background: $tag600;
+    box-shadow: 0.2rem 0.2rem 0.2rem $ru200;
 }
