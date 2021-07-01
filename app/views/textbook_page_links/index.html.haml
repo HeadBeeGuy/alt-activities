@@ -13,3 +13,5 @@
         %span= link_to "#{tbl.textbook_page.textbook.name} page #{tbl.textbook_page.page}", tbl.textbook_page, class: "textbook-page-link"
         - if user_signed_in? && (current_user.moderator? || current_user.admin? )
           %small= link_to "(Remove)", tbl, method: :delete, data: { confirm: "Remove this link?" }
+
+  = paginate @textbook_page_links

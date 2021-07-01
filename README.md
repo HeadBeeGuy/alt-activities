@@ -19,7 +19,6 @@ Higher priority tasks:
 
 - Get the site working with webhooks to allow integration with Discord and Stripe
 - Add in a purchasing system for premium accounts. Users will be able to purchase either subscriptions or non-recurring memberships that will apply a certain period of premium membership, after which their accounts will revert to regular accounts.
-- Allow activities to link to specific textbook pages
 
 ---
 
