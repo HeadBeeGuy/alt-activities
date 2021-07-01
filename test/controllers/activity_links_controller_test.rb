@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ActivityLinksControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get textbook page link index url" do
+    get textbook_page_links_path
+    assert_response :success
+  end
 end

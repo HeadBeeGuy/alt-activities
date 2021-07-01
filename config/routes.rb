@@ -35,8 +35,7 @@ Rails.application.routes.draw do
   get '/tag_search', to: 'tag_searches#show'
   get '/activity_search', to: 'activity_searches#show'
 
-  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts,
-    :textbook_page_links
+  resources :tags, :tag_categories, :textbooks, :textbook_pages, :front_page_posts
 
 	resources :users do
 		member do
@@ -69,6 +68,7 @@ Rails.application.routes.draw do
   resources :upvotes, only: [ :create, :destroy ]
   resources :taggings, only: [ :create, :destroy ]
   resources :activity_links, only: [ :create, :index, :destroy ]
+  resources :textbook_page_links, only: [ :create, :index, :destroy ]
   
   resources :comments do
     member do

@@ -1,0 +1,15 @@
+- provide(:title, t('.title'))
+
+.full-textbook-page-display
+  %h1 Activities linked to textbook pages
+
+  %p Marvel at the links! Aren't they something?
+  
+  %ul
+    - @textbook_page_links.each do |tbl|
+      %li
+        %span= link_to tbl.activity.name, tbl.activity, class: "activity-link"
+        %span is linked to
+        %span= link_to "#{tbl.textbook_page.textbook.name} page #{tbl.textbook_page.page}", tbl.textbook_page, class: "textbook-page-link"
+        - if user_signed_in? && (current_user.moderator? || current_user.admin? )
+          %small= link_to "(Remove)", tbl, method: :delete, data: { confirm: "Remove this link?" }

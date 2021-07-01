@@ -13,6 +13,11 @@ class TextbookPageLinksController < ApplicationController
     redirect_to textbook_page_url(@textbook_page)
   end
 
+  def index
+    @textbook_page_links = TextbookPageLink.order(created_at: :desc)
+      .includes(:activity, :textbook_page, textbook_page: [:textbook]).page(params[:page])
+  end
+
   def destroy
     @textbook_page_link = TextbookPageLink.find(params[:id])
     @activity = @textbook_page_link.activity
