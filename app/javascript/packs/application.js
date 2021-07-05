@@ -15,4 +15,12 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+//These are for polyfills. See docs here: https://babeljs.io/docs/en/babel-polyfill
+
+import "core-js/stable";
+import "regenerator-runtime/runtime"; 
+
+//Import your code
+import '../tag_searches';
+
+

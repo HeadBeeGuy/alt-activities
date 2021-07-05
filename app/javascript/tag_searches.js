@@ -1,6 +1,21 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+// A polyfill for custom events on IE
+(function () {
+
+  if ( typeof window.CustomEvent === "function" ) return false;
+
+  function CustomEvent ( event, params ) {
+    params = params || { bubbles: false, cancelable: false, detail: null };
+    var evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+    return evt;
+   }
+
+  window.CustomEvent = CustomEvent;
+})();
+
 let tagAcc, tagChecks, form, newActivityForm, paginationPage = 1, pages, list, paginationCon, sort = 'created_at', narrowTagsCon, sortingButtonsCon;
 
 function init() {
@@ -8,7 +23,7 @@ function init() {
   const select = document.querySelector('#tag-search-select');
 
   if (select && !select.classList.contains('select2-hidden-accessible')) {
-    // console.log('found select');
+    console.log('found select');
     $('select#tag-search-select').select2({
       placeholder: 'Text search for all tags',
       width: '90%'
@@ -16,6 +31,7 @@ function init() {
   
     $('select#tag-search-select').on('select2:select', handleSelect);
     $('select#tag-search-select').on('select2:unselect', handleUnselect);
+    console.log('ran some jquery');
   }
 
   form = document.querySelector('#tag-search-form'); //tag searches container
@@ -24,13 +40,18 @@ function init() {
   paginationCon = document.querySelector('.pagination-buttons'); //pagination buttons container
   narrowTagsCon = document.querySelector('.narrow-tags');
   sortingButtonsCon = document.querySelector('.sorting-buttons');
+  console.log('selected some elements');
   if (!form && !newActivityForm) return;
+  console.log('we have form and/or new activity form');
   tagAcc = document.querySelector('#tag-accumulator');
+  console.log('about to run some es6');
   tagChecks = [...document.querySelectorAll('.form-tag-checkbox')];
-
+  console.log('just ran some es6')
   tagChecks.map(tag => {if (tag.checked) append(tagAcc, tag.value, tag.dataset.text)});
+  console.log('mapped something')
   if (tagChecks.some(tag => tag.checked)) sendEventToSelect();
   tagChecks.map(tag => tag.addEventListener('change', handleTagClick));
+  console.log('finished init');
 }
 
 const append = (ref, val, text) => {
@@ -101,7 +122,7 @@ handleUnselect = (e) => {
 }
 
 const sendEventToSelect = () => {
-  const e = new Event("change");
+  const e = new CustomEvent("change");
   const select = document.querySelector('#tag-search-select');
   select.dispatchEvent(e);
 }
@@ -126,10 +147,10 @@ const query = () => {
   paginationPage = 1;
 
   const url = `/tag_search?${q}`;
-  // console.log(url);
+  console.log(url);
   fetch(url)
   .then(res => {
-    // console.log(res);
+    console.log(res);
     if (res.ok) {
       return res.json();
     }
