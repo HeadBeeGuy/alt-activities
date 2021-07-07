@@ -18,9 +18,16 @@
 //These are for polyfills. See docs here: https://babeljs.io/docs/en/babel-polyfill
 
 import "core-js/stable";
-import "regenerator-runtime/runtime"; 
+import "regenerator-runtime/runtime";
+import "whatwg-fetch"; //https://github.com/github/fetch
+import "promise-polyfill/src/polyfill"; //https://github.com/taylorhakes/promise-polyfill
 
 //Import your code
-import '../tag_searches';
+import '../src/activities';
+import '../src/activity_links';
+import '../src/tag_searches';
+import '../src/taggings';
+
+console.log('yo yo yo');
 
 

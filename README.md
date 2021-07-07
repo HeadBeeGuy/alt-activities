@@ -11,6 +11,8 @@ The minimum supported browser is IE11. A lot of ALTs have to use old computers t
 
 The site uses Docker in development and production. The easiest way to run it in development is to clone the repo, run `docker-compose build` to build everything, `docker-compose up` to start up the db and web server, then `docker-compose run web bundle exec rails db:setup` to create and seed the initial database. You can feed it commands like a normal Rails app by passing commands to the container using docker-compose. For example, `docker-compose run web bundle exec rails test` will run the test suite.
 
+In development on Windows in WSL2, webpacker will fail to compile unless you run `docker-compose run web bundle exec rails webpacker:install` as the dependencies are not being automatically installed.
+
 Once everything is working, the web server and db containers can be started up with `docker-compose up` and shut down with `docker-compose down`. The development environment is seeded with example data. Every account in the development environment has the password "badpassword". The administrator is named "Local Admin".
 
 ---

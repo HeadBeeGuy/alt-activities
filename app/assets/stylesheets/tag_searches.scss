@@ -4,6 +4,10 @@
 
 @import "variables_and_mixins";
 
+.fit {
+    width: 100%;
+}
+
 h5.hide,
 h3.hide {
     visibility: hidden;
@@ -131,12 +135,8 @@ p.warning {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-}
-
-.narrow-tags,
-.sorting-buttons {
     justify-content: left;
+    width: 100%;
 }
 
 .pagination-buttons button {

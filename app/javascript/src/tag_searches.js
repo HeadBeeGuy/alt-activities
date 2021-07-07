@@ -1,6 +1,8 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+console.log('hey');
+
 // A polyfill for custom events on IE
 (function () {
 
@@ -93,7 +95,7 @@ const handleTagClick = function () {
   }
 };
 
-const handleTagAccClick = (item) => {
+handleTagAccClick = (item) => {
   remove(tagAcc, item.dataset.value);
   const tag = document.querySelector(`input[value='${item.dataset.value}']`);
   const option = document.querySelector(`option[value='${item.dataset.value}']`);
@@ -103,7 +105,7 @@ const handleTagAccClick = (item) => {
   query();
 }
 
-handleSelect = (e) => {
+const handleSelect = (e) => {
   // console.log(e.params.data);
   append(tagAcc, e.params.data.id, e.params.data.text);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
@@ -112,7 +114,7 @@ handleSelect = (e) => {
   query();
 }
 
-handleUnselect = (e) => {
+const handleUnselect = (e) => {
   // console.log(e.params.data);
   remove(tagAcc, e.params.data.id);
   const tag = document.querySelector(`input[value="${e.params.data.id}"]`);
@@ -127,7 +129,7 @@ const sendEventToSelect = () => {
   select.dispatchEvent(e);
 }
 
-const handleSort = (i) => {
+handleSort = (i) => {
   sort = i.dataset.sort;
   return query();
 }
@@ -148,7 +150,7 @@ const query = () => {
 
   const url = `/tag_search?${q}`;
   console.log(url);
-  fetch(url)
+  window.fetch(url)
   .then(res => {
     console.log(res);
     if (res.ok) {
@@ -237,7 +239,7 @@ buildSortingButtons = activity => {
       if (skipArr.includes(key)) return;
       const finKey = key !== 'upvote_count' ? key : 'upvote_count DESC';
       const button = `
-        <button onclick=handleSort(this) data-sort='${finKey}' class=${sort === finKey ? 'active-sort' : null}>
+        <button onclick="handleSort(this)" data-sort='${finKey}' class=${sort === finKey ? 'active-sort' : null}>
           ${renames[key]}
         </button>
       `
@@ -314,7 +316,7 @@ const buildPageButtons = (num) => {
   return paginationCon.innerHTML = html;
 }
 
-function handlePageButtonClick(i) {
+handlePageButtonClick = (i) => {
   const curPageButton = document.querySelector(`button[data-page="${paginationPage}"]`);
   if (curPageButton) curPageButton.classList.remove('active');
   i.classList.add('active');
