@@ -89,7 +89,7 @@ const handleTagClick = function () {
 };
 
 function handleTagAccClick() {
-  console.log(this);
+  // console.log(this);
   remove(tagAcc, this.dataset.value);
   const tag = document.querySelector(`input[value='${this.dataset.value}']`);
   const option = document.querySelector(`option[value='${this.dataset.value}']`);
@@ -143,10 +143,10 @@ const query = () => {
   paginationPage = 1;
 
   const url = `/tag_search?${q}`;
-  console.log(url);
+  // console.log(url);
   window.fetch(url)
   .then(res => {
-    console.log(res);
+    // console.log(res);
     if (res.ok) {
       return res.json();
     }
@@ -290,7 +290,7 @@ const buildTagNarrowButtons = activities => {
 }
 
 function handleNarrowTagClick() {
-  console.log(this.dataset.tagid);
+  // console.log(this.dataset.tagid);
 
   const tagCheck = document.querySelector(`input[value="${this.dataset.tagid}"]`);
   tagCheck.click();

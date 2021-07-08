@@ -28,6 +28,4 @@ import '../src/activity_links';
 import '../src/tag_searches';
 import '../src/taggings';
 
-console.log('yo yo yo');
-
 
