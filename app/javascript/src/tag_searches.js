@@ -1,8 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-console.log('hey');
-
 // A polyfill for custom events on IE
 (function () {
 
@@ -25,7 +23,6 @@ function init() {
   const select = document.querySelector('#tag-search-select');
 
   if (select && !select.classList.contains('select2-hidden-accessible')) {
-    console.log('found select');
     $('select#tag-search-select').select2({
       placeholder: 'Text search for all tags',
       width: '90%'
@@ -33,7 +30,6 @@ function init() {
   
     $('select#tag-search-select').on('select2:select', handleSelect);
     $('select#tag-search-select').on('select2:unselect', handleUnselect);
-    console.log('ran some jquery');
   }
 
   form = document.querySelector('#tag-search-form'); //tag searches container
@@ -42,18 +38,12 @@ function init() {
   paginationCon = document.querySelector('.pagination-buttons'); //pagination buttons container
   narrowTagsCon = document.querySelector('.narrow-tags');
   sortingButtonsCon = document.querySelector('.sorting-buttons');
-  console.log('selected some elements');
   if (!form && !newActivityForm) return;
-  console.log('we have form and/or new activity form');
   tagAcc = document.querySelector('#tag-accumulator');
-  console.log('about to run some es6');
   tagChecks = [...document.querySelectorAll('.form-tag-checkbox')];
-  console.log('just ran some es6')
   tagChecks.map(tag => {if (tag.checked) append(tagAcc, tag.value, tag.dataset.text)});
-  console.log('mapped something')
   if (tagChecks.some(tag => tag.checked)) sendEventToSelect();
   tagChecks.map(tag => tag.addEventListener('change', handleTagClick));
-  console.log('finished init');
 }
 
 const append = (ref, val, text) => {
@@ -63,11 +53,14 @@ const append = (ref, val, text) => {
   
   //Add an li element to the list in the category header
   const html = `
-    <li onclick="handleTagAccClick(this)" data-value="${val}" data-text="${text}">
+    <li data-value="${val}" data-text="${text}">
       <span>${text}</span>
     </li>
   `
   ref.insertAdjacentHTML('afterbegin', html);
+
+  const li = document.querySelector(`li[data-value="${val}"]`);
+  li.addEventListener('click', handleTagAccClick);
 };
 
 const remove = (ref, value) => {
@@ -95,10 +88,11 @@ const handleTagClick = function () {
   }
 };
 
-handleTagAccClick = (item) => {
-  remove(tagAcc, item.dataset.value);
-  const tag = document.querySelector(`input[value='${item.dataset.value}']`);
-  const option = document.querySelector(`option[value='${item.dataset.value}']`);
+function handleTagAccClick() {
+  console.log(this);
+  remove(tagAcc, this.dataset.value);
+  const tag = document.querySelector(`input[value='${this.dataset.value}']`);
+  const option = document.querySelector(`option[value='${this.dataset.value}']`);
   tag.checked = false;
   option.selected = false;
   sendEventToSelect();
@@ -129,8 +123,8 @@ const sendEventToSelect = () => {
   select.dispatchEvent(e);
 }
 
-handleSort = (i) => {
-  sort = i.dataset.sort;
+function handleSort() {
+  sort = this.dataset.sort;
   return query();
 }
 
@@ -218,7 +212,7 @@ const paginate = (res) => {
   buildTagNarrowButtons(res);
 }
 
-buildSortingButtons = activity => {
+const buildSortingButtons = activity => {
   let html = ``;
   const skipArr = [
     'short_description',
@@ -239,7 +233,7 @@ buildSortingButtons = activity => {
       if (skipArr.includes(key)) return;
       const finKey = key !== 'upvote_count' ? key : 'upvote_count DESC';
       const button = `
-        <button onclick="handleSort(this)" data-sort='${finKey}' class=${sort === finKey ? 'active-sort' : null}>
+        <button data-sort='${finKey}' class=${sort === finKey ? 'active-sort' : null}>
           ${renames[key]}
         </button>
       `
@@ -247,7 +241,10 @@ buildSortingButtons = activity => {
     })
   }
   
-  return sortingButtonsCon.innerHTML = html;
+  sortingButtonsCon.innerHTML = html;
+
+  const sorts = [...document.querySelectorAll('button[data-sort]')];
+  if (sorts) sorts.map(but => but.addEventListener('click', handleSort));
 }
 
 const buildTagNarrowButtons = activities => {
@@ -277,7 +274,7 @@ const buildTagNarrowButtons = activities => {
       // console.log(tagCheck);
   
       const tagBut = `
-        <button onclick="handleNarrowTagClick(${tag})">
+        <button class="narrow-tag" data-tagid="${tag}">
           ${tagCheck.dataset.text}
         </button>
       `
@@ -287,13 +284,16 @@ const buildTagNarrowButtons = activities => {
     
   }
 
-  return narrowTagsCon.innerHTML = html;
+  narrowTagsCon.innerHTML = html;
+  const buts = [...document.querySelectorAll(".narrow-tag")];
+  if (buts) buts.map(but => but.addEventListener('click', handleNarrowTagClick));
 }
 
-handleNarrowTagClick = id => {
-  const tagCheck = document.querySelector(`input[value="${id}"]`);
+function handleNarrowTagClick() {
+  console.log(this.dataset.tagid);
+
+  const tagCheck = document.querySelector(`input[value="${this.dataset.tagid}"]`);
   tagCheck.click();
-  
   query();
   scrollToResultsTop();
 }
@@ -304,7 +304,7 @@ const buildPageButtons = (num) => {
   let n = 1;
   do {
     const button = `
-      <button data-page=${n} onclick="handlePageButtonClick(this)" class=${n === 1 ? "active" : null}>
+      <button data-page=${n} class=${n === 1 ? "active" : null}>
         ${n}
       </button>
     `
@@ -313,14 +313,17 @@ const buildPageButtons = (num) => {
     n++;
   } while (n <= num)
 
-  return paginationCon.innerHTML = html;
+  paginationCon.innerHTML = html;
+
+  const buts = [...document.querySelectorAll('button[data-page]')];
+  if (buts) buts.map(but => but.addEventListener('click', handlePageButtonClick));
 }
 
-handlePageButtonClick = (i) => {
+function handlePageButtonClick() {
   const curPageButton = document.querySelector(`button[data-page="${paginationPage}"]`);
   if (curPageButton) curPageButton.classList.remove('active');
-  i.classList.add('active');
-  paginationPage = i.dataset.page;
+  this.classList.add('active');
+  paginationPage = this.dataset.page;
   displayResults(pages);
   scrollToResultsTop();
 }
