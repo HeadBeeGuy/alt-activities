@@ -16,6 +16,7 @@ RUN apt-get update && \
     apt-get install -y vim && \
     npm install -g yarn && \
     yarn install --check-files && \
+    bundle exec rails webpacker:install && \
     apt-get clean all
 
 # Add a script to be executed every time the container starts.
