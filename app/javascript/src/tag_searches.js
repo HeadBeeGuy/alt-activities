@@ -57,7 +57,7 @@ const append = (ref, val, text) => {
       <span>${text}</span>
     </li>
   `
-  ref.insertAdjacentHTML('afterbegin', html);
+  ref.insertAdjacentHTML('beforeend', html);
 
   const li = document.querySelector(`li[data-value="${val}"]`);
   li.addEventListener('click', handleTagAccClick);
@@ -258,15 +258,21 @@ const buildTagNarrowButtons = activities => {
   
     // console.log(checkedTags);
   
-    const tagsToButtons = activities.reduce((acc, activity) => {
-      activity.taggings.map( tagging => {
+    const tagsFreq = activities.reduce((acc, activity) => {
+      activity.taggings.map(tagging => {
         // console.log(tagging.tag_id, checkedTags);
-        if (checkedTags.includes(tagging.tag_id) || acc.includes(tagging.tag_id)) return;
+        if (checkedTags.includes(tagging.tag_id)) return;
 
-        acc.push(tagging.tag_id);
+        acc[tagging.tag_id] ? acc[tagging.tag_id] += 1 : acc[tagging.tag_id] = 1;
       });
       return acc;
-    }, []);
+    }, {});
+
+    const tagsToButtons = Object.keys(tagsFreq).reduce((arr, tag) => {
+      arr.push(tag);
+      return arr;
+    }, [])
+    .sort((a , b) => tagsFreq[b] - tagsFreq[a]);
 
     tagsToButtons.map(tag => {
       const tagCheck = document.querySelector(`input[value="${tag}"]`)

@@ -1,7 +1,7 @@
 =form_with(url: tag_search_path, method: :get, id: "tag-search-form") do
+  #tag-accumulator
+    %p Searching for activities that include all of these tags:
   .tag-search-tag-selector
-    #tag-accumulator
-      %p Searching for activities that include all of these tags:
     = render 'select2'
     %p Or browse by category
     %ul
